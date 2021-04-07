@@ -1283,7 +1283,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetData",
+            url: "https://xpool.pro/web/webform.aspx/GetData",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"desc\":'" + $("#search input.searchtext").val() + "', \"startRecord\":0, \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + $("#minp").val() + ", \"maxp\":" + $("#maxp").val() + " }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1348,7 +1348,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetData",
+                url: "https://xpool.pro/web/webform.aspx/GetData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"desc\":'" + $("#search input.searchtext").val() + "', \"startRecord\":0, \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + $("#minp").val() + ", \"maxp\":" + $("#maxp").val() + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -1385,7 +1385,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetClientLog",
+                url: "https://xpool.pro/web/webform.aspx/GetClientLog",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"startRecord\":" + startRecord + ", \"type\":0 }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -1443,7 +1443,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetClientLog",
+                url: "https://xpool.pro/web/webform.aspx/GetClientLog",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"startRecord\":" + startRecord + ", \"type\":0 }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -1490,7 +1490,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetClientLog",
+                url: "https://xpool.pro/web/webform.aspx/GetClientLog",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"startRecord\":" + startRecord + ", \"type\":1 }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -1976,7 +1976,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetMainCats",
+                url: "https://xpool.pro/web/webform.aspx/GetMainCats",
                 data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -1993,7 +1993,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetMainCats",
+            url: "https://xpool.pro/web/webform.aspx/GetMainCats",
             data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(this).attr("sid") + " }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2016,7 +2016,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetSubCats",
+            url: "https://xpool.pro/web/webform.aspx/GetSubCats",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(this).attr("sid") + ", \"path\":'" + $(this).attr("path") + "', \"status\":1, \"startRecord\":0, \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2039,7 +2039,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetSubCats",
+            url: "https://xpool.pro/web/webform.aspx/GetSubCats",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(this).attr("sid") + ", \"path\":'" + $(this).attr("path") + "', \"status\":1, \"startRecord\":0, \"sort\":" + sort + ", \"datetime\":'" + datetime + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2224,7 +2224,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetShopInfo",
+            url: "https://xpool.pro/web/webform.aspx/GetShopInfo",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + " }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2374,7 +2374,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetClient",
+            url: "https://xpool.pro/web/webform.aspx/GetClient",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + $("#LoginPhoneNumber").val() + "', \"key\":'" + $("#LoginKey").val() + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2489,7 +2489,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/GetData",
+                    url: "https://xpool.pro/web/webform.aspx/GetData",
                     data: "{ \"uid\":" +uid_v + ", \"sid\":" + ssid + ", \"desc\":'" + getUrlParameter("s") + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -2510,7 +2510,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/GetSubCats",
+                    url: "https://xpool.pro/web/webform.aspx/GetSubCats",
                     data: "{ \"uid\":" +uid_v + ", \"sid\":" + ssid + ", \"path\":'" + getUrlParameter("cat").replace(/_/g, " ") + "', \"status\":1, \"startRecord\":" + startRecord + ",  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -2525,7 +2525,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/GetNewData",
+                    url: "https://xpool.pro/web/webform.aspx/GetNewData",
                     data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -2540,7 +2540,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/GetTopRatedData",
+                    url: "https://xpool.pro/web/webform.aspx/GetTopRatedData",
                     data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -2555,7 +2555,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/GetTopDiscount",
+                    url: "https://xpool.pro/web/webform.aspx/GetTopDiscount",
                     data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -2599,7 +2599,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetNewData",
+            url: "https://xpool.pro/web/webform.aspx/GetNewData",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2640,7 +2640,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetTopRatedData",
+            url: "https://xpool.pro/web/webform.aspx/GetTopRatedData",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":0, \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2681,7 +2681,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetTopDiscount",
+            url: "https://xpool.pro/web/webform.aspx/GetTopDiscount",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":0, \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2721,7 +2721,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetFavData",
+            url: "https://xpool.pro/web/webform.aspx/GetFavData",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"favdata\":'" + $.cookie("c_favors") + "', \"datetime\":'" + datetime + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -2761,7 +2761,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/GetCartData",
+            url: "https://xpool.pro/web/webform.aspx/GetCartData",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"cartdata\":'" + $.cookie("c_cart") + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -3409,7 +3409,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/SaveImageURL",
+                url: "https://xpool.pro/web/webform.aspx/SaveImageURL",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + ", \"url\":'" + $("#TargetURL1").val() + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val() + "', \"vfurl\":'" + $("#TargetVFrameURL").val() + "', \"rating\":" + $("#RatingValue").html() + ", \"discount\":'" + $("#DiscountValue").val() + "', \"delivery\":'" + $("#DeliverySelect option:selected").attr("ru") + "', \"time\":" + $("#TimeSelect option:selected")[0].getAttribute("v") + ", \"catid\":" + $("#CategoriesSelect option:selected")[0].getAttribute("cat") + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -3626,7 +3626,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetClientLog",
+                        url: "https://xpool.pro/web/webform.aspx/GetClientLog",
                         data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"startRecord\":0, \"type\":0 }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -3663,7 +3663,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/CreatePhoneClient",
+                    url: "https://xpool.pro/web/webform.aspx/CreatePhoneClient",
                     data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"phone\":'" + $("#CreatePhoneNumberLogin").val() + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -3765,7 +3765,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/RateTrade",
+                url: "https://xpool.pro/web/webform.aspx/RateTrade",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"log_id\":'" + cur_log_id + "', \"rate1\":" + $("#R1Count").html() + ", \"rate2\":" + $("#R2Count").html() + ", \"rate3\":" + $("#R3Count").html() + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -3855,7 +3855,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/InitPage",
+            url: "https://xpool.pro/web/webform.aspx/InitPage",
             data: "{ }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -4062,7 +4062,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/GetClient",
+                    url: "https://xpool.pro/web/webform.aspx/GetClient",
                     data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"phone\":'', \"key\":'" + $.cookie("c_client") + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -4079,7 +4079,7 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    url: "webform.aspx/GetMainCats",
+                    url: "https://xpool.pro/web/webform.aspx/GetMainCats",
                     data: "{ \"uid\":" + uid_v + ", \"sid\":" + getUrlParameter("catsid") + " }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -4122,7 +4122,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetData",
+                        url: "https://xpool.pro/web/webform.aspx/GetData",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'" + getUrlParameter("s") + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4162,7 +4162,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetData",
+                        url: "https://xpool.pro/web/webform.aspx/GetData",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'$" + id + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4211,7 +4211,7 @@
                         $.ajax({
                             async: true,
                             type: "POST",
-                            url: "webform.aspx/GetData",
+                            url: "https://xpool.pro/web/webform.aspx/GetData",
                             data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'" + ids + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
@@ -4233,7 +4233,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetSubCats",
+                        url: "https://xpool.pro/web/webform.aspx/GetSubCats",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"path\":'" + getUrlParameter("cat").replace(/_/g, " ") + "', \"status\":1, \"startRecord\":" + startRecord + ",  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4247,7 +4247,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetNewData",
+                        url: "https://xpool.pro/web/webform.aspx/GetNewData",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4261,7 +4261,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetTopRatedData",
+                        url: "https://xpool.pro/web/webform.aspx/GetTopRatedData",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4275,7 +4275,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetTopDiscount",
+                        url: "https://xpool.pro/web/webform.aspx/GetTopDiscount",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4290,7 +4290,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetNewData",
+                        url: "https://xpool.pro/web/webform.aspx/GetNewData",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4305,7 +4305,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetTopRatedData",
+                        url: "https://xpool.pro/web/webform.aspx/GetTopRatedData",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4320,7 +4320,7 @@
                     $.ajax({
                         async: true,
                         type: "POST",
-                        url: "webform.aspx/GetTopDiscount",
+                        url: "https://xpool.pro/web/webform.aspx/GetTopDiscount",
                         data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -4391,7 +4391,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetData",
+                url: "https://xpool.pro/web/webform.aspx/GetData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"desc\":'" + ss + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -4404,7 +4404,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetNewData",
+                url: "https://xpool.pro/web/webform.aspx/GetNewData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -4416,7 +4416,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetSubCats",
+                url: "https://xpool.pro/web/webform.aspx/GetSubCats",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(".TitleSpan").attr("sid") + ", \"path\":'" + $('.TitleSpan').attr("path") + "', \"status\":1, \"startRecord\":" + startRecord + ",  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -4428,7 +4428,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetSubCats",
+                url: "https://xpool.pro/web/webform.aspx/GetSubCats",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(".TitleSpan").attr("sid") + ", \"path\":'" + $('.TitleSpan').attr("path") + "', \"status\":1, \"startRecord\":" + startRecord + ",  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -4442,7 +4442,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetTopRatedData",
+                url: "https://xpool.pro/web/webform.aspx/GetTopRatedData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -4456,7 +4456,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetTopDiscount",
+                url: "https://xpool.pro/web/webform.aspx/GetTopDiscount",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -4470,7 +4470,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetClientLog",
+                url: "https://xpool.pro/web/webform.aspx/GetClientLog",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"startRecord\":" + startRecord + ", \"type\":0 }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5048,7 +5048,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetLastOrderInfo",
+                url: "https://xpool.pro/web/webform.aspx/GetLastOrderInfo",
                 data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + $("#PhoneTextBox").val() + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5570,7 +5570,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/CreateNewOrder",
+                url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + (($("#MBM1").attr("v19") == "0") ? "'" + $("#DeliveryType").val() + "'" : "'Адресная'") + ", \"warehouse\":'" + warehouse + "', \"area\":'" + area + "', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5741,7 +5741,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetData",
+                url: "https://xpool.pro/web/webform.aspx/GetData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + ssid + ", \"desc\":'" + ss + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5752,7 +5752,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetNewData",
+                url: "https://xpool.pro/web/webform.aspx/GetNewData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5765,7 +5765,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetSubCats",
+                url: "https://xpool.pro/web/webform.aspx/GetSubCats",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"path\":'" + $(".TitleSpan").attr("path") + "', \"status\":0, \"startRecord\":" + startRecord + ", \"sort\":" + sort + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5776,7 +5776,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetSubCats",
+                url: "https://xpool.pro/web/webform.aspx/GetSubCats",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"path\":'" + $(".TitleSpan").attr("path") + "', \"status\":1, \"startRecord\":" + startRecord + ", \"sort\":" + sort + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5787,7 +5787,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetTopRatedData",
+                url: "https://xpool.pro/web/webform.aspx/GetTopRatedData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5798,7 +5798,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetTopDiscount",
+                url: "https://xpool.pro/web/webform.aspx/GetTopDiscount",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5809,7 +5809,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetFavData",
+                url: "https://xpool.pro/web/webform.aspx/GetFavData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"favdata\":'" + $.cookie("c_favors") + "', \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5820,7 +5820,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/GetCartData",
+                url: "https://xpool.pro/web/webform.aspx/GetCartData",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"cartdata\":'" + $.cookie("c_cart") + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -5879,7 +5879,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "webform.aspx/SaveAlert",
+                url: "https://xpool.pro/web/webform.aspx/SaveAlert",
                 data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"status\":'" + $("#AlertSelect option:selected").attr("ru") + "', \"comment\":'" + $("#AlertInfo").val() + "', \"alert_date\":'" + $("#DateCount").html() + "', \"client_key\":'" + $("#KeyCode").val() + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -6291,7 +6291,7 @@
         $.ajax({
             async: true,
             type: "POST",
-            url: "webform.aspx/RemoveOrder",
+            url: "https://xpool.pro/web/webform.aspx/RemoveOrder",
             data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"id\":" + $(this).attr("logid") + " }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
