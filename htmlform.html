@@ -3315,7 +3315,7 @@
                 res = img;
         }
         else {
-            res = 'source/' + $("#TargetStyleSheet").attr("st") + '/img/nophoto2.png';
+            res = 'https://xpool.pro/web/source/' + $("#TargetStyleSheet").attr("st") + '/img/nophoto2.png';
         }
 
         return res;
@@ -3371,7 +3371,7 @@
         //$("#TargetURL5").val("source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto2.png");
 
 
-        $("#fullimage").attr("src", "source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto2.png");
+        $("#fullimage").attr("src", "https://xpool.pro/web/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto2.png");
         $("#TargetURL1").val("");
         $("#TargetURL2").val("");
         $("#TargetURL3").val("");
@@ -3425,7 +3425,7 @@
 
     function bindSaveImageURL(data) {
 
-        var cur_photo = ($("#TargetURL1").val().indexOf("nophoto2.png") != -1) ? "source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto.png" : $("#TargetURL1").val();
+        var cur_photo = ($("#TargetURL1").val().indexOf("nophoto2.png") != -1) ? "https://xpool.pro/web/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto.png" : $("#TargetURL1").val();
 
         $(selected).find("img").first().attr("src", cur_photo);
 
@@ -4492,7 +4492,7 @@
             }
         }
         else {
-            res = 'source/' + $("#TargetStyleSheet").attr("st") + '/img/nophoto.png';
+            res = 'https://xpool.pro/web/' + $("#TargetStyleSheet").attr("st") + '/img/nophoto.png';
         }
 
         return res;
@@ -5509,7 +5509,7 @@
     }
 
     function onErrorPhotoLoad(source) {
-        $(source).attr('src', 'source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
+        $(source).attr('src', 'https://xpool.pro/web/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
         $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
     }
 
