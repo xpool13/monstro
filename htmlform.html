@@ -3291,7 +3291,7 @@
 
         if (img != null && img != undefined && img != '') {
             if (img.indexOf("nophoto") != -1) {
-                res = "source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto2.png";
+                res = "https://xpool.pro/web/source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto2.png";
             }
             else if (img.indexOf("import_files") != -1) {
                 res = img.replace("250x250", "600x600");
@@ -3877,7 +3877,7 @@
         $("#MBM1").attr("v17", data.d.mbm[16]), $("#MBM1").attr("v18", data.d.mbm[17]), $("#MBM1").attr("v19", data.d.mbm[18]), $("#MBM1").attr("v20", data.d.mbm[19]);
         $("#MBM1").attr("v21", data.d.mbm[20]), $("#MBM1").attr("v22", data.d.mbm[21]);
 
-        $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
+        $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/" + data.d.target_style_sheet_href);
         $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
 
         $("#MBM1").attr("glue1", data.d.glue1);
