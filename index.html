@@ -5,8 +5,8 @@
     <title>Monstro</title>
 
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="клякса.in.ua">
-    <meta property="og:title" content="клякса.in.ua">
+    <meta property="og:site_name" content="monstro.com.ua">
+    <meta property="og:title" content="monstro.com.ua">
     <meta property="og:description" content="Игрушки, канцтовары, товары для детей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
@@ -1731,8 +1731,6 @@
     }
 
     $("#CabinetTable").delegate('.PayCard', 'click', function () {
-
-        alert("testsss");
 
         $.ajax({
             async: true,
@@ -4160,7 +4158,7 @@
             if ($("#MBM1").attr("v7") == "On") {
                 if ($("#MBM1").attr("v9") != "") {
 
-                    $(".head2").html($("#MBM1").attr("v9"));
+                    $(".head2").html("MONSTRO");
 
                     $(".head2").show();
                 }
@@ -4235,7 +4233,7 @@
             }
 
             menu_offset = $("#MenuDIV").offset().top - 29;
-            alert(menu_offset);
+           
 
             if ($.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
 
