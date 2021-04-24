@@ -2094,7 +2094,7 @@
                 $("#splash").hide();
                 SetView();
 
-                window.history.pushState({}, "https://monstro.com.ua/index.html?catalog=1");
+                window.history.pushState({}, "/index.html?catalog=1");
             }
             else {
                 $.ajax({
@@ -2144,7 +2144,7 @@
             $("#splash").hide();
             SetView();
 
-            window.history.pushState({}, "https://monstro.com.ua/", "/index.html?catalog=1");
+            window.history.pushState({}, "", "/index.html?catalog=1");
         }
         else {
             $.ajax({
@@ -2249,7 +2249,7 @@
 
         var dataRows = data.d[0];
       
-        window.history.pushState({}, "https://monstro.com.ua/", "/index.html?catsid=" + dataRows[0][2]);
+        window.history.pushState({}, "", "/index.html?catsid=" + dataRows[0][2]);
 
 
         $("#MainCatMenu").children().eq(1).children().remove();
