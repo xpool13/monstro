@@ -2094,7 +2094,7 @@
                 $("#splash").hide();
                 SetView();
 
-                window.history.pushState({}, "https://www.xpool.pro", "/web/htmlform.html?catalog=1");
+                window.history.pushState({}, "https://www.xpool.pro", "/web/index.html?catalog=1");
             }
             else {
                 $.ajax({
@@ -2144,7 +2144,7 @@
             $("#splash").hide();
             SetView();
 
-            window.history.pushState({}, "https://www.xpool.pro", "/web/htmlform.html?catalog=1");
+            window.history.pushState({}, "https://www.xpool.pro", "/web/index.html?catalog=1");
         }
         else {
             $.ajax({
@@ -2249,7 +2249,7 @@
 
         var dataRows = data.d[0];
       
-        window.history.pushState({}, "https://www.xpool.pro", "/web/htmlform.html?catsid=" + dataRows[0][2]);
+        window.history.pushState({}, "https://www.xpool.pro", "/web/index.html?catsid=" + dataRows[0][2]);
 
 
         $("#MainCatMenu").children().eq(1).children().remove();
@@ -2292,7 +2292,7 @@
         if (currentEvent == "subcats") {
             var dataRows = data.d[1];
 
-            window.history.pushState({}, "", "/web/htmlform.html?ssid=" + data.d[4] + "&cat=" + data.d[0].replace(/ /g, "_"));
+            window.history.pushState({}, "", "/web/index.html?ssid=" + data.d[4] + "&cat=" + data.d[0].replace(/ /g, "_"));
 
             //if (dataRows.length > 2) {
             //    $("#SubCatMenu").children().eq(1).children().remove();
