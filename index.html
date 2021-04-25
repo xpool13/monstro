@@ -478,9 +478,13 @@
             font-size: large;
             font-family: Arial;
             text-align: left;
-            padding-left: 50px;
+            padding: 5px;
             background-color: #fff;
             color: #000;
+        }
+
+        td.order:hover {
+            background-color: #FFFFCC;
         }
 
          td.order2 {
@@ -489,9 +493,13 @@
             font-size: large;
             font-family: Arial;
             text-align: left;
-            padding-left: 50px;
+            padding: 5px;
             background-color: #fff;
             color: #000;
+        }
+
+         td.order2:hover {
+            background-color: #FFFFCC;
         }
 
         span.QR {
@@ -4067,7 +4075,7 @@
         $("#MBM1").attr("v5", data.d.mbm[4]), $("#MBM1").attr("v6", data.d.mbm[5]), $("#MBM1").attr("v7", data.d.mbm[6]), $("#MBM1").attr("v8", data.d.mbm[7]);
         $("#MBM1").attr("v9", data.d.mbm[8]), $("#MBM1").attr("v10", data.d.mbm[9]), $("#MBM1").attr("v11", data.d.mbm[10]), $("#MBM1").attr("v12", data.d.mbm[11]);
         $("#MBM1").attr("v13", data.d.mbm[12]), $("#MBM1").attr("v14", data.d.mbm[13]), $("#MBM1").attr("v15", data.d.mbm[14]), $("#MBM1").attr("v16", data.d.mbm[15]);
-        $("#MBM1").attr("v17", data.d.mbm[16]), $("#MBM1").attr("v18", data.d.mbm[17]), $("#MBM1").attr("v19", data.d.mbm[18]), $("#MBM1").attr("v20", data.d.mbm[19]);
+        $("#MBM1").attr("v17", data.d.mbm[16]), $("#MBM1").attr("v18", data.d.mbm[17]), $("#MBM1").attr("v19", "0"), $("#MBM1").attr("v20", data.d.mbm[19]);
         $("#MBM1").attr("v21", data.d.mbm[20]), $("#MBM1").attr("v22", data.d.mbm[21]);
 
         //$("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
@@ -5280,23 +5288,23 @@
                 $("#col3").children().remove();
                 $("#CabinetTable").children().remove();
 
-                $("#CabinetTable").append('<tr id="d_tr1" class="ItemContainer"><td class="tdleft" uk="Місто:">Город:</td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr2" class="ItemContainer"><td class="cheque"><input id="CurrentCityTextBox" type="text" style="width: 294px;" /></td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr3" class="ItemContainer"><td class="tdleft" uk="Доставка:">Доставка:</td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr4" class="ItemContainer"><td class="cheque"><select id="DeliveryTypeSelect" style="width: 294px"><option value="1">До отделения</option><option value="2">Адресная</option></select></td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr5" class="ItemContainer" v="1"><td class="tdleft" uk="Відділення:">Отделение:</td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr1" class="ItemContainer"><td class="cheque" uk="Місто:">Город:</td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr2" class="ItemContainer"><td class="cheque"><input id="CurrentCityTextBox" type="text" style="font: 20px/20px Arial; text-align: center; width: 294px;" /></td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr3" class="ItemContainer"><td class="cheque" uk="Доставка:">Доставка:</td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr4" class="ItemContainer"><td class="cheque"><select id="DeliveryTypeSelect" style="font: 20px/20px Arial; text-align: center; width: 294px"><option value="1">До отделения</option><option value="2">Адресная</option></select></td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr5" class="ItemContainer" v="1"><td class="cheque" uk="Відділення:">Отделение:</td></tr>');
 
-                $("#CabinetTable").append('<tr id="d_tr6" class="ItemContainer" v="1"><td class="cheque"><input id="CurrentWarehouseTextBox" type="text" style="width: 294px" /></td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr6" class="ItemContainer" v="1"><td class="cheque"><input id="CurrentWarehouseTextBox" type="text" style="font: 20px/20px Arial; text-align: center; width: 294px" /></td></tr>');
 
-                $("#CabinetTable").append('<tr id="d_tr7" class="ItemContainer" v="2" style="display: none"><td class="tdleft" id="AddressTD" uk="Адреса:">Адрес:</td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr8" class="ItemContainer" v="2" style="display: none"><td class="tdleft" style="text-align: center"><textarea id="AddressTextBox" maxlength="500" rows="3" cols="30" style="width: 300px; font: normal 18px arial; display: block; margin-left: auto; margin-right: auto; margin-top: 5px;"></textarea></td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr7" class="ItemContainer" v="2" style="display: none"><td class="cheque" id="AddressTD" uk="Адреса:">Адрес:</td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr8" class="ItemContainer" v="2" style="display: none"><td class="cheque"><textarea id="AddressTextBox" maxlength="500" rows="3" cols="30" style="width: 300px; font: normal 18px arial; display: block;"></textarea></td></tr>');
 
-                $("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="tdleft" id="PhoneTD">Телефон:</td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Телефон:</td></tr>');
                 $("#CabinetTable").append('<tr id="d_tr10" class="ItemContainer"><td class="cheque"><input id="PhoneTextBox" type="tel" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr11" class="ItemContainer"><td class="tdleft" id="SecondNameTD" uk="Прізвище:">Фамилия:</td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr12" class="ItemContainer"><td class="tdleft" style="text-align: center"><input id="SecondNameTextBox" type="text" /></td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr13" class="ItemContainer"><td class="tdleft" id="NameTD" uk="Ім\'я:">Имя:</td></tr>');
-                $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="tdleft" style="text-align: center"><input id="NameTextBox" type="text" /></td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr11" class="ItemContainer"><td class="cheque" id="SecondNameTD" uk="Прізвище:">Фамилия:</td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr12" class="ItemContainer"><td class="cheque"><input id="SecondNameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr13" class="ItemContainer"><td class="cheque" id="NameTD" uk="Ім\'я:">Имя:</td></tr>');
+                $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="cheque"><input id="NameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
                 $("#DeliveryTypeSelect").val("1");
 
