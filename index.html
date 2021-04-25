@@ -29,7 +29,7 @@
     <script type="text/javascript" src="https://xpool.pro/source/js/dist/jquery.inputmask.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/jquery-qrcode-0.17.0.min.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/printThis.js"></script>
-    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_blot/css/main.css" />
+    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_black/css/main.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -256,9 +256,8 @@
         }
 
         .findPhoto:hover {
-            background-color: #ffff00;
+            background-color: #000;
             opacity: 1;
-            color: #000;
             cursor: pointer;
         }
 
@@ -470,7 +469,7 @@
         }
 
         td.category:hover{
-            background-color: #ffff00;
+            background-color: #fdff63;
         }
 
         td.order {
@@ -541,13 +540,13 @@
         </div>
 
         <input type="hidden" value="" id="TimeComponents" />
-        <span class="deliveryTip" uk="Безкоштовна доставка по місту Тернівка">Бесплатная доставка по городу Терновка</span>
+        <span class="deliveryTip" style="display: none" uk="Самовивіз по місту Тернівка">Самовывоз по городу Терновка</span>
         <div id="splash"></div>
         <div id="splash2"></div>
         <div id="splash3"></div>
         <div id="loading" uk="Завантаження">Загрузка</div>
         <div id="loading2" uk="Завантаження">Загрузка</div>
-        <div id="alertform">
+        <div id="alertform" style="display: none;">
             <div class="header">
                 <ul>
                     <li>
@@ -600,7 +599,7 @@
                 <span id="SubmitAlert" class="submit" uk="Відправити">Отправить</span>
             </div>
         </div>
-        <div id="rateform" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="rateform" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -638,7 +637,7 @@
                 <span id="SubmitRate" class="submit" uk="Оцінити">Оценить</span>
             </div>
         </div>
-        <div id="addcomment" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="addcomment" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -660,13 +659,13 @@
                 <span class="addcommentsubmit" id="AddCommentSubmit" uk="Додати">Добавить</span>
             </div>
         </div>
-        <div id="videoframe" style="position: fixed; overflow-y: hidden; overflow-x: no-display; width: 100%; height: 100%">
+        <div id="videoframe" style="display: none; position: fixed; overflow-y: hidden; overflow-x: no-display; width: 100%; height: 100%">
             <span class="closex"></span>
 
             <iframe id="VideoFrameContent" width="100%" height="100%" frameborder="0" src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         </div>
-        <div id="excelgenerate" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="excelgenerate" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -695,7 +694,7 @@
                 <span class="excelsubmit" id="ExcelGenerateSubmit">OK</span>
             </div>
         </div>
-        <div id="login" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="login" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -731,7 +730,7 @@
                 <input id="LoginSubmit" type="button" value="OK" />
             </div>
         </div>
-        <div id="createaccount" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="createaccount" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -750,7 +749,7 @@
                 <input id="CreatePhoneNumberLogin" type="text" /><input id="CreatePhoneNumberSubmit" type="button" value="OK" /><br />
             </div>
         </div>
-        <div id="sortview" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="sortview" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -771,7 +770,7 @@
                 <div class="SortItem" v="0" uk="За замовчуванням">По умолчанию</div>
             </div>
         </div>
-        <div id="shareview" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="shareview" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -791,7 +790,7 @@
                 <a class="ShareLink" id="CopyButton" uk="Посилання">Ссылка</a>
             </div>
         </div>
-        <div id="viewer">
+        <div id="viewer" style="display: none;">
             <span class="leftscroll"></span>
 
             <div id="fullimg">
@@ -830,7 +829,7 @@
                 </tr>
             </table>
         </div>
-        <div id="alertaccepted" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="alertaccepted" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -846,7 +845,7 @@
             </div>
             <div class="info" uk="Дякуємо! Ваша скарга прийнята в обробку">Спасибо! Ваша жалоба принята в обработку</div>
         </div>
-        <div id="orderaccepted" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="orderaccepted" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -862,7 +861,7 @@
             </div>
             <div class="info" uk="Дякуємо! Ваше замовлення прийняте в обробку">Спасибо! Ваш заказ принят в обработку</div>
         </div>
-        <div id="orderover" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="orderover" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -878,7 +877,7 @@
             </div>
             <div class="info" uk="Кошик заповнен, щоб додати нове замовлення - видаліть менш пріоритетне">Корзина заполнена, чтобы добавить новый заказ - удалите менее приоритетный</div>
         </div>
-        <div id="favover" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="favover" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -895,7 +894,7 @@
             <div class="info" uk="Список бажань заповнений, щоб додати нове - видаліть менш пріоритетне">Список желаний заполнен, чтобы добавить новое - удалите менее приоритетное</div>
         </div>
         
-        <div id="search" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="search" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -913,7 +912,7 @@
                 <input id="minp" style="display: inline-block; width: 50px; padding: 5px; margin: 5px" type="text" value="0" /><span style="display: inline-block;">-</span><input id="maxp" style="display: inline-block; width: 50px; padding: 5px; margin: 5px;" type="text" value="10000" />
             </div>
         </div>
-        <div class="catmenu" id="ShopsMenu">
+        <div class="catmenu" style="display: none;" id="ShopsMenu">
             <div class="header">
                 <ul>
                     <li><span class="menu"></span></li>
@@ -923,7 +922,7 @@
             </div>
             <div style="text-align: center;"></div>
         </div>
-        <div class="catmenu" id="MainCatMenu">
+        <div class="catmenu" style="display: none" id="MainCatMenu">
             <div class="header">
                 <ul>
                     <li><span class="menu"></span></li>
@@ -933,7 +932,7 @@
             </div>
             <div style="text-align: center;"><span class="new">Новинки</span></div>
         </div>
-        <div class="catmenu" id="SubCatMenu" style="z-index: 999999; display: none;">
+        <div class="catmenu" id="SubCatMenu" style="display: none; z-index: 999999; display: none;">
             <div class="header">
                 <ul>
                     <li><span class="menu"></span></li>
@@ -943,7 +942,7 @@
             </div>
             <div style="text-align: center;"><span class="new">Новинки</span></div>
         </div>
-        <div id="about" style="overflow-y: hidden; overflow-x: no-display;">
+        <div id="about" style="display: none; overflow-y: hidden; overflow-x: no-display;">
             <div class="header">
                 <ul>
                     <li>
@@ -1451,6 +1450,8 @@
             sort = 0;
             currentEvent = "clientlog";
 
+            window.history.pushState({}, "", "/index.html?sv=3");
+
             data_status = 10;
 
             $.ajax({
@@ -1582,18 +1583,10 @@
         // if (currentEvent == "clientlog")
 
         if (startRecord == 0) {
+            $("#TitleInfo").hide();
             $("#CabinetTable").children().remove();
-
-            if (data.d[1] == 0) {
-                $("#TitleInfo").html("<span id='shoppingtab' class='logselect'>Мои покупки</span>");
-            }
-            else {
-                $("#TitleInfo").html("<span id='shoppingtab' class='loghide'>Мои покупки</span>");
-            }
-
-            $("#TitleInfo").css("background-color", "#8e8e8e");
-            $("#CabinetInfo").html(($("#MBM1").attr("v16") == "1" ? "Отримано: " : "Получено: ") + "<span id='maxlogcount'></span>" + " грн <span class='ToExcel'> </span><span class='Refresh'></span>");
-
+       
+            $("#CabinetInfo").html(($("#MBM1").attr("v16") == "1" ? "Мої покупки: " : "Мои покупки: ") + " <span class='ToExcel'> </span><span class='Refresh'></span>");
             $("#CabinetTable").append('<tr><th class="stats" style="width: 90px; text-align: center">Дата</th><th class="stats" style="width: 100%">Товар</th><th class="stats" style="width: 30px; text-align: center" uk="Кіл">Кол</th><th class="stats" style="width: 50px; text-align: center" uk="Ціна">Цена</th><th class="stats" style="width: 75px; text-align: center">Статус</th><th class="stats" style="width: 77px"></th></tr>');
         }
 
@@ -1617,9 +1610,11 @@
             }
         }
 
-        var maxlogcount = 0;
+        
 
         var cur_cheque = -0.1;
+
+        var cur_count = 0;
 
         for (var i = 0; i < dataRows.length; i++) {
 
@@ -1650,7 +1645,7 @@
                 }
             }
 
-            maxlogcount -= dataRows[i].Log_data.Count * dataRows[i].Log_data.Price * perc;
+            
 
 
             //var sale = ($("#MBM1").attr("v16") == "1" ? "Покупка" : "Покупка");
@@ -1677,17 +1672,26 @@
             {
                 var qr_code = '';
 
-                if (dataRows[i].Fiscal == 1 && dataRows[i].ChequeID != 0)
-                {
+                if (dataRows[i].Fiscal == 1 && dataRows[i].ChequeID != 0) {
                     var cur_d_parts = dataRows[i].LogDateString.split(".");
                     qr_code = '<span class="QR" taxid="' + dataRows[i].ChequeID + '" curd="' + cur_d_parts[2] + cur_d_parts[1] + cur_d_parts[0] + '" />';
                 }
+                else {
+                    var pay_buttons = (dataRows[i].Status == 1) ? '<span ch="' + dataRows[i].ChequeID + '" class="PayCard">Оплатить картой</span> <span ch="' + dataRows[i].ChequeID + '" class="PayBonuses">Оплатить бонусами</span>' : "";
+                }
+                $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" colspan="6" chq="' + dataRows[i].ChequeID + '">' + qr_code + ' Чек #' + dataRows[i].ChequeID + ' ' + pay_buttons + '</td></tr>');
 
-                var pay_buttons = (dataRows[i].Status == 1) ? '<span ch="' + dataRows[i].ChequeID + '" class="PayCard">Оплатить картой</span> <span ch="' + dataRows[i].ChequeID + '" class="PayBonuses">Оплатить бонусами</span>' : "";
+                if (cur_count == 0) {
+                    var prev_chq_item = $("#CabinetTable").find('[chq="' + cur_cheque + '"]');
+                    prev_chq_item.find(".PayCard").remove();
+                    prev_chq_item.find(".PayBonuses").remove();
+                }
 
-                $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" colspan="6">' + qr_code + ' Чек #' + dataRows[i].ChequeID + ' ' + pay_buttons + '</td></tr>');
                 cur_cheque = dataRows[i].ChequeID;
+                cur_count = 0;
             }
+
+            cur_count += dataRows[i].Log_data.Count;
 
             var buy_info = '';
 
@@ -1706,11 +1710,17 @@
             }
         }
 
+        if (cur_count == 0) {
+            var prev_chq_item = $("#CabinetTable").find('[chq="' + cur_cheque + '"]');
+            prev_chq_item.find(".PayCard").remove();
+            prev_chq_item.find(".PayBonuses").remove();
+        }
+
         if (startRecord == 0) {
             $("#CabinetInfo").show();
         }
 
-        $("#maxlogcount").html(parseFloat(parseFloat(maxlogcount).toFixed(2)).toString());
+        
 
         startRecord = startRecord + dataRows.length;
 
@@ -2192,7 +2202,7 @@
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/GetSubCats",
-            data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(this).attr("sid") + ", \"path\":'" + $(this).attr("path") + "', \"status\":1, \"startRecord\":0, \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(this).attr("sid") + ", \"path\":'" + $(this).attr("path") + "', \"status\":1, \"startRecord\":0, \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindGetSubCats
@@ -2254,11 +2264,11 @@
 
         $("#MainCatMenu").children().eq(1).children().remove();
 
-        $("#CabinetTable").append('<tr class="ItemContainer"><td class="category" style="background-color: #111111; color: #FFF">' + '<span id="RetSpan">Назад</span>' + '</td></tr>');
+        $("#CabinetTable").append('<tr class="ItemContainer"><td class="category" style="background-color: #CCCCCC;">' + '<span id="RetSpan">Назад</span>' + '</td></tr>');
 
         for (var i = 0; i < dataRows.length; i++) {
 
-            var selected_tr = (selected_cat == dataRows[i][0]) ? "style='background-color: #CCCCFF'" : "";
+            var selected_tr = (selected_cat == dataRows[i][0]) ? "style='background-color: #9999FF'" : "";
 
             $("#CabinetTable").append('<tr class="ItemContainer"><td class="category" ' + selected_tr + '>' + '<span class="CatSpan" path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</span>' + '</td></tr>');
         }
@@ -2765,6 +2775,9 @@
 
         data_status = 1;
 
+
+        window.history.pushState({}, "", "/index.html?sv=0");
+
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
 
         $.ajax({
@@ -2808,6 +2821,8 @@
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
 
+        window.history.pushState({}, "", "/index.html?sv=1");
+
         $.ajax({
             async: true,
             type: "POST",
@@ -2846,6 +2861,8 @@
         currentEvent = "discount";
 
         data_status = 5;
+
+        window.history.pushState({}, "", "/index.html?sv=2");
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
 
@@ -3390,6 +3407,11 @@
                 //$("#fullimage").css("width", ($(window).innerWidth() - 20) + "px");
                 //$("#fullimage").css("height", ($(window).innerHeight() - 20) + "px");
                 $("#viewer span.desc").css("width", ($(window).innerWidth() - 20) + "px");
+
+                if (imgcount > 1)
+                {
+                    $(".rightscroll").click();
+                }
 
                 $("#viewer").show();
                 $("#splash").show();
@@ -4461,6 +4483,10 @@
                         dataType: "json",
                         success: bindGetTopDiscount
                     });
+                }
+                else if (getUrlParameter("sv") == "3") 
+                {
+                    $(".moneyboxm").click();
                 }
                 else if ($("#MBM1").attr("v6") == "0") {
 
@@ -6009,7 +6035,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetData",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + ssid + ", \"desc\":'" + ss + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'" + ss + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetData
@@ -6020,31 +6046,32 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetNewData",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetNewData
             });
         }
         else if (data_status == 2) {
-
-
+        
             $.ajax({
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetSubCats",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"path\":'" + $(".TitleSpan").attr("path") + "', \"status\":0, \"startRecord\":" + startRecord + ", \"sort\":" + sort + ", \"datetime\":'" + datetime + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(".TitleSpan").attr("sid") + ", \"path\":'" + $(".TitleSpan").attr("path") + "', \"status\":0, \"startRecord\":" + startRecord + ", \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetSubCats
             });
         }
         else if (data_status == 3) {
+
+            alert("test2");
             $.ajax({
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetSubCats",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"path\":'" + $(".TitleSpan").attr("path") + "', \"status\":1, \"startRecord\":" + startRecord + ", \"sort\":" + sort + ", \"datetime\":'" + datetime + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(".TitleSpan").attr("sid") + ", \"path\":'" + $(".TitleSpan").attr("path") + "', \"status\":1, \"startRecord\":" + startRecord + ", \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetSubCats2
@@ -6055,7 +6082,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetTopRatedData",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetTopRatedData
@@ -6066,7 +6093,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetTopDiscount",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "', \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetTopDiscount
@@ -6077,7 +6104,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetFavData",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"favdata\":'" + $.cookie("c_favors") + "', \"datetime\":'" + datetime + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"favdata\":'" + $.cookie("c_favors") + "', \"datetime\":'" + datetime + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetFavCount
@@ -6088,7 +6115,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetCartData",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"cartdata\":'" + $.cookie("c_cart") + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"cartdata\":'" + $.cookie("c_cart") + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetCartCount
@@ -6564,10 +6591,8 @@
     });
 
     function bindRemoveOrder(data) {
-        cur_remove_item.find(".RejectSpan2").remove();
-        cur_remove_item.find('[v="Status"]').html(($("#MBM1").attr("v16") == "1" ? "Поверн." : "Возврат"));
-        cur_remove_item.find('.plus').html("0");
-        cur_remove_item.find('.plus').attr("class", "minus");
+        $(".moneyboxm").click();
+
         $("#splash").hide();
         $("#loading").hide();
     }
