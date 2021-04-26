@@ -1109,7 +1109,7 @@
             $("#rateform").center();
             $("#excelgenerate").center();
             $("#createaccount").center();
-            $("#neworder").center();
+            //$("#neworder").center();
             $("#orderaccepted").center();
             $("#alertaccepted").center();
 
@@ -1264,7 +1264,7 @@
             $("#rateform").center();
             $("#excelgenerate").center();
             $("#createaccount").center();
-            $("#neworder").center();
+            //$("#neworder").center();
             $("#orderaccepted").center();
             $("#alertaccepted").center();
 
@@ -1440,20 +1440,10 @@
 
         //if ($.cookie("client_phone") != undefined && $.cookie("client_phone") != null && $.cookie("client_phone") != '') {
         if ($.cookie("c_client_phone") != undefined && $.cookie("c_client_phone") != null && $.cookie("c_client_phone") != '' && $.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
-            $("#loading2").show();
+            $("#loading").show();
+            $("#splash").show();
             $("#EmptyDiv").hide();
             $("#CreateOrder").hide();
-
-            if ($("#orderaccepted").css("display") == "none") {
-                $("#splash").hide();
-            }
-
-            $("#ProductsListView").hide();
-            $("#col1").children().remove();
-            $("#col2").children().remove();
-            $("#col3").children().remove();
-            $("#CabinetTable").children().remove();
-            $(".SortView").hide();
 
             startRecord = 0;
             sort = 0;
@@ -1496,6 +1486,13 @@
 
     function bindGetClientLog(data) {
         // if (currentEvent == "clientlog")
+
+        $("#ProductsListView").hide();
+        $("#col1").children().remove();
+        $("#col2").children().remove();
+        $("#col3").children().remove();
+        
+        $(".SortView").hide();
 
         if (startRecord == 0) {
             $("#TitleInfo").hide();
@@ -1634,8 +1631,6 @@
         if (startRecord == 0) {
             $("#CabinetInfo").show();
         }
-
-       
 
         startRecord = startRecord + dataRows.length;
 
@@ -2308,12 +2303,12 @@
     //    $("#splash").show();
     //});
 
-    $("div.menu span.moneyboxm").click(function () {
-        $("#CardNum").inputmask("9999-9999-9999-9999");
+    //$("div.menu span.moneyboxm").click(function () {
+    //    $("#CardNum").inputmask("9999-9999-9999-9999");
 
-        $("#OrderMoney").html('<a style="color: #fff; text-decoration: none" href="viber://chat/?number=%2B' + $("#MBM1").attr("v10").replace("+", "").replace("(", "").replace(")", "").replace(" ", "").replace(" ", "").replace("-", "") + '">Заказать выплату</a>');
-        $("#splash").show();
-    });
+    //    $("#OrderMoney").html('<a style="color: #fff; text-decoration: none" href="viber://chat/?number=%2B' + $("#MBM1").attr("v10").replace("+", "").replace("(", "").replace(")", "").replace(" ", "").replace(" ", "").replace("-", "") + '">Заказать выплату</a>');
+    //    $("#splash").show();
+    //});
 
     $("div.menu span.info").click(function () {
         $("#splash").show();
@@ -2448,10 +2443,10 @@
         $("#splash").hide();
     });
 
-    $("#createorder span.orderclose").click(function () {
-        $("#createorder").hide();
-        $("#splash").hide();
-    });
+    //$("#createorder span.orderclose").click(function () {
+    //    $("#createorder").hide();
+    //    $("#splash").hide();
+    //});
 
 
 
@@ -5125,10 +5120,8 @@
             //alert($("#col1").children().c);
 
             if ($("#col1").children().length == 0) {
-                $("#splash2").show();
+                $("#splash").show();
                 $("#loading").show();
-
-                alert("test");
 
                 var city, warehouse;
 
@@ -5137,36 +5130,21 @@
                 city = $("#CurrentCityTextBox").val();
                 warehouse = $("#CurrentWarehouseTextBox").val();
 
+                var addr = "";
 
+                if ($("#DeliveryTypeSelect").val().indexOf("Адрес") > 0)
+                    addr = $("#AdressTextBox").val();
+                else
+                    addr = warehouse;
 
                 var client_id = $("#MainBalance").attr("client_id");
 
                 if (client_id == undefined || client_id == '')
                     client_id = 0;
 
-                if (client_id == 0 && $("#MBM1").attr("v19") == "0" && $("#d_tr9").css("display") != "none" && (area == '' || city == '' || warehouse == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '')) {
+                if (city == '' || addr == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '') {
                     alert("Перед отпрвкой необходимо заполнить все поля");
-                    $("#splash2").hide();
-                    $("#loading").hide();
-                }
-                else if (client_id == 0 && $("#MBM1").attr("v19") == "1" && $("#d_tr9").css("display") != "none" && (area == '' || city == '' || warehouse == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '')) {
-                    alert("Перед отпрвкой необходимо заполнить все поля");
-                    $("#splash2").hide();
-                    $("#loading").hide();
-                }
-                else if (client_id == 0 && $("#MBM1").attr("v19") == "2" && $("#d_tr9").css("display") != "none" && ($("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '' || $("#AddressTextBox").val() == '')) {
-                    alert("Перед отпрвкой необходимо заполнить все поля");
-                    $("#splash2").hide();
-                    $("#loading").hide();
-                }
-                else if (client_id == 0 && $("#MBM1").attr("v19") == "3" && $("#d_tr9").css("display") != "none" && ($("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#AddressTextBox").val() == '')) {
-                    alert("Перед отпрвкой необходимо заполнить все поля");
-                    $("#splash2").hide();
-                    $("#loading").hide();
-                }
-                else if (client_id == 0 && $("#MBM1").attr("v19") == "4" && $("#d_tr9").css("display") != "none" && $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0) {
-                    alert("Перед отпрвкой необходимо заполнить все поля");
-                    $("#splash2").hide();
+                    $("#splash").hide();
                     $("#loading").hide();
                 }
                 else {
@@ -5179,12 +5157,14 @@
 
 
                     // alert("{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("cart" + sid_v + "." +uid_v) + "', \"delivery_type\":" + (($("#MBM1").attr("v19") == "0") ? "'" + $("#DeliveryType").val() + "'" : "'Адресная'") + ", \"warehouse\":'" + warehouse + "', \"area\":'" + area + "', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"sms\":'" + $("#MBM1").attr("v17") + "', \"comments\":'" + ($.cookie("comments" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("comments" + sid_v + "." +uid_v)) + "', \"ctime\":'" + ($.cookie("ctime" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("ctime" + sid_v + "." +uid_v)) + "' }")
+                    $("#splash").show();
+                    $(window).scrollTop(0);
 
                     $.ajax({
                         async: true,
                         type: "POST",
                         url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + (($("#MBM1").attr("v19") == "0") ? "'" + $("#DeliveryType").val() + "'" : "'Адресная'") + ", \"warehouse\":'" + warehouse + "', \"area\":'', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "' }",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + warehouse + "', \"area\":'', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "' }",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: bindCreateNewOrder
@@ -5262,17 +5242,17 @@
                     dataType: "json",
                     success: bindGetLastOrderInfo
                 });
-            }
+
+                $("#splash").hide();
+                $("#splash2").hide();
+            }       
         }
         else {
             alert($("#MBM1").attr("v16") == "1" ? "кошик порожній" : "корзина пустая");
-        }
 
-    
-
-        $("#splash").hide();
-        $("#splash2").hide();
-    
+            $("#splash").hide();
+            $("#splash2").hide();
+        }  
     });
 
     function bindGetLastOrderInfo(data) {
@@ -5288,8 +5268,8 @@
             $('#CurrentWarehouseTextBox').val(data.d.Warehouse);
         }
 
-        $('#CurrentSecondNameTextBox').val(data.d.SecondName);
-        $('#CurrentNameTextBox').val(data.d.Name);
+        $('#SecondNameTextBox').val(data.d.SecondName);
+        $('#NameTextBox').val(data.d.Name);
     }
 
     function FindSettlements(request)
@@ -5427,30 +5407,17 @@
     }
 
 
-    $("#OrderClose").click(function () {
-        $("#neworder").hide();
-        $("#splash").hide();
-    });
+    //$("#OrderClose").click(function () {
+    //    $("#neworder").hide();
+    //    $("#splash").hide();
+    //});
 
-    $("#orderaccepted span.close").click(function () {
-        $("#orderaccepted").hide();
-        $("#splash").hide();
-    });
+    //$("#orderaccepted span.close").click(function () {
+    //    $("#orderaccepted").hide();
+    //    $("#splash").hide();
+    //});
 
-    $("#DeliveryType").change(function () {
-        //if ($(this).val() == "Нова Пошта") {
-      
-            $("#CurrentCity").hide();
-            $("#CurrentWarehouse").hide();
-       
-            $("#CurrentCityTextBox").show();
-            $("#CurrentWarehouseTextBox").show();
-            $("#PhoneTextBox").attr("disabled", false);
-            $("#NameTextBox").attr("disabled", false);
-            $("#SecondNameTextBox").attr("disabled", false);
-           
-        //}
-    });
+    
 
     $("#PhoneTextBox").inputmask("+38 (999) 999-9999");
 
@@ -5740,57 +5707,6 @@
         $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
     }
 
-    $("#SubmitOrder").click(function () {
-        $("#splash2").show();
-        $("#loading").show();
-
-        var city, warehouse;
-
-
-       
-        city = $("#CurrentCityTextBox").val();
-        warehouse = $("#CurrentWarehouseTextBox").val();
-
-        var addr = "";
-
-        if ($("#DeliveryTypeSelect").val().indexOf("Адрес") > 0)
-            addr = $("#AdressTextBox").val();
-        else
-            addr = warehouse;
-
-        var client_id = $("#MainBalance").attr("client_id");
-
-        if (client_id == undefined || client_id == '')
-            client_id = 0;
-
-        if (city == '' || addr == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '') {
-            alert("Перед отпрвкой необходимо заполнить все поля");
-            $("#splash2").hide();
-            $("#loading").hide();
-        }   
-        else {
-
-
-            //window.history.pushState({}, '1pool.in.ua', '/web/webform.aspx?uid=' +uid_v + '&sid=' + sid_v);
-
-            //extractHostname(window.location.origin);
-
-
-
-            // alert("{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("cart" + sid_v + "." +uid_v) + "', \"delivery_type\":" + (($("#MBM1").attr("v19") == "0") ? "'" + $("#DeliveryType").val() + "'" : "'Адресная'") + ", \"warehouse\":'" + warehouse + "', \"area\":'" + area + "', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"sms\":'" + $("#MBM1").attr("v17") + "', \"comments\":'" + ($.cookie("comments" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("comments" + sid_v + "." +uid_v)) + "', \"ctime\":'" + ($.cookie("ctime" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("ctime" + sid_v + "." +uid_v)) + "' }")
-
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + warehouse + "', \"area\":'', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "' }",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: bindCreateNewOrder
-            });
-        }
-    })
-
     function bindCreateNewOrder(data) {
         var client_id = $("#MainBalance").attr("client_id");
 
@@ -5847,23 +5763,21 @@
         //$("#col1").children().remove();
         //$("#col2").children().remove();
         //$("#col3").children().remove();
-        $("#CabinetTable").children().remove();
+        //$("#CabinetTable").children().remove();
 
-        $(".mcartcount").html("0");
-        $(".cartsum").remove();
-        $("#CreateOrder").hide();
+        //$(".mcartcount").html("0");
+        //$(".cartsum").remove();
+        //$("#CreateOrder").hide();
 
-        $(window).scrollTop(0);
-
-        $("#splash2").hide();
+        //$("#splash2").hide();
         //$("#splash").show()
         //$("#orderaccepted").center();
         //$("#orderaccepted").show();
 
 
-        $("#loading").hide();
+        //$("#loading").hide();
 
-        $("#neworder").hide();
+        //$("#neworder").hide();
 
         $(".moneyboxm").click();
     }
