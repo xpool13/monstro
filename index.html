@@ -455,7 +455,7 @@
             color: white;
         }
 
-        td.category {
+        td.category1 {
             height: 42px;
             position: relative;
             font-size: large;
@@ -467,7 +467,39 @@
             background-color: #fff;
         }
 
-        td.category:hover{
+        td.category2 {
+            height: 42px;
+            position: relative;
+            font-size: large;
+            font-family: Arial;
+            text-align: left;
+            padding-left: 50px;
+            color: #000;
+            cursor: pointer;
+            background-color: #fff;
+        }
+
+        td.category3 {
+            height: 42px;
+            position: relative;
+            font-size: large;
+            font-family: Arial;
+            text-align: left;
+            padding-left: 50px;
+            color: #000;
+            cursor: pointer;
+            background-color: #CCCCCC;
+        }
+
+        td.category1:hover{
+            background-color: #fdff63;
+        }
+
+        td.category2:hover{
+            background-color: #fdff63;
+        }
+
+        td.category3:hover{
             background-color: #fdff63;
         }
 
@@ -1997,7 +2029,7 @@
 
                 for (var i = 0; i < shop_names.length - 1; i++) {
 
-                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="category">' + '<span class="ShopSpan" sid="' + shop_ids[i] + '">' + shop_names[i] + '</span></td></tr>');
+                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="category1" sid="' + shop_ids[i] + '">' + shop_names[i] + '</td></tr>');
                 }
 
                 $("#TitleInfo").hide();
@@ -2025,7 +2057,7 @@
         }
     });
 
-    $("#CabinetTable").delegate('#RetSpan', "click", function () {
+    $("#CabinetTable").delegate('td.category3', "click", function () {
         $("#splash").show();
         $("#loading").show();
 
@@ -2047,7 +2079,7 @@
 
             for (var i = 0; i < shop_names.length - 1; i++) {
 
-                $("#CabinetTable").append('<tr class="ItemContainer"><td class="category">' + '<span class="ShopSpan" sid="' + shop_ids[i] + '">' + shop_names[i] + '</span></td></tr>');
+                $("#CabinetTable").append('<tr class="ItemContainer"><td class="category1" sid="' + shop_ids[i] + '">' + shop_names[i] + '</td></tr>');
             }
 
             $("#TitleInfo").hide();
@@ -2075,7 +2107,7 @@
     });
 
 
-    $("#CabinetTable").delegate('span.ShopSpan', "click", function () {
+    $("#CabinetTable").delegate('td.category1', "click", function () {
 
         $("#splash2").show();
         $("#loading").show();
@@ -2091,7 +2123,7 @@
         });
     });
 
-    $("#CabinetTable, #TitleInfo").delegate('span.CatSpan, span.TitleSpan', "click", function () {
+    $("#CabinetTable, #TitleInfo").delegate('td.category2, span.TitleSpan', "click", function () {
         $("#splash2").show();
         $("#loading").show();
 
@@ -2114,7 +2146,7 @@
         });
     })
 
-    $("#SubCatMenu, #TitleInfo").delegate('span.CatSpan, span.TitleSubSpan', "click", function () {
+    $("#SubCatMenu, #TitleInfo").delegate('td.category2, span.TitleSubSpan', "click", function () {
         $("#splash2").show();
         $("#loading").show();
 
@@ -2169,13 +2201,13 @@
 
         $("#MainCatMenu").children().eq(1).children().remove();
 
-        $("#CabinetTable").append('<tr class="ItemContainer"><td class="category" style="background-color: #CCCCCC;">' + '<span id="RetSpan">Назад</span>' + '</td></tr>');
+        $("#CabinetTable").append('<tr class="ItemContainer"><td class="category3">Назад</td></tr>');
 
         for (var i = 0; i < dataRows.length; i++) {
 
             var selected_tr = (selected_cat == dataRows[i][0]) ? "style='background-color: #9999FF'" : "";
 
-            $("#CabinetTable").append('<tr class="ItemContainer"><td class="category" ' + selected_tr + '>' + '<span class="CatSpan" path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</span>' + '</td></tr>');
+            $("#CabinetTable").append('<tr class="ItemContainer"><td class="category2" ' + selected_tr + ' path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</td></tr>');
         }
 
         $("#loading").hide();
@@ -4445,6 +4477,9 @@
                 }
             }
         }
+
+        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        $("#MenuDIV").animate({ scrollLeft: 0 }, 500);
     };
 
     var data_status = 1;
@@ -5697,9 +5732,6 @@
         }
         else
             $("#CreateOrder").hide();
-
-        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
-        $("#MenuDIV").animate({ scrollLeft: 0 }, 500);
     }
 
     function onErrorPhotoLoad(source) {
