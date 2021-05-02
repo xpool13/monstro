@@ -1701,7 +1701,7 @@
 
     function bindPayCard(data) {
         alert(data.d[0]);
-        window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1]);
+        window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1] + "&client_phone=" + $.cookie("c_client_phone") + "&sid=" + sid_v);
     }
 
     $("#CabinetTable").delegate('.PayBonuses', 'click', function () {
