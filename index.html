@@ -2641,7 +2641,7 @@
 
                 //window.history.pushState({}, "https://www.xpool.pro", href1);
 
-                if (getUrlParameter("cart") == "1") {
+                //if (getUrlParameter("cart") == "1") {
 
 
                     var date = new Date();
@@ -2654,18 +2654,18 @@
                     $(".cartsum").html("1");
 
                     $("#CartCount").click();
-                }
-                else {
-                    $.ajax({
-                        async: true,
-                        type: "POST",
-                        url: "https://xpool.pro/web/webform.aspx/GetData",
-                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'$" + id + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: bindGetData
-                    });
-                }
+                //}
+                //else {
+                //    $.ajax({
+                //        async: true,
+                //        type: "POST",
+                //        url: "https://xpool.pro/web/webform.aspx/GetData",
+                //        data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'$" + id + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
+                //        contentType: "application/json; charset=utf-8",
+                //        dataType: "json",
+                //        success: bindGetData
+                //    });
+                //}
             }
             else if (getUrlParameter("cat") != '' && getUrlParameter("cat") != undefined) {
 
@@ -4355,21 +4355,29 @@
 
                     //window.history.pushState({}, "https://www.xpool.pro", href1);
 
-                    if (getUrlParameter("cart") == "1") {
-                        $.cookie("c_cart") = ids.replace(/\+/g, "#");
+                    //if (getUrlParameter("cart") == "1") {
+                        var date = new Date();
+                        var minutes = 60;
+                        var hours = 24;
+                        var days = 365;
+                        date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
+
+                        $.cookie("c_cart", ":" + id + "+" + "#1#" + sid_v + ":", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+                        $(".cartsum").html("1");
+
                         $("#CartCount").click();
-                    }
-                    else {
-                        $.ajax({
-                            async: true,
-                            type: "POST",
-                            url: "https://xpool.pro/web/webform.aspx/GetData",
-                            data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'$" + id + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: bindGetData
-                        });
-                    }
+                    //}
+                    //else {
+                    //    $.ajax({
+                    //        async: true,
+                    //        type: "POST",
+                    //        url: "https://xpool.pro/web/webform.aspx/GetData",
+                    //        data: "{ \"uid\":" + uid_v + ", \"sid\":" + ssid + ", \"desc\":'$" + id + "', \"startRecord\":" + startRecord + ", \"glue\":'" + $("#MBM1").attr("glue1") + "',  \"sort\":" + sort + ", \"product_view\":" + $("#MBM1").attr("v20") + ", \"view_type\":" + $("#MBM1").attr("v21") + ", \"datetime\":'" + datetime + "', \"minp\":" + minp + ", \"maxp\":" + maxp + " }",
+                    //        contentType: "application/json; charset=utf-8",
+                    //        dataType: "json",
+                    //        success: bindGetData
+                    //    });
+                    //}
                 }
                 else if (getUrlParameter("ids") != '' && getUrlParameter("ids") != undefined) {
 
