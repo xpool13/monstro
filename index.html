@@ -18,8 +18,8 @@
     <meta id="MetaDesc" runat="server" name="description" content="Универсальная среда для автоматизации ведения бизнеса любой сложности. Удобный доступ к панели управления из любой точки мира. Онлайн кассы, Интернет-витрины, программный РРО" />
 
 
-    <link href="res/img/shop-icon.png" rel="icon" type="image/x-icon" />
-    <link href="res/img/shop-icon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://xpool.pro/web/source/img/shop-icon.png" rel="icon" type="image/x-icon" />
+    <link href="https://xpool.pro/web/source/img/shop-icon.png" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="stylesheet" type="text/css" href="https://xpool.pro/source/css/jquery-ui.css" />
     <script type="text/javascript" src="https://xpool.pro/source/js/jquery.js"></script>
@@ -71,7 +71,7 @@
                 display: inline-block;
                 width: 100%;
                 height: 50px;
-                background: url(source/style_blot/img/alert.svg) no-repeat left center;
+                background: url(https://xpool.pro/web/source/style_blot/img/alert.svg) no-repeat left center;
                 margin-right: 2px;
                 font: 28px/50px Arial;
                 color: white;
@@ -133,7 +133,7 @@
 
         #viewer:after {
             display: none;
-            content: url(source/img/closex1.svg) url(source/img/closex2.svg) url(source/img/arrowleft1.svg) url(source/img/arrowleft2.svg) url(source/img/arrowright1.svg) url(source/img/arrowright2.svg);
+            content: url(https://xpool.pro/web/source/img/closex1.svg) url(https://xpool.pro/web/source/img/closex2.svg) url(https://xpool.pro/web/source/img/arrowleft1.svg) url(https://xpool.pro/web/source/img/arrowleft2.svg) url(https://xpool.pro/web/source/img/arrowright1.svg) url(https://xpool.pro/web/source/img/arrowright2.svg);
         }
 
         #splash3 {
@@ -286,7 +286,7 @@
             top: 2px;
             width: 67px;
             height: 70px;
-            background: url("source/img/closex2.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/img/closex2.svg") no-repeat right top;
             background-size: contain;
         }
 
@@ -319,12 +319,12 @@
             -webkit-transform: translateY(-50%);
             width: 66px;
             height: 66px;
-            background: url("source/img/arrowleft1.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/img/arrowleft1.svg") no-repeat right top;
             background-size: contain;
         }
 
         #viewer span.leftscroll:hover {
-            background: url("source/img/arrowleft2.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/img/arrowleft2.svg") no-repeat right top;
             background-size: contain;
         }
 
@@ -337,12 +337,12 @@
             right: 23px;
             width: 66px;
             height: 66px;
-            background: url("source/img/arrowright1.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/img/arrowright1.svg") no-repeat right top;
             background-size: contain;
         }
 
         #viewer span.rightscroll:hover {
-            background: url("source/img/arrowright2.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/img/arrowright2.svg") no-repeat right top;
             background-size: contain;
         }
 
@@ -393,7 +393,7 @@
             top: 2px;
             width: 67px;
             height: 70px;
-            background: url("source/img/closex2.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/img/closex2.svg") no-repeat right top;
             background-size: contain;
         }
 
@@ -542,7 +542,7 @@
             margin: auto;
             width: 34px;
             height: 34px;
-            background: url("../source/img/qr.svg") no-repeat 50% 50%;
+            background: url("https://xpool.pro/source/img/qr.svg") no-repeat 50% 50%;
             background-color: #fff;
             background-size: contain;
         }
@@ -553,7 +553,7 @@
             display: block;
             width: 40px;
             height: 40px;
-            background: url("source/style_black/img/close.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/style_black/img/close.svg") no-repeat right top;
             margin: auto;
             background-size: contain;
         }
@@ -1654,7 +1654,7 @@
         }
 
         var next_pay = $("#CabinetTable").find('.PayCard').first();
-        loopPayButton(next_pay);
+        //loopPayButton(next_pay);
 
         if (startRecord == 0) {
             $("#CabinetInfo").show();
@@ -1680,11 +1680,11 @@
         $("#ContentDIV").animate({ scrollLeft: 0 }, 500);
     }
 
-    function loopPayButton(pay_button) {
-        pay_button.css({ "background-color": "#000000" }).animate({ "background-color": "#333333" }, 1000, 'linear', function () {
-            loopPayButton(pay_button);
-        });
-    }
+    //function loopPayButton(pay_button) {
+    //    pay_button.css({ "background-color": "#000000" }).animate({ "background-color": "#333333" }, 1000, 'linear', function () {
+    //        loopPayButton(pay_button);
+    //    });
+    //}
 
     $("#CabinetTable").delegate('.PayCard', 'click', function () {
 
