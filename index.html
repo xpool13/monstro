@@ -147,7 +147,7 @@
             opacity: 0.2;
         }
 
-        * {
+        {
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: -moz-none;
@@ -1374,7 +1374,7 @@
 
         $("#search").hide();
         $("#splash").hide();
-        $("#loading2").show();
+        loading2Show();
         $("#EmptyDiv").hide();
 
         $("#CreateOrder").hide();
@@ -1439,7 +1439,7 @@
         if (e.keyCode == 13) {
             $("#search").hide();
             $("#splash").hide();
-            $("#loading2").show();
+            loading2Show();
             $("#EmptyDiv").hide();
 
             $("#CreateOrder").hide();
@@ -1471,7 +1471,7 @@
 
         //if ($.cookie("client_phone") != undefined && $.cookie("client_phone") != null && $.cookie("client_phone") != '') {
         if ($.cookie("c_client_phone") != undefined && $.cookie("c_client_phone") != null && $.cookie("c_client_phone") != '' && $.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
-            $("#loading").show();
+            loadingShow();
             $("#splash").show();
             $("#EmptyDiv").hide();
             $("#CreateOrder").hide();
@@ -1666,7 +1666,7 @@
 
         $("#CabinetTable").show();
         $("#createaccount").hide();
-        $("#loading").hide();
+        loadingHide();
 
         if ($("#orderaccepted").css("display") == "none") {
             $("#splash").hide();
@@ -1674,10 +1674,87 @@
 
         $("#splash2").hide();
 
-        $("#loading2").hide();
+        loading2Hide();
 
         $("#ContentDIV").animate({ scrollLeft: 1000 }, 0);
         $("#ContentDIV").animate({ scrollLeft: 0 }, 500);
+    }
+
+    var loop_index = 0;
+    var loop_index2 = 0;
+    var timer = null;
+    var timer2 = null;
+
+    function loadingShow() {
+        $("#loading").show();
+        timer = setInterval("loopLoading()", 100);
+    }
+
+    function loadingHide() {
+        $("#loading").hide();
+        if(timer != null)
+        {      
+            clearInterval(timer);
+        }
+    }
+
+    function loading2Show() {
+        $("#loading2").show();
+        timer2 = setInterval("loopLoading2()", 100);
+    }
+
+    function loading2Hide() {
+        $("#loading2").hide();
+        if (timer2 != null) {
+            clearInterval(timer2);
+        }
+    }
+
+    function loopLoading() {
+      
+        if ($("#loading").text() == "Загрузка") {
+            $("#loading").html(replaceAt("Загрузка", loop_index, "<span style='color: #666'>" + ("Загрузка")[loop_index] + "</span>"));
+
+            if (loop_index == 6)
+                loop_index = 0;
+            else
+                loop_index++;
+        }
+        else
+        {
+            //$("#loading").html($("#loading").text().replace(("Завантаження")[loop_index], "<span style='color: #666'>" + ("Завантаження")[loop_index] + "</span>"));
+
+            $("#loading").html(replaceAt("Завантаження", loop_index, "<span style='color: #666'>" + ("Завантаження")[loop_index] + "</span>"));
+
+            if (loop_index == 11)
+                loop_index = 0;
+            else
+                loop_index++;
+        }
+    }
+
+    function loopLoading2() {
+
+        if ($("#loading2").text() == "Загрузка") {
+            $("#loading2").html(replaceAt("Загрузка", loop_index2, "<span style='color: #666'>" + ("Загрузка")[loop_index2] + "</span>"));
+
+            if (loop_index2 == 6)
+                loop_index2 = 0;
+            else
+                loop_index2++;
+        }
+        else {
+            $("#loading2").html(replaceAt("Завантаження", loop_index2, "<span style='color: #666'>" + ("Завантаження")[loop_index2] + "</span>"));
+
+            if (loop_index2 == 11)
+                loop_index2 = 0;
+            else
+                loop_index2++;
+        }
+    }
+
+    function replaceAt(s, n, t) {
+        return s.substring(0, n) + t + s.substring(n + 1);
     }
 
     //function loopPayButton(pay_button) {
@@ -1746,14 +1823,14 @@
 
         $("#CabinetTable").show();
         $("#createaccount").hide();
-        $("#loading").hide();
+        loadingHide();
 
         if ($("#orderaccepted").css("display") == "none") {
             $("#splash").hide();
         }
 
         $("#splash2").hide();
-        $("#loading2").hide();
+        loading2Hide();
     }
 
     function bindGetMyClients(data) {
@@ -1779,7 +1856,7 @@
 
         $("#CabinetTable").show();
         $("#createaccount").hide();
-        $("#loading").hide();
+        loadingHide();
 
         if ($("#orderaccepted").css("display") == "none") {
             $("#splash").hide();
@@ -1787,7 +1864,7 @@
 
         $("#splash2").hide();
 
-        $("#loading2").hide();
+        loading2Hide();
     }
 
     $("#ProductsListView").delegate('.rate1', 'click', function () {
@@ -1981,7 +2058,7 @@
 
     $("div.menu span.catalog").click(function () {
         $("#splash").show();
-        $("#loading").show();
+        loadingShow();
 
         $("#TitleInfo").hide();
         $("#CreateOrder").hide();
@@ -2000,7 +2077,7 @@
 
         if (getUrlParameter("ssid") != undefined && getUrlParameter("ssid") != "") {
             $("#splash2").show();
-            $("#loading").show();
+            loadingShow();
 
             $.ajax({
                 async: true,
@@ -2030,8 +2107,8 @@
 
                 $("#CabinetTable").show();
 
-                $("#loading").hide();
-                $("#loading2").hide();
+                loadingHide();
+                loading2Hide();
                 $("#splash").hide();
                 SetView();
 
@@ -2053,7 +2130,7 @@
 
     $("#CabinetTable").delegate('td.category3', "click", function () {
         $("#splash").show();
-        $("#loading").show();
+        loadingShow();
 
         $("#CabinetTable").children().remove();
         $("#ProductsListView").hide();
@@ -2080,8 +2157,8 @@
 
             $("#CabinetTable").show();
 
-            $("#loading").hide();
-            $("#loading2").hide();
+            loadingHide();
+            loading2Hide();
             $("#splash").hide();
             SetView();
 
@@ -2104,7 +2181,7 @@
     $("#CabinetTable").delegate('td.category1', "click", function () {
 
         $("#splash2").show();
-        $("#loading").show();
+        loadingShow();
 
         $.ajax({
             async: true,
@@ -2119,7 +2196,7 @@
 
     $("#CabinetTable, #TitleInfo").delegate('td.category2, span.TitleSpan', "click", function () {
         $("#splash2").show();
-        $("#loading").show();
+        loadingShow();
 
         startRecord = 0;
         sort = 0;
@@ -2142,7 +2219,7 @@
 
     $("#SubCatMenu, #TitleInfo").delegate('td.category2, span.TitleSubSpan', "click", function () {
         $("#splash2").show();
-        $("#loading").show();
+        loadingShow();
 
         startRecord = 0;
         sort = 0;
@@ -2204,7 +2281,7 @@
             $("#CabinetTable").append('<tr class="ItemContainer"><td class="category2" ' + selected_tr + ' path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</td></tr>');
         }
 
-        $("#loading").hide();
+        loadingHide();
         $("#splash2").hide();
         SetView();
 
@@ -2216,7 +2293,7 @@
 
         $("#CabinetTable").show();
         $("#createaccount").hide();
-        $("#loading").hide();
+        loadingHide();
 
         if ($("#orderaccepted").css("display") == "none") {
             $("#splash").hide();
@@ -2224,7 +2301,7 @@
 
         $("#splash2").hide();
 
-        $("#loading2").hide();
+        loading2Hide();
         // }
     }
 
@@ -2257,7 +2334,7 @@
             //    $(window).scrollTop(0);
             //}
             //else {
-            $("#loading2").show();
+            loading2Show();
             $("#EmptyDiv").hide();
             $('#MainCatMenu').hide();
             $('#SubCatMenu').hide();
@@ -2331,7 +2408,7 @@
 
     $("div.menu span.info").click(function () {
         $("#splash").show();
-        $("#loading").show();
+        loadingShow();
 
         $.ajax({
             async: true,
@@ -2354,7 +2431,7 @@
             $(".timedesc").html(data.d.WorkTime);
         }
 
-        $("#loading").hide();
+        loadingHide();
         $("#about").center();
         $("#about").show();
     }
@@ -2482,7 +2559,7 @@
     });
 
     $("#LoginSubmit").click(function () {
-        $("#loading").show();
+        loadingShow();
         $("#login").hide();
 
         currentEvent = "login";
@@ -2551,7 +2628,7 @@
             else {
                 $("#UserKey").val("");
                 $("#UserKey").attr("class", "keyerror");
-                $("#loading").hide();
+                loadingHide();
                 $("#splash").hide();
 
                 if ($.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
@@ -2564,7 +2641,7 @@
                 }
             }
 
-            $("#loading2").show();
+            loading2Show();
             $("#EmptyDiv").hide();
 
             $("#CreateOrder").hide();
@@ -2751,7 +2828,7 @@
     });
 
     $(".new").click(function () {
-        $("#loading2").show();
+        loading2Show();
         $("#EmptyDiv").hide();
         $("#CreateOrder").hide();
         $("#col1").children().remove();
@@ -2794,7 +2871,7 @@
     }
 
     $(".best").click(function () {
-        $("#loading2").show();
+        loading2Show();
         $("#EmptyDiv").hide();
         $("#CreateOrder").hide();
         $("#col1").children().remove();
@@ -2837,7 +2914,7 @@
 
     $(".discount").click(function () {
 
-        $("#loading2").show();
+        loading2Show();
         $("#EmptyDiv").hide();
         $("#CreateOrder").hide();
         $("#col1").children().remove();
@@ -2879,7 +2956,7 @@
     }
 
     $("#FavCount").click(function () {
-        $("#loading2").show();
+        loading2Show();
         $("#EmptyDiv").hide();
         $("#CreateOrder").hide();
         $("#col1").children().remove();
@@ -2921,7 +2998,7 @@
     }
 
     $("#CartCount").click(function () {
-        $("#loading2").show();
+        loading2Show();
         $("#EmptyDiv").hide();
         $("#CreateOrder").hide();
         $("#col1").children().remove();
@@ -3591,7 +3668,7 @@
         }
         else {
             $("#splash").show();
-            $("#loading").show();
+            loadingShow();
 
             $.ajax({
                 async: true,
@@ -3708,7 +3785,7 @@
         }
 
         $("#viewer").hide();
-        $("#loading").hide();
+        loadingHide();
         $("#splash").hide();
     }
 
@@ -3797,7 +3874,7 @@
 
                 if (protection_type == 1) {
                     $("#CreateOrder").hide();
-                    $("#loading2").show();
+                    loading2Show();
                     $("#EmptyDiv").hide();
                     $("#CreateOrder").hide();
                     $("#ProductsListView").hide();
@@ -4124,7 +4201,7 @@
                             date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
                         dates.not(this).datepicker("option", option, date);
 
-                        $("#loading2").show();
+                        loading2Show();
                         $("#EmptyDiv").hide();
                         $("#CreateOrder").hide();
                         $("#col1").children().remove();
@@ -4164,7 +4241,7 @@
             $("#datepicker").val(curDate);
 
             $("#splash").show();
-            $("#loading2").show();
+            loading2Show();
             $("#EmptyDiv").hide();
 
             //if ($("#MBM1").attr("v9") == "клякса") {
@@ -4271,7 +4348,7 @@
             }
             else if (getUrlParameter("catsid") != '' && getUrlParameter("catsid") != undefined) {
                 $("#splash2").show();
-                $("#loading").show();
+                loadingShow();
 
                 $.ajax({
                     async: true,
@@ -5178,6 +5255,8 @@
     function GetCartView(disable_trade, id, status, price, sid, count, trade_info) {
         var res = '';
 
+        alert($.cookie("c_cart"));
+
         if (disable_trade == 0 && count > 0) {
             if ($.cookie("c_view") == "list") {
                 if (trade_info == "1" && count == 1) {
@@ -5226,7 +5305,7 @@
 
             if ($("#col1").children().length == 0) {
                 $("#splash").show();
-                $("#loading").show();
+                loadingShow();
 
                 var city, warehouse;
 
@@ -5250,7 +5329,7 @@
                 if (city == '' || addr == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '') {
                     alert("Перед отпрвкой необходимо заполнить все поля");
                     $("#splash").hide();
-                    $("#loading").hide();
+                    loadingHide();
                 }
                 else {
 
@@ -5538,9 +5617,9 @@
         var addicted_dataRows = data.d[3];
 
         if (dataRows.length == 0) {
-            $("#loading2").hide();
+            loading2Hide();
             $("#ProductsListView").show();
-            $("#loading").hide();
+            loadingHide();
 
             $("#ProductsListView").find('[status="new"]').each(function () {
                 $(this).removeAttr("status");
@@ -5558,9 +5637,9 @@
                 $('#col1').hide();
                 $("#EmptyDiv").show();
 
-                $("#loading2").hide();
+                loading2Hide();
                 $("#ProductsListView").show();
-                $("#loading").hide();
+                loadingHide();
             }
         }
 
@@ -5578,9 +5657,9 @@
             $('#col3').hide();
             $('#col1').hide();
             $("#EmptyDiv").show();
-            $("#loading2").hide();
+            loading2Hide();
             $("#ProductsListView").show();
-            $("#loading").hide();
+            loadingHide();
         }
         else {
             $('#col1').show();
@@ -5787,9 +5866,9 @@
 
         SetView();
 
-        $("#loading2").hide();
+        loading2Hide();
         $("#ProductsListView").show();
-        $("#loading").hide();
+        loadingHide();
 
         $("#ProductsListView").find('[status="new"]').each(function () {
             $(this).removeAttr("status");
@@ -5938,7 +6017,7 @@
 
     function GetCurData(path) {
         $("#splash").show();
-        $("#loading2").show();
+        loading2Show();
         $("#EmptyDiv").hide();
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
@@ -6514,7 +6593,7 @@
     $("#CabinetTable").delegate(".RejectSpan2", "click", function () {
 
         $("#splash").show();
-        $("#loading").show();
+        loadingShow();
 
         cur_remove_item = $(this).closest("tr");
 
@@ -6533,7 +6612,7 @@
         $(".moneyboxm").click();
 
         $("#splash").hide();
-        $("#loading").hide();
+        loadingHide();
     }
 </script>
 
