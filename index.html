@@ -2727,7 +2727,7 @@
                     var days = 365;
                     date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
 
-                    $.cookie("c_cart", ":" + id + "+" + "#1#" + sid_v + ":", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+                    $.cookie("c_cart", ":" + id + "#1#" + sid_v + ":", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
                     $(".cartsum").html("1");
 
                     $("#CartCount").click();
@@ -4439,7 +4439,7 @@
                         var days = 365;
                         date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
 
-                        $.cookie("c_cart", ":" + id + "+" + "#1#" + sid_v + ":", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+                        $.cookie("c_cart", ":" + id + "#1#" + sid_v + ":", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
                         $(".cartsum").html("1");
 
                         $("#CartCount").click();
@@ -5254,8 +5254,6 @@
 
     function GetCartView(disable_trade, id, status, price, sid, count, trade_info) {
         var res = '';
-
-        alert($.cookie("c_cart"));
 
         if (disable_trade == 0 && count > 0) {
             if ($.cookie("c_view") == "list") {
