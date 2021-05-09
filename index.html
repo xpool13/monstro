@@ -56,7 +56,6 @@
 
            span.PayBonuses:hover {
             background-color: #000000;
-            text-decoration: underline;
             cursor: pointer;
         }
 
@@ -1614,7 +1613,7 @@
                     qr_code = '<span class="QR" taxid="' + dataRows[i].ChequeID + '" curd="' + cur_d_parts[2] + cur_d_parts[1] + cur_d_parts[0] + '" />';
                 }
                 else {
-                    var pay_buttons = (dataRows[i].Status == 1) ? '<span ch="' + dataRows[i].ChequeID + '" class="PayCard">Оплатить картой</span> <span ch="' + dataRows[i].ChequeID + '" class="PayBonuses">Оплатить бонусами</span>' : "";
+                    var pay_buttons = (dataRows[i].Status == 1) ? '<span ch="' + dataRows[i].ChequeID + '" class="PayCard">Сплатити карткою</span> <span ch="' + dataRows[i].ChequeID + '" class="PayBonuses">Сплатити бонусами</span>' : "";
                 }
                 $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" colspan="6" chq="' + dataRows[i].ChequeID + '">' + qr_code + ' Чек #' + dataRows[i].ChequeID + ' ' + pay_buttons + '</td></tr>');
 
@@ -1777,13 +1776,13 @@
     });
 
     function bindPayCard(data) {
-        alert(data.d[0]);
+        //alert(data.d[0]);
         window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1] + "&client_phone=" + $.cookie("c_client_phone") + "&sid=" + sid_v);
     }
 
     $("#CabinetTable").delegate('.PayBonuses', 'click', function () {
 
-        alert($(this).attr("ch"));
+        //alert($(this).attr("ch"));
 
         $.ajax({
             async: true,
@@ -1797,6 +1796,9 @@
     });
 
     function bindPayBonuses(data) {
+
+        $(".moneyboxm").click();
+
         alert(data.d[2]);
     }
 
@@ -6082,7 +6084,7 @@
         }
         else if (data_status == 3) {
 
-            alert("test2");
+            //alert("test2");
             $.ajax({
                 async: true,
                 type: "POST",
