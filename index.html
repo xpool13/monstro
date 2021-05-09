@@ -3743,7 +3743,6 @@
         $(selected).find(".price").first().parent().remove();
         $(selected).find(".oldprice").first().parent().remove();
         $(selected).find(".pdiscount").first().remove();
-        $(selected).find(".pbest").first().remove();
         if ($.cookie("c_view") == "table")
             $(selected).find(".img").parent().prepend(GetDiscount(parseFloat(($(selected).attr("discount")) > 0 ? $(selected).attr("discount") : '0'), $(selected).attr("price")) + GetRate($(selected).attr("rating")));
         else
@@ -5191,9 +5190,7 @@
     function GetRate(rating) {
         var res = '';
 
-        if (rating > 0) {
-            res = '<span class="pbest"></span>';
-        }
+       
 
         return res;
     }
