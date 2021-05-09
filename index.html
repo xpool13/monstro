@@ -1797,9 +1797,18 @@
 
     function bindPayBonuses(data) {
 
-        $(".moneyboxm").click();
+        if (data.d[2] == "") {
+            var main_balance = data.d[0] - (data.d[0] % 1);
+            var coins = Math.round((data.d[0] % 1) * 100);
 
-        alert(data.d[2]);
+            $(".mainbalance").attr("balance", data.d[0].toFixed(2));
+            $(".mainbalance").html(main_balance);
+            $(".coins").html(coins);
+        }
+        else
+            alert(data.d[2]);
+
+        $(".moneyboxm").click();
     }
 
     function bindGetRedirLog(data) {
