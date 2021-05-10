@@ -7,10 +7,10 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="monstro.com.ua">
     <meta property="og:title" content="monstro.com.ua">
-    <meta property="og:description" content="Игрушки, канцтовары, товары для детей">
+    <meta property="og:description" content="Іграшки, канцтовари, товари для дітей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
-    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/blot_preview.png">
+    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/monstro/img/monstro_preview.png">
     <meta property="og:image:width" content="968">
     <meta property="og:image:height" content="794">
 
@@ -5333,7 +5333,7 @@
                     client_id = 0;
 
                 if (city == '' || addr == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '') {
-                    alert("Перед отпрвкой необходимо заполнить все поля");
+                    alert("Перед відправкою необхідно заповнити всі поля");
                     $("#splash").hide();
                     loadingHide();
                 }
@@ -5384,10 +5384,12 @@
                 $("#CabinetTable").append('<tr id="d_tr12" class="ItemContainer"><td class="cheque"><input id="SecondNameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
                 $("#CabinetTable").append('<tr id="d_tr13" class="ItemContainer"><td class="cheque" id="NameTD" uk="Ім\'я:">Имя:</td></tr>');
                 $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="cheque"><input id="NameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
-                $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Заказанные товары осмотрят на исправность</td></tr>');
-                $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Стоимость доставки: по тарифам Новой Почты</td><tr>');
+                $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Замовлені товари оглянуть на справність</td></tr>');
+                $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Вартість доставки: за тарифам Нової Пошти</td><tr>');
                
                 $("#DeliveryTypeSelect").val("1");
+
+                fillLangContent();
 
                 $("#PhoneTextBox").inputmask("+38 (999) 999-9999");
 
