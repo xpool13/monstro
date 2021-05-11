@@ -5276,7 +5276,7 @@
                 }
             }
             else {
-                if (trade_info == "1" && count == 1) {
+                if ((trade_info == "1" || (sid == 3692 && price > 1200)) && count == 1) {
                     res = '<div class="pickup">' + ($("#MBM1").attr("v16") == "1" ? "Самовивіз" : "Самовывоз") + '</div>';
                 }
                 else {
