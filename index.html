@@ -2,17 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Monstro</title>
-    <meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
+    <title>...</title>
+    <!--<meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="monstro.com.ua">
-    <meta property="og:title" content="monstro.com.ua">
+    <meta property="og:site_name" content="клякса.in.ua">
+    <meta property="og:title" content="клякса.in.ua">
     <meta property="og:description" content="Іграшки, канцтовари, товари для дітей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
-    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/monstro/img/monstro_preview.png">
+    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/blot_preview.png">
     <meta property="og:image:width" content="968">
-    <meta property="og:image:height" content="794">
+    <meta property="og:image:height" content="794">-->
 
     <meta id="MetaTitle" runat="server" name="title" content="Бизнес Конструктор, Складской учет, Автоматизация магазина, Программный РРО" />
     <meta id="MetaDesc" runat="server" name="description" content="Универсальная среда для автоматизации ведения бизнеса любой сложности. Удобный доступ к панели управления из любой точки мира. Онлайн кассы, Интернет-витрины, программный РРО" />
@@ -29,11 +29,108 @@
     <script type="text/javascript" src="https://xpool.pro/source/js/dist/jquery.inputmask.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/jquery-qrcode-0.17.0.min.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/printThis.js"></script>
-    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_black/css/main.css" />
+    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_blot/css/main.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <style type="text/css">
+
+        td.None {
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 0px;
+            font: normal 18px/40px arial;
+            background-color: #dedede;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        td.GoPay {
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 0px;
+            font: normal 24px/80px arial;
+            background-color: #ffff00;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        td.GoPay:hover {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        td.GoCabinet {
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 0px;
+            font: normal 24px/80px arial;
+            background-color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        td.GoCabinet:hover {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        td.Head1 {
+            overflow: hidden;
+            padding: 0px;
+            font: normal 12px/12px arial;
+            background-color: #111111;
+            color: white;
+            text-align: left;
+            vertical-align: middle;
+   
+            height: 40px;
+        }
+
+        td.Head1 select {   
+            border-style: none;
+            margin: 0px;
+            font: normal 18px/42px arial;
+            text-align: left;
+            padding-left: 3px;
+            width: 130px;
+            height: 42px;
+            background-color: white;
+        }
+
+        td.Head1 .inputText {
+            border-style: none;
+            margin: 0px;
+            height: 42px;
+            width: 100%;
+            font: normal 18px/40px arial;
+            text-align: left;
+            padding-left: 3px;
+
+            box-sizing: border-box;
+
+            -webkit-user-select: text;
+            -khtml-user-select: text;
+            -moz-user-select: text;
+            -o-user-select: text;
+            user-select: text;
+        }
+
+        td.Head2 {
+            white-space: nowrap;
+            overflow: hidden;
+            padding-left: 3px;
+            font: normal 12px/12px arial;
+            background-color: #222222;
+            color: white;
+            text-align: left;
+            vertical-align: middle;
+  
+            height: 30px;
+        }
 
         span.PayCard {
             background-color: none;
@@ -47,14 +144,14 @@
             cursor: pointer;
         }
 
-          span.PayBonuses {
+        span.PayBonuses {
             background-color: none;
             border: 1px solid #FFF;
             color: #FFF;
             padding: 3px;
         }
 
-           span.PayBonuses:hover {
+        span.PayBonuses:hover {
             background-color: #000000;
             cursor: pointer;
         }
@@ -65,17 +162,17 @@
             padding: 4px;
         }
 
-            div.SpecInfo span.SpecInfoSpan {
-                position: relative;
-                display: inline-block;
-                width: 100%;
-                height: 50px;
-                background: url(https://xpool.pro/web/source/style_blot/img/alert.svg) no-repeat left center;
-                margin-right: 2px;
-                font: 28px/50px Arial;
-                color: white;
-                background-size: contain;
-            }
+        div.SpecInfo span.SpecInfoSpan {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            background: url(https://xpool.pro/web/source/style_blot/img/alert.svg) no-repeat left center;
+            margin-right: 2px;
+            font: 28px/50px Arial;
+            color: white;
+            background-size: contain;
+        }
 
 
         .logselect {
@@ -125,25 +222,26 @@
             cursor: pointer;
         }
 
-            div.shareinfo:hover {
-                background-color: #222222;
-            }
+        div.shareinfo:hover {
+            background-color: #222222;
+        }
 
 
         #viewer:after {
             display: none;
             content: url(https://xpool.pro/web/source/img/closex1.svg) url(https://xpool.pro/web/source/img/closex2.svg) url(https://xpool.pro/web/source/img/arrowleft1.svg) url(https://xpool.pro/web/source/img/arrowleft2.svg) url(https://xpool.pro/web/source/img/arrowright1.svg) url(https://xpool.pro/web/source/img/arrowright2.svg);
+        }    
+
+        #splash { display: none; left: 0px; top: 0px; bottom: 0px; z-index: 9998; position: fixed; height: 100%; width: 100%; background-color: black; opacity: 0.6;
         }
 
-        #splash3 {
-            -webkit-overflow-scrolling: touch;
-            display: none;
-            z-index: 9998;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background-color: black;
-            opacity: 0.2;
+        #splash2 { display: none; left: 0px; top: 0px; bottom: 0px; z-index: 999999; position: fixed; height: 100%; width: 100%; background-color: black; opacity: 0.6;
+        }
+
+        #splash3 { display: none; left: 0px; top: 0px; bottom: 0px; z-index: 99999999; position: fixed; height: 100%; width: 100%; background-color: black; opacity: 0.6;
+        }
+
+        #splash4 { display: none; left: 0px; top: 0px; bottom: 0px; z-index: 999999999; position: fixed; height: 100%; width: 100%; background-color: black; opacity: 0.6;
         }
 
         {
@@ -397,9 +495,9 @@
         }
 
         /*#videoframe span.closex:hover {
-                    background: url("source/img/closex2.svg") no-repeat right top;
-                    background-size: contain;
-                }*/
+            background: url("source/img/closex2.svg") no-repeat right top;
+            background-size: contain;
+        }*/
 
         input.inputDate {
             background-color: white;
@@ -517,7 +615,7 @@
             background-color: #FFFF00;
         }
 
-         td.order2 {
+        td.order2 {
             height: 42px;
             position: relative;
             font-size: large;
@@ -528,7 +626,7 @@
             color: #000;
         }
 
-         td.order2:hover {
+        td.order2:hover {
             background-color: #FFFF00;
         }
 
@@ -552,450 +650,547 @@
             display: block;
             width: 40px;
             height: 40px;
-            background: url("https://xpool.pro/web/source/style_black/img/close.svg") no-repeat right top;
+            background: url("https://xpool.pro/web/source/style_blot/img/close.svg") no-repeat right top;
             margin: auto;
             background-size: contain;
         }
     </style>
 </head>
 <body id="body_tag" runat="server" style="overflow-y: scroll; background-color: #8e8e8e; overflow-x: hidden">
-
+    <input type="hidden" value="" id="server_path" runat="server" />
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v6.0"></script>
-    
-        <img id="preview" runat="server" class="previmg" redir="0" style="display: none" src="https://xpool.pro/web/source/style_blot/img/blot_preview.png" />
-       
-        <div id="DetailsDIV" style="z-index: 99999; width: 294px; display: none; position: absolute; height: 200px; overflow-y:scroll; overflow-x: no-display;">
-            <table id="DetailsTable" style="position: absolute; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: #333333;"></table>
-        </div>
-        <div id="QRCode" style="display: none; position: absolute; position: fixed; left: 50%; top: 10px; margin-left: -110px; z-index: 999999999999; width: 220px; background-color: white;">
-            <div id="QRCodeView" style="display: block; margin: 10px;"></div>
-            <div id="VerifyQR" style="text-align: center; cursor: pointer; background-color: #cfcfcf; margin-top: 10px; font: normal 18px/40px arial; border-bottom: 1px solid #000000; border-top: 1px solid #000000;" uk="Перевірити" ru="Проверить">Проверить</div>
-            <div id="CloseQR" style="text-align: center; cursor: pointer; background-color: #ff8181; color: black; font: normal 18px/40px arial;" uk="Закрити" ru="Закрыть">Закрыть</div>
-        </div>
 
-        <div id="redirect" style="cursor: pointer; position: absolute; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; text-align: center; font: normal 20px arial; color: black; display: none;">
-            переход<br />
-            <img src="source/style_blot/img/loading.gif" />
-        </div>
+    <img id="preview" runat="server" class="previmg" redir="0" style="display: none" src="https://xpool.pro/web/source/style_blot/img/blot_preview.png" />
 
-        <input type="hidden" value="" id="TimeComponents" />
-        <span class="deliveryTip" style="display: none" uk="Самовивіз по місту Тернівка">Самовывоз по городу Терновка</span>
-        <div id="splash"></div>
-        <div id="splash2"></div>
-        <div id="splash3"></div>
-        <div id="loading" uk="Завантаження">Загрузка</div>
-        <div id="loading2" uk="Завантаження">Загрузка</div>
-        <div id="alertform" style="display: none;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Анонімно">Анонимно:</span>
-                    </li>
-                    <li>
-                        <span id="AlertFormClose" class="alertformclose"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="tools">
-                <table>
-                    <tr>
-                        <td class="tdleft">Прецедент:</td>
-                    </tr>
-                    <tr>
-                        <td class="tdleft">
-                            <select id="AlertSelect">
-                                <option uk="Некомпетентне обслуговування" ru="Некомпетентное обслуживание">Некомпетентное обслуживание</option>
-                                <option uk="Грубість" ru="Грубость">Грубость</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdleft" uk="Вкажіть дату:">Укажите дату:</td>
-                    </tr>
-                    <tr>
-                        <td class="tdleft">
-                            <input type="button" class="incdec" id="DateDec" value="<" /><span id="DateCount" class="val"></span><input type="button" class="incdec" id="DateInc" value=">" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdleft">Ключ:</td>
-                    </tr>
-                    <tr>
-                        <td class="tdleft">
-                            <input type="tel" id="KeyCode" class="Key" /><span class="N" uk="(не обов'язково)">(не обязательно)</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="padding-left: 5px;">
-                            <div style="text-align: left; padding-top: 15px;"><span style="font: 20px/20px Arial; margin-left: 5px" uk="Коментар:">Комментарий:</span><span class="N" uk="(не обов'язково)">(не обязательно)</span></div>
-                            <textarea id="AlertInfo" maxlength="500" rows="3" cols="30" style="width: 300px; font: normal 18px arial; display: block; margin-left: auto; margin-right: auto; margin-top: 5px;"></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <span id="SubmitAlert" class="submit" uk="Відправити">Отправить</span>
-            </div>
-        </div>
-        <div id="rateform" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Оцінити покупку">Оценить покупку</span>
-                    </li>
-                    <li>
-                        <span id="RateFormClose" class="rateformclose"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="tools">
-                <table>
-                    <tr>
-                        <td class="tdleft" uk="Обслуговування:">Обслуживание:</td>
-                        <td class="tdright">
-                            <input type="button" class="incdec" id="R1Dec" value="<" /><span id="R1Count" class="val">0</span><input type="button" class="incdec" id="R1Inc" value=">" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdleft" uk="Якість товару:">Качество товара:</td>
-                        <td class="tdright">
-                            <input type="button" class="incdec" id="R2Dec" value="<" /><span id="R2Count" class="val">0</span><input type="button" class="incdec" id="R2Inc" value=">" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdleft" uk="Ціна:">Цена:</td>
-                        <td class="tdright">
-                            <input type="button" class="incdec" id="R3Dec" value="<" /><span id="R3Count" class="val">0</span><input type="button" class="incdec" id="R3Inc" value=">" />
-                        </td>
-                    </tr>
-                </table>
-                <span id="SubmitRate" class="submit" uk="Оцінити">Оценить</span>
-            </div>
-        </div>
-        <div id="addcomment" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="title" uk="Комент:">Коммент:</span>
-                    </li>
-                    <li>
-                        <span id="AddCommentClose" class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info">
-                <ul>
-                    <li>
-                        <input type="text" id="CommentTextBox" />
-                    </li>
-                </ul>
-            </div>
-            <div style="text-align: center;">
-                <span class="addcommentsubmit" id="AddCommentSubmit" uk="Додати">Добавить</span>
-            </div>
-        </div>
-        <div id="videoframe" style="display: none; position: fixed; overflow-y: hidden; overflow-x: no-display; width: 100%; height: 100%">
-            <span class="closex"></span>
+    <div id="DetailsDIV" style="z-index: 99999; width: 294px; display: none; position: absolute; height: 200px; overflow-y:scroll; overflow-x: no-display;">
+        <table id="DetailsTable" style="position: absolute; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: #333333;"></table>
+    </div>
+    <div id="QRCode" style="display: none; position: absolute; position: fixed; left: 50%; top: 10px; margin-left: -110px; z-index: 999999999999; width: 220px; background-color: white;">
+        <div id="QRCodeView" style="display: block; margin: 10px;"></div>
+        <div id="VerifyQR" style="text-align: center; cursor: pointer; background-color: #cfcfcf; margin-top: 10px; font: normal 18px/40px arial; border-bottom: 1px solid #000000; border-top: 1px solid #000000;" uk="Перевірити" ru="Проверить">Проверить</div>
+        <div id="CloseQR" style="text-align: center; cursor: pointer; background-color: #ff8181; color: black; font: normal 18px/40px arial;" uk="Закрити" ru="Закрыть">Закрыть</div>
+    </div>
 
-            <iframe id="VideoFrameContent" width="100%" height="100%" frameborder="0" src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div id="redirect" style="cursor: pointer; position: absolute; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; text-align: center; font: normal 20px arial; color: black; display: none;">
+        переход<br />
+        <img src="source/style_blot/img/loading.gif" />
+    </div>
 
+    <input type="hidden" value="" id="TimeComponents" />
+    <span class="deliveryTip" style="display: none" uk="Самовивіз по місту Тернівка">Самовывоз по городу Терновка</span>
+    <div id="splash"></div>
+    <div id="splash2"></div>
+    <div id="splash3"></div>
+    <div id="splash4"></div>
+    <div id="loading" uk="Завантаження">Загрузка</div>
+    <div id="loading2" uk="Завантаження">Загрузка</div>
+    <div id="AddictedView" style="text-align: center; z-index: 9999999999; display: none; position: absolute; width: 400px; left: 50%; background-color: none; overflow-y: hidden; overflow-x: no-display;">
+        <table id="AddictedTable" width="100%" style="table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: #333333; background-color: #333333;" align="center"></table>
+    </div>
+    <div id="alertform" style="display: none;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Анонімно">Анонимно:</span>
+                </li>
+                <li>
+                    <span id="AlertFormClose" class="alertformclose"></span>
+                </li>
+            </ul>
         </div>
-        <div id="excelgenerate" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="title" uk="Вкажіть діапазон:">Укажите диапазон:</span>
-                    </li>
-                    <li>
-                        <span id="ExcelGenerateClose" class="excelgenerateclose"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info">
-                <ul>
-                    <li uk="Дата 1:" style="text-align: right; padding-right: 3px;">Дата 1:</li>
-                    <li>
-                        <input type="button" style="width: 180px; text-align: center" id="datepicker1" class="inputDate" value="" />
-                    </li>
-                </ul>
-                <ul>
-                    <li uk="Дата 2:" style="text-align: right; padding-right: 3px;">Дата 2:</li>
-                    <li>
-                        <input type="button" style="width: 180px; text-align: center" id="datepicker2" class="inputDate" value="" />
-                    </li>
-                </ul>
-            </div>
-            <div style="text-align: center;">
-                <span class="excelsubmit" id="ExcelGenerateSubmit">OK</span>
-            </div>
-        </div>
-        <div id="login" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Вхід">Вход</span>
-                    </li>
-                    <li>
-                        <span id="LoginClose" class="loginclose"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info">
-                <ul>
-                    <li uk="Телефон:" style="text-align: right; padding-right: 3px;">Телефон:</li>
-                    <li>
-                        <input id="LoginPhoneNumber" type="text" />
-                    </li>
-                </ul>
-                <ul>
-                    <li></li>
-                    <li uk="або">или</li>
-                </ul>
-                <ul>
-                    <li uk="Ключ:" style="text-align: right; padding-right: 3px;">Ключ:</li>
-                    <li>
-                        <input id="LoginKey" type="text" />
-                    </li>
-                </ul>
-            </div>
-            <div style="text-align: center;">
-                <input id="LoginSubmit" type="button" value="OK" />
-            </div>
-        </div>
-        <div id="createaccount" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Реєстрація">Регистрация</span>
-                    </li>
-                    <li>
-                        <span id="CreateAccountClose"></span>
-                    </li>
-                </ul>
-            </div>
-            <div style="text-align: left; padding-left: 30px; font: 20px/20px Arial;">Телефон:</div>
-            <div class="info">
-                <input id="CreatePhoneNumberLogin" type="text" /><input id="CreatePhoneNumberSubmit" type="button" value="OK" /><br />
-            </div>
-        </div>
-        <div id="sortview" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Сортування">Сортировка</span>
-                    </li>
-                    <li>
-                        <span id="SortClose" class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info">
-                <div class="SortItem" v="2" uk="Ціна за зростанням">Цена по возрастанию</div>
-                <div class="SortItem" v="1" uk="Ціна за спаданням">Цена по убыванию</div>
-                <div class="SortItem" v="3" uk="Новизна">Новизна</div>
-                <div class="SortItem" v="0" uk="За замовчуванням">По умолчанию</div>
-            </div>
-        </div>
-        <div id="shareview" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Поділитися">Поделиться</span>
-                    </li>
-                    <li>
-                        <span id="ShareClose" class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info">
-                <a class="ShareViber" id="ViberButton">Viber</a>
-                <div class="ShareFacebook" id="FacebookButton">Facebook</div>
-                <a class="ShareLink" id="CopyButton" uk="Посилання">Ссылка</a>
-            </div>
-        </div>
-        <div id="viewer" style="display: none;">
-            <span class="leftscroll"></span>
-
-            <div id="fullimg">
-                <img id="fullimage" src="source/style_blot/img/loading.gif" />
-            </div>
-            <span class="rightscroll"></span>
-            <span class="closey"></span>
-            <span class="imgcount">1 / 1</span>
-            <span id="ViewDesc" class="desc"></span>
-            <table id="EditImage" class="EditImageClass" style="display: none; width: 166px; background-color: #efefef; position: fixed; top: 20px; right: 100px; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: black; background-color: white">
+        <div class="tools">
+            <table>
                 <tr>
-                    <td>
-                        <div style="width: 164px; height: 120px; overflow-y: scroll;">
-                            <div>
-                                URL1:<br />
-                                <textarea class="UrlArea" ind="1" id="TargetURL1" style="width: 138px;"></textarea>
-                            </div>
-                            <div>
-                                URL2:<br />
-                                <textarea class="UrlArea" ind="2" id="TargetURL2" style="width: 138px;"></textarea>
-                            </div>
-                            <div>
-                                URL3:<br />
-                                <textarea class="UrlArea" ind="3" id="TargetURL3" style="width: 138px;"></textarea>
-                            </div>
-                            <div>
-                                URL4:<br />
-                                <textarea class="UrlArea" ind="4" id="TargetURL4" style="width: 138px;"></textarea>
-                            </div>
-                            <div>
-                                URL5:<br />
-                                <textarea class="UrlArea" ind="5" id="TargetURL5" style="width: 138px;"></textarea>
-                            </div>
-                        </div>
+                    <td class="tdleft">Прецедент:</td>
+                </tr>
+                <tr>
+                    <td class="tdleft">
+                        <select id="AlertSelect">
+                            <option uk="Некомпетентне обслуговування" ru="Некомпетентное обслуживание">Некомпетентное обслуживание</option>
+                            <option uk="Грубість" ru="Грубость">Грубость</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdleft" uk="Вкажіть дату:">Укажите дату:</td>
+                </tr>
+                <tr>
+                    <td class="tdleft">
+                        <input type="button" class="incdec" id="DateDec" value="<" /><span id="DateCount" class="val"></span><input type="button" class="incdec" id="DateInc" value=">" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdleft">Ключ:</td>
+                </tr>
+                <tr>
+                    <td class="tdleft">
+                        <input type="tel" id="KeyCode" class="Key" /><span class="N" uk="(не обов'язково)">(не обязательно)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-left: 5px;">
+                        <div style="text-align: left; padding-top: 15px;"><span style="font: 20px/20px Arial; margin-left: 5px" uk="Коментар:">Комментарий:</span><span class="N" uk="(не обов'язково)">(не обязательно)</span></div>
+                        <textarea id="AlertInfo" maxlength="500" rows="3" cols="30" style="width: 300px; font: normal 18px arial; display: block; margin-left: auto; margin-right: auto; margin-top: 5px;"></textarea>
                     </td>
                 </tr>
             </table>
+            <span id="SubmitAlert" class="submit" uk="Відправити">Отправить</span>
         </div>
-        <div id="alertaccepted" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Скарга прийнята">Жалоба принята</span>
-                    </li>
-                    <li>
-                        <span class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info" uk="Дякуємо! Ваша скарга прийнята в обробку">Спасибо! Ваша жалоба принята в обработку</div>
+    </div>
+    <div id="rateform" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Оцінити покупку">Оценить покупку</span>
+                </li>
+                <li>
+                    <span id="RateFormClose" class="rateformclose"></span>
+                </li>
+            </ul>
         </div>
-        <div id="orderaccepted" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Прийняте">Принят</span>
-                    </li>
-                    <li>
-                        <span class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info" uk="Дякуємо! Ваше замовлення прийняте в обробку">Спасибо! Ваш заказ принят в обработку</div>
+        <div class="tools">
+            <table>
+                <tr>
+                    <td class="tdleft" uk="Обслуговування:">Обслуживание:</td>
+                    <td class="tdright">
+                        <input type="button" class="incdec" id="R1Dec" value="<" /><span id="R1Count" class="val">0</span><input type="button" class="incdec" id="R1Inc" value=">" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdleft" uk="Якість товару:">Качество товара:</td>
+                    <td class="tdright">
+                        <input type="button" class="incdec" id="R2Dec" value="<" /><span id="R2Count" class="val">0</span><input type="button" class="incdec" id="R2Inc" value=">" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdleft" uk="Ціна:">Цена:</td>
+                    <td class="tdright">
+                        <input type="button" class="incdec" id="R3Dec" value="<" /><span id="R3Count" class="val">0</span><input type="button" class="incdec" id="R3Inc" value=">" />
+                    </td>
+                </tr>
+            </table>
+            <span id="SubmitRate" class="submit" uk="Оцінити">Оценить</span>
         </div>
-        <div id="orderover" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Більше не можна">Больше нельзя</span>
-                    </li>
-                    <li>
-                        <span class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info" uk="Кошик заповнен, щоб додати нове замовлення - видаліть менш пріоритетне">Корзина заполнена, чтобы добавить новый заказ - удалите менее приоритетный</div>
+    </div>
+    <div id="addcomment" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="title" uk="Комент:">Коммент:</span>
+                </li>
+                <li>
+                    <span id="AddCommentClose" class="close"></span>
+                </li>
+            </ul>
         </div>
-        <div id="favover" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title" uk="Більше не можна">Больше нельзя</span>
-                    </li>
-                    <li>
-                        <span class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="info" uk="Список бажань заповнений, щоб додати нове - видаліть менш пріоритетне">Список желаний заполнен, чтобы добавить новое - удалите менее приоритетное</div>
+        <div class="info">
+            <ul>
+                <li>
+                    <input type="text" id="CommentTextBox" />
+                </li>
+            </ul>
         </div>
+        <div style="text-align: center;">
+            <span class="addcommentsubmit" id="AddCommentSubmit" uk="Додати">Добавить</span>
+        </div>
+    </div>
+    <div id="videoframe" style="display: none; position: fixed; overflow-y: hidden; overflow-x: no-display; width: 100%; height: 100%">
+        <span class="closex"></span>
 
-        <div id="search" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="title" uk="Знайти в магазині">Найти в магазине</span>
-                    </li>
-                    <li>
-                        <span class="close"></span>
-                    </li>
-                </ul>
-            </div>
-            <input class="searchtext" type="text" value="" />
-            <span class="find"></span>
-            <div style="margin-left: 10px; position: relative; top: -40px" uk="діапазон цін:">диапазон цен:</div>
-            <div style="text-align: center; position: relative; top: -40px">
-                <input id="minp" style="display: inline-block; width: 50px; padding: 5px; margin: 5px" type="text" value="0" /><span style="display: inline-block;">-</span><input id="maxp" style="display: inline-block; width: 50px; padding: 5px; margin: 5px;" type="text" value="10000" />
-            </div>
+        <iframe id="VideoFrameContent" width="100%" height="100%" frameborder="0" src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </div>
+    <div id="excelgenerate" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="title" uk="Вкажіть діапазон:">Укажите диапазон:</span>
+                </li>
+                <li>
+                    <span id="ExcelGenerateClose" class="excelgenerateclose"></span>
+                </li>
+            </ul>
         </div>
-        <div class="catmenu" style="display: none;" id="ShopsMenu">
-            <div class="header">
-                <ul>
-                    <li><span class="menu"></span></li>
-                    <li><span class="title" uk="Магазини">Магазины</span><span class="ListMenu"></span><span class="CloudMenu"></li>
-                    <li><span class="close"></span></li>
-                </ul>
-            </div>
-            <div style="text-align: center;"></div>
+        <div class="info">
+            <ul>
+                <li uk="Дата 1:" style="text-align: right; padding-right: 3px;">Дата 1:</li>
+                <li>
+                    <input type="button" style="width: 180px; text-align: center" id="datepicker1" class="inputDate" value="" />
+                </li>
+            </ul>
+            <ul>
+                <li uk="Дата 2:" style="text-align: right; padding-right: 3px;">Дата 2:</li>
+                <li>
+                    <input type="button" style="width: 180px; text-align: center" id="datepicker2" class="inputDate" value="" />
+                </li>
+            </ul>
         </div>
-        <div class="catmenu" style="display: none" id="MainCatMenu">
-            <div class="header">
-                <ul>
-                    <li><span class="menu"></span></li>
-                    <li><span class="title">Каталог</span><span class="ListMenu"></span><span class="CloudMenu"></span></li>
-                    <li><span class="close"></span></li>
-                </ul>
-            </div>
-            <div style="text-align: center;"><span class="new">Новинки</span></div>
+        <div style="text-align: center;">
+            <span class="excelsubmit" id="ExcelGenerateSubmit">OK</span>
         </div>
-        <div class="catmenu" id="SubCatMenu" style="display: none; z-index: 999999; display: none;">
-            <div class="header">
-                <ul>
-                    <li><span class="menu"></span></li>
-                    <li><span class="title" style="width: 638px">Каталог</span></li>
-                    <li><span class="close"></span></li>
-                </ul>
-            </div>
-            <div style="text-align: center;"><span class="new">Новинки</span></div>
+    </div>
+    <div id="login" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Вхід">Вход</span>
+                </li>
+                <li>
+                    <span id="LoginClose" class="loginclose"></span>
+                </li>
+            </ul>
         </div>
-        <div id="about" style="display: none; overflow-y: hidden; overflow-x: no-display;">
-            <div class="header">
-                <ul>
-                    <li>
-                        <span class="menu"></span>
-                    </li>
-                    <li>
-                        <span class="title">Про магазин</span>
-                    </li>
-                    <li>
-                        <span class="close"></span>
-                    </li>
-                </ul>
-            </div>
+        <div class="info">
+            <ul>
+                <li uk="Телефон:" style="text-align: right; padding-right: 3px;">Телефон:</li>
+                <li>
+                    <input id="LoginPhoneNumber" type="text" />
+                </li>
+            </ul>
+            <ul>
+                <li></li>
+                <li uk="або">или</li>
+            </ul>
+            <ul>
+                <li uk="Ключ:" style="text-align: right; padding-right: 3px;">Ключ:</li>
+                <li>
+                    <input id="LoginKey" type="text" />
+                </li>
+            </ul>
+        </div>
+        <div style="text-align: center;">
+            <input id="LoginSubmit" type="button" value="OK" />
+        </div>
+    </div>
+    <div id="createaccount" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Реєстрація">Регистрация</span>
+                </li>
+                <li>
+                    <span id="CreateAccountClose"></span>
+                </li>
+            </ul>
+        </div>
+        <div style="text-align: left; padding-left: 30px; font: 20px/20px Arial;">Телефон:</div>
+        <div class="info">
+            <input id="CreatePhoneNumberLogin" type="text" /><input id="CreatePhoneNumberSubmit" type="button" value="OK" /><br />
+        </div>
+    </div>
+    <div id="sortview" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Сортування">Сортировка</span>
+                </li>
+                <li>
+                    <span id="SortClose" class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="info">
+            <div class="SortItem" v="2" uk="Ціна за зростанням">Цена по возрастанию</div>
+            <div class="SortItem" v="1" uk="Ціна за спаданням">Цена по убыванию</div>
+            <div class="SortItem" v="3" uk="Новизна">Новизна</div>
+            <div class="SortItem" v="0" uk="За замовчуванням">По умолчанию</div>
+        </div>
+    </div>
+    <div id="shareview" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Поділитися">Поделиться</span>
+                </li>
+                <li>
+                    <span id="ShareClose" class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="info">
+            <a class="ShareViber" id="ViberButton">Viber</a>
+            <div class="ShareFacebook" id="FacebookButton">Facebook</div>
+            <a class="ShareLink" id="CopyButton" uk="Посилання">Ссылка</a>
+        </div>
+    </div>
+    <div id="viewer" style="display: none;">
+        <span class="leftscroll"></span>
+
+        <div id="fullimg">
+            <img id="fullimage" src="source/style_blot/img/loading.gif" />
+        </div>
+        <span class="rightscroll"></span>
+        <span class="closey"></span>
+        <span class="imgcount">1 / 1</span>
+        <span id="ViewDesc" class="desc"></span>
+        <table id="EditImage2" class="EditImageClass" runat="server" style="width: 166px; background-color: #efefef; position: fixed; display: none; top: 20px; left: 100px; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: black; background-color: white">
+            <tr>
+                <td>
+                    <div style="width: 164px; height: 120px; overflow-y: scroll;">
+                        <div>
+                            URL1:<br />
+                            <textarea class="UrlArea" ind="1" id="TargetURL1" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL2:<br />
+                            <textarea class="UrlArea" ind="2" id="TargetURL2" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL3:<br />
+                            <textarea class="UrlArea" ind="3" id="TargetURL3" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL4:<br />
+                            <textarea class="UrlArea" ind="4" id="TargetURL4" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL5:<br />
+                            <textarea class="UrlArea" ind="5" id="TargetURL5" style="width: 138px;"></textarea>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Video URL:</td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea id="TargetVFrameURL" style="width: 150px;"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center"><br/><span id="UploadToGoogleFeedSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Google Shopping">Google Shopping</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: center"><span id="UploadToFeedRozetkaSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Rozetka.ua">Rozetka.ua</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: center"><span id="UploadToFeedPromSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Prom.ua">Prom.ua</span></td>
+            </tr>
+        </table>
+        <table id="EditImage1" class="EditImageClass" runat="server" style="width: 166px; background-color: #efefef; position: fixed; display: none; top: 20px; right: 100px; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: black; background-color: white">
+            <tr>
+                <td>Категория:</td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="CategoriesSelect" runat="server" style="width: 150px;"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>Рейтинг:</td>
+            </tr>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td style="width: 35px; background-color: lightgray; text-align: center; font: normal 18px arial; cursor: pointer" id="DecRating"><</td>
+                            <td style="width: 80px; background-color: white; text-align: center; font: normal 18px arial;" id="RatingValue">0</td>
+                            <td style="width: 35px; background-color: lightgray; text-align: center; font: normal 18px arial; cursor: pointer" id="IncRating">></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td uk="Знижка">Скидка:</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="DiscountValue" type="text" style="width: 150px; font: normal 18px arial; text-align: center;" value="0" />
+                </td>
+            </tr>
+            <tr>
+                <td uk="Інет ціна:">Інет ціна:</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="Price2Value" type="text" style="width: 150px; font: normal 18px arial; text-align: center;" value="0" />
+                </td>
+            </tr>
+            <tr>
+                <td uk="Доставка">Доставка:</td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="DeliverySelect">
+                        <option uk="За замовчуванням" ru="По умолчанию">По умолчанию</option>
+                        <option uk="Платна" ru="Платная">Платная</option>
+                        <option uk="Безкоштовна" ru="Бесплатная">Бесплатная</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td uk="Час:">Время:</td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="TimeSelect">
+                        <option v="0" ru="Нет" uk="Ні">Нет</option>
+                        <option v="1" ru="Да, сорт. время> +А-Я" uk="Так, сорт. час> +А-Я">Да, сорт. время> +А-Я</option>
+                        <option v="2" ru="Да, сорт. время> +Я-А" uk="Так, сорт. час> +Я-А">Да, сорт. время> +Я-А</option>
+                        <option v="3" ru="Да, сорт. время< +А-Я" uk="Так, сорт. час< +А-Я">Да, сорт. время< +А-Я</option>
+                        <option v="4" ru="Да, сорт. время< +Я-А" uk="Так, сорт. час< +Я-А">Да, сорт. время< +Я-А</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center"><br/><span id="RejectSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Скинути">Сбросить</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: center"><span id="SetSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Застосувати">Применить</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: center"><span id="SaveSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Зберегти" runat="server">Сохранить</span></td>
+            </tr>
+        </table>
+    </div>
+    <div id="alertaccepted" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Скарга прийнята">Жалоба принята</span>
+                </li>
+                <li>
+                    <span class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="info" uk="Дякуємо! Ваша скарга прийнята в обробку">Спасибо! Ваша жалоба принята в обработку</div>
+    </div>
+    <div id="orderaccepted" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Прийняте">Принят</span>
+                </li>
+                <li>
+                    <span class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="info" uk="Дякуємо! Ваше замовлення прийняте в обробку">Спасибо! Ваш заказ принят в обработку</div>
+    </div>
+    <div id="orderover" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Більше не можна">Больше нельзя</span>
+                </li>
+                <li>
+                    <span class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="info" uk="Кошик заповнен, щоб додати нове замовлення - видаліть менш пріоритетне">Корзина заполнена, чтобы добавить новый заказ - удалите менее приоритетный</div>
+    </div>
+    <div id="favover" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title" uk="Більше не можна">Больше нельзя</span>
+                </li>
+                <li>
+                    <span class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="info" uk="Список бажань заповнений, щоб додати нове - видаліть менш пріоритетне">Список желаний заполнен, чтобы добавить новое - удалите менее приоритетное</div>
+    </div>
+
+    <div id="search" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="title" uk="Знайти в магазині">Найти в магазине</span>
+                </li>
+                <li>
+                    <span class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <input class="searchtext" type="text" value="" />
+        <span class="find"></span>
+        <div style="margin-left: 10px; position: relative; top: -40px" uk="діапазон цін:">диапазон цен:</div>
+        <div style="text-align: center; position: relative; top: -40px">
+            <input id="minp" style="display: inline-block; width: 50px; padding: 5px; margin: 5px" type="text" value="0" /><span style="display: inline-block;">-</span><input id="maxp" style="display: inline-block; width: 50px; padding: 5px; margin: 5px;" type="text" value="10000" />
+        </div>
+    </div>
+    <div class="catmenu" style="display: none;" id="ShopsMenu">
+        <div class="header">
+            <ul>
+                <li><span class="menu"></span></li>
+                <li><span class="title" uk="Магазини">Магазины</span><span class="ListMenu"></span><span class="CloudMenu"></li>
+                <li><span class="close"></span></li>
+            </ul>
+        </div>
+        <div style="text-align: center;"></div>
+    </div>
+    <div class="catmenu" style="display: none" id="MainCatMenu">
+        <div class="header">
+            <ul>
+                <li><span class="menu"></span></li>
+                <li><span class="title">Каталог</span><span class="ListMenu"></span><span class="CloudMenu"></span></li>
+                <li><span class="close"></span></li>
+            </ul>
+        </div>
+        <div style="text-align: center;"><span class="new">Новинки</span></div>
+    </div>
+    <div class="catmenu" id="SubCatMenu" style="display: none; z-index: 999999; display: none;">
+        <div class="header">
+            <ul>
+                <li><span class="menu"></span></li>
+                <li><span class="title" style="width: 638px">Каталог</span></li>
+                <li><span class="close"></span></li>
+            </ul>
+        </div>
+        <div style="text-align: center;"><span class="new">Новинки</span></div>
+    </div>
+    <div id="about" style="display: none; overflow-y: hidden; overflow-x: no-display;">
+        <div class="header">
+            <ul>
+                <li>
+                    <span class="menu"></span>
+                </li>
+                <li>
+                    <span class="title">Про магазин</span>
+                </li>
+                <li>
+                    <span class="close"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="shopInfo1">
             <div class="map">
                 <span class="map"></span>
                 <div class="mapinfo" style="font: 18px/24px Arial;">Терновка, ул. Харьковская 5 Маяк, второй этаж, Клякса</div>
@@ -1010,84 +1205,88 @@
                 <div class="phonetitle">ТЕЛЕФОН:</div>
                 <div class="phonedesc"></div>
             </div>
-            <br />
         </div>
-        <div id="content_div" style="display: none;">
-            <div class="xpool"><a target="_blank" href="https://xpool.pro" style="color: white; margin-left: 5px; text-decoration: none; display: inline-block; margin-top: 0px;"><span style="color: #ff8f8f; padding-right: 3px;">x</span>Pool.</a><a target="_blank" href="https://xpool.pro" style="color: black; background-color: #efefef; text-decoration: none; display: inline-block; margin-top: 3px; border: 1px solid #efefef; border-radius: 5px; padding: 2px; font: 14px Arial">PRO</a><span class="phone"></span></div>
-            <div class="mainheader" style="padding-top: 29px;">
-                <div style="width: auto; margin: auto;">
-                    <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
-
-                        <div class="head2">
-                        </div>
-
+        <div id="shopInfo2" style="font: 18px/24px Arial; display: none; padding-left: 10px; padding-right: 10px;">
+            Товари магазинів мережі Клякса ретельно перевірені лічильниками Гейгера-Мюллера (датчик СБМ-20-01) та мають безпечний для дитини рівень випромінювання < 0.2 мікрозіверт в годину
+        </div>
+        <br />
+    </div>
+    <div id="content_div" style="display: none;">
+        <div class="xpool"><a target="_blank" href="https://xpool.pro" style="color: white; margin-left: 5px; text-decoration: none; display: inline-block; margin-top: 0px;"><span style="color: #ff8f8f; padding-right: 3px;">x</span>Pool.</a><a target="_blank" href="https://xpool.pro" style="color: black; background-color: #efefef; text-decoration: none; display: inline-block; margin-top: 3px; border: 1px solid #efefef; border-radius: 5px; padding: 2px; font: 14px Arial">PRO</a><span class="phone"></span></div>
+        <div class="mainheader" style="padding-top: 29px;">
+            <div style="width: auto; margin: auto;">
+                <!--<div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
+                    <div class="Alert" style="display: none"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>
+                    <div class="Radio"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>
+                    <div class="head2">
                     </div>
-                    <div style="height: 50px; padding-bottom: 8px;">
-                        <div id="MenuDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display; position: absolute; display: block; background-color: #8e8e8e; z-index: 9990;">
-                            <div class="menu" style="margin: 0 auto;">
-                                <ul>
-                                    <li id="KeyLi">
-                                        <span class="key" id="UserKey"></span>
-                                    </li>
-                                    <li id="ExitLi" style="display: none">
-                                        <span class="exit"></span>
-                                    </li>
-                                    <li id="MoneyBoxLi" style="display: none">
-                                        <span id="MBM1" class="moneyboxm" v1="0" v2="0" v3="0" v4="0" v5="0" v6="0" v7="0" v8="0" v9="0" v10="0" v11="0" v12="0" v13="0" v14="0" v15="0">x</span>
-                                    </li>
-                                    <li>
-                                        <span class="search"></span>
-                                    </li>
-                                    <li>
-                                        <span class="catalog"></span>
-                                    </li>
-                                    <li>
-                                        <span class="best"></span>
-                                    </li>
-                                    <li>
-                                        <span class="new"></span>
-                                    </li>
-                                    <li>
-                                        <span class="discount"></span>
-                                    </li>
-                                    <li id="CartLi">
-                                        <span id="CartCount" class="mcart"><span class="mcartcount">0</span></span>
-                                    </li>
-                                    <li>
-                                        <span id="FavCount" class="favorites"><span class="heartcount">0</span></span>
-                                    </li>
-                                    <li>
-                                        <span class="info"></span>
-                                    </li>
-                                </ul>
-                            </div>
+                </div>-->
+                <div style="height: 50px; padding-bottom: 8px;">
+                    <div id="MenuDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display; position: absolute; display: block; background-color: #8e8e8e; z-index: 9990;">
+                        <div class="menu" style="margin: 0 auto;">
+                            <ul>
+                                <li id="KeyLi">
+                                    <span class="key" id="UserKey"></span>
+                                </li>
+                                <li id="ExitLi" style="display: none">
+                                    <span class="exit"></span>
+                                </li>
+                                <li id="MoneyBoxLi" style="display: none">
+                                    <span id="MBM1" class="moneyboxm" v1="0" v2="0" v3="0" v4="0" v5="0" v6="0" v7="0" v8="0" v9="0" v10="0" v11="0" v12="0" v13="0" v14="0" v15="0">x</span>
+                                </li>
+                                <li>
+                                    <span class="search"></span>
+                                </li>
+                                <li>
+                                    <span class="catalog"></span>
+                                </li>
+                                <li>
+                                    <span class="best"></span>
+                                </li>
+                                <li>
+                                    <span class="new"></span>
+                                </li>
+                                <li>
+                                    <span class="discount"></span>
+                                </li>
+                                <li id="CartLi">
+                                    <span id="CartCount" class="mcart"><span class="mcartcount">0</span></span>
+                                </li>
+                                <li>
+                                    <span id="FavCount" class="favorites"><span class="heartcount">0</span></span>
+                                </li>
+                                <li>
+                                    <span class="info"></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-                <div id="body" class="wide">
-                    <div id="DateTimeInfo" class="TitleDiv" style="margin-bottom: 4px; display: none;">
-                        <input type="button" id="datepicker" class="inputDate" value="" />
-                        :
-                    </div>
-                    <div id="TitleInfo" class="TitleDiv"></div>
-                    <div id="CabinetInfo" class="TitleDiv" style="display: none; width: 904px;"></div>
-                    <div>
-                        <table id="ProductsListView">
-                            <tr>
-                                <td class="products" id="col1" style="padding-left: 0px"></td>
-                                <td class="products" id="col2"></td>
-                                <td class="products" id="col3" style="padding-right: 0px;"></td>
-                            </tr>
-                        </table>
-                        <div id="ContentDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
-                            <table id="CabinetTable" style="display: none; margin-left: 3px; margin-top: 5px; color: #333333; background-color: transparent; border-radius: 8px; width: 926px; table-layout: fixed;" align="center"></table>
-                        </div>
-                        </div>
-                    <div id="EmptyDiv" uk="Порожньо" style="display: none; text-align: center; padding: 10px">Пусто</div>
-                    <div id="CreateOrder" class="CreateOrderDiv" uk="Оформити замовлення">Оформить заказ</div>             
-            </div>
         </div>
+        <div id="body" class="wide">
+            <div id="DateTimeInfo" class="TitleDiv" style="margin-bottom: 4px; display: none;">
+                <input type="button" id="datepicker" class="inputDate" value="" />
+                :
+            </div>
+            <div id="TitleInfo" class="TitleDiv"></div>
+            <div id="CabinetInfo" class="TitleDiv" style="display: none; width: 904px;"></div>
+            <div>
+                <table id="ProductsListView">
+                    <tr>
+                        <td class="products" id="col1" style="padding-left: 0px"></td>
+                        <td class="products" id="col2"></td>
+                        <td class="products" id="col3" style="padding-right: 0px;"></td>
+                    </tr>
+                </table>
+                <div id="ContentDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
+                    <table id="CabinetTable" style="display: none; margin-left: 3px; margin-top: 5px; color: #333333; background-color: transparent; border-radius: 8px; width: 926px; table-layout: fixed;" align="center"></table>
+                </div>
+            </div>
+            <div id="EmptyDiv" uk="Порожньо" style="display: none; text-align: center; padding: 10px">Пусто</div>
+            <div id="CreateOrder" class="CreateOrderDiv" uk="Оформити замовлення">Оформить заказ</div>
+        </div>
+    </div>
 </body>
 </html>
 <script type="text/javascript">
@@ -1164,12 +1363,18 @@
                 $(".AlertSpan").css("font", "24px/24px Arial");
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на<br/>обслуговування" : "Пожаловаться на<br/>обслуживание");
 
+                $(".RadioSpan").css("font", "24px/24px Arial");
+                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний<br/>контроль" : "Радиологический<br/>контроль");
+
                 $(".SpecInfoSpan").css("font", "24px/24px Arial");
                 $(".SpecInfoSpan").html("На сайте еще не<br/>все товары");
             }
             else if (window.innerWidth > 550) {
                 $(".AlertSpan").css("font", "24px/50px Arial");
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на обслуговування" : "Пожаловаться на обслуживание");
+
+                $(".RadioSpan").css("font", "24px/50px Arial");
+                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний контроль" : "Радиологический контроль");
 
                 $(".SpecInfoSpan").css("font", "24px/50px Arial");
                 $(".SpecInfoSpan").html("На сайте еще не все товары");
@@ -1318,6 +1523,9 @@
             if (window.innerWidth > 550) {
                 $(".AlertSpan").css("font", "28px/50px Arial");
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на обслуговування" : "Пожаловаться на обслуживание");
+
+                $(".RadioSpan").css("font", "28px/50px Arial");
+                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний контроль" : "Радиологический контроль");
 
                 $(".SpecInfoSpan").css("font", "28px/50px Arial");
                 $(".SpecInfoSpan").html("На сайте представлены еще не все товары");
@@ -1479,7 +1687,7 @@
             sort = 0;
             currentEvent = "clientlog";
 
-            window.history.pushState({}, "", "/index.html?sv=3");
+            window.history.pushState({}, "", "index.html?sv=3");
 
             data_status = 10;
 
@@ -1510,6 +1718,12 @@
 
             for (var i = 0; i < items.length; i++) {
                 $(items[i]).html($(items[i]).attr("uk"));
+            }
+
+            var items2 = $("#AddictedTable").find("[uk]");
+
+            for (var i = 0; i < items2.length; i++) {
+                $(items2[i]).html($(items2[i]).attr("uk"));
             }
         }
     }
@@ -2123,7 +2337,7 @@
                 $("#splash").hide();
                 SetView();
 
-                window.history.pushState({}, "", "/index.html?catalog=1");
+                window.history.pushState({}, "", "index.html?catalog=1");
             }
             else {
                 $.ajax({
@@ -2173,7 +2387,7 @@
             $("#splash").hide();
             SetView();
 
-            window.history.pushState({}, "", "/index.html?catalog=1");
+            window.history.pushState({}, "", "index.html?catalog=1");
         }
         else {
             $.ajax({
@@ -2277,8 +2491,8 @@
         data_status = 11;
 
         var dataRows = data.d[0];
-      
-        window.history.pushState({}, "", "/index.html?catsid=" + dataRows[0][2]);
+    
+        window.history.pushState({}, "", "index.html?catsid=" + dataRows[0][2]);
 
 
         $("#MainCatMenu").children().eq(1).children().remove();
@@ -2321,6 +2535,7 @@
         if (currentEvent == "subcats") {
             var dataRows = data.d[1];
 
+           
             window.history.pushState({}, "", "index.html?ssid=" + data.d[4] + "&cat=" + data.d[0].replace(/ /g, "_"));
 
             //if (dataRows.length > 2) {
@@ -2443,9 +2658,19 @@
         }
 
         loadingHide();
+        $("#shopInfo1").show();
+        $("#shopInfo2").hide();
         $("#about").center();
         $("#about").show();
     }
+
+    $(".Radio").click(function () {
+        $("#splash").show();
+        $("#shopInfo2").show();
+        $("#shopInfo1").hide();
+        $("#about").center();
+        $("#about").show();
+    })
 
     $("#about span.close").click(function () {
         $("#about").hide();
@@ -2854,7 +3079,7 @@
         data_status = 1;
 
 
-        window.history.pushState({}, "", "/index.html?sv=0");
+        window.history.pushState({}, "", "index.html?sv=0");
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
 
@@ -2899,7 +3124,7 @@
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
 
-        window.history.pushState({}, "", "/index.html?sv=1");
+        window.history.pushState({}, "", "index.html?sv=1");
 
         $.ajax({
             async: true,
@@ -2940,7 +3165,7 @@
 
         data_status = 5;
 
-        window.history.pushState({}, "", "/index.html?sv=2");
+        window.history.pushState({}, "", "index.html?sv=2");
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
 
@@ -2982,7 +3207,7 @@
 
         data_status = 6;
 
-        window.history.pushState({}, "", "/index.html?sv=5");
+        window.history.pushState({}, "", "index.html?sv=5");
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
 
@@ -3024,7 +3249,7 @@
 
         data_status = 7;
 
-        window.history.pushState({}, "", "/index.html?sv=4");
+        window.history.pushState({}, "", "index.html?sv=4");
 
         //alert("{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"cartdata\":'" + $.cookie("cart" + sid_v + "." +uid_v) + "' }");
 
@@ -3166,6 +3391,7 @@
 
                     $("#DiscountValue").val(selected.attr("discount"));
                     $("#RatingValue").html(selected.attr("rating"));
+                    $("#Price2Value").val(selected.attr("price2_inet"));
 
                     $("#CategoriesSelect").val($("#CategoriesSelect").find('option[cat="' + selected.attr("catid") + '"]').text());
 
@@ -3292,6 +3518,7 @@
 
                     $("#DiscountValue").val(selected.attr("discount"));
                     $("#RatingValue").html(selected.attr("rating"));
+                    $("#Price2Value").val(selected.attr("price2_inet"));
 
                     $("#CategoriesSelect").val($("#CategoriesSelect").find('option[cat="' + selected.attr("catid") + '"]').text());
 
@@ -3467,6 +3694,7 @@
 
                 $("#DiscountValue").val(selected.attr("discount"));
                 $("#RatingValue").html(selected.attr("rating"));
+                $("#Price2Value").val(selected.attr("price2_inet"));
 
                 $("#CategoriesSelect").val($("#CategoriesSelect").find('option[cat="' + selected.attr("catid") + '"]').text());
 
@@ -3681,11 +3909,13 @@
             $("#splash").show();
             loadingShow();
 
+            alert($("#Price2Value").val());
+
             $.ajax({
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/SaveImageURL",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + ", \"url\":'" + $("#TargetURL1").val() + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val() + "', \"vfurl\":'" + $("#TargetVFrameURL").val() + "', \"rating\":" + $("#RatingValue").html() + ", \"discount\":'" + $("#DiscountValue").val() + "', \"delivery\":'" + $("#DeliverySelect option:selected").attr("ru") + "', \"time\":" + $("#TimeSelect option:selected")[0].getAttribute("v") + ", \"catid\":" + $("#CategoriesSelect option:selected")[0].getAttribute("cat") + " }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + ", \"url\":'" + $("#TargetURL1").val() + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val() + "', \"vfurl\":'" + $("#TargetVFrameURL").val() + "', \"rating\":" + $("#RatingValue").html() + ", \"discount\":'" + $("#DiscountValue").val() + "', \"delivery\":'" + $("#DeliverySelect option:selected").attr("ru") + "', \"time\":" + $("#TimeSelect option:selected")[0].getAttribute("v") + ", \"catid\":" + $("#CategoriesSelect option:selected")[0].getAttribute("cat") + ", \"price2_inet\":'" + $("#Price2Value").val() + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindSaveImageURL
@@ -3697,6 +3927,37 @@
         //else
         //    alert($("#MBM1").attr("v16") == "1" ? "Ще не підтримується для виду типу список" : "Пока не поддерживается для вида типа список");
     })
+
+    $('#CategoriesSelect').change(function (evt) {
+        if ($(this).attr("dis") == "1") {
+            alert("Demo Version!")
+        }
+        else {
+            $("#splash").show();
+            loadingShow();
+
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "https://xpool.pro/web/webform.aspx/SaveImageURL",
+                data: "{ \"uid\":" +uid_v + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + ", \"url\":'" + $("#TargetURL1").val() + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val() + "', \"vfurl\":'" + $("#TargetVFrameURL").val() + "', \"rating\":" + $("#RatingValue").html() + ", \"discount\":'" + $("#DiscountValue").val() + "', \"delivery\":'" + $("#DeliverySelect option:selected").attr("ru") + "', \"time\":" + $("#TimeSelect option:selected")[0].getAttribute("v") + ", \"catid\":" + $("#CategoriesSelect option:selected")[0].getAttribute("cat") + ", \"price2_inet\":'" + $("#Price2Value").val() + "' }",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: bindSaveCategory
+            });
+
+            evt.stopPropagation();
+            evt.preventDefault();
+        }
+    });
+
+    function bindSaveCategory(data) {
+
+        //alert(data.d);
+
+        $(selected).attr("catid", $("#CategoriesSelect option:selected")[0].getAttribute("cat"));
+        loadingHide();
+    }
 
     function bindSaveImageURL(data) {
 
@@ -3710,8 +3971,8 @@
 
         $(selected).find("img").first().attr("res", cur_photo + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val());
         $(selected).attr("rating", $("#RatingValue").html());
-
         $(selected).attr("discount", $("#DiscountValue").val());
+        $(selected).attr("price2_inet", $("#Price2Value").val());
 
         $(selected).attr("catid", $("#CategoriesSelect option:selected")[0].getAttribute("cat"));
 
@@ -3797,6 +4058,157 @@
         $("#viewer").hide();
         loadingHide();
         $("#splash").hide();
+    }
+
+    $("#UploadToGoogleFeedSpan").click(function () {
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/GetGoogleMainCats",       
+            data: "{ }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGoogleMainCats
+        });
+
+       
+
+        //alert($("#CategoriesSelect option:selected")[0].innerText);
+        //alert($(selected).attr("dataid"));
+
+        
+    });
+
+    function bindGoogleMainCats(data) {
+
+        
+        $("#splash4").center();
+        $("#splash4").show();
+        $("#AddictedTable").css("width", "400px");
+        $("#AddictedView").css("width", "400px");
+        $("#AddictedTable").children().remove();
+        $("#AddictedTable").append('<tr><td class="Head2" width="100%" uk="Категорія">Категория:</td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="42px"><select style="width: 100%" id="MainCatSelect"></select></td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head2" uk="Підкатегорія 1">Подкатегория 1:</td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="42px"><select style="width: 100%" id="Cat1Select"></select></td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head2" uk="Підкатегорія 2">Подкатегория 2:</td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="42px"><select style="width: 100%" id="Cat2Select"></select></td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head2" uk="Підатегорія 3">Подкатегория 3:</td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="42px"><select style="width: 100%" id="Cat3Select"></select></td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head2" uk="Бренд">Бренд:</td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="42px"><input class="inputText" style="text-align: center; padding-left: 0px" id="BrandTextBox" type="text" value="" /></td></tr>');
+        $("#AddictedTable").append('<tr><td id="SaveFeedChanges" class="None" style="background-color: #FFFF00" width="100%" uk="Зберегти">Сохранить</td></tr>');
+        $("#AddictedTable").append('<tr><td id="CloseFeedChanges" class="None" width="100%" uk="Закрити">Закрыть</td></tr>');
+        for (var i = 0; i < data.d.length; i++) {
+            $('#MainCatSelect').append('<option>' + data.d[i] + '</option>');
+        }
+
+        $("#MainCatSelect").change();
+
+        $("#AddictedView").center();
+        $("#AddictedView").show();
+    }
+
+    $("#AddictedTable").delegate('#MainCatSelect', 'change', function () {
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/GetGoogleSubCats1",
+            data: "{ \"main_cat\":'" + $("#MainCatSelect option:selected")[0].innerText + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGetGoogleSubCats1
+        });
+    });
+
+    function bindGetGoogleSubCats1(data)
+    {
+        $('#Cat1Select').children().remove();
+
+        for (var i = 0; i < data.d.length; i++) {
+            $('#Cat1Select').append('<option>' + data.d[i] + '</option>');
+        }
+    }
+
+    $("#AddictedTable").delegate('#Cat1Select', 'change', function () {
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/GetGoogleSubCats2",
+            data: "{ \"main_cat\":'" + $("#MainCatSelect option:selected")[0].innerText + "', \"sub1\":'" + $("#Cat1Select option:selected")[0].innerText + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGetGoogleSubCats2
+        });
+    });
+
+    $("#AddictedTable").delegate('#SaveFeedChanges', 'click', function () {
+
+        loadingShow();
+
+        var g_cat = $("#MainCatSelect").val() + (($("#Cat1Select").val() == null || $("#Cat1Select").val() == "") ? "" : " > " + $("#Cat1Select").val()) + (($("#Cat2Select").val() == "" || $("#Cat2Select").val() == null) ? "" : " > " + $("#Cat2Select").val()) + (($("#Cat3Select").val() == null || $("#Cat3Select").val() == "") ? "" : " > " + $("#Cat3Select").val());
+
+       // alert(g_cat);
+
+        var brand = ($("#BrandTextBox").val() == "" || $("#BrandTextBox").val() == undefined) ? "Інші бренди" : $("#BrandTextBox").val();
+
+        var cat = $("#CategoriesSelect").val() == "" ? "Усі" : $("#CategoriesSelect").val();
+
+        //alert($("#server_path").val());
+        //alert($("#TargetURL1").val());
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/UploadToFeed",
+            data: "{ \"uid\":" + getUrlParameter("uid") + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + ", \"url\":'" + $("#TargetURL1").val() + "', \"brand\":'" + brand + "', \"google_product_category\":'" + g_cat + "', \"category\":'" + cat + "', \"price2\":'" + $("#Price2Value").val() + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindUploadToFeed
+        });
+    });
+
+    $("#AddictedTable").delegate('#CloseFeedChanges', 'click', function () {
+        $("#splash4").hide();
+        $("#AddictedView").hide();
+    });
+
+    function bindGetGoogleSubCats2(data) {
+        $('#Cat2Select').children().remove();
+
+        for (var i = 0; i < data.d.length; i++) {
+            $('#Cat2Select').append('<option>' + data.d[i] + '</option>');
+        }
+    }
+
+    $("#AddictedTable").delegate('#Cat2Select', 'change', function () {
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/GetGoogleSubCats3",
+            data: "{ \"main_cat\":'" + $("#MainCatSelect option:selected")[0].innerText + "', \"sub1\":'" + $("#Cat1Select option:selected")[0].innerText + "', \"sub2\":'" + $("#Cat2Select option:selected")[0].innerText + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGetGoogleSubCats3
+        });
+    });
+
+    function bindGetGoogleSubCats3(data) {
+        $('#Cat3Select').children().remove();
+
+        for (var i = 0; i < data.d.length; i++) {
+            $('#Cat3Select').append('<option>' + data.d[i] + '</option>');
+        }
+    }
+
+     function bindUploadToFeed(data) {
+         
+        $("#splash4").hide();
+        $("#AddictedView").hide();
+        $("#TargetURL1").val(data.d);
+
+        loadingHide();
     }
 
     $(".UrlArea").focus(function () {
@@ -4126,11 +4538,20 @@
             return this;
         }
 
+        if (getUrlParameter("uid") != undefined && getUrlParameter("uid") != null && getUrlParameter("uid") != '') {
+            uid_v = getUrlParameter("uid");
+        }
+
+
+        if (getUrlParameter("sid") != undefined && getUrlParameter("sid") != null && getUrlParameter("sid") != '') {
+            sid_v = getUrlParameter("sid");
+        }
+
         $.ajax({
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/InitPage",
-            data: "{ }",
+            data: "{ \"uid_v\":" + uid_v + ", \"sid_v\":" + sid_v + " }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindInit
@@ -4139,8 +4560,8 @@
 
 
 
-    var uid_v = 48;
-    var sid_v = 638;
+    var uid_v = 0;//edit
+    var sid_v = 0;//edit
 
     function bindInit(data) {
 
@@ -4151,11 +4572,15 @@
         $("#MBM1").attr("v17", data.d.mbm[16]), $("#MBM1").attr("v18", data.d.mbm[17]), $("#MBM1").attr("v19", "0"), $("#MBM1").attr("v20", data.d.mbm[19]);
         $("#MBM1").attr("v21", data.d.mbm[20]), $("#MBM1").attr("v22", data.d.mbm[21]);
 
-        //$("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
-        //$("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
+        $("#server_path").val(data.d.server_path);
 
-        $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_black/css/main.css");
-        $("#TargetStyleSheet").attr("st", "style_black");
+        //alert(data.d.server_path);
+
+        $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
+        $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
+
+       // $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
+       // $("#TargetStyleSheet").attr("st", "style_blot");
 
         $("#MBM1").attr("glue1", data.d.glue1);
         $("#MBM1").attr("glue2", data.d.glue2);
@@ -4167,22 +4592,86 @@
 
         shop_addr = (getUrlParameter("shop") != undefined && getUrlParameter("shop") != '') ? getUrlParameter("shop") : ("https://" + extractHostname($(location).attr("href")));
 
-        if ($(".previmg").attr("redir") == "1") {
-            $("#redirect").show();
-            var minp = (getUrlParameter("minp") != undefined && getUrlParameter("minp") != '') ? ("&minp=" + getUrlParameter("minp")) : '';
-            var maxp = (getUrlParameter("maxp") != undefined && getUrlParameter("maxp") != '') ? ("&maxp=" + getUrlParameter("maxp")) : '';
-            var s = (getUrlParameter("s") != undefined && getUrlParameter("s") != '') ? ("&s=" + getUrlParameter("s")) : '';
-            var id = (getUrlParameter("id") != undefined && getUrlParameter("id") != '') ? ("&id=" + getUrlParameter("id")) : '';
-            var ids = (getUrlParameter("ids") != undefined && getUrlParameter("ids") != '') ? ("&ids=" + getUrlParameter("ids")) : '';
-            var cat = (getUrlParameter("cat") != undefined && getUrlParameter("cat") != '') ? ("&cat=" + getUrlParameter("cat").replace(/_/g, " ")) : '';
-            var ssid = (getUrlParameter("ssid") != undefined && getUrlParameter("ssid") != '') ? ("&ssid=" + getUrlParameter("ssid")) : '';
-            var sv = (getUrlParameter("sv") != undefined && getUrlParameter("sv") != '') ? ("&sv=" + getUrlParameter("sv")) : '';
+        //if ($(".previmg").attr("redir") == "1") {
+        //    $("#redirect").show();
+        //    var minp = (getUrlParameter("minp") != undefined && getUrlParameter("minp") != '') ? ("&minp=" + getUrlParameter("minp")) : '';
+        //    var maxp = (getUrlParameter("maxp") != undefined && getUrlParameter("maxp") != '') ? ("&maxp=" + getUrlParameter("maxp")) : '';
+        //    var s = (getUrlParameter("s") != undefined && getUrlParameter("s") != '') ? ("&s=" + getUrlParameter("s")) : '';
+        //    var id = (getUrlParameter("id") != undefined && getUrlParameter("id") != '') ? ("&id=" + getUrlParameter("id")) : '';
+        //    var ids = (getUrlParameter("ids") != undefined && getUrlParameter("ids") != '') ? ("&ids=" + getUrlParameter("ids")) : '';
+        //    var cat = (getUrlParameter("cat") != undefined && getUrlParameter("cat") != '') ? ("&cat=" + getUrlParameter("cat").replace(/_/g, " ")) : '';
+        //    var ssid = (getUrlParameter("ssid") != undefined && getUrlParameter("ssid") != '') ? ("&ssid=" + getUrlParameter("ssid")) : '';
+        //    var sv = (getUrlParameter("sv") != undefined && getUrlParameter("sv") != '') ? ("&sv=" + getUrlParameter("sv")) : '';
 
 
 
-            window.location.replace(shop_addr + "?uid=" +uid_v + "&sid=" + sid_v + s + id + ids + cat + sv + ssid + minp + maxp + "&refer=" + getUrlParameter("refer"));
-        }
-        else {
+        //    window.location.replace(shop_addr + "?uid=" +uid_v + "&sid=" + sid_v + s + id + ids + cat + sv + ssid + minp + maxp + "&refer=" + getUrlParameter("refer"));
+        //}
+        //else
+        {
+
+            if (data.d.edit == 1) {
+                $("#EditImage1").show();
+                $("#EditImage2").show();
+            }
+
+              $("#CategoriesSelect").append("<option cat='0'>Все</option>");
+                    var cur_drop = '';
+                    var drop = '';
+                    var cur_item_parts = null;
+
+                    
+
+                    for (var i = 0; i < data.d.cats.length; i++)
+                    {
+
+                        var parts = data.d.cats[i].Name.split("/");
+
+                        drop = '';
+
+                        if (parts.length > 1)
+                        {
+                            for (var j = 1; j < parts.length; j++)
+                            {
+                                drop = drop + "\xA0\xA0\xA0\xA0\xA0";
+                            }
+                        }
+
+                        if ((drop.length < cur_drop.length) && cur_drop != '') {
+                            var another_path = '';
+
+                            if (cur_item_parts != null) {
+                                for (var j = 0; j < cur_item_parts.length - 1; j++) {
+                                    another_path += cur_item_parts[j] + "/";
+                                }
+                            }
+
+                            $("#CategoriesSelect").append("<option cat='-1' full='" + another_path + "Прочее" + "'>" + cur_drop + "Прочее" + "</option>");
+                        }
+
+                        cur_item_parts = parts;
+                        cur_drop = drop;
+
+                        $("#CategoriesSelect").append("<option cat='" + data.d.cats[i].ID + "' full='" + data.d.cats[i].Name + "'>" + drop + parts[parts.length - 1] + "</option>");
+                    }
+
+                    drop = '';
+
+                    if ((drop.length < cur_drop.length) && cur_drop != '')
+                    {
+                        var another_path = '';
+
+                        for (var j = 0; j < cur_item_parts.length - 1; j++)
+                        {
+                            another_path += cur_item_parts[j] + "/";
+                        }
+
+                        $("#CategoriesSelect").append("<option cat='-1' full='" + another_path + "Прочее" + "'>" + cur_drop + "Прочее" + "</option>");
+                    }
+
+            $("#CategoriesSelect").append("<option cat='-1'>Прочее</option>");
+                
+
             $("#datepicker1,#datepicker2").datepicker({
                 showAnim: '',
                 beforeShow: function () {
@@ -4261,7 +4750,9 @@
             if ($("#MBM1").attr("v7") == "On") {
                 if ($("#MBM1").attr("v9") != "") {
 
-                    $(".head2").html("MONSTRO");
+                    //title
+                    $(".head2").html($("#MBM1").attr("v9"));
+                    document.title = $("#MBM1").attr("v9");
 
                     $(".head2").show();
                 }
@@ -4781,7 +5272,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetClientLog",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"startRecord\":" + startRecord + ", \"type\":0 }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"startRecord\":" + startRecord + ", \"type\":0 }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetClientLog
@@ -5265,7 +5756,7 @@
 
         if (disable_trade == 0 && count > 0) {
             if ($.cookie("c_view") == "list") {
-                if (trade_info == "1" && count == 1) {
+                if ((trade_info == "1" || (sid == 3692 && price > 1200)) && count == 1) {
                     res = '<div class="pickup" style="width: 190px; margin-left: 0px">' + ($("#MBM1").attr("v16") == "1" ? "Самовивіз" : "Самовывоз") + '</div>';
                 }
                 else {
@@ -5310,6 +5801,7 @@
             //alert($("#col1").children().c);
 
             if ($("#col1").children().length == 0) {
+
                 $("#splash").show();
                 loadingShow();
 
@@ -5339,6 +5831,20 @@
                 }
                 else {
 
+                    loadingHide();
+                    $("#splash4").center();
+                    $("#splash4").show();
+                    $("#AddictedTable").css("width", "300px");
+                    $("#AddictedView").css("width", "300px");
+                    $("#AddictedTable").children().remove();
+
+                    $("#AddictedTable").append('<tr><td id="PayOnline" class="GoPay" width="100%" uk="Сплатити онлайн">Оплатить онлайн</td></tr>');
+                    $("#AddictedTable").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;" uk="Перейти в кабінет">Перейти в кабинет</td></tr>');
+
+                    fillLangContent();
+
+                    $("#AddictedView").center();
+                    $("#AddictedView").show();
 
                     //window.history.pushState({}, '1pool.in.ua', '/web/webform.aspx?uid=' +uid_v + '&sid=' + sid_v);
 
@@ -5347,18 +5853,7 @@
 
 
                     // alert("{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("cart" + sid_v + "." +uid_v) + "', \"delivery_type\":" + (($("#MBM1").attr("v19") == "0") ? "'" + $("#DeliveryType").val() + "'" : "'Адресная'") + ", \"warehouse\":'" + warehouse + "', \"area\":'" + area + "', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"sms\":'" + $("#MBM1").attr("v17") + "', \"comments\":'" + ($.cookie("comments" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("comments" + sid_v + "." +uid_v)) + "', \"ctime\":'" + ($.cookie("ctime" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("ctime" + sid_v + "." +uid_v)) + "' }")
-                    $("#splash").show();
-                    $(window).scrollTop(0);
-
-                    $.ajax({
-                        async: true,
-                        type: "POST",
-                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + warehouse + "', \"area\":'', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "' }",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: bindCreateNewOrder
-                    });
+                   
                 }
             }
             else {
@@ -5447,6 +5942,76 @@
             $("#splash").hide();
             $("#splash2").hide();
         }  
+    });
+
+    $("#AddictedTable").delegate("#PayOnline", "click", function () {
+
+        loadingShow();
+        $("#AddictedView").hide();
+        $("#AddictedTable").children().remove();
+
+        var client_id = $("#MainBalance").attr("client_id");
+
+        if (client_id == undefined || client_id == '')
+            client_id = 0;
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindCreateNewOrder2
+        });      
+    });
+
+    function bindCreateNewOrder2(data) {
+
+        if (data.d[2] != "") {
+            alert(data.d[2]);
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "https://xpool.pro/web/webform.aspx/PayCard",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"cheque\":" + data.d[2] + " }",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: bindPayCard
+            });
+        }
+        else {
+            $("#splash").hide();
+            loadingHide();
+
+            alert("Помилка");
+        }
+    }
+
+    $("#AddictedTable").delegate("#GoToCabinet2", "click", function () {
+
+        loadingShow();
+        $("#splash4").hide();
+        $("#AddictedView").hide();
+        $("#AddictedTable").children().remove();
+
+        $("#splash").show();
+        $(window).scrollTop(0);
+
+        var client_id = $("#MainBalance").attr("client_id");
+
+        if (client_id == undefined || client_id == '')
+            client_id = 0;
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindCreateNewOrder
+        });
     });
 
     function bindGetLastOrderInfo(data) {
@@ -5814,7 +6379,7 @@
                     no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
 
 
-                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img></div><a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div>');
+                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img></div><a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div>');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -5834,7 +6399,7 @@
                 else
                     no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
 
-                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img></div></td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div></td></tr>');
+                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img></div></td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div></td></tr>');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -5971,6 +6536,7 @@
         //$("#loading").hide();
 
         //$("#neworder").hide();
+        $("#splash4").hide();
 
         $(".moneyboxm").click();
     }
