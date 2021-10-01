@@ -29,7 +29,7 @@
     <script type="text/javascript" src="https://xpool.pro/source/js/dist/jquery.inputmask.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/jquery-qrcode-0.17.0.min.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/printThis.js"></script>
-    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_blot/css/main.css" />
+    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_black/css/main.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -4576,11 +4576,11 @@
 
         //alert(data.d.server_path);
 
-        $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
-        $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
+       // $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
+       // $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
 
-       // $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
-       // $("#TargetStyleSheet").attr("st", "style_blot");
+        $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
+        $("#TargetStyleSheet").attr("st", "style_blot");
 
         $("#MBM1").attr("glue1", data.d.glue1);
         $("#MBM1").attr("glue2", data.d.glue2);
@@ -4751,8 +4751,11 @@
                 if ($("#MBM1").attr("v9") != "") {
 
                     //title
-                    $(".head2").html($("#MBM1").attr("v9"));
-                    document.title = $("#MBM1").attr("v9");
+                    //$(".head2").html($("#MBM1").attr("v9"));
+                    //document.title = $("#MBM1").attr("v9");
+
+                    $(".head2").html("MONSTRO");
+                    document.title = "MONSTRO";
 
                     $(".head2").show();
                 }
