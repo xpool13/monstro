@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -29,7 +29,7 @@
     <script type="text/javascript" src="https://xpool.pro/source/js/dist/jquery.inputmask.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/jquery-qrcode-0.17.0.min.js"></script>
     <script type="text/javascript" src="https://xpool.pro/source/js/printThis.js"></script>
-    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_black/css/main.css" />
+    <link id="TargetStyleSheet" rel="Stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -683,8 +683,8 @@
     <div id="splash2"></div>
     <div id="splash3"></div>
     <div id="splash4"></div>
-    <div id="loading" uk="Завантаження">Загрузка</div>
-    <div id="loading2" uk="Завантаження">Загрузка</div>
+    <div id="loading" uk="Завантаження" style="display: none;">Загрузка</div>
+    <div id="loading2" uk="Завантаження" style="display: none;">Загрузка</div>
     <div id="AddictedView" style="text-align: center; z-index: 9999999999; display: none; position: absolute; width: 400px; left: 50%; background-color: none; overflow-y: hidden; overflow-x: no-display;">
         <table id="AddictedTable" width="100%" style="table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: #333333; background-color: #333333;" align="center"></table>
     </div>
@@ -936,7 +936,7 @@
         <span class="leftscroll"></span>
 
         <div id="fullimg">
-            <img id="fullimage" src="source/style_blot/img/loading.gif" />
+            <img id="fullimage" src="https://xpool.pro/source/style_blot/img/loading.gif" />
         </div>
         <span class="rightscroll"></span>
         <span class="closey"></span>
@@ -1215,12 +1215,12 @@
         <div class="xpool"><a target="_blank" href="https://xpool.pro" style="color: white; margin-left: 5px; text-decoration: none; display: inline-block; margin-top: 0px;"><span style="color: #ff8f8f; padding-right: 3px;">x</span>Pool.</a><a target="_blank" href="https://xpool.pro" style="color: black; background-color: #efefef; text-decoration: none; display: inline-block; margin-top: 3px; border: 1px solid #efefef; border-radius: 5px; padding: 2px; font: 14px Arial">PRO</a><span class="phone"></span></div>
         <div class="mainheader" style="padding-top: 29px;">
             <div style="width: auto; margin: auto;">
-                <!--<div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
+                <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
                     <div class="Alert" style="display: none"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>
-                    <div class="Radio"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>
+                    <div class="Radio" style="display: none;"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>
                     <div class="head2">
                     </div>
-                </div>-->
+                </div>
                 <div style="height: 50px; padding-bottom: 8px;">
                     <div id="MenuDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display; position: absolute; display: block; background-color: #8e8e8e; z-index: 9990;">
                         <div class="menu" style="margin: 0 auto;">
@@ -3298,7 +3298,7 @@
         $('.findPhoto2').remove();
 
         var prev_img = undefined;
-        $("#fullimage").attr("src", "source/style_blot/img/loading.gif");
+        $("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
 
         window.setTimeout(function () {
 
@@ -3425,7 +3425,7 @@
         $('.findPhoto2').remove();
 
         var next_img = undefined;
-        $("#fullimage").attr("src", "source/style_blot/img/loading.gif");
+        $("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
 
         window.setTimeout(function () {
 
@@ -3570,9 +3570,19 @@
             var c_parts = selected.find(".imgcount2").first().html().split(" / ");
 
             if (c_parts[0] == c_parts[1]) {
-                selected.find('img').first().attr("src", selected.find('img').first().attr("res").split("||")[0]);
 
-                var urls = selected.find('img').attr("res").split("||");
+                if (selected.find('div.altimg').first().html() == undefined) {
+                    selected.find('img').first().attr("src", selected.find('img').first().attr("res").split("||")[0]);
+                }
+
+                var urls;
+
+                if (selected.find('div.altimg').first().html() == undefined) {
+                    urls = selected.find('img').first().attr("res").split("||");
+                }
+                else {
+                    urls = selected.find('div.altimg').first().html().split("||");
+                }
 
                 var imgcount = 1;
 
@@ -3630,13 +3640,32 @@
                 $("#fullimage").attr("src", "source/img/loading.gif");
                 img_index = parseInt($(this).children('img').first().attr("index"));
 
-                $("#fullimage").attr("src", GetFullImage($(this).children('img').first().attr("src")));
+                var urls;
 
 
-                if ($("#fullimage").attr("src").indexOf("nophoto2.png") != -1 || $(".EditImageClass").css("display") != "none")
-                    $('<span class="findPhoto2">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($("#fullimage"));
 
-                var urls = $(this).children('img').first().attr("res").split("||");
+                if (selected.find('div.altimg').first().html() == undefined) {
+                    $(".leftscroll").show();
+                    $(".rightscroll").show();
+                    $("#fullimg").find("#AltImgDiv").remove();
+                    $("#fullimage").show();
+                    $("#fullimage").attr("src", GetFullImage($(this).children('img').first().attr("src")));
+                    urls = selected.find('img').first().attr("res").split("||");
+
+                    if ($("#fullimage").attr("src").indexOf("nophoto2.png") != -1 || $(".EditImageClass").css("display") != "none")
+                        $('<span class="findPhoto2">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($("#fullimage"));
+                }
+                else {
+                    $(".leftscroll").hide();
+                    $(".rightscroll").hide();
+                    $("#fullimage").hide();
+                    $("#fullimg").find("#AltImgDiv").remove();
+                    $("#fullimg").append("<div id='AltImgDiv'>" + selected.find('div.altimg').first().html().replace("<[", "").replace("]>", "") + "</div>");
+                    urls = selected.find('div.altimg').first().html().split("||");
+                }
+
+
+
 
                 $(".UrlArea").removeAttr("sel");
                 $(".UrlArea").css("background-color", "#FFF");
@@ -3718,8 +3747,7 @@
                 //$("#fullimage").css("height", ($(window).innerHeight() - 20) + "px");
                 $("#viewer span.desc").css("width", ($(window).innerWidth() - 20) + "px");
 
-                if (imgcount > 1)
-                {
+                if (imgcount > 1) {
                     $(".rightscroll").click();
                 }
 
@@ -3731,7 +3759,14 @@
             }
             else {
 
-                var urls = selected.find('img').attr("res").split("||");
+                var urls;
+
+                if (selected.find('div.altimg').first().html() == undefined) {
+                    urls = selected.find('img').first().attr("res").split("||");
+                }
+                else {
+                    urls = selected.find('div.altimg').first().html().split("||");
+                }
 
                 var imgcount = 1;
 
@@ -3763,17 +3798,20 @@
 
                 selected.find(".imgcount2").show();
 
-                var img = selected.find('img').first();
-                //$("#splash3").css(img.offset());
-                //$("#splash3").css({ 'height': img.innerHeight(), 'width': img.innerWidth() });
-                //$("#splash3").show();
+                var urls;
 
-                //img.on("load", function () {
-                //    $("#splash3").hide();
-                //});
-                img.attr("src", selected.find('img').first().attr("res").split("||")[0]);
+                if (selected.find('div.altimg').first().html() == undefined) {
 
+                    var img = selected.find('img').first();
+                    //$("#splash3").css(img.offset());
+                    //$("#splash3").css({ 'height': img.innerHeight(), 'width': img.innerWidth() });
+                    //$("#splash3").show();
 
+                    //img.on("load", function () {
+                    //    $("#splash3").hide();
+                    //});
+                    img.attr("src", selected.find('img').first().attr("res").split("||")[0]);
+                }
             }
         }
     });
@@ -3793,7 +3831,10 @@
         var res;
 
         if (img != null && img != undefined && img != '') {
-            if (img.indexOf("nophoto") != -1) {
+            if (selected.find('div.altimg').first().html() != undefined) {
+                res = "<[" + img + "]>";
+            }
+            else if (img.indexOf("nophoto") != -1) {
                 res = "https://xpool.pro/web/source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto2.png";
             }
             else if (img.indexOf("import_files") != -1) {
@@ -3892,7 +3933,20 @@
     $("#SetSpan").click(function (evt) {
         //if ($.cookie("view") == "table") {
 
-        $("#fullimage").attr("src", $("#TargetURL1").val());
+        if ($("#TargetURL1").val().startsWith("<") == false) {
+            $(".leftscroll").show();
+            $(".rightscroll").show();
+            $("#fullimg").find("#AltImgDiv").remove();
+            $("#fullimage").show();
+            $("#fullimage").attr("src", $("#TargetURL1").val());
+        }
+        else {
+            $(".leftscroll").hide();
+            $(".rightscroll").hide();
+            $("#fullimage").hide();
+            $("#fullimg").find("#AltImgDiv").remove();
+            $("#fullimg").append("<div id='AltImgDiv'>" + $("#TargetURL1").val().replace("<[", "").replace("]>", "") + "</div>");
+        }
 
         evt.stopPropagation();
         evt.preventDefault();
@@ -3909,7 +3963,7 @@
             $("#splash").show();
             loadingShow();
 
-            alert($("#Price2Value").val());
+            
 
             $.ajax({
                 async: true,
@@ -3960,7 +4014,6 @@
     }
 
     function bindSaveImageURL(data) {
-
         var cur_photo = ($("#TargetURL1").val().indexOf("nophoto2.png") != -1) ? "https://xpool.pro/web/source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto.png" : $("#TargetURL1").val();
 
         $(selected).find("img").first().attr("src", cur_photo);
@@ -3969,7 +4022,34 @@
             $(selected).find(".findPhoto").remove();
         }
 
-        $(selected).find("img").first().attr("res", cur_photo + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val());
+        if (cur_photo.startsWith("<") == false) {
+            $(selected).find(".img").children("div.altimg").remove();
+            $(selected).find("img").first().attr("res", cur_photo + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val());
+        }
+        else {
+            $(selected).find(".img").children("div.altimg").remove();
+            $(selected).find(".img").children("img").remove();
+            $(selected).find(".img").append("<div class='altimg'>" + cur_photo.replace("<[", "").replace("]>", "") + "</div>");
+        }
+
+
+        if ($("#TargetURL1").val().startsWith("<") == false) {
+            $(".leftscroll").show();
+            $(".rightscroll").show();
+            $("#fullimg").find("#AltImgDiv").remove();
+            $("#fullimage").show();
+            $("#fullimage").attr("src", $("#TargetURL1").val());
+        }
+        else {
+            $(".leftscroll").hide();
+            $(".rightscroll").hide();
+            $("#fullimage").hide();
+            $("#fullimg").find("#AltImgDiv").remove();
+            $("#fullimg").append("<div id='AltImgDiv'>" + $("#TargetURL1").val().replace("<[", "").replace("]>", "") + "</div>");
+        }
+
+
+
         $(selected).attr("rating", $("#RatingValue").html());
         $(selected).attr("discount", $("#DiscountValue").val());
         $(selected).attr("price2_inet", $("#Price2Value").val());
@@ -4061,17 +4141,17 @@
     }
 
     $("#UploadToGoogleFeedSpan").click(function () {
-
-        $.ajax({
-            async: true,
-            type: "POST",
-            url: "https://xpool.pro/web/webform.aspx/GetGoogleMainCats",       
-            data: "{ }",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: bindGoogleMainCats
-        });
-
+        if ($("#TargetURL1").val().startsWith("<") == false) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "https://xpool.pro/web/webform.aspx/GetGoogleMainCats",
+                data: "{ }",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: bindGoogleMainCats
+            });
+        }
        
 
         //alert($("#CategoriesSelect option:selected")[0].innerText);
@@ -4576,11 +4656,11 @@
 
         //alert(data.d.server_path);
 
-       // $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
-       // $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
+        $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
+        $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
 
-        $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
-        $("#TargetStyleSheet").attr("st", "style_blot");
+       // $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
+       // $("#TargetStyleSheet").attr("st", "style_blot");
 
         $("#MBM1").attr("glue1", data.d.glue1);
         $("#MBM1").attr("glue2", data.d.glue2);
@@ -4743,23 +4823,21 @@
             loading2Show();
             $("#EmptyDiv").hide();
 
-            //if ($("#MBM1").attr("v9") == "клякса") {
-            //    $("#BlotInfo").show();
-            //}
+            if ($("#MBM1").attr("v9") == "клякса") {
+                $(".Radio").show();
+            }
 
-            //if ($("#MBM1").attr("v7") == "On") {
-            //    if ($("#MBM1").attr("v9") != "") {
+            if ($("#MBM1").attr("v7") == "On") {
+                if ($("#MBM1").attr("v9") != "") {
 
                     //title
-                    //$(".head2").html($("#MBM1").attr("v9"));
-                    //document.title = $("#MBM1").attr("v9");
+                    $(".head2").html($("#MBM1").attr("v9"));
+                    document.title = $("#MBM1").attr("v9");
 
-                    $(".head2").html("MONSTRO");
-                    document.title = "MONSTRO";
-
+                   
                     $(".head2").show();
-            //    }
-            //}
+                }
+            }
 
             
 
@@ -4829,8 +4907,10 @@
                 $(".mcartcount").html(count);
             }
 
-            menu_offset = $("#MenuDIV").offset().top - 29;
-           
+            if ($("#Alert").css("display") != "none")
+                menu_offset = $("#MenuDIV").offset().top - 50 + 100;
+
+          
             $(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
 
             if ($.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
@@ -6382,7 +6462,17 @@
                     no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
 
 
-                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img></div><a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div>');
+                var img_val = '';
+
+                if (addicted_dataRows[i][3].startsWith("<") == true) {
+                    img_val = "<div class='altimg'>" + addicted_dataRows[i][3].split("||")[0].replace("<[", "").replace("]>", "") + "</div>";
+                }
+                else {
+                    img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
+                }
+
+                
+                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + '</div ><a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div > ');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -6402,7 +6492,16 @@
                 else
                     no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
 
-                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img></div></td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div></td></tr>');
+                var img_val = '';
+
+                if (addicted_dataRows[i][3].startsWith("<") == true) {
+                    img_val = "<div class='altimg'>" + addicted_dataRows[i][3].split("||")[0].replace("<[", "").replace("]>", "") + "</div>";
+                }
+                else {
+                    img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
+                }
+
+                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + '</div></td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div></td></tr>');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
