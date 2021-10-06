@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>...</title>
+    <title>MONSTRO</title>
     <!--<meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="клякса.in.ua">
@@ -34,6 +34,10 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <style type="text/css">
+
+        .dready {
+            background-color: greenyellow;
+        }
 
         td.None {
             white-space: nowrap;
@@ -2503,6 +2507,13 @@
 
             var selected_tr = (selected_cat == dataRows[i][0]) ? "style='background-color: #9999FF'" : "";
 
+            if (dataRows[i][0] == "Все" && $("#MBM1").attr("v16") == "1") {
+                dataRows[i][0] = "Усе";
+            }
+            else if (dataRows[i][0] == "Прочее" && $("#MBM1").attr("v16") == "1") {
+                dataRows[i][0] = "Інше";
+            }
+
             $("#CabinetTable").append('<tr class="ItemContainer"><td class="category2" ' + selected_tr + ' path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</td></tr>');
         }
 
@@ -2566,8 +2577,17 @@
             $('#SubCatMenu').hide();
             $('#splash2').hide();
 
+            var title_cat = data.d[0];
+
+            if (title_cat == "Все" && $("#MBM1").attr("v16") == "1") {
+                title_cat = "Усе";
+            }
+            else if (title_cat == "Прочее" && $("#MBM1").attr("v16") == "1") {
+                title_cat = "Інше";
+            }
+
             $("#TitleInfo").css("background-color", "#fff");
-            $('#TitleInfo').html('<span class="TitleSpan" path="' + data.d[0] + '" sid="' + data.d[4] + '">' + data.d[0] + '</span>:<span class="' + ($.cookie("c_client") == '' ? 'ShareView' : 'ShareView2') + '" ssource="https://www.xpool.pro/web/webform.aspx?uid=' +uid_v + '&sid=' + sid_v + '&cat=' + data.d[0] + '&ssid=' + data.d[4] + '&refer=' + $.cookie("c_client") + '&shop=' + shop_addr + '"></span><span class="SortView"></span><span class="ListView"></span><span class="TableView"></span>');
+            $('#TitleInfo').html('<span class="TitleSpan" path="' + data.d[0] + '" sid="' + data.d[4] + '">' + title_cat + '</span>:<span class="' + ($.cookie("c_client") == '' ? 'ShareView' : 'ShareView2') + '" ssource="https://www.xpool.pro/web/webform.aspx?uid=' + uid_v + '&sid=' + sid_v + '&cat=' + data.d[0] + '&ssid=' + data.d[4] + '&refer=' + $.cookie("c_client") + '&shop=' + shop_addr + '"></span><span class="SortView"></span><span class="ListView"></span><span class="TableView"></span>');
             $("#CabinetInfo").hide();
             $("#TitleInfo").show();
             $(".SortView").show();
@@ -4631,7 +4651,7 @@
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/InitPage",
-            data: "{ \"uid_v\":" + uid_v + ", \"sid_v\":" + sid_v + " }",
+            data: "{ \"uid_v\":" + uid_v + ", \"sid_v\":" + sid_v + ", \"host\":'" + extractHostname(window.location.origin) + "'}",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindInit
@@ -4656,11 +4676,11 @@
 
         //alert(data.d.server_path);
 
-        $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
-        $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
+       // $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
+       // $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
 
-       // $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
-       // $("#TargetStyleSheet").attr("st", "style_blot");
+        $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_black/css/main.css");
+        $("#TargetStyleSheet").attr("st", "style_black");
 
         $("#MBM1").attr("glue1", data.d.glue1);
         $("#MBM1").attr("glue2", data.d.glue2);
@@ -4695,7 +4715,7 @@
                 $("#EditImage2").show();
             }
 
-              $("#CategoriesSelect").append("<option cat='0'>Все</option>");
+             $("#CategoriesSelect").append("<option cat='0'>" + ($("#MBM1").attr("v16") == "1" ? "Усе" : "Все") + "</option>");
                     var cur_drop = '';
                     var drop = '';
                     var cur_item_parts = null;
@@ -4726,7 +4746,7 @@
                                 }
                             }
 
-                            $("#CategoriesSelect").append("<option cat='-1' full='" + another_path + "Прочее" + "'>" + cur_drop + "Прочее" + "</option>");
+                            $("#CategoriesSelect").append("<option cat='-1' full='" + another_path + "Прочее" + "'>" + cur_drop + ($("#MBM1").attr("v16") == "1" ? "Інше" : "Прочее") + "</option>");
                         }
 
                         cur_item_parts = parts;
@@ -4749,7 +4769,7 @@
                         $("#CategoriesSelect").append("<option cat='-1' full='" + another_path + "Прочее" + "'>" + cur_drop + "Прочее" + "</option>");
                     }
 
-            $("#CategoriesSelect").append("<option cat='-1'>Прочее</option>");
+            $("#CategoriesSelect").append("<option cat='-1'>" + ($("#MBM1").attr("v16") == "1" ? "Інше" : "Прочее") + "</option>");
                 
 
             $("#datepicker1,#datepicker2").datepicker({
@@ -4831,11 +4851,11 @@
                 if ($("#MBM1").attr("v9") != "") {
 
                     //title
-                    $(".head2").html($("#MBM1").attr("v9"));
+                    //$(".head2").html($("#MBM1").attr("v9"));
                     document.title = $("#MBM1").attr("v9");
 
                    
-                    $(".head2").show();
+                    $(".head2").hide();
                 }
             }
 
@@ -5024,6 +5044,17 @@
                         date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
 
                         $.cookie("c_cart", ":" + id + "#1#" + sid_v + ":", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+
+                    if (window.innerWidth > 416) {
+                        date = new Date();
+                        var minutes = 60;
+                        var hours = 24;
+                        var days = 365;
+                        date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
+
+                        $.cookie("c_view", "list", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+                    }
+
                         $(".cartsum").html("1");
 
                         $("#CartCount").click();
@@ -6471,8 +6502,39 @@
                     img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
                 }
 
-                
-                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + '</div ><a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div > ');
+                var delivery_status = "<div class='dready'>готов к отправке</div>";
+
+                if ((addicted_dataRows[i][9] == "1" || (sid_v == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1) {
+                    delivery_status = '';
+                }
+                else if (dataRows[i].Price > 10000 || dataRows[i].Price < 10) {
+                    delivery_status = '';
+                }
+                else if (dataRows[i].Price > 1000) {
+                    var d = new Date();
+
+                    d.setDate(d.getDate() + 1);
+
+                    var day = d.getDate();
+
+                    if (day < 10) {
+                        day = "0" + day;
+                    }
+
+                    var month = (d.getMonth() + 1);
+
+                    if (month < 10) {
+                        if (month == 0)
+                            month = "01";
+                        else
+                            month = "0" + month;
+                    }
+
+                    var curDate = day + "." + month;
+                    delivery_status = "<div class='dready'>отправка: " + curDate + "</div>";
+                }
+            
+                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div ><a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div > ');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -6501,7 +6563,39 @@
                     img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
                 }
 
-                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + '</div></td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div></td></tr>');
+                var delivery_status = "<div class='dready'>готов к отправке</div>";
+
+                if ((addicted_dataRows[i][9] == "1" || (sid_v == 3692 && dataRows[i].Price > 1200) || dataRows[i].Price > 10000) && dataRows[i].Count == 1) {
+                    delivery_status = '';
+                }
+                else if (dataRows[i].Price > 10000 || dataRows[i].Price < 10) {
+                    delivery_status = '';
+                }
+                else if (dataRows[i].Price > 1000) {
+                    var d = new Date();
+
+                    d.setDate(d.getDate() + 1);
+
+                    var day = d.getDate();
+
+                    if (day < 10) {
+                        day = "0" + day;
+                    }
+
+                    var month = (d.getMonth() + 1);
+
+                    if (month < 10) {
+                        if (month == 0)
+                            month = "01";
+                        else
+                            month = "0" + month;
+                    }
+
+                    var curDate = day + "." + month;
+                    delivery_status = "<div class='dready'>отправка: " + curDate + "</div>";
+                }
+
+                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div></td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div></td></tr>');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
