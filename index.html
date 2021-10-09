@@ -3,16 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>MONSTRO</title>
-    <!--<meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
+    <meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="клякса.in.ua">
-    <meta property="og:title" content="клякса.in.ua">
+    <meta property="og:site_name" content="monstro.com.ua">
+    <meta property="og:title" content="monstro.com.ua">
     <meta property="og:description" content="Іграшки, канцтовари, товари для дітей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
-    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/blot_preview.png">
-    <meta property="og:image:width" content="968">
-    <meta property="og:image:height" content="794">-->
+    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/monstro/img/monstro_preview.png">
 
     <meta id="MetaTitle" runat="server" name="title" content="Бизнес Конструктор, Складской учет, Автоматизация магазина, Программный РРО" />
     <meta id="MetaDesc" runat="server" name="description" content="Универсальная среда для автоматизации ведения бизнеса любой сложности. Удобный доступ к панели управления из любой точки мира. Онлайн кассы, Интернет-витрины, программный РРО" />
@@ -1217,17 +1215,17 @@
     </div>
     <div id="content_div" style="display: none;">
         <div class="xpool"><a target="_blank" href="https://xpool.pro" style="color: white; margin-left: 5px; text-decoration: none; display: inline-block; margin-top: 0px;"><span style="color: #ff8f8f; padding-right: 3px;">x</span>Pool.</a><a target="_blank" href="https://xpool.pro" style="color: black; background-color: #efefef; text-decoration: none; display: inline-block; margin-top: 3px; border: 1px solid #efefef; border-radius: 5px; padding: 2px; font: 14px Arial">PRO</a><span class="phone"></span></div>
-        <div class="mainheader" style="padding-top: 29px;">
+        <div class="mainheader" style="display: none; padding-top: 29px;">
             <div style="width: auto; margin: auto;">
                 <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
-                    <div class="Alert" style="display: none"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>
+                    <div class="Alert" style="display: none;"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>
                     <div class="Radio" style="display: none;"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>
                     <div class="head2">
                     </div>
                 </div>
                 <div style="height: 50px; padding-bottom: 8px;">
                     <div id="MenuDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display; position: absolute; display: block; background-color: #8e8e8e; z-index: 9990;">
-                        <div class="menu" style="margin: 0 auto;">
+                        <div class="menu" style="margin: 0 auto; display: none;">
                             <ul>
                                 <li id="KeyLi">
                                     <span class="key" id="UserKey"></span>
@@ -4665,6 +4663,8 @@
 
     function bindInit(data) {
 
+        $(".mainheader").show();
+
         $("#MBM1").attr("v1", data.d.mbm[0]), $("#MBM1").attr("v2", data.d.mbm[1]), $("#MBM1").attr("v3", data.d.mbm[2]), $("#MBM1").attr("v4", data.d.mbm[3]);
         $("#MBM1").attr("v5", data.d.mbm[4]), $("#MBM1").attr("v6", data.d.mbm[5]), $("#MBM1").attr("v7", data.d.mbm[6]), $("#MBM1").attr("v8", data.d.mbm[7]);
         $("#MBM1").attr("v9", data.d.mbm[8]), $("#MBM1").attr("v10", data.d.mbm[9]), $("#MBM1").attr("v11", data.d.mbm[10]), $("#MBM1").attr("v12", data.d.mbm[11]);
@@ -4676,11 +4676,13 @@
 
         //alert(data.d.server_path);
 
-       // $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
-       // $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
+        $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
+        $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
 
-        $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_black/css/main.css");
-        $("#TargetStyleSheet").attr("st", "style_black");
+        $(".menu").show();
+
+       // $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
+       // $("#TargetStyleSheet").attr("st", "style_blot");
 
         $("#MBM1").attr("glue1", data.d.glue1);
         $("#MBM1").attr("glue2", data.d.glue2);
@@ -4851,8 +4853,8 @@
                 if ($("#MBM1").attr("v9") != "") {
 
                     //title
-                    //$(".head2").html($("#MBM1").attr("v9"));
-                    document.title = $("#MBM1").attr("v9");
+                    $(".head2").html("MONSTRO");
+                    document.title = "MONSTRO";
 
                    
                     $(".head2").hide();
@@ -5106,7 +5108,16 @@
                     window.history.pushState({}, "https://www.xpool.pro", href1);
 
                     if (getUrlParameter("cart") == "1") {
-                        $.cookie("c_cart") = ids.replace(/\+/g, "#");
+                        var date = new Date();
+                        var minutes = 60;
+                        var hours = 24;
+                        var days = 365;
+                        date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
+
+                        $.cookie("c_cart", ids.replace(/\+/g, "#"), { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+
+                        $(".mcartcount").html(getUrlParameter("ccount") != undefined ? getUrlParameter("ccount") : "0");
+
                         $("#CartCount").click();
                     }
                     else {
@@ -6502,7 +6513,7 @@
                     img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
                 }
 
-                var delivery_status = "<div class='dready'>готов к отправке</div>";
+                var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
 
                 if ((addicted_dataRows[i][9] == "1" || (sid_v == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1) {
                     delivery_status = '';
@@ -6531,7 +6542,7 @@
                     }
 
                     var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>отправка: " + curDate + "</div>";
+                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка: " : "отправка: ") + curDate + "</div>";
                 }
             
                 col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div ><a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9]) + '</div > ');
