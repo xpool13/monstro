@@ -1218,8 +1218,8 @@
         <div class="mainheader" style="display: none; padding-top: 29px;">
             <div style="width: auto; margin: auto;">
                 <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
-                    <!--<div class="Alert" style="display: none;"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>
-                    <div class="Radio" style="display: none;"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>-->
+                    <!--<div class="Alert" style="display: none;"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>-->
+                    <!--<div class="Radio" style="display: none;"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>-->
                     <div class="head2">
                     </div>
                 </div>
@@ -1365,8 +1365,8 @@
                 $(".AlertSpan").css("font", "24px/24px Arial");
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на<br/>обслуговування" : "Пожаловаться на<br/>обслуживание");
 
-                $(".RadioSpan").css("font", "24px/24px Arial");
-                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний<br/>контроль" : "Радиологический<br/>контроль");
+               // $(".RadioSpan").css("font", "24px/24px Arial");
+              //  $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний<br/>контроль" : "Радиологический<br/>контроль");
 
                 $(".SpecInfoSpan").css("font", "24px/24px Arial");
                 $(".SpecInfoSpan").html("На сайте еще не<br/>все товары");
@@ -1375,8 +1375,8 @@
                 $(".AlertSpan").css("font", "24px/50px Arial");
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на обслуговування" : "Пожаловаться на обслуживание");
 
-                $(".RadioSpan").css("font", "24px/50px Arial");
-                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний контроль" : "Радиологический контроль");
+               // $(".RadioSpan").css("font", "24px/50px Arial");
+               // $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний контроль" : "Радиологический контроль");
 
                 $(".SpecInfoSpan").css("font", "24px/50px Arial");
                 $(".SpecInfoSpan").html("На сайте еще не все товары");
@@ -1526,8 +1526,8 @@
                 $(".AlertSpan").css("font", "28px/50px Arial");
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на обслуговування" : "Пожаловаться на обслуживание");
 
-                $(".RadioSpan").css("font", "28px/50px Arial");
-                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний контроль" : "Радиологический контроль");
+               // $(".RadioSpan").css("font", "28px/50px Arial");
+               // $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Радіологічний контроль" : "Радиологический контроль");
 
                 $(".SpecInfoSpan").css("font", "28px/50px Arial");
                 $(".SpecInfoSpan").html("На сайте представлены еще не все товары");
@@ -2682,13 +2682,13 @@
         $("#about").show();
     }
 
-    $(".Radio").click(function () {
-        $("#splash").show();
-        $("#shopInfo2").show();
-        $("#shopInfo1").hide();
-        $("#about").center();
-        $("#about").show();
-    })
+    //$(".Radio").click(function () {
+    //    $("#splash").show();
+    //    $("#shopInfo2").show();
+    //    $("#shopInfo1").hide();
+    //    $("#about").center();
+    //    $("#about").show();
+    //})
 
     $("#about span.close").click(function () {
         $("#about").hide();
