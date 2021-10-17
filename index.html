@@ -2137,8 +2137,6 @@
     });
 
     function bindPayCard(data) {
-
-        $("#PayOrder").children().remove();
         $("#PayOrder").hide();
         //alert(data.d[0]);
         window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1] + "&client_phone=&sid=" + sid_v);
@@ -3006,7 +3004,7 @@
                 var main_balance = balance - (balance % 1);
                 var coins = Math.round((balance % 1) * 100);
 
-                $("#MBM1").html("<span id=\"MainBalance\" client_id=\"" + data.d.ID + "\" class=\"mainbalance\" balance=\"" + balance.toFixed(2) + "\">" + main_balance + "</span><span class=\"coins\">" + coins + "</span><span class=\"mbcoins\"></span>");
+                $("#MBM1").html("<span id=\"MainBalance\" client_id=\"" + data.d.ID + "\" class=\"mainbalance\" balance=\"" + balance.toFixed(2) + "\">" + main_balance + "</span><span class=\"coins\">" + coins + "</span>");
                 $("#MBM1").attr("paramConditions", data.d.paramConditions);
 
                 $("#MValue1").html(main_balance);
@@ -4144,7 +4142,7 @@
 
         pledge = (parseFloat(selected_ordered.attr("price")) * 0.1 * parseFloat($("#OrderCount").html()));
         var pledge_parts = pledge.toFixed(2).split('.');
-        res = '<span class="mainbalance">' + pledge_parts[0] + '</span><span class="coins">' + pledge_parts[1] + '</span><span class="mbcoins"></span>';
+        res = '<span class="mainbalance">' + pledge_parts[0] + '</span><span class="coins">' + pledge_parts[1] + '</span>';
 
         $("#PledgeAmount").html(res)
 
@@ -4164,7 +4162,7 @@
 
         pledge = (parseFloat(selected_ordered.attr("price")) * 0.1 * parseFloat($("#OrderCount").html()));
         var pledge_parts = pledge.toFixed(2).split('.');
-        res = '<span class="mainbalance">' + pledge_parts[0] + '</span><span class="coins">' + pledge_parts[1] + '</span><span class="mbcoins"></span>';
+        res = '<span class="mainbalance">' + pledge_parts[0] + '</span><span class="coins">' + pledge_parts[1] + '</span>';
 
         $("#PledgeAmount").html(res)
 
@@ -6248,8 +6246,8 @@
 
                     $("#CabinetTable").hide();
 
-                    $("#PayOrder").append('<tr class="ItemContainer"><td id="PayOnline" class="GoPay" width="100%" uk="Сплатити онлайн">Оплатить онлайн</td></tr>');
-                    $("#PayOrder").append('<tr class="ItemContainer"><td id="GoToCabinet2" class="GoCabinet" width="100%;" uk="Сплатити на пошті">Оплатить на почте</td></tr>');
+                    $("#PayOrder").append('<tr class="ItemContainer"><td id="PayOnline" class="GoPay" width="100%">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + '</td></tr>');
+                    $("#PayOrder").append('<tr class="ItemContainer"><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити на пошті" : "Оплатить на почте") + '</td></tr>');
                     //$("#CabinetTable").append('<tr class="ItemContainer"><td></td></tr>');
                     $("#CreateOrder").hide();
                     fillLangContent();
@@ -7011,8 +7009,6 @@
     }
 
     function bindCreateNewOrder(data) {
-
-        $("#PayOrder").children().remove();
         $("#PayOrder").hide();
 
         var client_id = $("#MainBalance").attr("client_id");
@@ -7041,7 +7037,7 @@
                 var main_balance = balance - (balance % 1);
                 var coins = Math.round((balance % 1) * 100);
 
-                $("#MBM1").html("<span id=\"MainBalance\" client_id=\"" + data.d[1].ID + "\" class=\"mainbalance\" balance=\"" + balance.toFixed(2) + "\">" + main_balance + "</span><span class=\"coins\">" + coins + "</span><span class=\"mbcoins\"></span>");
+                $("#MBM1").html("<span id=\"MainBalance\" client_id=\"" + data.d[1].ID + "\" class=\"mainbalance\" balance=\"" + balance.toFixed(2) + "\">" + main_balance + "</span><span class=\"coins\">" + coins + "</span></span>");
                 $("#MBM1").attr("paramConditions", data.d[1].paramConditions);
                 $("#MValue1").html(main_balance);
                 $("#MValue12").html(coins);
