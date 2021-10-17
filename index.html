@@ -2137,6 +2137,7 @@
     });
 
     function bindPayCard(data) {
+        $("#PayOrder").children().remove();
         $("#PayOrder").hide();
         //alert(data.d[0]);
         window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1] + "&client_phone=&sid=" + sid_v);
@@ -6246,9 +6247,12 @@
 
                     $("#CabinetTable").hide();
 
+                    $("#PayOrder").children().remove();
                     $("#PayOrder").append('<tr class="ItemContainer"><td id="PayOnline" class="GoPay" width="100%">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + '</td></tr>');
                     $("#PayOrder").append('<tr class="ItemContainer"><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити на пошті" : "Оплатить на почте") + '</td></tr>');
                     //$("#CabinetTable").append('<tr class="ItemContainer"><td></td></tr>');
+                    $("PayOrder").show();
+
                     $("#CreateOrder").hide();
                     fillLangContent();
 
@@ -7009,6 +7013,7 @@
     }
 
     function bindCreateNewOrder(data) {
+        $("#PayOrder").children().remove();
         $("#PayOrder").hide();
 
         var client_id = $("#MainBalance").attr("client_id");
