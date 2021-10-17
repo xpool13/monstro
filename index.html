@@ -6251,10 +6251,10 @@
                     $("#PayOrder").append('<tr class="ItemContainer"><td id="PayOnline" class="GoPay" width="100%">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + '</td></tr>');
                     $("#PayOrder").append('<tr class="ItemContainer"><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити на пошті" : "Оплатить на почте") + '</td></tr>');
                     //$("#CabinetTable").append('<tr class="ItemContainer"><td></td></tr>');
-                    $("PayOrder").show();
+                    $("#PayOrder").show();
 
                     $("#CreateOrder").hide();
-                    fillLangContent();
+                    //fillLangContent();
 
                     //window.history.pushState({}, '1pool.in.ua', '/web/webform.aspx?uid=' +uid_v + '&sid=' + sid_v);
 
