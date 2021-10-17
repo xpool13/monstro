@@ -1364,7 +1364,7 @@
                 <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
                     <div class="Alert" style="display: none;"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>
                     <!--<div class="Radio" style="display: none;"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>-->
-                    <div class="head2">
+                    <div class="head2" style="display: none;">
                     </div>
                 </div>
                 <div style="height: 50px; padding-bottom: 8px;">
@@ -5213,7 +5213,7 @@
                 menu_offset = $("#MenuDIV").offset().top - 50 + 100;
 
           
-            $(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
+            //$(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
 
             if ($.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
 
