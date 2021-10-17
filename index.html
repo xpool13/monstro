@@ -31,7 +31,7 @@
     <script type="text/javascript" src="https://xpool.pro/source/js/printThis.js"></script>
     <script src="https://xpool.pro/web/source/js/jquery.star-rating-svg.js"></script>
     <link rel="stylesheet" href="https://xpool.pro/web/source/css/star-rating-svg.css">
-    <link id="TargetStyleSheet" rel="Stylesheet" href="https://xpool.pro/web/source/style_black/css/main.css" />
+    <link id="TargetStyleSheet" rel="Stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -1364,7 +1364,7 @@
                 <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
                     <div class="Alert" style="display: none;"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>
                     <!--<div class="Radio" style="display: none;"><span class="RadioSpan" uk="Радіологічний контроль">Радиологический контроль</span></div>-->
-                    <div class="head2" style="display: none;">
+                    <div class="head2">
                     </div>
                 </div>
                 <div style="height: 50px; padding-bottom: 8px;">
@@ -5014,9 +5014,7 @@
 
         //alert(data.d.server_path);
 
-
-
-        //$("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
+        $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
         $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
 
         
@@ -5132,12 +5130,11 @@
                 if ($("#MBM1").attr("v9") != "") {
 
                     //title
-                    //$(".head2").html($("#MBM1").attr("v9"));
-                    //document.title = $("#MBM1").attr("v9");
+                    $(".head2").html($("#MBM1").attr("v9"));
+                    document.title = $("#MBM1").attr("v9");
 
-                    document.title = "monstro";
                    
-                    //$(".head2").show();
+                    $(".head2").show();
                 }
             }
 
@@ -5149,12 +5146,12 @@
 
            
 
-            //if ($("#MBM1").attr("v15") == "0" || ($("#MoneyBoxLi").css("display") != "none" && $("#MBM1").attr("v15") == "1")) {
-            //    $(".Alert").show();
-            //}
-            //else {
+            if ($("#MBM1").attr("v15") == "0" || ($("#MoneyBoxLi").css("display") != "none" && $("#MBM1").attr("v15") == "1")) {
+                $(".Alert").show();
+            }
+            else {
                 $(".Alert").hide();
-            //}
+            }
 
             //if ($("#MBM1").attr("v4") == "0" && $("#MBM1").attr("v14") == "0") {
             //    $("#ShareInfo").show();
@@ -5213,7 +5210,7 @@
                 menu_offset = $("#MenuDIV").offset().top - 50 + 100;
 
           
-            //$(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
+            $(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
 
             if ($.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
 
