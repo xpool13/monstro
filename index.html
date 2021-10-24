@@ -1366,8 +1366,8 @@
                 <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
                     <!--<div class="Alert" style="display: none;"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>-->
                     <div class="Radio" style="display: none;"><span class="RadioSpan" uk="Безкоштовна доставка по м. Тернівка">БЕсплатная доставка по г. Терновка</span></div>
-                    <div class="head2">
-                    </div>
+                    <!--<div class="head2">
+                    </div>-->
                 </div>
                 <div style="height: 50px; padding-bottom: 8px;">
                     <div id="MenuDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display; position: absolute; display: block; background-color: #8e8e8e; z-index: 9990;">
@@ -1530,9 +1530,9 @@
                 $(".SpecInfoSpan").html("На сайте еще не все товары");
             }
 
-            $(".head2").css("width", (window.innerWidth - 12) + "px");
-            $(".head2").css("margin-left", "4px");
-            $(".head2").css("left", "0px");
+            //$(".head2").css("width", (window.innerWidth - 12) + "px");
+            //$(".head2").css("margin-left", "4px");
+            //$(".head2").css("left", "0px");
 
             //$(".consult").css("width", (window.innerWidth - 12) + "px");
             //$(".consult").css("margin-left", "4px");
@@ -1681,9 +1681,9 @@
                 $(".SpecInfoSpan").html("На сайте представлены еще не все товары");
             }
 
-            $(".head2").css("width", "920px");
-            $(".head2").css("margin-left", "-460px");
-            $(".head2").css("left", "50%");
+            //$(".head2").css("width", "920px");
+            //$(".head2").css("margin-left", "-460px");
+            //$(".head2").css("left", "50%");
 
             //$(".consult").css("width", "920px");
             //$(".consult").css("margin-left", "-460px");
@@ -1977,14 +1977,15 @@
                     qr_code = '<span class="QR" taxid="' + dataRows[i].ChequeID + '" curd="' + cur_d_parts[2] + cur_d_parts[1] + cur_d_parts[0] + '" />';
                 }
                 else {
-                    var pay_buttons = (dataRows[i].Status == 1) ? '<span ch="' + dataRows[i].ChequeID + '" class="PayCard">Сплатити карткою</span> <span ch="' + dataRows[i].ChequeID + '" class="PayBonuses">Сплатити бонусами</span>' : "";
+                    //<span ch="' + dataRows[i].ChequeID + '" class="PayBonuses">Сплатити бонусами</span>
+                    var pay_buttons = (dataRows[i].Status == 1) ? '<span ch="' + dataRows[i].ChequeID + '" class="PayCard">Сплатити карткою</span>' : "";
                 }
                 $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" colspan="6" chq="' + dataRows[i].ChequeID + '">' + qr_code + ' Чек #' + dataRows[i].ChequeID + ' ' + pay_buttons + '</td></tr>');
 
                 if (cur_count == 0) {
                     var prev_chq_item = $("#CabinetTable").find('[chq="' + cur_cheque + '"]');
                     prev_chq_item.find(".PayCard").remove();
-                    prev_chq_item.find(".PayBonuses").remove();
+                    //prev_chq_item.find(".PayBonuses").remove();
                 }
 
                 cur_cheque = dataRows[i].ChequeID;
@@ -2013,7 +2014,7 @@
         if (cur_count == 0) {
             var prev_chq_item = $("#CabinetTable").find('[chq="' + cur_cheque + '"]');
             prev_chq_item.find(".PayCard").remove();
-            prev_chq_item.find(".PayBonuses").remove();
+            //prev_chq_item.find(".PayBonuses").remove();
         }
 
         var next_pay = $("#CabinetTable").find('.PayCard').first();
@@ -2134,7 +2135,7 @@
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/PayCard",
-            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"cheque\":" + $(this).attr("ch") + " }",
+            data: "{ \"uid\":" + uid_v + ", \"cheque\":" + $(this).attr("ch") + " }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindPayCard
@@ -2145,12 +2146,20 @@
         $("#PayOrder").children().remove();
         $("#PayOrder").hide();
 
-        window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1] + "&client_phone=" + cur_phone + "&sid=" + sid_v + "&host=" + extractHostname(window.location.origin));
+        if (data.d[2] == "1") {
+            window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1] + "&sid=" + sid_v + "&host=" + extractHostname(window.location.origin));
+        }
+        else {
+            $("#splash").hide();
+            loadingHide();
+            alert("Замовлення втратило актуальність");
+        }
     }
 
     $("#CabinetTable").delegate('.PayBonuses', 'click', function () {
 
-        //alert($(this).attr("ch"));
+        $("#splash").show();
+        loadingShow();
 
         $.ajax({
             async: true,
@@ -2176,7 +2185,12 @@
         else
             alert(data.d[2]);
 
+
+        $("#splash").hide();
+        loadingHide();
+
         $(".moneyboxm").click();
+
     }
 
     function bindGetRedirLog(data) {
@@ -5004,7 +5018,16 @@
     var uid_v = 48;//edit
     var sid_v = 638;//edit
 
-
+    function bindPayCard2(data) {
+        if (data.d[2] == "1") {
+            window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + getUrlParameter("uid") + "&id=" + getUrlParameter("id") + "&p=" + getUrlParameter("p") + "&host=" + extractHostname(window.location.origin));
+        }
+        else {
+            $("#splash").hide();
+            loadingHide();
+            alert("Замовлення втратило актуальність");
+        }
+    }
 
     function bindInit(data) {
         $("#MBM1").attr("v1", data.d.mbm[0]), $("#MBM1").attr("v2", data.d.mbm[1]), $("#MBM1").attr("v3", data.d.mbm[2]), $("#MBM1").attr("v4", data.d.mbm[3]);
@@ -5051,7 +5074,18 @@
         $(".menu").show();
 
         if (getUrlParameter("p") != undefined && getUrlParameter("p") != '') {
-            window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + getUrlParameter("uid") + "&id=" + getUrlParameter("id") + "&p=" + getUrlParameter("p") + "&host=" + extractHostname(window.location.origin));
+            $("#splash").show();
+            loadingShow();
+
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "https://xpool.pro/web/webform.aspx/PayCard",
+                data: "{ \"uid\":" + getUrlParameter("uid") + ", \"cheque\":" + getUrlParameter("id") + " }",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: bindPayCard2
+            });
         }
         else
         {
@@ -5134,11 +5168,11 @@
                 if ($("#MBM1").attr("v9") != "") {
 
                     //title
-                    $(".head2").html($("#MBM1").attr("v9"));
+                    //$(".head2").html($("#MBM1").attr("v9"));
                     document.title = $("#MBM1").attr("v9");
 
                    
-                    $(".head2").show();
+                    //$(".head2").show();
                 }
             }
 
@@ -5214,7 +5248,7 @@
                 menu_offset = $("#MenuDIV").offset().top - 50 + 100;
 
           
-            $(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
+            //$(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
 
             if ($.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
 
@@ -5487,10 +5521,10 @@
                         success: bindGetTopDiscount
                     });
                 }
-                else if (getUrlParameter("sv") == "3") 
-                {
-                    $(".moneyboxm").click();
-                }
+                //else if (getUrlParameter("sv") == "3") 
+                //{
+                //    $(".moneyboxm").click();
+                //}
                 else if (getUrlParameter("sv") == "4") {
                     $("#CartCount").click();
                 }
@@ -6221,8 +6255,6 @@
         return res;
     }
 
-    var cur_phone = '';
-
     $("#CreateOrder").click(function () {
         
 
@@ -6267,14 +6299,18 @@
                 else {
                     $("#splash").hide();
                     loadingHide();
-
-                    cur_phone = $("#PhoneTextBox").val();
-
+                   
                     $("#CabinetTable").hide();
 
                     $("#PayOrder").children().remove();
                     $("#PayOrder").append('<tr><td id="PayOnline" class="GoPay" width="100%">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + '</td></tr>');
-                    $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити на пошті" : "Оплатить на почте") + '</td></tr>');
+
+                    if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                        $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити при отриманні" : "Оплатить при получении") + '</td></tr>');
+                    }
+                    else {
+                        $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити на пошті" : "Оплатить на почте") + '</td></tr>');
+                    }
                     //$("#CabinetTable").append('<tr class="ItemContainer"><td></td></tr>');
                     $("#PayOrder").show();
 
@@ -6460,7 +6496,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/PayCard",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"cheque\":" + data.d[2] + " }",
+                data: "{ \"uid\":" + uid_v + ", \"cheque\":" + data.d[2] + " }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindPayCard
@@ -7021,7 +7057,7 @@
                     }
 
                     var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>отправка: " + curDate + "</div>";
+                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка: " : "отправка: ") + curDate + "</div>";
                 }
 
                 col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div></td></tr>');
@@ -7862,8 +7898,8 @@
     function bindRemoveOrder(data) {
         $(".moneyboxm").click();
 
-        $("#splash").hide();
-        loadingHide();
+        //$("#splash").hide();
+        //loadingHide();
     }
 
     $("#ProductsListView").delegate(".RateDiv", "click", function () {
