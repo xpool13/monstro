@@ -5073,6 +5073,9 @@
         $(".mainheader").show();
         $(".menu").show();
 
+        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        $("#MenuDIV").animate({ scrollLeft: 0 }, 1000);
+
         if (getUrlParameter("p") != undefined && getUrlParameter("p") != '') {
             $("#splash").show();
             loadingShow();
