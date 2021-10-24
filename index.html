@@ -6861,132 +6861,7 @@
             var escount = EnableSetCount(set_count, dataRows[i].ID);
             var comment = EnableSetComment(set_count, dataRows[i].ID, dataRows[i].ShopID);
 
-            if ($.cookie("c_view") == "table") {
-
-                if (window.innerWidth <= 416) {
-                    col = $('#col1');
-                    $('#col2').hide();
-                    $('#col3').hide();
-                }
-                else {
-
-                    if (i == dataRows.length - 1) {
-                        var min_h = $('#col1').innerHeight();
-
-                        if (min_h > $('#col2').innerHeight()) {
-                            min_h = $('#col2').innerHeight();
-                            col = $('#col2');
-                        }
-
-                        if (min_h > $('#col3').innerHeight()) {
-                            col = $('#col3');
-                        }
-
-                        if ($('#col3').innerHeight() == $('#col2').innerHeight() && $('#col1').innerHeight() == $('#col3').innerHeight()) {
-                            if (index == 1)
-                                col = $('#col1');
-                            else if (index == 2)
-                                col = $('#col2');
-                            else if (index == 3)
-                                col = $('#col3');
-                        }
-                    }
-                    else {
-                        if (index == 1)
-                            col = $('#col1');
-                        else if (index == 2)
-                            col = $('#col2');
-                        else if (index == 3)
-                            col = $('#col3');
-                    }
-                }
-
-                var timesel = TimeSelectView(addicted_dataRows[i][6], dataRows[i].ShopID);
-
-                var no_photo_url;
-
-                if (addicted_dataRows[i][3] != null && addicted_dataRows[i][3] != undefined && addicted_dataRows[i][3] != '' && addicted_dataRows[i][3].split("||")[0].indexOf('/img/nophoto2.png') == -1)
-                    no_photo_url = '';
-                else
-                    no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
-
-
-                var img_val = '';
-
-                if (addicted_dataRows[i][3].startsWith("<") == true) {
-                    img_val = "<div class='altimg'>" + addicted_dataRows[i][3].split("||")[0].replace("<[", "").replace("]>", "") + "</div>";
-                }
-                else {
-                    img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
-                }
-
-                var rate_info = '<span class="AddRateSpan2">' + ($("#MBM1").attr("v16") == "1" ? "Залишити відгук" : "Оставить отзыв") + '</span>';
-
-                if (addicted_dataRows[i][10] > 0) {
-
-                    if(addicted_dataRows[i][10] == 1)
-                        rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгук" : " отзыв") + "</span>";
-                    else if (addicted_dataRows[i][10] % 2 == 0 || addicted_dataRows[i][10] % 3 == 0 || addicted_dataRows[i][10] % 4 == 0) {
-                        rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгуки" : " отзыва") + "</span>";
-                    }
-                    else
-                        rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгуків" : "отзывов") + "</span>";
-
-                    if (addicted_dataRows[i][9] > 0)
-                        rate_info = "<span class='" + dataRows[i].ID + "' v='" + addicted_dataRows[i][9] / 3 + "'></span> " + rate_info;
-                }
-
-
-                rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
-                
-
-                var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
-
-                if ((addicted_dataRows[i][9] == "1" || (sid_v == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1) {
-                    delivery_status = '';
-                }
-                else if (dataRows[i].Price > 10000 || dataRows[i].Price < 10) {
-                    delivery_status = '';
-                }
-                else if (dataRows[i].Price > 1000) {
-                    var d = new Date();
-
-                    d.setDate(d.getDate() + 1);
-
-                    var day = d.getDate();
-
-                    if (day < 10) {
-                        day = "0" + day;
-                    }
-
-                    var month = (d.getMonth() + 1);
-
-                    if (month < 10) {
-                        if (month == 0)
-                            month = "01";
-                        else
-                            month = "0" + month;
-                    }
-
-                    var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка: " : "отправка: ") + curDate + "</div>";
-                }
-
-                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div >' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
-
-                if (timesel != '') {
-                    SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
-                }
-
-                $('.' + dataRows[i].ID).starRating({
-                    initialRating: $('.' + dataRows[i].ID).attr("v"),
-                    strokeColor: '#894A00',
-                    strokeWidth: 10,
-                    starSize: 15,
-                    readOnly: true,                
-                });
-            }
-            else {
+            if ($.cookie("c_view") == "list") {
                 col = $('#col1');
                 $('#col2').hide();
                 $('#col3').hide();
@@ -7068,6 +6943,130 @@
 
                 $('.' + dataRows[i].ID).starRating({
 
+                    initialRating: $('.' + dataRows[i].ID).attr("v"),
+                    strokeColor: '#894A00',
+                    strokeWidth: 10,
+                    starSize: 15,
+                    readOnly: true,
+                });
+            }
+            else {
+                if (window.innerWidth <= 416) {
+                    col = $('#col1');
+                    $('#col2').hide();
+                    $('#col3').hide();
+                }
+                else {
+
+                    if (i == dataRows.length - 1) {
+                        var min_h = $('#col1').innerHeight();
+
+                        if (min_h > $('#col2').innerHeight()) {
+                            min_h = $('#col2').innerHeight();
+                            col = $('#col2');
+                        }
+
+                        if (min_h > $('#col3').innerHeight()) {
+                            col = $('#col3');
+                        }
+
+                        if ($('#col3').innerHeight() == $('#col2').innerHeight() && $('#col1').innerHeight() == $('#col3').innerHeight()) {
+                            if (index == 1)
+                                col = $('#col1');
+                            else if (index == 2)
+                                col = $('#col2');
+                            else if (index == 3)
+                                col = $('#col3');
+                        }
+                    }
+                    else {
+                        if (index == 1)
+                            col = $('#col1');
+                        else if (index == 2)
+                            col = $('#col2');
+                        else if (index == 3)
+                            col = $('#col3');
+                    }
+                }
+
+                var timesel = TimeSelectView(addicted_dataRows[i][6], dataRows[i].ShopID);
+
+                var no_photo_url;
+
+                if (addicted_dataRows[i][3] != null && addicted_dataRows[i][3] != undefined && addicted_dataRows[i][3] != '' && addicted_dataRows[i][3].split("||")[0].indexOf('/img/nophoto2.png') == -1)
+                    no_photo_url = '';
+                else
+                    no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
+
+
+                var img_val = '';
+
+                if (addicted_dataRows[i][3].startsWith("<") == true) {
+                    img_val = "<div class='altimg'>" + addicted_dataRows[i][3].split("||")[0].replace("<[", "").replace("]>", "") + "</div>";
+                }
+                else {
+                    img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
+                }
+
+                var rate_info = '<span class="AddRateSpan2">' + ($("#MBM1").attr("v16") == "1" ? "Залишити відгук" : "Оставить отзыв") + '</span>';
+
+                if (addicted_dataRows[i][10] > 0) {
+
+                    if (addicted_dataRows[i][10] == 1)
+                        rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгук" : " отзыв") + "</span>";
+                    else if (addicted_dataRows[i][10] % 2 == 0 || addicted_dataRows[i][10] % 3 == 0 || addicted_dataRows[i][10] % 4 == 0) {
+                        rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгуки" : " отзыва") + "</span>";
+                    }
+                    else
+                        rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгуків" : "отзывов") + "</span>";
+
+                    if (addicted_dataRows[i][9] > 0)
+                        rate_info = "<span class='" + dataRows[i].ID + "' v='" + addicted_dataRows[i][9] / 3 + "'></span> " + rate_info;
+                }
+
+
+                rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
+
+
+                var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
+
+                if ((addicted_dataRows[i][9] == "1" || (sid_v == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1) {
+                    delivery_status = '';
+                }
+                else if (dataRows[i].Price > 10000 || dataRows[i].Price < 10) {
+                    delivery_status = '';
+                }
+                else if (dataRows[i].Price > 1000) {
+                    var d = new Date();
+
+                    d.setDate(d.getDate() + 1);
+
+                    var day = d.getDate();
+
+                    if (day < 10) {
+                        day = "0" + day;
+                    }
+
+                    var month = (d.getMonth() + 1);
+
+                    if (month < 10) {
+                        if (month == 0)
+                            month = "01";
+                        else
+                            month = "0" + month;
+                    }
+
+                    var curDate = day + "." + month;
+                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка: " : "отправка: ") + curDate + "</div>";
+                }
+
+                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div >' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
+
+                if (timesel != '') {
+                    SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
+                }
+
+                $('.' + dataRows[i].ID).starRating({
                     initialRating: $('.' + dataRows[i].ID).attr("v"),
                     strokeColor: '#894A00',
                     strokeWidth: 10,
