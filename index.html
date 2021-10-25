@@ -7149,8 +7149,13 @@
         else
             $("#CreateOrder").hide();
 
+        var scroll_pos = $("#MenuDIV").scrollLeft();
+
         if (currentEvent == "best") {
-            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+            if (scroll_pos > $('.best').position().left - window.innerWidth / 2 + 25)
+
+                $("#MenuDIV").animate({ scrollLeft: scroll_pos - $('.best').position().left + window.innerWidth / 2 - 50  }, 500);
+            else
             $("#MenuDIV").animate({ scrollLeft: $('.best').position().left - window.innerWidth / 2 + 25 }, 500);
         }
         else if (currentEvent == "discount") {
@@ -7163,7 +7168,7 @@
         }
         else if (currentEvent == "new") {
             $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
-            $("#MenuDIV").animate({ scrollLeft: $('.new').position().left - window.innerWidth / 2 + 25 }, 500);
+            $("#MenuDIV").animate({ scrollLeft: $('li span.new').position().left - window.innerWidth / 2 + 25 }, 500);
         }
         else if (currentEvent == "cart") {
             $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
