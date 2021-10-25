@@ -2526,6 +2526,9 @@
 
                 $("#ContentDIV").animate({ scrollLeft: 1000 }, 0);
                 $("#ContentDIV").animate({ scrollLeft: 0 }, 500);
+
+                $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+                $("#MenuDIV").animate({ scrollLeft: $('.catalog').position().left - window.innerWidth / 2 + 25 }, 500);
             }
             else {
                 $.ajax({
@@ -2725,6 +2728,9 @@
 
         $("#ContentDIV").animate({ scrollLeft: 1000 }, 0);
         $("#ContentDIV").animate({ scrollLeft: 0 }, 500);
+
+        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        $("#MenuDIV").animate({ scrollLeft: $('.catalog').position().left - window.innerWidth / 2 + 25 }, 500);
         // }
     }
 
@@ -5268,7 +5274,7 @@
                 menu_offset = $("#MenuDIV").offset().top - 50 + 100;
 
           
-            //$(".head2").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
+            $(".Radio").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
 
             if ($.cookie("c_client") != undefined && $.cookie("c_client") != null && $.cookie("c_client") != '') {
 
@@ -7143,8 +7149,30 @@
         else
             $("#CreateOrder").hide();
 
-        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
-        $("#MenuDIV").animate({ scrollLeft: 0 }, 500);
+        if (currentEvent == "best") {
+            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+            $("#MenuDIV").animate({ scrollLeft: $('.best').position().left - window.innerWidth / 2 + 25 }, 500);
+        }
+        else if (currentEvent == "discount") {
+            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+            $("#MenuDIV").animate({ scrollLeft: $('.discount').position().left - window.innerWidth / 2 + 25 }, 500);
+        }
+        else if (currentEvent == "search") {
+            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+            $("#MenuDIV").animate({ scrollLeft: $('.search').position().left - window.innerWidth / 2 + 25 }, 500);
+        }
+        else if (currentEvent == "new") {
+            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+            $("#MenuDIV").animate({ scrollLeft: $('.new').position().left - window.innerWidth / 2 + 25 }, 500);
+        }
+        else if (currentEvent == "cart") {
+            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+            $("#MenuDIV").animate({ scrollLeft: $('.mcart').position().left - window.innerWidth / 2 + 25 }, 500);
+        }
+        else if (currentEvent == "favs") {
+            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+            $("#MenuDIV").animate({ scrollLeft: $('.favorites').position().left - window.innerWidth / 2 + 25 }, 500);
+        }
     }
 
     function onErrorPhotoLoad(source) {
