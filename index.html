@@ -1365,7 +1365,7 @@
             <div style="width: auto; margin: auto;">
                 <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
                     <!--<div class="Alert" style="display: none;"><span class="AlertSpan" uk="Поскаржитися на обслуговування">Пожаловаться на обслуживание</span></div>-->
-                    <div class="Radio" style="display: none;"><span class="RadioSpan" uk="Безкоштовна доставка по м. Тернівка">БЕсплатная доставка по г. Терновка</span></div>
+                    <div class="Radio" style="display: none;"><span class="RadioSpan" uk="Доставка по м. Тернівка">Доставка по г. Терновка</span></div>
                     <!--<div class="head2">
                     </div>-->
                 </div>
@@ -5073,9 +5073,6 @@
         $(".mainheader").show();
         $(".menu").show();
 
-        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
-        $("#MenuDIV").animate({ scrollLeft: 0 }, 1000);
-
         if (getUrlParameter("p") != undefined && getUrlParameter("p") != '') {
             $("#splash").show();
             loadingShow();
@@ -5221,7 +5218,7 @@
 
             if ($("#MBM1").attr("v8") == "On") {
                 if ($("#MBM1").attr("v10") != "") {
-                    $(".phone").html(($("#MBM1").attr("v16") == "1" ? "<div class='phone2'><span class='viber2'></span>" : "<div class='phone2'><span class='viber2'></span>") + " <a style='color: #fff; text-decoration: none' href='viber://chat/?number=%2B" + $("#MBM1").attr("v10").replace("+", "").replace("(", "").replace(")", "").replace(" ", "").replace("-", "") + "'>" + $("#MBM1").attr("v10") + "</a> | <a style='color: #ffff00' href='viber://chat/?number=%2B" + $("#MBM1").attr("v10").replace("+", "").replace("(", "").replace(")", "").replace(" ", "").replace("-", "") + "'>перейти</a></div>");
+                    $(".phone").html(($("#MBM1").attr("v16") == "1" ? "<div class='phone2'><span class='viber2'></span>" : "<div class='phone2'><span class='viber2'></span>") + " <a style='color: #fff; text-decoration: none' href='viber://chat/?number=%2B" + $("#MBM1").attr("v10").replace("+", "").replace("(", "").replace(")", "").replace(" ", "").replace("-", "") + "'>" + $("#MBM1").attr("v10") + "</a> | <a style='color: #ffff00; text-decoration: none;' href='viber://chat/?number=%2B" + $("#MBM1").attr("v10").replace("+", "").replace("(", "").replace(")", "").replace(" ", "").replace("-", "") + "'>перейти</a></div>");
                     $(".phoneinfo").show();
                     $(".phonedesc").html($("#MBM1").attr("v10"));
                 }
@@ -5582,8 +5579,12 @@
             }
         }
 
+        alert("test");
+
         $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
         $("#MenuDIV").animate({ scrollLeft: 0 }, 500);
+
+        alert("test2");
     };
 
     var data_status = 1;
