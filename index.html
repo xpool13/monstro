@@ -5592,13 +5592,6 @@
                 }
             }
         }
-
-        alert("test");
-
-        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
-        $("#MenuDIV").animate({ scrollLeft: 0 }, 500);
-
-        alert("test2");
     };
 
     var data_status = 1;
@@ -7143,6 +7136,9 @@
         }
         else
             $("#CreateOrder").hide();
+
+        $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        $("#MenuDIV").animate({ scrollLeft: 0 }, 500);
     }
 
     function onErrorPhotoLoad(source) {
