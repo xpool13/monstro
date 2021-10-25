@@ -2523,6 +2523,9 @@
                 SetView();
 
                 window.history.pushState({}, "", "index.html?catalog=1");
+
+                $("#ContentDIV").animate({ scrollLeft: 1000 }, 0);
+                $("#ContentDIV").animate({ scrollLeft: 0 }, 500);
             }
             else {
                 $.ajax({
@@ -2719,6 +2722,9 @@
         $("#splash2").hide();
 
         loading2Hide();
+
+        $("#ContentDIV").animate({ scrollLeft: 1000 }, 0);
+        $("#ContentDIV").animate({ scrollLeft: 0 }, 500);
         // }
     }
 
