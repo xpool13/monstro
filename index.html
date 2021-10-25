@@ -367,7 +367,7 @@
 
         .TitleSpan {
             display: block;
-            width: 150px;
+            width: 300px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -2788,7 +2788,13 @@
             }
 
             $("#TitleInfo").css("background-color", "#fff");
-            $('#TitleInfo').html('<span class="TitleSpan" path="' + data.d[0] + '" sid="' + data.d[4] + '">' + title_cat + '</span>:<span class="' + ($.cookie("c_client") == '' ? 'ShareView' : 'ShareView2') + '" ssource="https://www.xpool.pro/web/webform.aspx?uid=' + uid_v + '&sid=' + sid_v + '&cat=' + data.d[0] + '&ssid=' + data.d[4] + '&refer=' + $.cookie("c_client") + '&shop=' + shop_addr + '"></span><span class="SortView"></span><span class="ListView"></span><span class="TableView"></span>');
+
+            var title_span = '<span class="TitleSpan" path="' + data.d[0] + '" sid="' + data.d[4] + '">' + title_cat + '</span>';
+
+            if (window.innerWidth < 500)
+                title_span = '<span class="TitleSpan" style="width: 200px;" path="' + data.d[0] + '" sid="' + data.d[4] + '">' + title_cat + '</span>';
+
+            $('#TitleInfo').html(title_span + ':<span class="' + ($.cookie("c_client") == '' ? 'ShareView' : 'ShareView2') + '" ssource="https://www.xpool.pro/web/webform.aspx?uid=' + uid_v + '&sid=' + sid_v + '&cat=' + data.d[0] + '&ssid=' + data.d[4] + '&refer=' + $.cookie("c_client") + '&shop=' + shop_addr + '"></span><span class="SortView"></span><span class="ListView"></span><span class="TableView"></span>');
             $("#CabinetInfo").hide();
             $("#TitleInfo").show();
             $(".SortView").show();
@@ -5278,9 +5284,6 @@
                 $(".mcartcount").html(count);
             }
 
-            if ($("#Alert").css("display") != "none")
-                menu_offset = $("#MenuDIV").offset().top - 50 + 100;
-
           
             $(".Radio").css({ "color": "#494949" }).animate({ "color": "#FFFFFF" }, 1000);
 
@@ -7138,6 +7141,14 @@
         }
 
         SetView();
+
+        menu_offset = $("#MenuDIV").offset().top - $(".xpool").innerHeight();
+
+        //if ($("#Alert").css("display") != "none")
+        //    menu_offset += $("#Alert").innerHeight();
+
+        //if ($(".Radio").css("display") != "none")
+        //    menu_offset -= $(".Radio").innerHeight();
 
         loading2Hide();
         $("#ProductsListView").show();
