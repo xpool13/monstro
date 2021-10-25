@@ -767,7 +767,11 @@
     </style>
 </head>
 <body id="body_tag" runat="server" style="overflow-y: scroll; background-color: #8e8e8e; overflow-x: hidden">
-    <input type="hidden" value="" id="server_path" runat="server" />
+    
+
+    <input type="hidden" value="" id="c_view" />
+    <input type="hidden" value="" id="c_cart" />
+
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v6.0"></script>
 
@@ -885,7 +889,7 @@
                         <input type="button" class="incdec" id="R3Dec" value="<" /><span id="R3Count" class="val">0</span><input type="button" class="incdec" id="R3Inc" value=">" />
                     </td>
                 </tr>
-                <tr id="RateDate1" style="display: none;">     
+                <tr id="RateDate1" style="display: none;">
                     <td class="tdleft" colspan="2" style="padding-right: 15px">
                         <input type="button" class="incdec" id="DateDec2" value="<" /><span id="DateCount2" class="val2"></span><input type="button" class="incdec" id="DateInc2" value=">" />
                     </td>
@@ -1109,7 +1113,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align: center"><br/><span id="UploadToGoogleFeedSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Google Shopping">Google Shopping</span></td>
+                <td style="text-align: center"><br /><span id="UploadToGoogleFeedSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Google Shopping">Google Shopping</span></td>
             </tr>
             <tr>
                 <td style="text-align: center"><span id="UploadToFeedRozetkaSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Rozetka.ua">Rozetka.ua</span></td>
@@ -1514,7 +1518,7 @@
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на<br/>обслуговування" : "Пожаловаться на<br/>обслуживание");
 
                 $(".RadioSpan").css("font", "24px/24px Arial");
-                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Безкоштовна доставка по м.Тернівка" : "Бесплатная доставка по г.Терновка");
+                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Доставка по м.Тернівка" : "Доставка по г.Терновка");
 
                 $(".SpecInfoSpan").css("font", "24px/24px Arial");
                 $(".SpecInfoSpan").html("На сайте еще не<br/>все товары");
@@ -1524,7 +1528,7 @@
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на обслуговування" : "Пожаловаться на обслуживание");
 
                 $(".RadioSpan").css("font", "24px/50px Arial");
-                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Безкоштовна доставка по м. Тернівка" : "Бесплатная доставка по г. Терновка");
+                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Доставка по м. Тернівка" : "Доставка по г. Терновка");
 
                 $(".SpecInfoSpan").css("font", "24px/50px Arial");
                 $(".SpecInfoSpan").html("На сайте еще не все товары");
@@ -1549,12 +1553,13 @@
                 //    $(".product").css("width", (window.innerWidth - 16) + "px");
                 //    $(".pcomparision").css("width", (window.innerWidth - 20) + "px");
                 //}
-                if ($.cookie("c_view") == "table" || $.cookie("c_view") == undefined || $.cookie("c_view") == null || $.cookie("c_view") == "") {
+                if ($.cookie("c_view") == "table" || $("#c_view").val() == "table") {
                     $(".img").css("width", (window.innerWidth - 16) + "px");
                     $(".product").css("width", (window.innerWidth - 16) + "px");
                     $(".pcomparision").css("width", (window.innerWidth - 20) + "px");
                 }
                 else {
+                    $("#c_view").val("table");
                     $(this).attr("class", "TableView2");
 
                     $("#col1").children().remove();
@@ -1584,7 +1589,8 @@
             }
             else {
                 //if ($.cookie("view") == undefined || $.cookie("view") == "table") {
-                if ($.cookie("c_view") == undefined || $.cookie("c_view") == null || $.cookie("c_view") == '' || $.cookie("c_view") == "table") {
+                if ($.cookie("c_view") != "list" || $("#c_view").val() != "list") {
+                    $("#c_view").val("list");
                     $(this).attr("class", "ListView2");
 
                     $("#col1").children().remove();
@@ -1675,7 +1681,7 @@
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на обслуговування" : "Пожаловаться на обслуживание");
 
                 $(".RadioSpan").css("font", "28px/50px Arial");
-                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Безкоштовна доставка по м. Тернівка" : "Бесплатная доставка по г. Терновка");
+                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Доставка по м. Тернівка" : "Доставка по г. Терновка");
 
                 $(".SpecInfoSpan").css("font", "28px/50px Arial");
                 $(".SpecInfoSpan").html("На сайте представлены еще не все товары");
@@ -1693,7 +1699,7 @@
             //$(".shareinfo").css("margin-left", "-462px");
             //$(".shareinfo").css("left", "50%");
 
-            if ($.cookie("c_view") == "list") {
+            if ($.cookie("c_view") == "list" || $("#c_view").val() == "list") {
                 $(".pt").css("width", "900px");
                 $(".product").css("width", "915px");
                 $(".pcomparision").css("width", "186px");
@@ -1706,6 +1712,16 @@
             ////////
         }
         //}
+    }
+
+    function are_cookies_enabled() {
+        var cookieEnabled = (navigator.cookieEnabled) ? true : false;
+
+        if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled) {
+            document.cookie = "testcookie";
+            cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
+        }
+        return (cookieEnabled);
     }
 
     $(window).resize(function () {
@@ -4530,7 +4546,6 @@
 
         var cat = $("#CategoriesSelect").val() == "" ? "Усі" : $("#CategoriesSelect").val();
 
-        //alert($("#server_path").val());
         //alert($("#TargetURL1").val());
 
         $.ajax({
@@ -5037,9 +5052,7 @@
         $("#MBM1").attr("v17", data.d.mbm[16]), $("#MBM1").attr("v18", data.d.mbm[17]), $("#MBM1").attr("v19", "0"), $("#MBM1").attr("v20", data.d.mbm[19]);
         $("#MBM1").attr("v21", data.d.mbm[20]), $("#MBM1").attr("v22", data.d.mbm[21]);
 
-        $("#server_path").val(data.d.server_path);
-
-        //alert(data.d.server_path);
+       
 
         $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
         $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
@@ -6865,7 +6878,7 @@
             var escount = EnableSetCount(set_count, dataRows[i].ID);
             var comment = EnableSetComment(set_count, dataRows[i].ID, dataRows[i].ShopID);
 
-            if ($.cookie("c_view") == "list") {
+            if ($.cookie("c_view") == "list" || $("#c_view").val() == "list") {
                 col = $('#col1');
                 $('#col2').hide();
                 $('#col3').hide();
