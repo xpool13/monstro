@@ -1517,8 +1517,8 @@
                 $(".AlertSpan").css("font", "24px/24px Arial");
                 $(".AlertSpan").html($("#MBM1").attr("v16") == "1" ? "Поскаржитися на<br/>обслуговування" : "Пожаловаться на<br/>обслуживание");
 
-                $(".RadioSpan").css("font", "24px/24px Arial");
-                $(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Доставка по м.Тернівка" : "Доставка по г.Терновка");
+                //$(".RadioSpan").css("font", "24px/24px Arial");
+                //$(".RadioSpan").html($("#MBM1").attr("v16") == "1" ? "Доставка по м.Тернівка" : "Доставка по г.Терновка");
 
                 $(".SpecInfoSpan").css("font", "24px/24px Arial");
                 $(".SpecInfoSpan").html("На сайте еще не<br/>все товары");
@@ -1589,7 +1589,13 @@
             }
             else {
                 //if ($.cookie("view") == undefined || $.cookie("view") == "table") {
-                if ($.cookie("c_view") != "list" || $("#c_view").val() != "list") {
+                if ($.cookie("c_view") == "list" || $("#c_view").val() == "list") {
+
+                    $(".pt").css("width", (window.innerWidth - 21) + "px");
+                    $(".product").css("width", (window.innerWidth - 16) + "px");
+                    $(".pcomparision").css("width", "186px");
+                }
+                else {
                     $("#c_view").val("list");
                     $(this).attr("class", "ListView2");
 
@@ -1611,13 +1617,6 @@
 
                     startRecord = 0;
                     GetCurData();
-
-                    alert($("#c_view").val());
-                }
-                else {
-                    $(".pt").css("width", (window.innerWidth - 21) + "px");
-                    $(".product").css("width", (window.innerWidth - 16) + "px");
-                    $(".pcomparision").css("width", "186px");
                 }
             }
 
