@@ -7102,7 +7102,7 @@
 
             psum = psum + escount[1] * p_price;
 
-            if ($.cookie("c_view") == "table" || $.cookie("c_view") == '') {
+            if ($.cookie("c_view") == "table" || $("#c_view").val() == "table") {
                 $(".TableView").attr("class", "TableView2");
             }
             else {
@@ -7232,6 +7232,7 @@
 
     $("#TitleInfo").delegate(".ListView,.ListView2", "click", function () {
 
+        $("#c_view").val("list");
         $(this).attr("class", "ListView2");
 
         $("#col1").children().remove();
@@ -7256,6 +7257,7 @@
 
     $("#TitleInfo").delegate(".TableView,.TableView2", "click", function () {
 
+        $("#c_view").val("table");
         $(this).attr("class", "TableView2");
 
         $("#col1").children().remove();
