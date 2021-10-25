@@ -365,6 +365,14 @@
             border: 1px solid #CCC;
         }
 
+        .TitleSpan {
+            display: block;
+            width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         .TitleSpan:hover {
             text-decoration: underline;
             cursor: pointer;
@@ -6244,9 +6252,9 @@
                 }
                 else {
                     if ($.cookie("c_cart") != undefined && $.cookie("c_cart") != null && $.cookie("c_cart") != '' && (($.cookie("c_cart").indexOf(":" + id + "#") != -1 || $.cookie("c_cart").indexOf("%3A" + id + "#") != -1)))
-                        res = '<div class="cart" style="width: 190px; margin-left: 0px"><span class="cart2" code="' + id + '" sid="' + sid + '"></span><span class="tocart" style="left:36px;">' + ($("#MBM1").attr("v16") == "1" ? "Видалити" : "Убрать") + '</span></div>';
+                        res = '<div class="cart" style="width: 190px; margin-left: 0px"><span class="cart2" code="' + id + '" sid="' + sid + '"></span><span class="tocart" style="left:36px; -webkit-transform: translateX(0%);">' + ($("#MBM1").attr("v16") == "1" ? "Видалити" : "Убрать") + '</span></div>';
                     else
-                        res = '<div class="cart" style="width: 190px; margin-left: 0px"><span class="cart1" code="' + id + '" sid="' + sid + '"></span><span class="tocart" style="left:36px;">' + ($("#MBM1").attr("v16") == "1" ? "У кошик" : "В корзину") + '</span></div>';
+                        res = '<div class="cart" style="width: 190px; margin-left: 0px"><span class="cart1" code="' + id + '" sid="' + sid + '"></span><span class="tocart" style="left:36px; -webkit-transform: translateX(0%);">' + ($("#MBM1").attr("v16") == "1" ? "У кошик" : "В корзину") + '</span></div>';
                 }
             }
             else {
@@ -6451,7 +6459,7 @@
         }  
     });
 
-    $("#CabinetTable").delegate('#PhoneTextBox', 'keyup', function () {
+    $("#CabinetTable").delegate('#PhoneTextBox', 'keyup input', function () {
         if ($('#PhoneTextBox').val().indexOf("_") == -1) {
             $.ajax({
                 async: true,
@@ -6632,7 +6640,7 @@
         $("#splash2").hide();
     }
 
-    $("#CabinetTable").delegate('#CurrentCityTextBox', 'keyup', function () {
+    $("#CabinetTable").delegate('#CurrentCityTextBox', 'keyup input', function () {
         if ($(this).val().length > 1) {
             FindSettlements($(this).val());
         }
@@ -7149,33 +7157,22 @@
         else
             $("#CreateOrder").hide();
 
-        var scroll_pos = $("#MenuDIV").scrollLeft();
-
         if (currentEvent == "best") {
-            if (scroll_pos > $('.best').position().left - window.innerWidth / 2 + 25)
-
-                $("#MenuDIV").animate({ scrollLeft: scroll_pos - $('.best').position().left + window.innerWidth / 2 - 50  }, 500);
-            else
             $("#MenuDIV").animate({ scrollLeft: $('.best').position().left - window.innerWidth / 2 + 25 }, 500);
         }
-        else if (currentEvent == "discount") {
-            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        else if (currentEvent == "discount") {     
             $("#MenuDIV").animate({ scrollLeft: $('.discount').position().left - window.innerWidth / 2 + 25 }, 500);
         }
-        else if (currentEvent == "search") {
-            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        else if (currentEvent == "search") {      
             $("#MenuDIV").animate({ scrollLeft: $('.search').position().left - window.innerWidth / 2 + 25 }, 500);
         }
-        else if (currentEvent == "new") {
-            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        else if (currentEvent == "new") {      
             $("#MenuDIV").animate({ scrollLeft: $('li span.new').position().left - window.innerWidth / 2 + 25 }, 500);
         }
-        else if (currentEvent == "cart") {
-            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
+        else if (currentEvent == "cart") {       
             $("#MenuDIV").animate({ scrollLeft: $('.mcart').position().left - window.innerWidth / 2 + 25 }, 500);
         }
         else if (currentEvent == "favs") {
-            $("#MenuDIV").animate({ scrollLeft: 1000 }, 0);
             $("#MenuDIV").animate({ scrollLeft: $('.favorites').position().left - window.innerWidth / 2 + 25 }, 500);
         }
     }
