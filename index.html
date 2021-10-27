@@ -45,7 +45,7 @@
 
         #HideRate {
             text-align: center;
-            font: 20px/30px Arial;
+            font: 20px/40px Arial;
             background-color: #3cf8ff;
             color: #000;
             cursor: pointer;
@@ -54,7 +54,7 @@
 
         #AddRate {
             text-align: center;
-            font: 20px/30px Arial;
+            font: 20px/40px Arial;
             background-color: #084a05;
             color: #fff;
             cursor: pointer;
@@ -70,6 +70,15 @@
             color: #02007c;
             padding-bottom: 10px;
         }
+
+        .ReadAll {
+            cursor: pointer;
+            color: #02007c;
+        }
+
+            .ReadAll:hover {
+                text-decoration: underline;
+            }
 
         .AddRateSpan2 {
             cursor: pointer;
@@ -1127,7 +1136,7 @@
                 <td style="text-align: center"><span id="UploadToFeedRozetkaSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Rozetka.ua">Rozetka.ua</span></td>
             </tr>
             <tr>
-                <td style="text-align: center"><span id="UploadToFeedPromSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Prom.ua">Prom.ua</span></td>
+                <td style="text-align: center"><span id="EditDescSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Опис">Описание</span></td>
             </tr>
         </table>
         <table id="EditImage1" class="EditImageClass" runat="server" style="width: 166px; background-color: #efefef; position: fixed; display: none; top: 20px; right: 100px; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: black; background-color: white">
@@ -3571,10 +3580,10 @@
                 prev_img = $("#ProductsListView").find("img[index=" + img_index.toString() + "]").attr("src");
 
                 if (prev_img != undefined) {
-                    selected.css({ "border-color": "#FFFFFF" });
+                    selected.css({ "border": "3px solid #FFF" });
 
                     selected = $("#ProductsListView").find("img[index=" + img_index.toString() + "]").closest('.product');
-                    selected.css({ "border-color": "green" });
+                    selected.css({ "border": "3px solid #000" });
                     $("#fullimage").attr("src", GetFullImage(prev_img));
 
                     if ($("#fullimage").attr("src").indexOf("nophoto2.png") != -1 || $(".EditImageClass").css("display") != "none")
@@ -3699,10 +3708,9 @@
                 next_img = $("#ProductsListView").find("img[index=" + img_index.toString() + "]").attr("src");
 
                 if (next_img != undefined) {
-
-                    selected.css({ "border-color": "#FFFFFF", "background-color": "#FFFFFF" });
+                    selected.css({ "border": "3px solid #FFF", "background-color": "#FFFFFF" });
                     selected = $("#ProductsListView").find("img[index=" + img_index.toString() + "]").closest('.product');
-                    selected.css({ "border-color": "green" });
+                    selected.css({ "border": "3px solid #000" });
 
                     $("#fullimage").attr("src", GetFullImage(next_img));
 
@@ -3883,12 +3891,12 @@
     $("#ProductsListView").delegate('.img', 'click', function (evt) {
        
         if (selected != undefined && selected.find("img").attr("index") != $(this).closest('.product').find("img").attr("index")) {
-            selected.css({ "border-color": "#FFFFFF", "background-color": "#FFFFFF" });
+            selected.css({ "border": "3px solid #FFF", "background-color": "#FFFFFF" });
             selected.find(".imgcount2").hide();
         }
 
         selected = $(this).closest('.product');
-        selected.css({ "border-color": "green" });
+        selected.css({ "border": "3px solid #000" });
 
         $.ajax({
             async: true,
@@ -4152,11 +4160,11 @@
         //img_index = parseInt($(this).children('img').first().attr("index"));
 
         if (selected != undefined) {
-            selected.css({ "border-color": "#FFFFFF" });
+            selected.css({ "border": "3px solid #FFF" });
         }
 
         selected = $(this).closest('.product');
-        selected.css({ "border-color": "green" });
+        selected.css({ "border": "3px solid #000" });
     });
 
     function GetFullImage(img) {
@@ -4495,7 +4503,62 @@
         //alert($("#CategoriesSelect option:selected")[0].innerText);
         //alert($(selected).attr("dataid"));
 
-        
+    });
+
+    $("#EditDescSpan").click(function () {
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/GetDescInfo",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + " }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGetDescInfo
+        });
+    });
+
+    function bindGetDescInfo(data) {
+        $("#splash4").center();
+        $("#splash4").show();
+        $("#AddictedTable").css("width", (window.innerWidth - 80) + "px");
+        $("#AddictedTable").css("height", (window.innerHeight - 40) + "px");
+        $("#AddictedView").css("width", (window.innerWidth - 80) + "px");
+        $("#AddictedTable").children().remove();  
+        $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="70px"><textarea id="EditPNameTextBox" maxlength="500" rows="3" cols="30" style="width: 100%; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
+        $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="100%"><textarea id="EditDescTextBox" maxlength="3000" rows="20" cols="30" style="width: 100%; height: 100%; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
+        $("#AddictedTable").append('<tr><td id="SaveDescChanges" class="None" style="background-color: #FFFF00" width="100%" uk="Зберегти">Сохранить</td></tr>');
+        $("#AddictedTable").append('<tr><td id="CloseDescChanges" class="None" width="100%" uk="Закрити">Закрыть</td></tr>');
+
+        $("#EditPNameTextBox").val(data.d[0]);
+        $("#EditDescTextBox").val(data.d[1]);
+
+        $("#AddictedView").center();
+        $("#AddictedView").show();
+    }
+
+    $("#AddictedTable").delegate('#SaveDescChanges', 'click', function () {
+
+        $("#SaveDescChanges").html("...");
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/SaveDescChanges",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + ", \"name\":'" + $("#EditPNameTextBox").val() + "', \"desc\":'" + $("#EditDescTextBox").val() + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindSaveDescChanges
+        });
+    });
+
+    function bindSaveDescChanges(data) {
+        $("#splash4").hide();
+        $("#AddictedView").hide();
+    }
+
+    $("#AddictedTable").delegate('#CloseDescChanges', 'click', function () {
+        $("#splash4").hide();
+        $("#AddictedView").hide();
     });
 
     function bindGoogleMainCats(data) {
@@ -4505,6 +4568,7 @@
         $("#splash4").show();
         $("#AddictedTable").css("width", "400px");
         $("#AddictedView").css("width", "400px");
+        $("#AddictedTable").css("height", "auto");
         $("#AddictedTable").children().remove();
         $("#AddictedTable").append('<tr><td class="Head2" width="100%" uk="Категорія">Категория:</td></tr>');
         $("#AddictedTable").append('<tr><td class="Head1" width="100%" height="42px"><select style="width: 100%" id="MainCatSelect"></select></td></tr>');
@@ -6491,7 +6555,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder2
@@ -6561,7 +6625,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder
@@ -6585,7 +6649,10 @@
         $('#CurrentCityTextBox').val(data.d.City);
 
         if (data.d.Address != null && data.d.Address != '') {
-            $('#DeliveryTypeSelect').change("2");
+            $("#DeliveryTypeSelect").val("2");
+            $("#CabinetTable").find('[v="1"]').hide();
+            $("#CabinetTable").find('[v="2"]').show();
+            
             $('#AddressTextBox').val(data.d.Address);
         }
         else
@@ -6969,7 +7036,7 @@
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка: " : "отправка: ") + curDate + "</div>";
                 }
 
-                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%;"; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '</a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div></td></tr>');
+                col.append('<div class="product" ' + max_count + ' style="display: none; width: 915px; border: 3px solid #FFF;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '<br/><span idv="' + dataRows[i].ID + '" class="ReadAll">Читати повністю</span></a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</td></tr>');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -7094,7 +7161,7 @@
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка: " : "отправка: ") + curDate + "</div>";
                 }
 
-                col.append('<div class="product" ' + max_count + ' style="display: none" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div >' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
+                col.append('<div class="product" ' + max_count + ' style="display: none; border: 3px solid #FFF" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + "<span class=\"imgcount2\">1 / 1</span>" + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div idv="' + dataRows[i].ID + '" class="ReadAll" style="text-align: center">Читати повністю</div><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + EnableShare(enable_share, dataRows[i].ID) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + CreateVideoButton(addicted_dataRows[i][5]) + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -7962,6 +8029,52 @@
 
         //$("#splash").hide();
         //loadingHide();
+    }
+
+    $("#ProductsListView").delegate(".ReadAll", "click", function () {
+        loadingShow();
+        $("#splash").show();
+        $("#EmptyDiv").hide();
+        $("#CreateOrder").hide();
+
+        if (selected != undefined) {
+            selected.css({ "border-color": "#FFFFFF" });
+        }
+
+        selected = $(this).closest('.product');
+        selected.css({ "border-color": "green" });
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/GetProductInfo",
+            data: "{ \"did\":" + $(this).attr("idv") + " }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGetProductInfo
+        });
+    })
+
+    function bindGetProductInfo(data) {
+        $(".mainheader").hide();
+        $("#ProductsListView").hide();
+
+        $("#TitleInfo").hide();
+
+        $("#RatesDiv").children().remove();
+
+        $("#RatesDiv").append("<div id='HideRate' style='margin-top: 40px;'>" + ($("#MBM1").attr("v16") == "1" ? "Повернутися назад" : "Вернуться назад") + "</div>")
+
+        $("#RatesDiv").append("<div class='RateContent'>" + data.d + "</div>");
+
+        fillLangContent();
+
+        $("#RatesDiv").show();
+        loadingHide();
+
+        $("#splash").hide();
+
+        loading2Hide();
     }
 
     $("#ProductsListView").delegate(".RateDiv", "click", function () {
