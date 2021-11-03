@@ -1339,7 +1339,7 @@
             <div id="TitleInfo" class="TitleDiv"></div>
             <div id="CabinetInfo" class="TitleDiv" style="display: none; width: 904px;"></div>
             <div>
-                <table id="ProductsListView" style="table-layout: fixed; border-collapse: collapse; margin: 0px;">
+                <table id="ProductsListView" style="table-layout: fixed; border-collapse: collapse; margin: 2px;">
                     <tr>
                         <td class="products" id="col1" style="padding-left: 0px"></td>
                         <td class="products" id="col2"></td>
@@ -1347,7 +1347,7 @@
                     </tr>
                 </table>
                 <div id="ContentDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
-                    <table id="CabinetTable" style="display: none; margin-left: 3px; margin-top: 5px; color: #333333; background-color: transparent; border-radius: 8px; width: 926px; table-layout: fixed;" align="center"></table>
+                    <table id="CabinetTable" style="display: none; margin-left: auto; margin-right: auto; margin-top: 5px; color: #333333; background-color: transparent; border-radius: 8px; width: 926px; table-layout: fixed;" align="center"></table>
                 </div>
             </div>
             <div id="EmptyDiv" uk="Порожньо" style="display: none; text-align: center; padding: 10px">Пусто</div>
@@ -1393,7 +1393,7 @@
                     if ($.cookie("c_view") == "table" || $("#c_view").val() == "table") {
                         $(".img").css("width", (window.innerWidth - 16) + "px");
                         $(".product").css("width", (window.innerWidth - 16) + "px");
-                        $(".pcomparision").css("width", (window.innerWidth - 20) + "px");
+                        //$(".pcomparision").css("width", (window.innerWidth - 20) + "px");
                     }
                     else {
                         $("#c_view").val("table");
