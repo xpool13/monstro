@@ -2,15 +2,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>monstro</title>
+    <title>...</title>
     <meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="monstro.com.ua">
+    <meta property="og:site_name" content="клякса.in.ua">
     <meta property="og:title" content="клякса.in.ua">
     <meta property="og:description" content="Іграшки, канцтовари, товари для дітей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
-    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/monstro_preview.png">
+    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/blot_preview.png">
     <meta property="og:image:width" content="968">
     <meta property="og:image:height" content="794">
 
@@ -205,7 +205,7 @@
         td.PayInfo {
             background-color: #fff;
             padding: 5px;
-            font: normal 12px/20px arial;
+            font: 100 10px/20px arial;
         }
 
         td.Head1 {
@@ -777,7 +777,7 @@
 
     <div id="redirect" style="cursor: pointer; position: absolute; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; text-align: center; font: normal 20px arial; color: black; display: none;">
         переход<br />
-        <img src="source/style_blot/img/loading.gif" />
+        <img src="https://xpool.pro/web/source/style_blot/img/loading.gif" />
     </div>
 
     <input type="hidden" value="" id="TimeComponents" />
@@ -1034,7 +1034,7 @@
         <span class="leftscroll"></span>
 
         <div id="fullimg">
-            <img id="fullimage" src="https://xpool.pro/source/style_blot/img/loading.gif" />
+            <img id="fullimage" src="https://xpool.pro/web/source/style_blot/img/loading.gif" />
         </div>
         <span class="rightscroll"></span>
         <span class="closey"></span>
@@ -2889,7 +2889,7 @@
         $("#vpo").attr("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
         $('.findPhoto2').remove();
 
-        $("#fullimage").attr("src", "source/style_blot/img/loading.gif");
+        $("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
         $("#viewer").hide();
         $("#splash").hide();
         var $target = $('html,body');
@@ -3563,35 +3563,36 @@
             var drop = '';
             var cur_item_parts = null;
 
+            if (data.d.cats != undefined) {
+                for (var i = 0; i < data.d.cats.length; i++) {
 
-            for (var i = 0; i < data.d.cats.length; i++) {
+                    var parts = data.d.cats[i].Name.split("/");
 
-                var parts = data.d.cats[i].Name.split("/");
+                    drop = '';
 
-                drop = '';
-
-                if (parts.length > 1) {
-                    for (var j = 1; j < parts.length; j++) {
-                        drop = drop + "\xA0\xA0\xA0\xA0\xA0";
-                    }
-                }
-
-                if ((drop.length < cur_drop.length) && cur_drop != '') {
-                    var another_path = '';
-
-                    if (cur_item_parts != null) {
-                        for (var j = 0; j < cur_item_parts.length - 1; j++) {
-                            another_path += cur_item_parts[j] + "/";
+                    if (parts.length > 1) {
+                        for (var j = 1; j < parts.length; j++) {
+                            drop = drop + "\xA0\xA0\xA0\xA0\xA0";
                         }
                     }
 
-                    $("#CategoriesSelect").append("<option cat='-1' full='" + another_path + "Прочее" + "'>" + cur_drop + ($("#MBM1").attr("v16") == "1" ? "Інше" : "Прочее") + "</option>");
+                    if ((drop.length < cur_drop.length) && cur_drop != '') {
+                        var another_path = '';
+
+                        if (cur_item_parts != null) {
+                            for (var j = 0; j < cur_item_parts.length - 1; j++) {
+                                another_path += cur_item_parts[j] + "/";
+                            }
+                        }
+
+                        $("#CategoriesSelect").append("<option cat='-1' full='" + another_path + "Прочее" + "'>" + cur_drop + ($("#MBM1").attr("v16") == "1" ? "Інше" : "Прочее") + "</option>");
+                    }
+
+                    cur_item_parts = parts;
+                    cur_drop = drop;
+
+                    $("#CategoriesSelect").append("<option cat='" + data.d.cats[i].ID + "' full='" + data.d.cats[i].Name + "'>" + drop + parts[parts.length - 1] + "</option>");
                 }
-
-                cur_item_parts = parts;
-                cur_drop = drop;
-
-                $("#CategoriesSelect").append("<option cat='" + data.d.cats[i].ID + "' full='" + data.d.cats[i].Name + "'>" + drop + parts[parts.length - 1] + "</option>");
             }
 
             drop = '';
@@ -3656,7 +3657,7 @@
             $("#viewer span.desc").css("width", ($(window).innerWidth()) + "px");
            
 
-            $("#fullimage").attr("src", "source/img/loading.gif");
+            $("#fullimage").attr("src", "https://xpool.pro/web/source/img/loading.gif");
             img_index = parseInt($(this).children('img').first().attr("index"));
 
             var urls;
@@ -5991,7 +5992,7 @@
                     $("#CabinetTable").append('<tr id="d_tr11" class="ItemContainer"><td class="cheque" id="SecondNameTD" uk="Прізвище:">Фамилия:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr12" class="ItemContainer"><td class="cheque"><input id="SecondNameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
-                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small;"><a href="">Гарантія</a> і <a href="https://xpool.pro/source/bgy6q-1g33z.html">Публічна оферта</a></td></tr>');
+                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small;"><a target="_blank" href="" style="color: #fff; text-decoration: none">Гарантія</a> і <a target="_blank" href="https://xpool.pro/source/bgy6q-1g33z.html" style="color: #fff; text-decoration: none">Публічна оферта</a></td></tr>');
 
                     $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Вартість доставки: за тарифам Нової Пошти</td><tr>');
 
@@ -7005,13 +7006,13 @@
             $("#MenuDIV").animate({ scrollLeft: $('.mcart').position().left - window.innerWidth / 2 + 25 }, 500);
             var n = $(document).height();
             $('html, body').animate({ scrollTop: n }, 0);
-            $('html, body').animate({ scrollTop: 0 }, 500);
+            $('html, body').animate({ scrollTop: 0 }, 300);
         }
         else if (currentEvent == "favs") {
             $("#MenuDIV").animate({ scrollLeft: $('.favorites').position().left - window.innerWidth / 2 + 25 }, 500);
             var n = $(document).height();
             $('html, body').animate({ scrollTop: n }, 0);
-            $('html, body').animate({ scrollTop: 0 }, 500);
+            $('html, body').animate({ scrollTop: 0 }, 300);
         }
     }
 
