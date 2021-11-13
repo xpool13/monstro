@@ -2,15 +2,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>monstro</title>
+    <title>...</title>
     <meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="monstro.com.ua">
+    <meta property="og:site_name" content="клякса.in.ua">
     <meta property="og:title" content="клякса.in.ua">
     <meta property="og:description" content="Іграшки, канцтовари, товари для дітей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
-    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/monstro_preview.png">
+    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/blot_preview.png">
     <meta property="og:image:width" content="968">
     <meta property="og:image:height" content="794">
 
@@ -157,8 +157,9 @@
             white-space: nowrap;
             overflow: hidden;
             padding: 0px;
+            margin-top: 4px;
             font: normal 22px/80px arial;
-            background-color: #074b04;
+            background-color: #212121;
             text-align: center;
             vertical-align: middle;
             color: #fff;
@@ -166,7 +167,8 @@
         }
 
             td.GoPay:hover {
-                background-color: #ff0000;
+                background-color: #000;
+                color: #ffffcc;
             }
 
         td.GoCabinet {
@@ -174,15 +176,16 @@
             overflow: hidden;
             padding: 0px;
             font: normal 24px/80px arial;
-            background-color: #fff;
+            background-color: #212121;
+            color: #FFF;
             text-align: center;
             vertical-align: middle;
             cursor: pointer;
         }
 
             td.GoCabinet:hover {
-                background-color: #ff0000;
-                color: #fff;
+                background-color: #000;
+                color: #ffffcc;
             }
 
         td.GoPrepay {
@@ -191,7 +194,7 @@
             padding: 0px;
             height: 80px;
             font: normal 22px/22px arial;
-            background-color: #11570e;
+            background-color: #212121;
             text-align: center;
             vertical-align: middle;
             color: #fff;
@@ -199,10 +202,12 @@
         }
 
             td.GoPrepay:hover {
-                background-color: #ff0000;
+                background-color: #000;
+                color: #ffffcc;
             }
 
         td.PayInfo {
+            margin-top: 4px;
             background-color: #fff;
             padding: 5px;
             font: 100 10px/20px arial;
@@ -1367,6 +1372,21 @@
 
     var old_width = window.innerWidth;
 
+    var delivery_time = {
+        638: ["0-10", "0-14", "0-14", "0-14", "0-14", "0-14", "0-10"],
+        3692: ["0-10", "0-14", "0-14", "0-14", "0-14", "0-14", "0-10"],
+        5409: ["<10", "<10", "<10", "<10", "<10", "<10", "<10"],
+        8547: ["1", "1", "1", "1", "1", "1", "1"],
+        8079: ["4", "3", "2", "8", "7", "6", "5"],
+        9170: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
+        9170: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
+        8071: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
+        8539: ["<14", "<14", "<14", "<14", "<14", "<14", "<14"],
+        9178: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
+        9162: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
+        8555: ["1", "1", "1", "1", "1", "1", "1"]
+    };
+
     function SetView() {
 
         if (old_width != window.innerWidth)
@@ -1659,7 +1679,7 @@
             protection_type = 1;
             $("#createaccount").center();
             $("#createaccount").show();
-            $("#CreatePhoneNumberLogin").inputmask("+38 (999) 999-9999");
+            $("#CreatePhoneNumberLogin").inputmask("+38 999 999 9999");
             $("#splash2").show();
             $("#splash").hide();
         }
@@ -1974,6 +1994,12 @@
         }
     }
 
+    function ConvertPhone(phone_num) {
+        var phone_parts = phone_num.split(" ");
+
+        return phone_parts[0] + " (" + phone_parts[1] + ") " + phone_parts[2] + "-" + phone_parts[3];
+    }
+
     $("#CabinetTable").delegate('.PayBonuses', 'click', function () {
 
         $("#splash").show();
@@ -1983,7 +2009,7 @@
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/PayBonuses",
-            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"cheque\":" + $(this).attr("ch") + ", \"client_phone\":'" + $.cookie("c_client_phone") + "' }",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"cheque\":" + $(this).attr("ch") + ", \"client_phone\":'" + ConvertPhone($.cookie("c_client_phone")) + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindPayBonuses
@@ -2009,73 +2035,6 @@
 
         $(".moneyboxm").click();
 
-    }
-
-    function bindGetRedirLog(data) {
-        if (startRecord == 0) {
-            $("#TitleInfo").css("background-color", "#fff");
-            $('#TitleInfo').html('<span class="TitleSpan" uk="Переходи:">Переходы:</span>');
-
-            $("#CabinetInfo").hide();
-
-            $("#CabinetTable").children().remove();
-            $("#CabinetTable").append('<tr><th class="stats" style="width: 90px; text-align: center">Дата</th><th class="stats" style="width: 100%; text-align: center" uk="Переходів">Переходов</th></tr>');
-        }
-
-        var dataRows = data.d[0];
-
-        for (var i = 0; i < dataRows.length; i++) {
-            $("#CabinetTable").append('<tr class="ItemContainer"><td class="saled" style="width: 90px; text-align: center">' + data.d[1][i] + '</td><td class="saled" style="width: 100%; text-align: center">' + dataRows[i].Count + '</td></li></ul></div></td></tr>');
-        }
-
-        startRecord = startRecord + dataRows.length;
-
-        fillLangContent();
-
-        $("#CabinetTable").show();
-        $("#createaccount").hide();
-        loadingHide();
-
-        if ($("#orderaccepted").css("display") == "none") {
-            $("#splash").hide();
-        }
-
-        $("#splash2").hide();
-        loading2Hide();
-    }
-
-    function bindGetMyClients(data) {
-        if (startRecord == 0) {
-            $("#TitleInfo").css("background-color", "#fff");
-            $('#TitleInfo').html('<span class="TitleSpan" uk="Клієнти:">Клиенты:</span>');
-
-            $("#CabinetInfo").hide();
-
-            $("#CabinetTable").children().remove();
-            $("#CabinetTable").append('<tr><th class="stats" style="width: 90px; text-align: center">Ключ</th><th class="stats" style="width: 100%; text-align: center">Телефон</th></tr>');
-        }
-
-        var dataRows = data.d[0];
-
-        for (var i = 0; i < dataRows.length; i++) {
-            $("#CabinetTable").append('<tr class="ItemContainer"><td class="saled" style="width: 90px; text-align: center">' + dataRows[i].Name + '</td><td class="saled" style="width: 100%; text-align: center">' + dataRows[i].paramPhone + '</td></li></ul></div></td></tr>');
-        }
-
-        startRecord = startRecord + dataRows.length;
-
-        fillLangContent();
-
-        $("#CabinetTable").show();
-        $("#createaccount").hide();
-        loadingHide();
-
-        if ($("#orderaccepted").css("display") == "none") {
-            $("#splash").hide();
-        }
-
-        $("#splash2").hide();
-
-        loading2Hide();
     }
 
     $("#ProductsListView").delegate('.rate1', 'click', function () {
@@ -2720,7 +2679,7 @@
             var parts = data.d[0].split("/");
 
             $("#TitleInfo").css("background-color", "#fff");
-            $('#TitleInfo').html('<span class="TitleSpan" path="' + parts[0] + '" sid="' + data.d[4] + '">' + parts[0] + '</span> / <span class="TitleSubSpan" path="' + data.d[0] + '" sid="' + data.d[4] + '">' + parts[1] + '</span>:<span class="SortView"></span><span class="ListView"></span><span class="TableView"></span>');
+            $('#TitleInfo').html('<span class="TitleSpan" path="' + parts[0] + '" sid="' + data.d[4] + '">' + parts[0] + '</span> / <span class="TitleSubSpan" path="' + data.d[0] + '" sid="' + data.d[4] + '">' + parts[1] + '</span><span class="SortView"></span><span class="ListView"></span><span class="TableView"></span>');
             $("#CabinetInfo").hide();
             $("#TitleInfo").show();
             $(".SortView").show();
@@ -2899,7 +2858,7 @@
 
     $("#UserKey").click(function () {
         $("#login").center();
-        $("#LoginPhoneNumber").inputmask("+38 (999) 999-9999");
+        $("#LoginPhoneNumber").inputmask("+38 999 999 9999");
         $("#login").show();
         $("#splash").show();
     });
@@ -2914,7 +2873,7 @@
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/GetClient",
-            data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + $("#LoginPhoneNumber").val() + "', \"key\":'" + $("#LoginKey").val() + "' }",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + ConvertPhone($("#LoginPhoneNumber").val()) + "', \"key\":'" + $("#LoginKey").val() + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindGetClient
@@ -2936,7 +2895,7 @@
                     $("#splash").show();
                     $("#createaccount").center();
                     $("#createaccount").show();
-                    $("#CreatePhoneNumberLogin").inputmask("+38 (999) 999-9999");
+                    $("#CreatePhoneNumberLogin").inputmask("+38 999 999 9999");
                 }
                 else {
                     $.cookie("c_client_phone", data.d.paramPhone, { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
@@ -4042,9 +4001,19 @@
             }
         }
 
+        $('html, body').css({
+            overflow: 'auto',
+            height: 'auto'
+        });
+        $("#vpo").attr("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+
         $("#viewer").hide();
         loadingHide();
         $("#splash").hide();
+
+        var $target = $('html,body');
+        $target.animate({ scrollTop: selected.offset().top + $("#ProductsListView").offset().top + selected.outerHeight() / 2 - 120 - $(window).height() / 2 }, 0);
+        selected.css({ "border": "solid 2px #FF0000" }).animate({ borderColor: "#000000" }, 1000);
     }
 
     $("#UploadToGoogleFeedSpan").click(function () {
@@ -4404,7 +4373,7 @@
                     async: true,
                     type: "POST",
                     url: "https://xpool.pro/web/webform.aspx/CreatePhoneClient",
-                    data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"phone\":'" + $("#CreatePhoneNumberLogin").val() + "' }",
+                    data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + $("#MainBalance").attr("client_id") + ", \"phone\":'" + ConvertPhone($("#CreatePhoneNumberLogin").val()) + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: bindCreatePhoneClient
@@ -4810,7 +4779,7 @@
 
                     //title
                     //$(".head2").html($("#MBM1").attr("v9"));
-                    //document.title = $("#MBM1").attr("v9");
+                    document.title = $("#MBM1").attr("v9");
 
                    
                     //$(".head2").show();
@@ -5845,10 +5814,7 @@
 
     $("#CreateOrder").click(function () {
         
-
         if ($(".cartsum").text() != "0грн") {
-
-            //alert($("#col1").children().c);
 
             if ($("#col1").children().length == 0) {
 
@@ -5856,8 +5822,6 @@
                 loadingShow();
 
                 var city, warehouse;
-
-
 
                 city = $("#CurrentCityTextBox").val();
                 warehouse = $("#CurrentWarehouseTextBox").val();
@@ -5883,7 +5847,7 @@
 
                 if (city == '' || addr == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '') {
                     alert("Перед відправкою необхідно заповнити всі поля");
-                    if ($("#PhoneTextBox").val().indexOf("_") != -1 && $("#PhoneTextBox").val() != '') {
+                    if ($("#PhoneTextBox").val().indexOf("_") != -1 || $("#PhoneTextBox").val() == '') {
                         $("#PhoneTextBox").css("background-color", "#FF8888");
                     }
                     if (city == '') {
@@ -5939,21 +5903,9 @@
                         $("#PayOrder").append('<tr><td class="PayInfo" width="100%"><div style="text-align: center; padding: 10px; margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px""><span class= "Visa"></span><span class="MasterCard"></span><br/>ФОП Краснікова О.С. РНОКПП: 2374202227</div></td></tr>');
 
                     }
-
-                    //$("#CabinetTable").append('<tr class="ItemContainer"><td></td></tr>');
+                    
                     $("#PayOrder").show();
-
-                    $("#CreateOrder").hide();
-                    //fillLangContent();
-
-                    //window.history.pushState({}, '1pool.in.ua', '/web/webform.aspx?uid=' +uid_v + '&sid=' + sid_v);
-
-                    //extractHostname(window.location.origin);
-
-
-
-                    // alert("{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("cart" + sid_v + "." +uid_v) + "', \"delivery_type\":" + (($("#MBM1").attr("v19") == "0") ? "'" + $("#DeliveryType").val() + "'" : "'Адресная'") + ", \"warehouse\":'" + warehouse + "', \"area\":'" + area + "', \"city\":'" + city + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"sms\":'" + $("#MBM1").attr("v17") + "', \"comments\":'" + ($.cookie("comments" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("comments" + sid_v + "." +uid_v)) + "', \"ctime\":'" + ($.cookie("ctime" + sid_v + "." +uid_v) == undefined ? '' : $.cookie("ctime" + sid_v + "." +uid_v)) + "' }")
-                   
+                    $("#CreateOrder").hide();        
                 }
             }
             else {
@@ -6001,7 +5953,7 @@
 
                 fillLangContent();
 
-                $("#PhoneTextBox").inputmask("+38 (999) 999-9999");
+                $("#PhoneTextBox").inputmask("+38 999 999 9999");
 
 
                 if ($("#MBM1").attr("v19") == "0") {
@@ -6040,7 +5992,7 @@
                     async: true,
                     type: "POST",
                     url: "https://xpool.pro/web/webform.aspx/GetLastOrderInfo",
-                    data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + $("#PhoneTextBox").val() + "' }",
+                    data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "' }",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: bindGetLastOrderInfo
@@ -6060,11 +6012,12 @@
 
     $("#CabinetTable").delegate('#PhoneTextBox', 'keyup input', function () {
         if ($('#PhoneTextBox').val().indexOf("_") == -1) {
+       
             $.ajax({
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/GetLastOrderInfo",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + $("#PhoneTextBox").val() + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindGetLastOrderInfo
@@ -6087,7 +6040,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder2
@@ -6098,7 +6051,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder2
@@ -6120,7 +6073,7 @@
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindCreateNewOrder3
@@ -6213,7 +6166,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder
@@ -6224,7 +6177,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + $("#PhoneTextBox").val() + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder
@@ -6233,9 +6186,9 @@
     });
 
     function bindGetLastOrderInfo(data) {
-
-
-        $('#CurrentCityTextBox').val(data.d.City);
+       
+        if (data.d.City != null)
+            $('#CurrentCityTextBox').val(data.d.City);
 
         if (data.d.Address != null && data.d.Address != '') {
             $("#DeliveryTypeSelect").val("2");
@@ -6415,7 +6368,7 @@
 
     
 
-    $("#PhoneTextBox").inputmask("+38 (999) 999-9999");
+    $("#PhoneTextBox").inputmask("+38 999 999 9999");
 
     var custom_perc = false;
 
@@ -6522,6 +6475,10 @@
 
         var psum = 0;
 
+  
+        var senders = [];
+       
+
         for (var i = 0; i < dataRows.length; i++) {
             var col;
 
@@ -6561,6 +6518,10 @@
             var escount = EnableSetCount(set_count, dataRows[i].ID);
             var comment = EnableSetComment(set_count, dataRows[i].ID, dataRows[i].ShopID);
 
+            if (jQuery.inArray(dataRows[i].ShopID, senders) == -1) {
+                senders.push(dataRows[i].ShopID);
+            }
+
             if ($.cookie("c_view") == "list" || $("#c_view").val() == "list") {
                 col = $('#col1');
                 $('#col2').hide();
@@ -6597,10 +6558,11 @@
 
                 rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
 
-                var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
-
+               
                 var deliver_ru = "отправка: ";
                 var deliver_uk = "відправка: ";
+
+                var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
                     deliver_ru = "доставка: ";
@@ -6608,26 +6570,26 @@
 
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
                 }
-                    
 
-                if ((addicted_dataRows[i][9] == "1" || (sid_v == 3692 && dataRows[i].Price > 1200) || dataRows[i].Price > 10000) && dataRows[i].Count == 1) {
-                    delivery_status = '';
+                var day_w = new Date().getDay();
+
+                var cur_time = delivery_time[dataRows[i].ShopID][day_w];
+
+                if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
+
                 }
-                else if (dataRows[i].Price > 100000 || dataRows[i].Price < 10) {
-                    delivery_status = '';
+                else if (cur_time.indexOf("-") != -1) {
+                    var day_hour = new Date().getHours();
+
+                    var time_def = cur_time.split("-");
+
+                    if (parseInt(time_def[1]) < day_hour) {
+                        var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка завтра" : "отправка завтра") + "</div>";
+                    }
                 }
-                else if (dataRows[i].ShopID == 8079)
-                {
-                    var day_w = new Date().getDay();
-                    
-                    var month;
-                    var day;
-
-                    if (day_w < 4) {
-
-                        var d = new Date();
-
-                        d.setDate(d.getDate() + 6 - day_w);
+                else {
+                    if (cur_time.indexOf("<") != -1) {
+                        d.setDate(d.getDate() + parseInt(cur_time.replace("<", "")));
 
                         day = d.getDate();
 
@@ -6643,11 +6605,14 @@
                             else
                                 month = "0" + month;
                         }
+
+                        var curDate = " до " + day + "." + month;
+                        delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
                     }
-                    else if (day_w > 4) {
+                    else {
                         var d = new Date();
 
-                        d.setDate(d.getDate() + 6 + 7 - day_w);
+                        d.setDate(d.getDate() + parseInt(cur_time));
 
                         day = d.getDate();
 
@@ -6663,59 +6628,12 @@
                             else
                                 month = "0" + month;
                         }
-                    }
 
-                    var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
+                        var curDate = day + "." + month;
+                        delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
+                    }
                 }
-                else if (dataRows[i].ShopID == 8547 || dataRows[i].ShopID == 8555)
-                {
-                    var d = new Date();
-
-                    d.setDate(d.getDate() + 3);
-
-                    var day = d.getDate();
-
-                    if (day < 10) {
-                        day = "0" + day;
-                    }
-
-                    var month = (d.getMonth() + 1);
-
-                    if (month < 10) {
-                        if (month == 0)
-                            month = "01";
-                        else
-                            month = "0" + month;
-                    }
-
-                    var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
-                }
-                else if (dataRows[i].Price > 1000 && extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") == -1) {
-                    var d = new Date();
-
-                    d.setDate(d.getDate() + 1);
-
-                    var day = d.getDate();
-
-                    if (day < 10) {
-                        day = "0" + day;
-                    }
-
-                    var month = (d.getMonth() + 1);
-
-                    if (month < 10) {
-                        if (month == 0)
-                            month = "01";
-                        else
-                            month = "0" + month;
-                    }
-
-                    var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
-                }
-
+                    
                 col.append('<div class="product" ' + max_count + ' style="display: none; width: 100%; border: 2px solid #FFF;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '<br/><span idv="' + dataRows[i].ID + '" class="ReadAll">Читати повністю</span></a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</td></tr>');
 
                 if (timesel != '') {
@@ -6801,11 +6719,11 @@
 
 
                 rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
-
-                var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
-
+           
                 var deliver_ru = "отправка: ";
                 var deliver_uk = "відправка: ";
+
+                var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
                     deliver_ru = "доставка: ";
@@ -6814,24 +6732,25 @@
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
                 }
 
+                var day_w = new Date().getDay();
 
-                if ((addicted_dataRows[i][9] == "1" || (sid_v == 3692 && dataRows[i].Price > 1200) || dataRows[i].Price > 10000) && dataRows[i].Count == 1) {
-                    delivery_status = '';
+                var cur_time = delivery_time[dataRows[i].ShopID][day_w];
+
+                if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
+
                 }
-                else if (dataRows[i].Price > 100000 || dataRows[i].Price < 10) {
-                    delivery_status = '';
+                else if (cur_time.indexOf("-") != -1) {
+                    var day_hour = new Date().getHours();
+
+                    var time_def = cur_time.split("-");
+
+                    if (parseInt(time_def[1]) < day_hour) {
+                        var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "відправка завтра" : "отправка завтра") + "</div>";
+                    }
                 }
-                else if (dataRows[i].ShopID == 8079) {
-                    var day_w = new Date().getDay();
-
-                    var month;
-                    var day;
-
-                    if (day_w < 4) {
-
-                        var d = new Date();
-
-                        d.setDate(d.getDate() + 6 - day_w);
+                else {
+                    if (cur_time.indexOf("<") != -1) {
+                        d.setDate(d.getDate() + parseInt(cur_time.replace("<", "")));
 
                         day = d.getDate();
 
@@ -6847,11 +6766,14 @@
                             else
                                 month = "0" + month;
                         }
+
+                        var curDate = " до " + day + "." + month;
+                        delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
                     }
-                    else if (day_w > 4) {
+                    else {
                         var d = new Date();
 
-                        d.setDate(d.getDate() + 6 + 7 - day_w);
+                        d.setDate(d.getDate() + parseInt(cur_time));
 
                         day = d.getDate();
 
@@ -6867,56 +6789,10 @@
                             else
                                 month = "0" + month;
                         }
+
+                        var curDate = day + "." + month;
+                        delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
                     }
-
-                    var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
-                }
-                else if (dataRows[i].ShopID == 8547 || dataRows[i].ShopID == 8555) {
-                    var d = new Date();
-
-                    d.setDate(d.getDate() + 3);
-
-                    var day = d.getDate();
-
-                    if (day < 10) {
-                        day = "0" + day;
-                    }
-
-                    var month = (d.getMonth() + 1);
-
-                    if (month < 10) {
-                        if (month == 0)
-                            month = "01";
-                        else
-                            month = "0" + month;
-                    }
-
-                    var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
-                }
-                else if (dataRows[i].Price > 1000 && extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") == -1) {
-                    var d = new Date();
-
-                    d.setDate(d.getDate() + 1);
-
-                    var day = d.getDate();
-
-                    if (day < 10) {
-                        day = "0" + day;
-                    }
-
-                    var month = (d.getMonth() + 1);
-
-                    if (month < 10) {
-                        if (month == 0)
-                            month = "01";
-                        else
-                            month = "0" + month;
-                    }
-
-                    var curDate = day + "." + month;
-                    delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
                 }
 
                 col.append('<div class="product" ' + max_count + ' style="display: none; border: 2px solid #FFF" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div idv="' + dataRows[i].ID + '" class="ReadAll" style="text-align: center">Читати повністю</div><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
@@ -7002,7 +6878,17 @@
         else if (currentEvent == "new") {      
             $("#MenuDIV").animate({ scrollLeft: $('li span.new').position().left - window.innerWidth / 2 + 25 }, 500);
         }
-        else if (currentEvent == "cart") {       
+        else if (currentEvent == "cart") {
+            if (senders.length > 1) {
+                $("#PayOrder").children().remove();
+                var drop = "відправлення";
+
+                if (senders.length > 4)
+                    drop = "відправлень";
+             
+                $("#PayOrder").append("<tr><td style='background-color: #FFF; text-align: center; font: 12px/30px Arial;'>За вашим замовленням буде створено " + senders.length + " " + drop + "</td></tr>");
+                $("#PayOrder").show();
+            }
             $("#MenuDIV").animate({ scrollLeft: $('.mcart').position().left - window.innerWidth / 2 + 25 }, 500);
             var n = $(document).height();
             $('html, body').animate({ scrollTop: n }, 0);
@@ -7040,7 +6926,7 @@
                     $("#splash").show();
                     $("#createaccount").center();
                     $("#createaccount").show();
-                    $("#CreatePhoneNumberLogin").inputmask("+38 (999) 999-9999");
+                    $("#CreatePhoneNumberLogin").inputmask("+38 999 999 9999");
                 }
 
                 if ($("#UserKey").attr("class") == "keyerror")
