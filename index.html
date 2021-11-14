@@ -2,15 +2,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>...</title>
+    <title>monstro</title>
     <meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="клякса.in.ua">
+    <meta property="og:site_name" content="monstro.com.ua">
     <meta property="og:title" content="клякса.in.ua">
     <meta property="og:description" content="Іграшки, канцтовари, товари для дітей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
-    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/blot_preview.png">
+    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/monstro_preview.png">
     <meta property="og:image:width" content="968">
     <meta property="og:image:height" content="794">
 
@@ -140,6 +140,10 @@
 
         .dready {
             background-color: greenyellow;
+        }
+
+        .sklep {
+            background-color: #c0c0c0;
         }
 
         td.None {
@@ -1377,15 +1381,45 @@
         3692: ["0-10", "0-14", "0-14", "0-14", "0-14", "0-14", "0-10"],
         5409: ["<10", "<10", "<10", "<10", "<10", "<10", "<10"],
         8547: ["1", "1", "1", "1", "1", "1", "1"],
-        8079: ["4", "3", "2", "8", "7", "6", "5"],
+        8079: ["5", "4", "3", "2", "8", "7", "6"],
         9170: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
-        9170: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
+       
         8071: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
         8539: ["<14", "<14", "<14", "<14", "<14", "<14", "<14"],
         9178: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
         9162: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
         8555: ["1", "1", "1", "1", "1", "1", "1"]
     };
+
+    var delivery_time2 = {
+        638: ["", "", "", "", "", "", ""],
+        3692: ["", "", "", "", "", "", ""],
+        5409: ["<10", "<10", "<10", "<10", "<10", "<10", "<10"],
+        8547: ["<5", "<5", "<5", "<5", "<5", "<5", "<5"],
+        8079: ["5", "4", "3", "2", "8", "7", "6"],
+        9170: ["6", "5", "4", "3", "2", "8", "7"],
+       
+        8071: ["2", "4", "3", "2", "5", "4", "3"],
+        8539: ["<14", "<14", "<14", "<14", "<14", "<14", "<14"],
+        9178: ["5", "4", "3", "9", "8", "7", "6"],
+        9162: ["2", "4", "3", "2", "5", "4", "3"],
+        8555: ["<5", "<5", "<5", "<5", "<5", "<5", "<5"]
+    };
+
+    var sklep = {
+        638: "магазин клякса",
+        3692: "магазин клякса",
+        5409: "склад кетр+",
+        8547: "склад babyroom",
+        8079: "склад beles",
+        9170: "склад dendi",
+
+        8071: "склад dreamtoys",
+        8539: "склад metr+",
+        9178: "склад mix",
+        9162: "склад multi",
+        8555: "склад tilly"
+    }
 
     function SetView() {
 
@@ -3342,7 +3376,7 @@
             }
 
             $("#TitleInfo").css("background-color", "#fff");
-            $('#TitleInfo').html(($("#MBM1").attr("v16") == "1" ? "Бажання" : "Желания") + ':<span class="ListView"></span><span class="TableView"></span>');
+            $('#TitleInfo').html(($("#MBM1").attr("v16") == "1" ? "Бажання:" : "Желания:") + '<span class="ListView"></span><span class="TableView"></span>');
             $("#CabinetInfo").hide();
             $("#TitleInfo").show();
 
@@ -3407,7 +3441,7 @@
             }
 
             $("#TitleInfo").css("background-color", "#fff");
-            $('#TitleInfo').html(($("#MBM1").attr("v16") == "1" ? "Кошик" : "Корзина") + ":<span class='ListView'></span><span class='TableView'></span>");
+            $('#TitleInfo').html(($("#MBM1").attr("v16") == "1" ? "Кошик:" : "Корзина:") + "<span class='ListView'></span><span class='TableView'></span>");
             $("#CabinetInfo").hide();
             $("#TitleInfo").show();
 
@@ -4779,7 +4813,7 @@
 
                     //title
                     //$(".head2").html($("#MBM1").attr("v9"));
-                    document.title = $("#MBM1").attr("v9");
+                    //document.title = $("#MBM1").attr("v9");
 
                    
                     //$(".head2").show();
@@ -6558,7 +6592,7 @@
 
                 rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
 
-               
+                var sklep_info = "<div class='sklep'>" + sklep[dataRows[i].ShopID] + "</div>";
                 var deliver_ru = "отправка: ";
                 var deliver_uk = "відправка: ";
 
@@ -6569,11 +6603,13 @@
                     deliver_uk = "доставка: ";
 
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
+                    sklep_info = "";
                 }
 
                 var day_w = new Date().getDay();
 
-                var cur_time = delivery_time[dataRows[i].ShopID][day_w];
+                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time[dataRows[i].ShopID][day_w];
+
 
                 if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
 
@@ -6609,7 +6645,7 @@
                         var curDate = " до " + day + "." + month;
                         delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
                     }
-                    else {
+                    else if (cur_time != "") {
                         var d = new Date();
 
                         d.setDate(d.getDate() + parseInt(cur_time));
@@ -6633,8 +6669,8 @@
                         delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
                     }
                 }
-                    
-                col.append('<div class="product" ' + max_count + ' style="display: none; width: 100%; border: 2px solid #FFF;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '<br/><span idv="' + dataRows[i].ID + '" class="ReadAll">Читати повністю</span></a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</td></tr>');
+
+                col.append('<div class="product" ' + max_count + ' style="display: none; width: 100%; border: 2px solid #FFF;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + no_photo_url + img_val + delivery_status + sklep_info + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '<br/><span idv="' + dataRows[i].ID + '" class="ReadAll">Читати повністю</span></a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</td></tr>');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -6720,6 +6756,7 @@
 
                 rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
            
+                var sklep_info = "<div class='sklep'>" + sklep[dataRows[i].ShopID] + "</div>";
                 var deliver_ru = "отправка: ";
                 var deliver_uk = "відправка: ";
 
@@ -6730,11 +6767,12 @@
                     deliver_uk = "доставка: ";
 
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
+                    sklep_info = "";
                 }
 
                 var day_w = new Date().getDay();
 
-                var cur_time = delivery_time[dataRows[i].ShopID][day_w];
+                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time[dataRows[i].ShopID][day_w];
 
                 if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
 
@@ -6770,7 +6808,7 @@
                         var curDate = " до " + day + "." + month;
                         delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? deliver_uk : deliver_ru) + curDate + "</div>";
                     }
-                    else {
+                    else if (cur_time != "") {
                         var d = new Date();
 
                         d.setDate(d.getDate() + parseInt(cur_time));
@@ -6795,7 +6833,7 @@
                     }
                 }
 
-                col.append('<div class="product" ' + max_count + ' style="display: none; border: 2px solid #FFF" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + no_photo_url + img_val + delivery_status + '</div>' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div idv="' + dataRows[i].ID + '" class="ReadAll" style="text-align: center">Читати повністю</div><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
+                col.append('<div class="product" ' + max_count + ' style="display: none; border: 2px solid #FFF" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + no_photo_url + img_val + delivery_status + sklep_info + '</div>' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div idv="' + dataRows[i].ID + '" class="ReadAll" style="text-align: center">Читати повністю</div><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -7674,7 +7712,7 @@
 
         $("#RatesDiv").append("<div id='HideRate' style='margin-top: 40px;'>" + ($("#MBM1").attr("v16") == "1" ? "Повернутися назад" : "Вернуться назад") + "</div>")
 
-        $("#RatesDiv").append("<div class='DescContent'>" + data.d + "</div>");
+        $("#RatesDiv").append("<div class='DescContent'>" + data.d[1] + "</br/><br/>" + data.d[0] + "</div>");
 
         fillLangContent();
 
