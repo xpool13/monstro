@@ -2483,6 +2483,16 @@
 
         if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
             sid_v = $(this).attr("sid");
+
+            ":" + id + "#1#" + sid_v + ":"
+            var cart = $.cookie("c_cart");
+
+            if (cart != undefined && cart != null && cart != "") {
+                if (cart.split(":")[0].split("#")[2] != sid_v) {
+                    $.cookie("c_cart", "", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+                    $(".mcartcount").html("0");
+                }
+            }
         }
 
 
@@ -2995,9 +3005,9 @@
 
                     $.removeCookie("c_client", { path: '/', domain: '.' + document.domain });
                     $.removeCookie("c_client_phone", { path: '/', domain: '.' + document.domain });
-                    $.removeCookie("c_cart" + sid_v + "." +uid_v, { path: '/', domain: '.' + document.domain });
-                    $.removeCookie("c_comments" + sid_v + "." +uid_v, { path: '/', domain: '.' + document.domain });
-                    $.removeCookie("c_ctime" + sid_v + "." +uid_v, { path: '/', domain: '.' + document.domain });
+                    $.removeCookie("c_cart", { path: '/', domain: '.' + document.domain });
+                    $.removeCookie("c_comments", { path: '/', domain: '.' + document.domain });
+                    $.removeCookie("c_ctime", { path: '/', domain: '.' + document.domain });
                 }
             }
 
