@@ -2506,8 +2506,6 @@
             }
         }
 
-        alert(sid_v);
-
         $("#splash2").show();
         loadingShow();
 
@@ -3342,6 +3340,8 @@
         window.history.pushState({}, "", "index.html?sv=2");
 
         var datetime = $("#DateTimeInfo").css('display') == 'none' ? "" : $("#datepicker").val();
+
+        alert(sid_v);
 
         $.ajax({
             async: true,
