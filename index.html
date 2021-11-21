@@ -2,15 +2,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>monstro</title>
+    <title>...</title>
     <meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="monstro.com.ua">
+    <meta property="og:site_name" content="клякса.in.ua">
     <meta property="og:title" content="клякса.in.ua">
     <meta property="og:description" content="Іграшки, канцтовари, товари для дітей">
     <meta property="og:url" content="https://xpool.pro">
     <meta property="og:locale" content="ru_RU">
-    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/monstro_preview.png">
+    <meta id="imgmeta" runat="server" property="og:image" content="https://xpool.pro/web/source/style_blot/img/blot_preview.png">
     <meta property="og:image:width" content="968">
     <meta property="og:image:height" content="794">
 
@@ -730,6 +730,22 @@
         }
 
             td.order2:hover {
+                background-color: #FFFF00;
+            }
+
+        td.order3 {
+            height: 42px;
+            position: relative;
+            font-size: large;
+            font-family: Arial;
+            text-align: left;
+            padding: 5px;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+        }
+
+            td.order3:hover {
                 background-color: #FFFF00;
             }
 
@@ -2464,6 +2480,11 @@
 
 
     $("#CabinetTable").delegate('td.category1', "click", function () {
+
+        if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
+            sid_v = $(this).attr("sid");
+        }
+
 
         $("#splash2").show();
         loadingShow();
@@ -4687,7 +4708,7 @@
 
 
     var uid_v = 48;//edit
-    var sid_v = 638;//edit
+    var sid_v = 3692;//edit
 
     var init_status = 1;
 
@@ -4706,7 +4727,10 @@
             $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
         }
 
-        
+        if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
+            uid_v = 48;
+            sid_v = 8071;
+        }
 
         //$("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
         //$("#TargetStyleSheet").attr("st", "style_blot");
@@ -4813,7 +4837,7 @@
 
                     //title
                     //$(".head2").html($("#MBM1").attr("v9"));
-                    //document.title = $("#MBM1").attr("v9");
+                    document.title = $("#MBM1").attr("v9");
 
                    
                     //$(".head2").show();
@@ -5864,22 +5888,19 @@
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
                     city = "Тернівка (місцевий)";
-                    addr = $("#AdressTextBox").val();
-                }
-                else {
-                 
-                    if ($("#DeliveryTypeSelect").val() == 2)
-                        addr = $("#AdressTextBox").val();
-                    else
-                        addr = warehouse;
+                    addr = "Клякса Маяк";
                 }
 
-                var client_id = $("#MainBalance").attr("client_id");
 
-                if (client_id == undefined || client_id == '')
-                    client_id = 0;
+                if ($("#DeliveryTypeSelect").val() == 2) {
+                    addr = $("#AddressTextBox").val();
+                    if ($("#HouseTextBox").val() == '' || $("#FlatTextBox").val() == '')
+                        addr = '';
+                }
+                else
+                    addr = warehouse;
 
-                if (city == '' || addr == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || $("#SecondNameTextBox").val() == '') {
+                if (city == '' || addr == '' || $("#PhoneTextBox").val() == '' || $("#PhoneTextBox").val().indexOf("_") > 0 || $("#NameTextBox").val() == '' || ($("#SecondNameTextBox") != undefined && $("#SecondNameTextBox").val() == '') || ($("#PatronymicTextBox") != undefined && $("#PatronymicTextBox").val() == '')) {
                     alert("Перед відправкою необхідно заповнити всі поля");
                     if ($("#PhoneTextBox").val().indexOf("_") != -1 || $("#PhoneTextBox").val() == '') {
                         $("#PhoneTextBox").css("background-color", "#FF8888");
@@ -5888,8 +5909,20 @@
                         $("#CurrentCityTextBox").css("background-color", "#FF8888");
                     }
                     if (addr == '') {
-                        if ($("#DeliveryTypeSelect").val() == 2)
-                            $("#AdressTextBox").css("background-color", "#FF8888");
+                        if ($("#DeliveryTypeSelect").val() == 2) {
+
+                            if ($("#AddressTextBox").val() == '') {
+                                $("#AddressTextBox").css("background-color", "#FF8888");
+                            }
+
+                            if ($("#HouseTextBox").val() == '') {
+                                $("#HouseTextBox").css("background-color", "#FF8888");
+                            }
+
+                            if ($("#FlatTextBox").val() == '') {
+                                $("#FlatTextBox").css("background-color", "#FF8888");
+                            }
+                        }
                         else
                             $("#CurrentWarehouseTextBox").css("background-color", "#FF8888");
                     }
@@ -5899,48 +5932,58 @@
                     if ($("#SecondNameTextBox").val() == '') {
                         $("#SecondNameTextBox").css("background-color", "#FF8888");
                     }
+                    if ($("#PatronymicTextBox").val() == '') {
+                        $("#PatronymicTextBox").css("background-color", "#FF8888");
+                    }
+
                     $("#splash").hide();
                     loadingHide();
                     var n = $(document).height();
                     $('html, body').animate({ scrollTop: n }, 500);
+
                 }
                 else {
                     $("#splash").hide();
                     loadingHide();
-                   
+
                     $("#CabinetTable").hide();
 
                     $("#PayOrder").children().remove();
-                    
 
-                    if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-                        $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити при отриманні" : "Оплатить при получении") + '</td></tr>');
-                    }
-                    else {
-                       
-                        var _sum = parseFloat($(".cartsum").html());
-                        var prepay_sum = 100;
 
-                        if (_sum > 10000) {
-                            prepay_sum = 500;
-                        }
-                        else if (_sum > 5000)
-                            prepay_sum == 250;
-                        else if (_sum > 2000)
-                            prepay_sum == 200;
+                    //if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                    $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити при отриманні" : "Оплатить при получении") + '</td></tr>');
+                    //}
+                    //else {
 
-                        if (_sum > 100)
-                            $("#PayOrder").append('<tr><td id="PayOnline2" class="GoPrepay" width="100%" style="width: ' + $("#CreateNewOrder").innerWidth() + 'px"">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити передплату" : "Оплатить предоплату") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/><br/><span id="PrepaySum" style="font: normal 18px arial;">' + prepay_sum + ' грн</span></td></tr>');
+                    //    var _sum = parseFloat($(".cartsum").html());
+                    //    var prepay_sum = 100;
 
-                        $("#PayOrder").append('<tr><td id="PayOnline" class="GoPay" width="100%" style="margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/></td></tr>');
+                    //    if (_sum > 10000) {
+                    //        prepay_sum = 500;
+                    //    }
+                    //    else if (_sum > 5000)
+                    //        prepay_sum == 250;
+                    //    else if (_sum > 2000)
+                    //        prepay_sum == 200;
 
-                        $("#PayOrder").append('<tr><td class="PayInfo" width="100%"><div style="text-align: center; padding: 10px; margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px""><span class= "Visa"></span><span class="MasterCard"></span><br/>ФОП Краснікова О.С. РНОКПП: 2374202227</div></td></tr>');
+                    //    if (_sum > 100)
+                    //        $("#PayOrder").append('<tr><td id="PayOnline2" class="GoPrepay" width="100%" style="width: ' + $("#CreateNewOrder").innerWidth() + 'px"">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити передплату" : "Оплатить предоплату") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/><br/><span id="PrepaySum" style="font: normal 18px arial;">' + prepay_sum + ' грн</span></td></tr>');
 
-                    }
-                    
+                    //    $("#PayOrder").append('<tr><td id="PayOnline" class="GoPay" width="100%" style="margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/></td></tr>');
+
+                    //    $("#PayOrder").append('<tr><td class="PayInfo" width="100%"><div style="text-align: center; padding: 10px; margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px""><span class= "Visa"></span><span class="MasterCard"></span><br/>ФОП Краснікова О.С. РНОКПП: 2374202227</div></td></tr>');
+
+                    //}
+
                     $("#PayOrder").show();
-                    $("#CreateOrder").hide();        
+                    $("#CreateOrder").hide();
                 }
+
+                //var client_id = $("#MainBalance").attr("client_id");
+
+                //if (client_id == undefined || client_id == '')
+                //    client_id = 0;
             }
             else {
                 $("#col1").children().remove();
@@ -5951,9 +5994,6 @@
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
                     $("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Телефон:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr10" class="ItemContainer"><td class="cheque"><input id="PhoneTextBox" type="tel" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
-
-                    $("#CabinetTable").append('<tr id="d_tr7" class="ItemContainer" v="2"><td class="cheque" id="AddressTD" uk="Адреса:">Адрес:</td></tr>');
-                    $("#CabinetTable").append('<tr id="d_tr8" class="ItemContainer" v="2"><td class="cheque"><textarea id="AddressTextBox" maxlength="500" rows="3" cols="30" style="width: 294px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
 
                     $("#CabinetTable").append('<tr id="d_tr13" class="ItemContainer"><td class="cheque" id="NameTD" uk="Ім\'я:">Имя:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="cheque"><input id="NameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
@@ -5970,13 +6010,19 @@
 
                     $("#CabinetTable").append('<tr id="d_tr6" class="ItemContainer" v="1"><td class="cheque"><textarea id="CurrentWarehouseTextBox" readonly maxlength="500" rows="2" cols="30" style="width: 284px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
 
-                    $("#CabinetTable").append('<tr id="d_tr7" class="ItemContainer" v="2" style="display: none"><td class="cheque" id="AddressTD" uk="Адреса:">Адрес:</td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr7" class="ItemContainer" v="2" style="display: none"><td class="cheque" id="AddressTD" uk="Вулиця:">Улица:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr8" class="ItemContainer" v="2" style="display: none"><td class="cheque"><textarea id="AddressTextBox" maxlength="500" rows="3" cols="30" style="width: 294px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr22" class="ItemContainer" v="2" style="display: none"><td class="cheque" id="HouseTD" uk="Номер будинку:">Номер дома:</td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr20" class="ItemContainer" v="2" style="display: none"><td class="cheque"><input id="HouseTextBox" type="text" style="font: 20px/20px Arial; text-align: center; width: 50px;" /></td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr23" class="ItemContainer" v="2" style="display: none"><td class="cheque" id="FlatTD" uk="Номер поверху:">Номер этажа:</td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr21" class="ItemContainer" v="2" style="display: none"><td class="cheque"><input id="FlatTextBox" type="text" style="font: 20px/20px Arial; text-align: center; width: 50px;" /></td></tr>');
 
-                    $("#CabinetTable").append('<tr id="d_tr13" class="ItemContainer"><td class="cheque" id="NameTD" uk="Ім\'я:">Имя:</td></tr>');
-                    $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="cheque"><input id="NameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr11" class="ItemContainer"><td class="cheque" id="SecondNameTD" uk="Прізвище:">Фамилия:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr12" class="ItemContainer"><td class="cheque"><input id="SecondNameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr13" class="ItemContainer"><td class="cheque" id="NameTD" uk="Ім\'я:">Имя:</td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="cheque"><input id="NameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr24" class="ItemContainer"><td class="cheque" id="PatronymicTD" uk="По-батькові:">Отчество:</td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr25" class="ItemContainer"><td class="cheque"><input id="PatronymicTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
                     $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small;"><a target="_blank" href="" style="color: #fff; text-decoration: none">Гарантія</a> і <a target="_blank" href="https://xpool.pro/source/bgy6q-1g33z.html" style="color: #fff; text-decoration: none">Публічна оферта</a></td></tr>');
 
@@ -6034,14 +6080,14 @@
 
                 $("#splash").hide();
                 $("#splash2").hide();
-            }       
+            }
         }
         else {
             alert($("#MBM1").attr("v16") == "1" ? "кошик порожній" : "корзина пустая");
 
             $("#splash").hide();
             $("#splash2").hide();
-        }  
+        }
     });
 
     $("#CabinetTable").delegate('#PhoneTextBox', 'keyup input', function () {
@@ -6074,7 +6120,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder2
@@ -6085,7 +6131,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder2
@@ -6107,7 +6153,7 @@
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindCreateNewOrder3
@@ -6200,7 +6246,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'Адрес', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'Тернівка', \"address\":'Клякса', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder
@@ -6211,7 +6257,7 @@
                 async: true,
                 type: "POST",
                 url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":" + $("#DeliveryTypeSelect").val() + ", \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + $("#c_ctime").val() + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: bindCreateNewOrder
@@ -6221,8 +6267,10 @@
 
     function bindGetLastOrderInfo(data) {
        
-        if (data.d.City != null)
+        if (data.d.City != null) {
             $('#CurrentCityTextBox').val(data.d.City);
+            $('#CurrentCityTextBox').attr(data.d.CityRef);
+        }
 
         if (data.d.Address != null && data.d.Address != '') {
             $("#DeliveryTypeSelect").val("2");
@@ -6230,13 +6278,16 @@
             $("#CabinetTable").find('[v="2"]').show();
             
             $('#AddressTextBox').val(data.d.Address);
+            $('#AddressTextBox').attr(data.d.AddressRef);
         }
         else
         {
             $('#CurrentWarehouseTextBox').val(data.d.Warehouse);
+            $('#CurrentWarehouseTextBox').attr(data.d.WarehouseRef);
         }
 
         $('#SecondNameTextBox').val(data.d.SecondName);
+        $('#PatronymicTextBox').val(data.d.Patronymic);
         $('#NameTextBox').val(data.d.Name);
     }
 
@@ -6261,7 +6312,7 @@
             $("#DetailsTable").children().remove();
 
             for (var i = 0; i < data.data[0].Addresses.length; i++) {
-                $("#DetailsTable").append('<tr><td class="order" width="100%" colspan="2" city_id="' + data.data[0].Addresses[i].DeliveryCity + '">' + data.data[0].Addresses[i].Present + '</td></tr>');
+                $("#DetailsTable").append('<tr><td class="order" width="100%" colspan="2" city_id="' + data.data[0].Addresses[i].Ref + '">' + data.data[0].Addresses[i].MainDescription + '</td></tr>');
             }
 
             var left_drop = 0;
@@ -6298,14 +6349,101 @@
         }
     });
 
+    $("#CabinetTable").delegate('#AddressTextBox', 'keyup input', function () {
+        if ($(this).val().length > 1) {
+            FindAddress();
+        }
+    });
+
+    function FindAddress() {
+        $.ajax({
+            async: true,
+            type: "POST",
+            crossDomain: true,
+            url: "https://api.novaposhta.ua/v2.0/json/",
+            data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "Address",\r\n\ "calledMethod": "searchSettlementStreets",\r\n\ "methodProperties": {\r\n\"StreetName": "' + $("#AddressTextBox").val() + '",\r\n\ "SettlementRef": "' + $("#CurrentCityTextBox").attr("city_id") + '",\r\n\ "Limit": 5\r\n\}\r\n\}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGetAddress
+        });
+    };
+
+    JSON.stringify = JSON.stringify || function (obj) {
+        var t = typeof (obj);
+        if (t != "object" || obj === null) {
+            // simple data type
+            if (t == "string") obj = '"' + obj + '"';
+            return String(obj);
+        }
+        else {
+            // recurse array or object
+            var n, v, json = [], arr = (obj && obj.constructor == Array);
+            for (n in obj) {
+                v = obj[n]; t = typeof (v);
+                if (t == "string") v = '"' + v + '"';
+                else if (t == "object" && v !== null) v = JSON.stringify(v);
+                json.push((arr ? "" : '"' + n + '":') + String(v));
+            }
+            return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+        }
+    };
+
+    function bindGetAddress(data) {
+        if (data.data[0].Addresses.length > 0) {
+            $("#DetailsTable").children().remove();
+
+            for (var i = 0; i < data.data[0].Addresses.length; i++) {
+                $("#DetailsTable").append('<tr><td class="order3" width="100%" colspan="2" address_id="' + data.data[0].Addresses[i].SettlementStreetRef + '">' + data.data[0].Addresses[i].Present + '</td></tr>');
+            }
+
+            var left_drop = 0;
+            var top_drop = 0;
+
+            if (typeof InstallTrigger !== 'undefined') {
+                top_drop = 0;
+            }
+            else {
+                left_drop = 0;
+            }
+
+            $("#DetailsDIV").css({ top: $("#AddressTextBox").offset().top + top_drop + $("#AddressTextBox").outerHeight() + 'px' });
+
+            $("#DetailsDIV").css({ left: $("#AddressTextBox").offset().left + $("#AddressTextBox").outerWidth() - $("#DetailsDIV").outerWidth() + left_drop + 'px' });
+
+            $("#CurrentWarehouseTextBox").val('');
+
+            if (data.data.length < 4) {
+                $("#DetailsDIV").css("height", $("#DetailsTable").innerHeight() + "px");
+            }
+            else
+                $("#DetailsDIV").css("height", "200px");
+
+            $("#DetailsDIV").show();
+            $("#splash").hide();
+            $("#splash2").hide();
+        }
+    }
+
+    $("#DetailsTable").delegate('td.order3', 'click', function () {
+        $("#AddressTextBox").val($(this).html());
+        $("#AddressTextBox").attr("address_id", $(this).attr("address_id"));
+        $("#CurrentWarehouseTextBox").val("");
+        $("#CurrentWarehouseTextBox").removeAttr("warehouse_id");
+        $("#DetailsDIV").hide();
+        $("#DetailsTable").children().remove();
+    });
+
     $("#CabinetTable").delegate('#DeliveryTypeSelect', 'change', function () {
         if ($(this).val() == "1") {
             $("#CurrentCityTextBox").val('');
+            $("#CurrentCityTextBox").removeAttr("city_id");
             $("#CabinetTable").find('[v="2"]').hide();
             $("#CabinetTable").find('[v="1"]').show();
+            
         }
         else if ($(this).val() == "2") {
             $("#CurrentCityTextBox").val('');
+            $("#CurrentCityTextBox").removeAttr("city_id");
             $("#CabinetTable").find('[v="1"]').hide();
             $("#CabinetTable").find('[v="2"]').show();
         }
@@ -6315,7 +6453,13 @@
 
     $("#DetailsTable").delegate('td.order', 'click', function () {
         $("#CurrentCityTextBox").val($(this).html());
+        $("#CurrentCityTextBox").attr("city_id", $(this).attr("city_id"));
         $("#CurrentWarehouseTextBox").val("");
+        $("#CurrentWarehouseTextBox").removeAttr("warehouse_id");
+        $("#AddressTextBox").val("");
+        $("#AddressTextBox").removeAttr("address_id");
+        $("#FlatTextBox").val("");
+        $("#HouseTextBox").val("");
         $("#DetailsDIV").hide();
         $("#DetailsTable").children().remove();
 
@@ -6327,6 +6471,11 @@
 
     $("#DetailsTable").delegate('td.order2', 'click', function () {
         $("#CurrentWarehouseTextBox").val($(this).html());
+        $("#CurrentWarehouseTextBox").attr("warehouse_id", $(this).attr("warehouse_id"));
+        $("#AddressTextBox").val("");
+        $("#AddressTextBox").removeAttr("address_id");
+        $("#FlatTextBox").val("");
+        $("#HouseTextBox").val("");
         $("#DetailsDIV").hide();
         $("#DetailsTable").children().remove();
     });
@@ -6347,7 +6496,7 @@
             type: "POST",
             crossDomain: true,
             url: "https://api.novaposhta.ua/v2.0/json/AddressGeneral/getWarehouses",
-            data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "AddressGeneral",\r\n\ "calledMethod": "getWarehouses",\r\n\ "methodProperties": {\r\n\ "CityRef": "' + city_id + '"\r\n\}\r\n\}',
+            data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "AddressGeneral",\r\n\ "calledMethod": "getWarehouses",\r\n\ "methodProperties": {\r\n\ "SettlementRef": "' + city_id + '"\r\n\}\r\n\}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindGetWarehouses
@@ -6361,7 +6510,7 @@
 
 
             for (var i = 0; i < data.data.length; i++) {
-                $("#DetailsTable").append('<tr><td class="order2" width="100%" colspan="2">' + data.data[i].Description + '</td></tr>');
+                $("#DetailsTable").append('<tr><td class="order2" width="100%" colspan="2" warehouse_id="' + data.data[i].Number + '">' + data.data[i].Description + '</td></tr>');
             }
 
             var left_drop = 0;
@@ -6610,7 +6759,6 @@
 
                 var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time[dataRows[i].ShopID][day_w];
 
-
                 if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
 
                 }
@@ -6625,6 +6773,8 @@
                 }
                 else {
                     if (cur_time.indexOf("<") != -1) {
+                        var d = new Date();
+
                         d.setDate(d.getDate() + parseInt(cur_time.replace("<", "")));
 
                         day = d.getDate();
@@ -6788,6 +6938,7 @@
                 }
                 else {
                     if (cur_time.indexOf("<") != -1) {
+                        var d = new Date();
                         d.setDate(d.getDate() + parseInt(cur_time.replace("<", "")));
 
                         day = d.getDate();
