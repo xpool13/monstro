@@ -2488,7 +2488,14 @@
             var cart = $.cookie("c_cart");
 
             if (cart != undefined && cart != null && cart != "") {
-                if (cart.split(":")[0].split("#")[2] != sid_v) {
+
+                var date = new Date();
+                var minutes = 60;
+                var hours = 24;
+                var days = 365;
+                date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
+
+                if (parseInt(cart.split(":")[0].split("#")[2]) != sid_v) {
                     $.cookie("c_cart", "", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
                     $(".mcartcount").html("0");
                 }
