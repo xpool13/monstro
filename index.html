@@ -2360,7 +2360,9 @@
 
                 for (var i = 0; i < shop_names.length - 1; i++) {
 
-                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="category1" sid="' + shop_ids[i] + '">' + shop_names[i] + '</td></tr>');
+                    var selected_shop = parseInt(shop_ids[i]) == sid_v ? "style='background-color: #9999FF'" : "";
+
+                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="category1" sid="' + shop_ids[i] + '"' + selected_shop + '>' + shop_names[i] + '</td></tr>');
                 }
 
                 $("#TitleInfo").hide();
@@ -2601,14 +2603,16 @@
 
             var selected_tr = (selected_cat == dataRows[i][0]) ? "style='background-color: #9999FF'" : "";
 
-            if (dataRows[i][0] == "Все" && $("#MBM1").attr("v16") == "1") {
-                dataRows[i][0] = "Усе";
-            }
-            else if (dataRows[i][0] == "Прочее" && $("#MBM1").attr("v16") == "1") {
-                dataRows[i][0] = "Інше";
-            }
+            //if (dataRows[i][0] == "Все" && $("#MBM1").attr("v16") == "1") {
+            //    dataRows[i][0] = "Усе";
+            //}
+            //else if (dataRows[i][0] == "Прочее" && $("#MBM1").attr("v16") == "1") {
+            //    dataRows[i][0] = "Інше";
+            //}
 
-            $("#CabinetTable").append('<tr class="ItemContainer"><td class="category2" ' + selected_tr + ' path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</td></tr>');
+            if (dataRows[i][0] != "Все" && dataRows[i][0] != "Прочее") {
+                $("#CabinetTable").append('<tr class="ItemContainer"><td class="category2" ' + selected_tr + ' path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</td></tr>');
+            }
         }
 
         loadingHide();
@@ -4725,7 +4729,7 @@
 
 
     var uid_v = 48;//edit
-    var sid_v = 638;//edit
+    var sid_v = 3692;//edit
 
     var init_status = 1;
 
