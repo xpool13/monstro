@@ -3074,6 +3074,11 @@
             }
             else if (getUrlParameter("id") != '' && getUrlParameter("id") != undefined) {
 
+                if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1 && getUrlParameter("sid") != '' && getUrlParameter("sid") != undefined) {
+                    uid_v = 48;
+                    sid_v = getUrlParameter("sid");
+                }
+
                 data_status = 0;
                 currentEvent = "search";
 
