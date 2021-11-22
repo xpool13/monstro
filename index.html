@@ -4712,12 +4712,12 @@
             return this;
         }
 
-        if (getUrlParameter("uid") != undefined && getUrlParameter("uid") != null && getUrlParameter("uid") != '') {
+        if (getUrlParameter("uid") != undefined && getUrlParameter("uid") != null && getUrlParameter("uid") != '' && extractHostname(window.location.origin).indexOf("monstro.com.ua") == -1) {
             uid_v = getUrlParameter("uid");
         }
 
 
-        if (getUrlParameter("sid") != undefined && getUrlParameter("sid") != null && getUrlParameter("sid") != '') {
+        if (getUrlParameter("sid") != undefined && getUrlParameter("sid") != null && getUrlParameter("sid") != '' && extractHostname(window.location.origin).indexOf("monstro.com.ua") == -1) {
             sid_v = getUrlParameter("sid");
         }
 
