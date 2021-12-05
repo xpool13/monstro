@@ -37,6 +37,170 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <style type="text/css">
 
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+
+            .lds-ring div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                margin: 8px;
+                border: 4px solid #fff;
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                border-color: #fff transparent transparent transparent;
+            }
+
+                .lds-ring div:nth-child(1) {
+                    animation-delay: -0.45s;
+                }
+
+                .lds-ring div:nth-child(2) {
+                    animation-delay: -0.3s;
+                }
+
+                .lds-ring div:nth-child(3) {
+                    animation-delay: -0.15s;
+                }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+
+
+
+
+        .lds-facebook {
+            display: block;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-40px, -40px);
+            width: 80px;
+            height: 80px;
+        }
+
+            .lds-facebook div {
+                display: inline-block;
+                position: absolute;
+                left: 8px;
+                width: 16px;
+                background: #666;
+                animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+            }
+
+                .lds-facebook div:nth-child(1) {
+                    left: 8px;
+                    animation-delay: -0.24s;
+                }
+
+                .lds-facebook div:nth-child(2) {
+                    left: 32px;
+                    animation-delay: -0.12s;
+                }
+
+                .lds-facebook div:nth-child(3) {
+                    left: 56px;
+                    animation-delay: 0;
+                }
+
+        @keyframes lds-facebook {
+            0% {
+                top: 8px;
+                height: 64px;
+            }
+
+            50%, 100% {
+                top: 24px;
+                height: 32px;
+            }
+        }
+
+
+
+        .lds-facebook2 {
+            display: block;
+            position: relative;
+            left: 50%;
+            top: 100px;
+            transform: translate(-40px, -40px);
+            width: 80px;
+            height: 80px;
+        }
+
+            .lds-facebook2 div {
+                display: inline-block;
+                position: absolute;
+                left: 8px;
+                width: 16px;
+                background: #000;
+                animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+            }
+
+                .lds-facebook2 div:nth-child(1) {
+                    left: 8px;
+                    animation-delay: -0.24s;
+                }
+
+                .lds-facebook2 div:nth-child(2) {
+                    left: 32px;
+                    animation-delay: -0.12s;
+                }
+
+                .lds-facebook2 div:nth-child(3) {
+                    left: 56px;
+                    animation-delay: 0;
+                }
+
+        @keyframes lds-facebook2 {
+            0% {
+                top: 8px;
+                height: 64px;
+            }
+
+            50%, 100% {
+                top: 24px;
+                height: 32px;
+            }
+        }
+
+
+        div.splashdiv {
+            display: block;
+            vertical-align: middle;
+            text-align: center;
+            height: 204px;
+            width: 280px;
+            z-index: 5;
+            background-color: #fff;
+            color: #8e8e8e;
+        }
+
+        div.splashdiv2 {
+            display: block;
+            vertical-align: middle;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            z-index: 99999999;
+            background-color: #fff;
+        }
+
         span.Visa {
             display: inline-block;
             margin: auto;
@@ -62,17 +226,23 @@
         }
 
         #HideRate {
+            position: fixed;
             text-align: center;
-            font: 20px/40px Arial;
-            background-color: #3cf8ff;
-            color: #000;
+            font: 24px/50px Arial;
+            background-color: #333333;
+            color: #fff;
             cursor: pointer;
-            margin-bottom: 5px;
+        }
+
+        #HideRate:hover {
+            background-color: #000;
+            color: #ffffcc;
         }
 
         #AddRate {
+            position: fixed;
             text-align: center;
-            font: 20px/40px Arial;
+            font: 24px/50px Arial;
             background-color: #084a05;
             color: #fff;
             cursor: pointer;
@@ -123,11 +293,12 @@
 
         .DescContent {
             text-align: center;
-            font: 14px/20px Arial;
+            font: 16px/24px Arial;
             background-color: #fff;
-            color: #333;
+            color: #000;
             text-align: left;
             padding: 8px;
+            margin-top: 50px;
         }
 
         input.Def {
@@ -144,6 +315,11 @@
 
         .sklep {
             background-color: #c0c0c0;
+        }
+
+        .freeDelivery {
+            background-color: #333333;
+            color: white;
         }
 
         td.None {
@@ -546,7 +722,7 @@
             display: block;
             left: 20px;
             top: 20px;
-            width: 40px;
+            width: 60px;
             height: 20px;
             color: white;
             text-align: center;
@@ -625,21 +801,109 @@
             padding-left: 5px;
         }
 
+
+
         #loading2 {
             position: fixed;
-            left: 50%;
-            margin-left: -80px;
             z-index: 999999999999;
-            width: 140px;
-            padding: 10px;
-            font: normal 18px arial;
-            text-align: center;
-            vertical-align: middle;
-            background-color: white;
             display: none;
+            width: 80px;
+            height: 80px;
             bottom: 2px;
-            border: 1px solid #000000;
+            border: none;
+            left: 50%;
+            margin-left: -40px;
         }
+
+            #loading2 div {
+                position: absolute;
+                left: 8px;
+                width: 16px;
+                background-color: #333;
+                animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+            }
+
+                #loading2 div:nth-child(1) {
+                    background-color: #fff;
+                    left: 8px;
+                    animation-delay: -0.24s;
+                }
+
+                #loading2 div:nth-child(2) {
+                    background-color: #fff;
+                    left: 32px;
+                    animation-delay: -0.12s;
+                }
+
+                #loading2 div:nth-child(3) {
+                    background-color: #fff;
+                    left: 56px;
+                    animation-delay: 0;
+                }
+
+        @keyframes loading2 {
+            0% {
+                top: 8px;
+                height: 64px;
+            }
+
+            50%, 100% {
+                top: 24px;
+                height: 32px;
+            }
+        }
+
+
+        #loading {
+            position: fixed;
+            z-index: 999999999999;
+            display: none;
+            width: 80px;
+            height: 80px;
+            top: 2px;
+            border: none;
+            left: 50%;
+            margin-left: -40px;
+        }
+
+        #loading div {
+            position: absolute;
+            left: 8px;
+            width: 16px;
+            background-color: #333;
+            animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+        }
+
+            #loading div:nth-child(1) {
+                background-color: #fff;
+                left: 8px;
+                animation-delay: -0.24s;
+            }
+
+            #loading div:nth-child(2) {
+                background-color: #fff;
+                left: 32px;
+                animation-delay: -0.12s;
+            }
+
+            #loading div:nth-child(3) {
+                background-color: #fff;
+                left: 56px;
+                animation-delay: 0;
+            }
+
+        @keyframes loading {
+            0% {
+                top: 8px;
+                height: 64px;
+            }
+
+            50%, 100% {
+                top: 24px;
+                height: 32px;
+            }
+        }
+
 
         td.cheque {
             height: 42px;
@@ -749,6 +1013,22 @@
                 background-color: #FFFF00;
             }
 
+        td.order5 {
+            height: 42px;
+            position: relative;
+            font-size: large;
+            font-family: Arial;
+            text-align: left;
+            padding: 5px;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+        }
+
+            td.order5:hover {
+                background-color: #FFFF00;
+            }
+
         span.QR {
             cursor: pointer;
             position: absolute;
@@ -783,6 +1063,7 @@
     <meta name="google-site-verification" content="5aXs_V1RAM8aIPgjrq5XWPOER1dyy3nRtn95doM2Mfo" />
 </head>
 <body>
+    <div id="MainLoading" class="lds-facebook2"><div></div><div></div><div></div></div>
     <input type="hidden" value="" id="c_view" />
     <input type="hidden" value="" id="c_cart" />
 
@@ -792,7 +1073,7 @@
     <img id="preview" runat="server" class="previmg" redir="0" style="display: none" src="https://xpool.pro/web/source/style_blot/img/blot_preview.png" />
 
     <div id="DetailsDIV" style="z-index: 99999; width: 294px; display: none; position: absolute; overflow-y:scroll; overflow-x: no-display;">
-        <table id="DetailsTable" style="position: absolute; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: #333333;"></table>
+        <table id="DetailsTable" style="width: 100%; position: absolute; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: #333333;"></table>
     </div>
     <div id="QRCode" style="display: none; position: absolute; position: fixed; left: 50%; top: 10px; margin-left: -110px; z-index: 999999999999; width: 220px; background-color: white;">
         <div id="QRCodeView" style="display: block; margin: 10px;"></div>
@@ -811,8 +1092,8 @@
     <div id="splash2"></div>
     <div id="splash3"></div>
     <div id="splash4"></div>
-    <div id="loading" uk="Завантаження" style="display: none;">Загрузка</div>
-    <div id="loading2" uk="Завантаження" style="display: none;">Загрузка</div>
+    <div id="loading"><div></div><div></div><div></div></div>
+    <div id="loading2"><div></div><div></div><div></div></div>
     <div id="AddictedView" style="text-align: center; z-index: 9999999999; display: none; position: absolute; width: 400px; left: 50%; background-color: none; overflow-y: hidden; overflow-x: no-display;">
         <table id="AddictedTable" width="100%" style="table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: #333333; background-color: #333333;" align="center"></table>
     </div>
@@ -1059,7 +1340,8 @@
         <span class="leftscroll"></span>
 
         <div id="fullimg">
-            <img id="fullimage" src="https://xpool.pro/web/source/style_blot/img/loading.gif" />
+            <div class="splashdiv2"><div class="lds-facebook"><div></div><div></div><div></div></div></div>
+            <img style="display: none;" id="fullimage" src="" onerror="onErrorFullPhotoLoad(this)" onload="onFullLoad(this)" />
         </div>
         <span class="rightscroll"></span>
         <span class="closey"></span>
@@ -1088,6 +1370,34 @@
                         <div>
                             URL5:<br />
                             <textarea class="UrlArea" ind="5" id="TargetURL5" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL6:<br />
+                            <textarea class="UrlArea" ind="6" id="TargetURL6" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL7:<br />
+                            <textarea class="UrlArea" ind="7" id="TargetURL7" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL8:<br />
+                            <textarea class="UrlArea" ind="8" id="TargetURL8" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL9:<br />
+                            <textarea class="UrlArea" ind="9" id="TargetURL9" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL10:<br />
+                            <textarea class="UrlArea" ind="10" id="TargetURL10" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL11:<br />
+                            <textarea class="UrlArea" ind="11" id="TargetURL11" style="width: 138px;"></textarea>
+                        </div>
+                        <div>
+                            URL12:<br />
+                            <textarea class="UrlArea" ind="12" id="TargetURL12" style="width: 138px;"></textarea>
                         </div>
                     </div>
                 </td>
@@ -1307,6 +1617,7 @@
                 <div class="phonetitle">ТЕЛЕФОН:</div>
                 <div class="phonedesc"></div>
             </div>
+            <div style="text-align: center; font: 14px/20px Arial; padding-top: 10px"><span id="AlertSpan" style="color: #c10000; cursor: pointer;">Поскаржитись на обслуговання</span></div>
         </div>
         <br />
     </div>
@@ -1315,7 +1626,7 @@
         <div class="mainheader" style="display: none; padding-top: 29px;">
             <div style="width: auto; margin: auto;">
                 <div style="width: 100%; overflow-y: hidden; overflow-x: no-display;">
-                  
+
                 </div>
                 <div style="height: 50px; padding-bottom: 8px;">
                     <div id="MenuDIV" style="width: 100%; overflow-y: hidden; overflow-x: no-display; position: absolute; display: block; background-color: #8e8e8e; z-index: 9990;">
@@ -1385,6 +1696,7 @@
             <div id="EmptyDiv" uk="Порожньо" style="display: none; text-align: center; padding: 10px">Пусто</div>
         </div>
     </div>
+    <div style="height: 80px"></div>
 </body>
 </html>
 <script type="text/javascript">
@@ -1393,39 +1705,39 @@
     var old_width = window.innerWidth;
 
     var delivery_time = {
-        638: ["0-10", "0-14", "0-14", "0-14", "0-14", "0-14", "0-10"],
-        3692: ["0-10", "0-14", "0-14", "0-14", "0-14", "0-14", "0-10"],
-        5409: ["<10", "<10", "<10", "<10", "<10", "<10", "<10"],
-        8547: ["1", "1", "1", "1", "1", "1", "1"],
-        8079: ["5", "4", "3", "2", "8", "7", "6"],
-        9170: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
+        638: ["0-10", "0-14", "0-14", "0-14", "0-14", "0-14", "0-10", 1],
+        3692: ["0-10", "0-14", "0-14", "0-14", "0-14", "0-14", "0-10", 1],
+        5409: ["<10", "<10", "<10", "<10", "<10", "<10", "<10", 2],
+        8547: ["1", "1", "1", "1", "1", "1", "1", 3],
+        8079: ["5", "4", "3", "2", "8", "7", "6", 1],
+        9170: ["1", "0-12", "0-12", "0-12", "0-12", "0-12", "2", 1],
        
-        8071: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
-        8539: ["<14", "<14", "<14", "<14", "<14", "<14", "<14"],
-        9178: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
-        9162: ["0-8", "0-12", "0-12", "0-12", "0-12", "0-12", "0-8"],
-        8555: ["1", "1", "1", "1", "1", "1", "1"]
+        8071: ["1", "0-12", "0-12", "0-12", "0-12", "0-12", "2", 1],
+        8539: ["<14", "<14", "<14", "<14", "<14", "<14", "<14", 4],
+        9178: ["1", "0-12", "0-12", "0-12", "0-12", "0-12", "2", 1],
+        9162: ["1", "0-12", "0-12", "0-12", "0-12", "0-12", "2", 1],
+        8555: ["1", "1", "1", "1", "1", "1", "1", 5]
     };
 
     var delivery_time2 = {
-        638: ["", "", "", "", "", "", ""],
-        3692: ["", "", "", "", "", "", ""],
-        5409: ["<10", "<10", "<10", "<10", "<10", "<10", "<10"],
-        8547: ["<5", "<5", "<5", "<5", "<5", "<5", "<5"],
-        8079: ["5", "4", "3", "2", "8", "7", "6"],
-        9170: ["6", "5", "4", "3", "2", "8", "7"],
+        638: ["", "", "", "", "", "", "", 0],
+        3692: ["", "", "", "", "", "", "", 0],
+        5409: ["<10", "<10", "<10", "<10", "<10", "<10", "<10", 0],
+        8547: ["<5", "<5", "<5", "<5", "<5", "<5", "<5", 0],
+        8079: ["5", "4", "3", "2", "8", "7", "6", 0],
+        9170: ["6", "5", "4", "3", "2", "8", "7", 0],
        
-        8071: ["2", "4", "3", "2", "5", "4", "3"],
-        8539: ["<14", "<14", "<14", "<14", "<14", "<14", "<14"],
-        9178: ["5", "4", "3", "9", "8", "7", "6"],
-        9162: ["2", "4", "3", "2", "5", "4", "3"],
-        8555: ["<5", "<5", "<5", "<5", "<5", "<5", "<5"]
+        8071: ["2", "4", "3", "2", "5", "4", "3", 0],
+        8539: ["<14", "<14", "<14", "<14", "<14", "<14", "<14", 0],
+        9178: ["5", "4", "3", "9", "8", "7", "6", 0],
+        9162: ["2", "4", "3", "2", "5", "4", "3", 0],
+        8555: ["<5", "<5", "<5", "<5", "<5", "<5", "<5", 0]
     };
 
     var sklep = {
         638: "магазин клякса",
         3692: "магазин клякса",
-        5409: "склад кетр+",
+        5409: "магазин xPool",
         8547: "склад babyroom",
         8079: "склад beles",
         9170: "склад dendi",
@@ -1612,6 +1924,8 @@
         $("#col3").children().remove();
         $("#CabinetTable").children().remove();
 
+        $("#DetailsDIV").hide();
+
         startRecord = 0;
         sort = 0;
 
@@ -1628,6 +1942,60 @@
             dataType: "json",
             success: bindGetData
         });
+    });
+
+    $("#search").delegate('input.searchtext', 'keyup input', function () {
+        if ($('#search input.searchtext').val().length > 1) {
+            
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "https://xpool.pro/web/webform.aspx/HelpSearch",
+                data: "{ \"text\":'" + $('#search input.searchtext').val() + "' }",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: bindGetHelpSearch
+            });
+        }
+    });
+
+    function bindGetHelpSearch(data) {
+        if (data.d.length > 0) {
+            $("#DetailsTable").children().remove();
+
+            for (var i = 0; i < data.d.length; i++) {
+                $("#DetailsTable").append('<tr><td class="order5" width="100%">' + data.d[i] + '</td></tr>');
+            }
+
+            var left_drop = 0;
+            var top_drop = 0;
+
+            if (typeof InstallTrigger !== 'undefined') {
+                top_drop = 0;
+            }
+            else {
+                left_drop = 0;
+            }
+
+            $("#DetailsDIV").css("position", "fixed");
+            $("#DetailsDIV").css("width", $("#search input.searchtext").outerWidth());
+            $("#DetailsDIV").css({ top: $("#search input.searchtext").offset().top - $(window).scrollTop() + top_drop + $("#search input.searchtext").outerHeight() + 'px' });
+
+            $("#DetailsDIV").css({ left: $("#search input.searchtext").offset().left + $("#search input.searchtext").outerWidth() - $("#DetailsDIV").outerWidth() + left_drop + 'px' });
+
+            if (data.d.length < 4) {
+                $("#DetailsDIV").css("height", $("#DetailsTable").innerHeight() + "px");
+            }
+            else
+                $("#DetailsDIV").css("height", "200px");
+
+            $("#DetailsDIV").show();
+        }
+    }
+
+    $("#DetailsDIV").delegate('.order5', 'click', function () {
+        $("#search input.searchtext").val($(this).html());
+        $("#DetailsDIV").hide();
     });
 
     function bindGetData(data) {
@@ -1667,6 +2035,7 @@
     $("#search input.searchtext").keyup(function (e) {
         if (e.keyCode == 13) {
             $("#search").hide();
+            $("#DetailsDIV").hide();
             $("#splash").hide();
             loading2Show();
             $("#EmptyDiv").hide();
@@ -1918,87 +2287,23 @@
         $("#ContentDIV").animate({ scrollLeft: 0 }, 500);
     }
 
-    var loop_index = 0;
-    var loop_index2 = 0;
-    var timer = null;
-    var timer2 = null;
+  
 
     function loadingShow() {
         $("#loading").show();
-        timer = setInterval("loopLoading()", 100);
     }
 
     function loadingHide() {
         $("#loading").hide();
-        if (timer != null) {
-            clearInterval(timer);
-        }
     }
 
     function loading2Show() {
-        $("#loading2").show();
-        timer2 = setInterval("loopLoading2()", 100);
+        $("#loading2").show();   
     }
 
     function loading2Hide() {
         $("#loading2").hide();
-        if (timer2 != null) {
-            clearInterval(timer2);
-        }
     }
-
-    function loopLoading() {
-      
-        if ($("#loading").text() == "Загрузка") {
-            $("#loading").html(replaceAt("Загрузка", loop_index, "<span style='color: #666'>" + ("Загрузка")[loop_index] + "</span>"));
-
-            if (loop_index == 6)
-                loop_index = 0;
-            else
-                loop_index++;
-        }
-        else
-        {
-            //$("#loading").html($("#loading").text().replace(("Завантаження")[loop_index], "<span style='color: #666'>" + ("Завантаження")[loop_index] + "</span>"));
-
-            $("#loading").html(replaceAt("Завантаження", loop_index, "<span style='color: #666'>" + ("Завантаження")[loop_index] + "</span>"));
-
-            if (loop_index == 11)
-                loop_index = 0;
-            else
-                loop_index++;
-        }
-    }
-
-    function loopLoading2() {
-
-        if ($("#loading2").text() == "Загрузка") {
-            $("#loading2").html(replaceAt("Загрузка", loop_index2, "<span style='color: #666'>" + ("Загрузка")[loop_index2] + "</span>"));
-
-            if (loop_index2 == 6)
-                loop_index2 = 0;
-            else
-                loop_index2++;
-        }
-        else {
-            $("#loading2").html(replaceAt("Завантаження", loop_index2, "<span style='color: #666'>" + ("Завантаження")[loop_index2] + "</span>"));
-
-            if (loop_index2 == 11)
-                loop_index2 = 0;
-            else
-                loop_index2++;
-        }
-    }
-
-    function replaceAt(s, n, t) {
-        return s.substring(0, n) + t + s.substring(n + 1);
-    }
-
-    //function loopPayButton(pay_button) {
-    //    pay_button.css({ "background-color": "#000000" }).animate({ "background-color": "#333333" }, 1000, 'linear', function () {
-    //        loopPayButton(pay_button);
-    //    });
-    //}
 
     $("#CabinetTable").delegate('.PayCard', 'click', function () {
 
@@ -2214,14 +2519,12 @@
                 var leftPos = $('#MenuDIV').scrollLeft();
                 $("#MenuDIV").animate({ scrollLeft: leftPos + 500 }, 300);
 
-               
+
 
                 $(".mcartcount").css({ "background-color": "#FFFF00", "border": "solid 2px #FFFF00" }).animate({ backgroundColor: "#FFFFFF", borderColor: "#FF9400" }, 1000);
             }
             else {
-                $("#cartover").center();
-                $("#cartover").show();
-                $("#splash").show();
+              
             }
         }
         else {
@@ -2360,7 +2663,8 @@
 
                 for (var i = 0; i < shop_names.length - 1; i++) {
 
-                    var selected_shop = (parseInt(shop_ids[i]) == sid_v && extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) ? "style='background-color: #9999FF'" : "";
+                    var selected_shop = "";
+                        //(parseInt(shop_ids[i]) == sid_v && extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) ? "style='background-color: #9999FF'" : "";
 
                     $("#CabinetTable").append('<tr class="ItemContainer"><td class="category1" sid="' + shop_ids[i] + '"' + selected_shop  + '>' + shop_names[i] + '</td></tr>');
                 }
@@ -2462,7 +2766,8 @@
 
                 for (var i = 0; i < shop_names.length - 1; i++) {
 
-                    var selected_shop = (parseInt(shop_ids[i]) == sid_v && extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) ? "style='background-color: #9999FF'" : "";
+                    var selected_shop = ""
+                        //(parseInt(shop_ids[i]) == sid_v && extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) ? "style='background-color: #9999FF'" : "";
 
                     $("#CabinetTable").append('<tr class="ItemContainer"><td class="category1" sid="' + shop_ids[i] + '"' + selected_shop + '>' + shop_names[i] + '</td></tr>');
                 }
@@ -2485,26 +2790,26 @@
 
     $("#CabinetTable").delegate('td.category1', "click", function () {
 
-        if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
-            sid_v = $(this).attr("sid");
+        //if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
+        //    sid_v = $(this).attr("sid");
 
            
-            var cart = $.cookie("c_cart");
+        //    var cart = $.cookie("c_cart");
 
-            if (cart != undefined && cart != null && cart != "") {
+        //    if (cart != undefined && cart != null && cart != "") {
 
-                var date = new Date();
-                var minutes = 60;
-                var hours = 24;
-                var days = 365;
-                date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
+        //        var date = new Date();
+        //        var minutes = 60;
+        //        var hours = 24;
+        //        var days = 365;
+        //        date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
 
-                if (parseInt(cart.split(":")[0].split("#")[2]) != sid_v) {
-                    $.cookie("c_cart", "", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
-                    $(".mcartcount").html("0");
-                }
-            }
-        }
+        //        if (parseInt(cart.split(":")[0].split("#")[2]) != sid_v) {
+        //            $.cookie("c_cart", "", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
+        //            $(".mcartcount").html("0");
+        //        }
+        //    }
+        //}
 
         $("#splash2").show();
         loadingShow();
@@ -2675,14 +2980,15 @@
                 for (var i = 0; i < dataRows.length; i++) {
                     var selected_tr = (selected_cat == dataRows[i][1]) ? "style='background-color: #9999FF'" : "";
 
-                    if (dataRows[i][0] == "Все" && $("#MBM1").attr("v16") == "1") {
-                        dataRows[i][0] = "Усе";
+                    //if (dataRows[i][0] == "Все" && $("#MBM1").attr("v16") == "1") {
+                    //    dataRows[i][0] = "Усе";
+                    //}
+                    //else if (dataRows[i][0] == "Прочее" && $("#MBM1").attr("v16") == "1") {
+                    //    dataRows[i][0] = "Інше";
+                    //}
+                    if (dataRows[i][0] != "Все" && dataRows[i][0] != "Прочее") {
+                        $("#CabinetTable").append('<tr class="ItemContainer"><td class="category2" ' + selected_tr + ' path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</td></tr>');
                     }
-                    else if (dataRows[i][0] == "Прочее" && $("#MBM1").attr("v16") == "1") {
-                        dataRows[i][0] = "Інше";
-                    }
-
-                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="category2" ' + selected_tr + ' path="' + dataRows[i][1] + '" sid="' + dataRows[i][2] + '">' + dataRows[i][0] + '</td></tr>');
                 }
 
                 loadingHide();
@@ -2722,12 +3028,12 @@
 
                 var title_cat = data.d[0];
 
-                if (title_cat == "Все" && $("#MBM1").attr("v16") == "1") {
-                    title_cat = "Усе";
-                }
-                else if (title_cat == "Прочее" && $("#MBM1").attr("v16") == "1") {
-                    title_cat = "Інше";
-                }
+                //if (title_cat == "Все" && $("#MBM1").attr("v16") == "1") {
+                //    title_cat = "Усе";
+                //}
+                //else if (title_cat == "Прочее" && $("#MBM1").attr("v16") == "1") {
+                //    title_cat = "Інше";
+                //}
 
                 $("#TitleInfo").css("background-color", "#fff");
 
@@ -2842,6 +3148,7 @@
     ////});
 
     $("#search span.close").click(function () {
+        $("#DetailsDIV").hide();
         $("#search").hide();
         $("#splash").hide();
     });
@@ -2925,9 +3232,12 @@
         $("#vpo").attr("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
         $('.findPhoto2').remove();
 
-        $("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
+        //$("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
         $("#viewer").hide();
         $("#splash").hide();
+        $("#EditImage1").hide();
+        $("#EditImage2").hide();
+
         var $target = $('html,body');
         $target.animate({ scrollTop: selected.offset().top + $("#ProductsListView").offset().top + selected.outerHeight() / 2 - 120 - $(window).height() / 2 }, 0);
         selected.css({ "border": "solid 2px #FF0000" }).animate({ borderColor: "#000000" }, 1000);
@@ -3074,10 +3384,10 @@
             }
             else if (getUrlParameter("id") != '' && getUrlParameter("id") != undefined) {
 
-                if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1 && getUrlParameter("sid") != '' && getUrlParameter("sid") != undefined) {
-                    uid_v = 48;
-                    sid_v = getUrlParameter("sid");
-                }
+                //if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1 && getUrlParameter("sid") != '' && getUrlParameter("sid") != undefined) {
+                //    uid_v = 48;
+                //    sid_v = getUrlParameter("sid");
+                //}
 
                 data_status = 0;
                 currentEvent = "search";
@@ -3416,7 +3726,7 @@
 
                 for (var i = 0; i < data.d[4].length; i++) {
 
-                    _c_favors = _c_cart.replace(":" + data.d[4] + ":", "");
+                    _c_favors = _c_favors.replace(":" + data.d[4] + ":", "");
 
                 }
 
@@ -3505,7 +3815,10 @@
         $('.findPhoto2').remove();
 
         var prev_img = undefined;
-        $("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
+       // $("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
+
+        $("#fullimage").hide();
+        $(".splashdiv2").show();
 
         window.setTimeout(function () {
 
@@ -3545,7 +3858,10 @@
 
         $('.findPhoto2').remove();
 
-        $("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
+        //$("#fullimage").attr("src", "https://xpool.pro/web/source/style_blot/img/loading.gif");
+        $("#fullimage").hide();
+        $(".splashdiv2").show();
+       
 
         window.setTimeout(function () {
 
@@ -3586,9 +3902,8 @@
         
         if ($("#fullimage").attr("src").indexOf("nophoto2.png") != -1 || $(".EditImageClass").css("display") != "none")
             $('<span class="findPhoto2">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($("#fullimage"));
-       
 
-        if (data.d.edit > 0) {
+        if (data.d.edit > 0 && (selected.attr("shopid") == 638 || selected.attr("shopid") == 647 || selected.attr("shopid") == 3692 )) {
             $("#EditImage1").show();
             $("#EditImage2").show();
 
@@ -3682,121 +3997,197 @@
             success: bindInitEdit
         });
 
-        
-            if (window.innerWidth > 416) {
 
-                $(".leftscroll").show();
-                $(".rightscroll").show();
-            }
-            else {
-                $(".leftscroll").hide();
-                $(".rightscroll").hide();
-            }
-
-            $("#fullimg").css("width", ($(window).innerWidth()) + "px");
-            $("#fullimg").css("height", ($(window).innerHeight()) + "px");
-            $("#viewer span.desc").css("width", ($(window).innerWidth()) + "px");
-           
-
-            $("#fullimage").attr("src", "https://xpool.pro/web/source/img/loading.gif");
-            img_index = parseInt($(this).children('img').first().attr("index"));
-
-            var urls;
-
-
-
+        if (window.innerWidth > 416) {
 
             $(".leftscroll").show();
             $(".rightscroll").show();
-            $("#fullimg").find("#AltImgDiv").remove();
-            $("#fullimage").show();
-            $("#fullimage").attr("src", GetFullImage($(this).children('img').first().attr("src")));
-            urls = selected.find('img').first().attr("res").split("||");
+        }
+        else {
+            $(".leftscroll").hide();
+            $(".rightscroll").hide();
+        }
+
+        $("#fullimg").css("width", ($(window).innerWidth()) + "px");
+        $("#fullimg").css("height", ($(window).innerHeight()) + "px");
+        $("#viewer span.desc").css("width", ($(window).innerWidth()) + "px");
+
+
+        //$("#fullimage").attr("src", "https://xpool.pro/web/source/img/loading.gif");
+
+       
+        $("#fullimage").hide();
+        $(".splashdiv2").show();
+
+        img_index = parseInt($(this).children('img').first().attr("index"));
+
+        var urls;
+
+
+
+
+        $(".leftscroll").show();
+        $(".rightscroll").show();
+      
+        $("#fullimage").show();
+        $("#fullimage").attr("src", GetFullImage($(this).children('img').first().attr("src")));
+        urls = selected.find('img').first().attr("res").split("||");
 
 
 
 
 
-            $(".UrlArea").removeAttr("sel");
-            $(".UrlArea").css("background-color", "#FFF");
+        $(".UrlArea").removeAttr("sel");
+        $(".UrlArea").css("background-color", "#FFF");
 
-            $("#TargetURL1").val(GetFullImage(urls[0]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[0]) : "");
-            $("#TargetURL1").css("background-color", "#FFFF00");
-            $("#TargetURL1").attr("sel", "1");
+        $("#TargetURL1").val(GetFullImage(urls[0]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[0]) : "");
+        $("#TargetURL1").css("background-color", "#FFFF00");
+        $("#TargetURL1").attr("sel", "1");
 
-            var imgcount = 1;
+        var imgcount = 1;
 
-            if (urls.length > 1) {
-                $("#TargetURL2").val(GetFullImage(urls[1]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[1]) : "");
+        if (urls.length > 1) {
+            $("#TargetURL2").val(GetFullImage(urls[1]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[1]) : "");
 
-                if ($("#TargetURL2").val().indexOf("nophoto") == -1 && $("#TargetURL2").val() != '') {
-                    imgcount = 2;
-                }
+            if ($("#TargetURL2").val().indexOf("nophoto") == -1 && $("#TargetURL2").val() != '') {
+                imgcount = 2;
             }
-            else
-                $("#TargetURL2").val("");
+        }
+        else
+            $("#TargetURL2").val("");
 
-            if (urls.length > 2) {
-                $("#TargetURL3").val(GetFullImage(urls[2]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[2]) : "");
+        if (urls.length > 2) {
+            $("#TargetURL3").val(GetFullImage(urls[2]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[2]) : "");
 
-                if ($("#TargetURL3").val().indexOf("nophoto") == -1 && $("#TargetURL3").val() != '') {
-                    imgcount = 3;
-                }
+            if ($("#TargetURL3").val().indexOf("nophoto") == -1 && $("#TargetURL3").val() != '') {
+                imgcount = 3;
             }
-            else
-                $("#TargetURL3").val("");
+        }
+        else
+            $("#TargetURL3").val("");
 
-            if (urls.length > 3) {
-                $("#TargetURL4").val(GetFullImage(urls[3]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[3]) : "");
+        if (urls.length > 3) {
+            $("#TargetURL4").val(GetFullImage(urls[3]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[3]) : "");
 
-                if ($("#TargetURL4").val().indexOf("nophoto") == -1 && $("#TargetURL4").val() != '') {
-                    imgcount = 4;
-                }
+            if ($("#TargetURL4").val().indexOf("nophoto") == -1 && $("#TargetURL4").val() != '') {
+                imgcount = 4;
             }
-            else
-                $("#TargetURL4").val("");
+        }
+        else
+            $("#TargetURL4").val("");
 
-            if (urls.length > 4) {
-                $("#TargetURL5").val(GetFullImage(urls[4]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[4]) : "");
+        if (urls.length > 4) {
+            $("#TargetURL5").val(GetFullImage(urls[4]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[4]) : "");
 
-                if ($("#TargetURL5").val().indexOf("nophoto") == -1 && $("#TargetURL5").val() != '') {
-                    imgcount = 5;
-                }
+            if ($("#TargetURL5").val().indexOf("nophoto") == -1 && $("#TargetURL5").val() != '') {
+                imgcount = 5;
             }
-            else
-                $("#TargetURL5").val("");
+        }
+        else
+            $("#TargetURL5").val("");
 
-            $(".imgcount").html("1 / " + imgcount.toString());
+        if (urls.length > 5) {
+            $("#TargetURL6").val(GetFullImage(urls[5]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[5]) : "");
 
-            $("#DiscountValue").val(selected.attr("discount"));
-            $("#RatingValue").html(selected.attr("rating"));
-            $("#Price2Value").val(selected.attr("price2_inet"));
+            if ($("#TargetURL6").val().indexOf("nophoto") == -1 && $("#TargetURL6").val() != '') {
+                imgcount = 6;
+            }
+        }
+        else
+            $("#TargetURL6").val("");
 
-            $("#StatusValue").html(selected.attr("status2"));
+        if (urls.length > 6) {
+            $("#TargetURL7").val(GetFullImage(urls[6]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[6]) : "");
 
-            if (selected.attr("delivery") == 'null')
-                $("#DeliverySelect").val($("#DeliverySelect option[ru='По умолчанию']").text());
-            else if (selected.attr("delivery") == 'true')
-                $("#DeliverySelect").val($("#DeliverySelect option[ru='Бесплатная']").text());
-            else
-                $("#DeliverySelect").val($("#DeliverySelect option[ru='Платная']").text());
+            if ($("#TargetURL7").val().indexOf("nophoto") == -1 && $("#TargetURL7").val() != '') {
+                imgcount = 7;
+            }
+        }
+        else
+            $("#TargetURL7").val("");
 
-            if (selected.attr("time") != undefined && selected.attr("time") != "null" && selected.attr("time") != "")
-                $("#TimeSelect").val($("#TimeSelect option[v='" + selected.attr("time") + "']").text());
-            else
-                $("#TimeSelect").val($("#TimeSelect option[v='0']").text());
+        if (urls.length > 7) {
+            $("#TargetURL8").val(GetFullImage(urls[7]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[7]) : "");
+
+            if ($("#TargetURL8").val().indexOf("nophoto") == -1 && $("#TargetURL8").val() != '') {
+                imgcount = 8;
+            }
+        }
+        else
+            $("#TargetURL8").val("");
+
+        if (urls.length > 8) {
+            $("#TargetURL9").val(GetFullImage(urls[8]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[8]) : "");
+
+            if ($("#TargetURL9").val().indexOf("nophoto") == -1 && $("#TargetURL9").val() != '') {
+                imgcount = 9;
+            }
+        }
+        else
+            $("#TargetURL9").val("");
+
+        if (urls.length > 9) {
+            $("#TargetURL10").val(GetFullImage(urls[9]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[9]) : "");
+
+            if ($("#TargetURL10").val().indexOf("nophoto") == -1 && $("#TargetURL10").val() != '') {
+                imgcount = 10;
+            }
+        }
+        else
+            $("#TargetURL10").val("");
+
+        if (urls.length > 10) {
+            $("#TargetURL11").val(GetFullImage(urls[10]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[10]) : "");
+
+            if ($("#TargetURL11").val().indexOf("nophoto") == -1 && $("#TargetURL11").val() != '') {
+                imgcount = 11;
+            }
+        }
+        else
+            $("#TargetURL11").val("");
+
+        if (urls.length > 11) {
+            $("#TargetURL12").val(GetFullImage(urls[11]).indexOf("nophoto2.png") == -1 ? GetFullImage(urls[11]) : "");
+
+            if ($("#TargetURL12").val().indexOf("nophoto") == -1 && $("#TargetURL12").val() != '') {
+                imgcount = 12;
+            }
+        }
+        else
+            $("#TargetURL12").val("");
 
 
-            $("#fullimg").css("width", ($(window).innerWidth()) + "px");
-            $("#fullimg").css("height", ($(window).innerHeight()) + "px");
-            $("#viewer span.desc").css("width", ($(window).innerWidth()) + "px");
+        $(".imgcount").html("1 / " + imgcount.toString());
 
-            $("#viewer").show();
-            $("#splash").show();
+        $("#DiscountValue").val(selected.attr("discount"));
+        $("#RatingValue").html(selected.attr("rating"));
+        $("#Price2Value").val(selected.attr("price2_inet"));
 
-            evt.stopPropagation();
-            evt.preventDefault();
-        
+        $("#StatusValue").html(selected.attr("status2"));
+
+        if (selected.attr("delivery") == 'null')
+            $("#DeliverySelect").val($("#DeliverySelect option[ru='По умолчанию']").text());
+        else if (selected.attr("delivery") == 'true')
+            $("#DeliverySelect").val($("#DeliverySelect option[ru='Бесплатная']").text());
+        else
+            $("#DeliverySelect").val($("#DeliverySelect option[ru='Платная']").text());
+
+        if (selected.attr("time") != undefined && selected.attr("time") != "null" && selected.attr("time") != "")
+            $("#TimeSelect").val($("#TimeSelect option[v='" + selected.attr("time") + "']").text());
+        else
+            $("#TimeSelect").val($("#TimeSelect option[v='0']").text());
+
+
+        $("#fullimg").css("width", ($(window).innerWidth()) + "px");
+        $("#fullimg").css("height", ($(window).innerHeight()) + "px");
+        $("#viewer span.desc").css("width", ($(window).innerWidth()) + "px");
+
+        $("#viewer").show();
+        $("#splash").show();
+
+        evt.stopPropagation();
+        evt.preventDefault();
+
     });
 
     $("#ProductsListView").delegate('a.name', 'click', function (evt) {
@@ -3901,7 +4292,7 @@
         if ($("#TargetURL1").val().startsWith("<") == false) {
             $(".leftscroll").show();
             $(".rightscroll").show();
-            $("#fullimg").find("#AltImgDiv").remove();
+           
             $("#fullimage").show();
             $("#fullimage").attr("src", $("#TargetURL1").val());
         }
@@ -3909,8 +4300,7 @@
             $(".leftscroll").hide();
             $(".rightscroll").hide();
             $("#fullimage").hide();
-            $("#fullimg").find("#AltImgDiv").remove();
-            $("#fullimg").append("<div id='AltImgDiv'>" + $("#TargetURL1").val().replace("<[", "").replace("]>", "") + "</div>");
+            
         }
 
         evt.stopPropagation();
@@ -4001,7 +4391,7 @@
         if ($("#TargetURL1").val().startsWith("<") == false) {
             $(".leftscroll").show();
             $(".rightscroll").show();
-            $("#fullimg").find("#AltImgDiv").remove();
+           
             $("#fullimage").show();
             $("#fullimage").attr("src", $("#TargetURL1").val());
         }
@@ -4009,8 +4399,7 @@
             $(".leftscroll").hide();
             $(".rightscroll").hide();
             $("#fullimage").hide();
-            $("#fullimg").find("#AltImgDiv").remove();
-            $("#fullimg").append("<div id='AltImgDiv'>" + $("#TargetURL1").val().replace("<[", "").replace("]>", "") + "</div>");
+            
         }
 
 
@@ -4688,18 +5077,18 @@
 
     var shop_addr;
 
-    $("#redirect").click(function () {
-        var minp = (getUrlParameter("minp") != undefined && getUrlParameter("minp") != '') ? ("&minp=" + getUrlParameter("minp")) : '';
-        var maxp = (getUrlParameter("maxp") != undefined && getUrlParameter("maxp") != '') ? ("&maxp=" + getUrlParameter("maxp")) : '';
-        var s = (getUrlParameter("s") != undefined && getUrlParameter("s") != '') ? ("&s=" + getUrlParameter("s")) : '';
-        var id = (getUrlParameter("id") != undefined && getUrlParameter("id") != '') ? ("&id=" + getUrlParameter("id")) : '';
-        var ids = (getUrlParameter("ids") != undefined && getUrlParameter("ids") != '') ? ("&ids=" + getUrlParameter("ids")) : '';
-        var cat = (getUrlParameter("cat") != undefined && getUrlParameter("cat") != '') ? ("&cat=" + getUrlParameter("cat").replace(/_/g, " ")) : '';
-        var ssid = (getUrlParameter("ssid") != undefined && getUrlParameter("ssid") != '') ? ("&ssid=" + getUrlParameter("ssid")) : '';
-        var sv = (getUrlParameter("sv") != undefined && getUrlParameter("sv") != '') ? ("&sv=" + getUrlParameter("sv")) : '';
+    //$("#redirect").click(function () {
+    //    var minp = (getUrlParameter("minp") != undefined && getUrlParameter("minp") != '') ? ("&minp=" + getUrlParameter("minp")) : '';
+    //    var maxp = (getUrlParameter("maxp") != undefined && getUrlParameter("maxp") != '') ? ("&maxp=" + getUrlParameter("maxp")) : '';
+    //    var s = (getUrlParameter("s") != undefined && getUrlParameter("s") != '') ? ("&s=" + getUrlParameter("s")) : '';
+    //    var id = (getUrlParameter("id") != undefined && getUrlParameter("id") != '') ? ("&id=" + getUrlParameter("id")) : '';
+    //    var ids = (getUrlParameter("ids") != undefined && getUrlParameter("ids") != '') ? ("&ids=" + getUrlParameter("ids")) : '';
+    //    var cat = (getUrlParameter("cat") != undefined && getUrlParameter("cat") != '') ? ("&cat=" + getUrlParameter("cat").replace(/_/g, " ")) : '';
+    //    var ssid = (getUrlParameter("ssid") != undefined && getUrlParameter("ssid") != '') ? ("&ssid=" + getUrlParameter("ssid")) : '';
+    //    var sv = (getUrlParameter("sv") != undefined && getUrlParameter("sv") != '') ? ("&sv=" + getUrlParameter("sv")) : '';
 
-        window.location.replace(shop_addr + "?uid=" +uid_v + "&sid=" + sid_v + s + id + ids + cat + sv + ssid + minp + maxp + "&refer=" + getUrlParameter("refer"));
-    })
+    //    window.location.replace(shop_addr + "?uid=" +uid_v + "&sid=" + sid_v + s + id + ids + cat + sv + ssid + minp + maxp + "&refer=" + getUrlParameter("refer"));
+    //})
 
     $(function () {
 
@@ -4719,14 +5108,19 @@
 
         if (getUrlParameter("sid") != undefined && getUrlParameter("sid") != null && getUrlParameter("sid") != '' && extractHostname(window.location.origin).indexOf("monstro.com.ua") == -1) {
             sid_v = getUrlParameter("sid");
-            alert("test");
+        }
+
+        var cr_v = 0;
+
+        if (getUrlParameter("cr") != undefined && getUrlParameter("cr") != null && getUrlParameter("cr") != '' && extractHostname(window.location.origin).indexOf("monstro.com.ua") == -1) {
+            cr_v = getUrlParameter("cr");
         }
 
         $.ajax({
             async: true,
             type: "POST",
             url: "https://xpool.pro/web/webform.aspx/InitPage",
-            data: "{ \"uid_v\":" + uid_v + ", \"sid_v\":" + sid_v + " }",
+            data: "{ \"uid_v\":" + uid_v + ", \"sid_v\":" + sid_v + ", \"cr_v\":" + cr_v + " }",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindInit
@@ -4748,17 +5142,17 @@
         $("#MBM1").attr("v17", data.d.mbm[16]), $("#MBM1").attr("v18", data.d.mbm[17]), $("#MBM1").attr("v19", "0"), $("#MBM1").attr("v20", data.d.mbm[19]);
         $("#MBM1").attr("v21", data.d.mbm[20]), $("#MBM1").attr("v22", data.d.mbm[21]);
 
-
+        $("#MainLoading").hide();
         
         if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") == -1) {
             $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
             $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
         }
 
-        if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
-            uid_v = 48;
-            sid_v = 8071;
-        }
+        //if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
+        //    uid_v = 48;
+        //    sid_v = 8071;
+        //}
 
         //$("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
         //$("#TargetStyleSheet").attr("st", "style_blot");
@@ -4876,15 +5270,6 @@
 
             if ($("#MBM1").attr("v22") == "1") {
                 $("#DateTimeInfo").show();
-            }
-
-           
-
-            if ($("#MBM1").attr("v15") == "0" || ($("#MoneyBoxLi").css("display") != "none" && $("#MBM1").attr("v15") == "1")) {
-                $(".Alert").show();
-            }
-            else {
-                $(".Alert").hide();
             }
 
            
@@ -5007,10 +5392,10 @@
                 });
             }
             else if (getUrlParameter("id") != '' && getUrlParameter("id") != undefined) {
-                if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1 && getUrlParameter("sid") != '' && getUrlParameter("sid") != undefined) {
-                    uid_v = 48;
-                    sid_v = getUrlParameter("sid");
-                }
+                //if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1 && getUrlParameter("sid") != '' && getUrlParameter("sid") != undefined) {
+                //    uid_v = 48;
+                //    sid_v = getUrlParameter("sid");
+                //}
 
                 data_status = 0;
                 currentEvent = "search";
@@ -5983,30 +6368,34 @@
                     $("#PayOrder").children().remove();
 
 
-                    //if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-                    $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити при отриманні" : "Оплатить при получении") + '</td></tr>');
-                    //}
-                    //else {
+                    if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                        $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити при отриманні" : "Оплатить при получении") + '</td></tr>');
+                    }
+                    else {
 
-                    //    var _sum = parseFloat($(".cartsum").html());
-                    //    var prepay_sum = 100;
+                        var _sum = parseFloat($(".cartsum").html());
+                        var prepay_sum = 0;
 
-                    //    if (_sum > 10000) {
-                    //        prepay_sum = 500;
-                    //    }
-                    //    else if (_sum > 5000)
-                    //        prepay_sum == 250;
-                    //    else if (_sum > 2000)
-                    //        prepay_sum == 200;
+                        if (_sum > 10000) {
+                            prepay_sum = 500;
+                        }
+                        else if (_sum > 5000)
+                            prepay_sum == 250;
+                        else if (_sum > 2000)
+                            prepay_sum == 200;
 
-                    //    if (_sum > 100)
-                    //        $("#PayOrder").append('<tr><td id="PayOnline2" class="GoPrepay" width="100%" style="width: ' + $("#CreateNewOrder").innerWidth() + 'px"">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити передплату" : "Оплатить предоплату") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/><br/><span id="PrepaySum" style="font: normal 18px arial;">' + prepay_sum + ' грн</span></td></tr>');
+                        if (prepay_sum > 0) {
+                            $("#PayOrder").append('<tr><td id="PayOnline2" class="GoPrepay" width="100%" style="width: ' + $("#CreateNewOrder").innerWidth() + 'px"">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити передплату" : "Оплатить предоплату") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/><br/><span id="PrepaySum" style="font: normal 18px arial;">' + prepay_sum + ' грн</span></td></tr>');
+                        }
+                        else {
+                            $("#PayOrder").append('<tr><td id="GoToCabinet2" class="GoCabinet" width="100%;">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити при отриманні" : "Оплатить при получении") + '</td></tr>');
+                        }
 
-                    //    $("#PayOrder").append('<tr><td id="PayOnline" class="GoPay" width="100%" style="margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/></td></tr>');
+                        $("#PayOrder").append('<tr><td id="PayOnline" class="GoPay" width="100%" style="margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px">' + ($("#MBM1").attr("v16") == "1" ? "Сплатити онлайн" : "Оплатить онлайн") + ' <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" style="margin-right: 7px !important; vertical-align: middle !important;"/></td></tr>');
 
-                    //    $("#PayOrder").append('<tr><td class="PayInfo" width="100%"><div style="text-align: center; padding: 10px; margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px""><span class= "Visa"></span><span class="MasterCard"></span><br/>ФОП Краснікова О.С. РНОКПП: 2374202227</div></td></tr>');
+                        $("#PayOrder").append('<tr><td class="PayInfo" width="100%"><div style="text-align: center; padding: 10px; margin-top: 2px; width: ' + $("#CreateNewOrder").innerWidth() + 'px""><span class= "Visa"></span><span class="MasterCard"></span><br/>ФОП Краснікова О.С. РНОКПП: 2374202227</div></td></tr>');
 
-                    //}
+                    }
 
                     $("#PayOrder").show();
                     $("#CreateOrder").hide();
@@ -6024,6 +6413,7 @@
                 $("#CabinetTable").children().remove();
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Вартість доставки: Безкоштовно</td><tr>');
                     $("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Телефон:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr10" class="ItemContainer"><td class="cheque"><input id="PhoneTextBox" type="tel" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
@@ -6031,16 +6421,23 @@
                     $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="cheque"><input id="NameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
                 }
                 else {
+                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Вартість доставки: Безкоштовно</td><tr>');
+                    //$("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Замовлення буде опрацьоване автоматично<br>дата відправки: роророро</td></tr>');
+                   
+                    //$("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Подарункова упаковка<br/><span class="NoSelectYN" uk="Так">Да</span> <span class="NoSelectYN" uk="Ні">Нет</span></td></tr>');
+                    //$("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Фіскальний чек<br/><span class="NoSelectYN" uk="Так">Да</span> <span class="NoSelectYN" uk="Ні">Нет</span></td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Телефон:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr10" class="ItemContainer"><td class="cheque"><input id="PhoneTextBox" type="tel" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
+                   /* $("#CabinetTable").append('<tr id="d_tr1" class="ItemContainer"><td class="cheque" uk="Область:">Область:</td></tr>');*/
+
                     $("#CabinetTable").append('<tr id="d_tr1" class="ItemContainer"><td class="cheque" uk="Місто:">Город:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr2" class="ItemContainer"><td class="cheque"><textarea id="CurrentCityTextBox" maxlength="500" rows="2" cols="30" style="width: 284px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
-                    $("#CabinetTable").append('<tr id="d_tr3" class="ItemContainer"><td class="cheque" uk="Доставка:">Доставка:</td></tr>');
-                    $("#CabinetTable").append('<tr id="d_tr4" class="ItemContainer"><td class="cheque"><select id="DeliveryTypeSelect" style="font: 20px/20px Arial; text-align: center; width: 284px"><option value="1" uk="До відділення">До отделения</option><option value="2" uk="Адресна">Адресная</option></select></td></tr>');
+                   /* $("#CabinetTable").append('<tr id="d_tr3" class="ItemContainer"><td class="cheque" uk="Доставка:">Доставка:</td></tr>');*/
+                    /*$("#CabinetTable").append('<tr id="d_tr4" class="ItemContainer"><td class="cheque"><select id="DeliveryTypeSelect" style="font: 20px/20px Arial; text-align: center; width: 284px"><option value="1" uk="До відділення">До отделения</option><option value="2" uk="Адресна">Адресная</option></select></td></tr>');*/
                     $("#CabinetTable").append('<tr id="d_tr5" class="ItemContainer" v="1"><td class="cheque" uk="Відділення:">Отделение:</td></tr>');
 
-                    $("#CabinetTable").append('<tr id="d_tr6" class="ItemContainer" v="1"><td class="cheque"><textarea id="CurrentWarehouseTextBox" readonly maxlength="500" rows="2" cols="30" style="width: 284px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr6" class="ItemContainer" v="1"><td class="cheque" style="height: 74px;"><textarea id="CurrentWarehouseTextBox" maxlength="500" rows="2" cols="30" style="width: 284px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
 
                     $("#CabinetTable").append('<tr id="d_tr7" class="ItemContainer" v="2" style="display: none"><td class="cheque" id="AddressTD" uk="Вулиця:">Улица:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr8" class="ItemContainer" v="2" style="display: none"><td class="cheque"><textarea id="AddressTextBox" maxlength="500" rows="3" cols="30" style="width: 294px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
@@ -6057,8 +6454,6 @@
                     $("#CabinetTable").append('<tr id="d_tr25" class="ItemContainer"><td class="cheque"><input id="PatronymicTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
                     $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small;"><a target="_blank" href="" style="color: #fff; text-decoration: none">Гарантія</a> і <a target="_blank" href="https://xpool.pro/source/bgy6q-1g33z.html" style="color: #fff; text-decoration: none">Публічна оферта</a></td></tr>');
-
-                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Вартість доставки: за тарифам Нової Пошти</td><tr>');
 
                     $("#DeliveryTypeSelect").val("1");
                 }
@@ -6323,29 +6718,44 @@
         $('#NameTextBox').val(data.d.Name);
     }
 
+    var satl_finding = 0;
+
     function FindSettlements(request)
     {
-        $.ajax({
-            async: true,
-            type: "POST",
-            crossDomain: true,
-            url: "https://api.novaposhta.ua/v2.0/json/Address/searchSettlements/",
-            data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "Address",\r\n\ "calledMethod": "searchSettlements",\r\n\ "methodProperties": {\r\n\ "CityName":"' + request + '",\r\n\ "Limit":5\r\n\}\r\n}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: bindGetFindSettlements
-        });
+        if (satl_finding == 0) {        
+            if (request.indexOf("(") == -1) {
+                satl_finding = 1;
+
+                $("body").append('<div id="WHLoading" class="lds-ring" style="position: absolute; height: 10px; width: 10px"><div></div><div></div><div></div><div></div></div>');
+                $("#WHLoading").css("top", $("#CurrentCityTextBox").offset().top + 6 + "px");
+                $("#WHLoading").css("left", $("#CurrentCityTextBox").offset().left - 40 + "px");
+                $("#WHLoading").css("z-index", "10");
+
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    crossDomain: true,
+                    url: "https://api.novaposhta.ua/v2.0/json/Address/searchSettlements/",
+                    data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "Address",\r\n\ "calledMethod": "searchSettlements",\r\n\ "methodProperties": {\r\n\ "CityName":"' + request + '",\r\n\ "Limit":5\r\n\}\r\n}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: bindGetFindSettlements
+                });
+            }
+        }
     };
 
     function bindGetFindSettlements(data) {
         //alert(data.data[0].Addresses[0].Present);
-
-        if (data.data[0].Addresses.length > 0) {
+        if ((data.data[0] != undefined) && (data.data[0].Addresses.length > 0)) {
             $("#DetailsTable").children().remove();
-
+           
             for (var i = 0; i < data.data[0].Addresses.length; i++) {
-                $("#DetailsTable").append('<tr><td class="order" width="100%" colspan="2" city_id="' + data.data[0].Addresses[i].Ref + '">' + data.data[0].Addresses[i].MainDescription + '</td></tr>');
+                $("#DetailsTable").append('<tr><td class="order" width="100%" colspan="2" city_id="' + data.data[0].Addresses[i].Ref + '">' + data.data[0].Addresses[i].MainDescription + " (" + data.data[0].Addresses[i].Area + ' обл.)</td></tr>');
             }
+
+            $("#CurrentCityTextBox").css("position", "relative");
+            $("#CurrentCityTextBox").css("z-index", "9999999999");
 
             var left_drop = 0;
             var top_drop = 0;
@@ -6370,10 +6780,21 @@
                 $("#DetailsDIV").css("height", "200px");
 
             $("#DetailsDIV").show();
-            $("#splash").hide();
-            $("#splash2").hide();
+            $("#splash").show();         
         }
+        
+        satl_finding = 0;
+        $("#WHLoading").remove();
     }
+
+    $("#CabinetTable").delegate('#CurrentCityTextBox', 'click', function () {
+        $("#CurrentCityTextBox").val('');
+        $("#CurrentCityTextBox").removeAttr("city_id");
+        $("#AddressTextBox").val('');
+        $("#AddressTextBox").removeAttr("address_id");
+        $("#CurrentWarehouseTextBox").val('');
+        $("#CurrentWarehouseTextBox").removeAttr("warehouse_id");
+    });
 
     $("#CabinetTable").delegate('#CurrentCityTextBox', 'keyup input', function () {
         if ($(this).val().length > 1) {
@@ -6387,17 +6808,28 @@
         }
     });
 
+    var addr_finding = 0;
+
     function FindAddress() {
-        $.ajax({
-            async: true,
-            type: "POST",
-            crossDomain: true,
-            url: "https://api.novaposhta.ua/v2.0/json/",
-            data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "Address",\r\n\ "calledMethod": "searchSettlementStreets",\r\n\ "methodProperties": {\r\n\"StreetName": "' + $("#AddressTextBox").val() + '",\r\n\ "SettlementRef": "' + $("#CurrentCityTextBox").attr("city_id") + '",\r\n\ "Limit": 5\r\n\}\r\n\}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: bindGetAddress
-        });
+        if (addr_finding == 0) {
+            addr_finding = 1;
+
+            $("body").append('<div id="WHLoading" class="lds-ring" style="position: absolute; height: 10px; width: 10px"><div></div><div></div><div></div><div></div></div>');
+            $("#WHLoading").css("top", $("#AddressTextBox").offset().top + 6 + "px");
+            $("#WHLoading").css("left", $("#AddressTextBox").offset().left - 40 + "px");
+            $("#WHLoading").css("z-index", "10");
+
+            $.ajax({
+                async: true,
+                type: "POST",
+                crossDomain: true,
+                url: "https://api.novaposhta.ua/v2.0/json/",
+                data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "Address",\r\n\ "calledMethod": "searchSettlementStreets",\r\n\ "methodProperties": {\r\n\"StreetName": "' + $("#AddressTextBox").val() + '",\r\n\ "SettlementRef": "' + $("#CurrentCityTextBox").attr("city_id") + '",\r\n\ "Limit": 5\r\n\}\r\n\}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: bindGetAddress
+            });
+        }
     };
 
     JSON.stringify = JSON.stringify || function (obj) {
@@ -6421,12 +6853,15 @@
     };
 
     function bindGetAddress(data) {
-        if (data.data[0].Addresses.length > 0) {
+        if ((data.data[0] != undefined) && (data.data[0].Addresses.length > 0)) {
             $("#DetailsTable").children().remove();
 
             for (var i = 0; i < data.data[0].Addresses.length; i++) {
                 $("#DetailsTable").append('<tr><td class="order3" width="100%" colspan="2" address_id="' + data.data[0].Addresses[i].SettlementStreetRef + '">' + data.data[0].Addresses[i].Present + '</td></tr>');
             }
+
+            $("#AddressTextBox").css("position", "relative");
+            $("#AddressTextBox").css("z-index", "9999999999");
 
             var left_drop = 0;
             var top_drop = 0;
@@ -6451,10 +6886,16 @@
                 $("#DetailsDIV").css("height", "200px");
 
             $("#DetailsDIV").show();
-            $("#splash").hide();
-            $("#splash2").hide();
+            $("#splash").show();        
         }
+        addr_finding = 0;
+        $('#WHLoading').remove();
     }
+
+    $("#CabinetTable").delegate('#AddressTextBox', 'click', function () {    
+        $("#AddressTextBox").val('');
+        $("#AddressTextBox").removeAttr("address_id");
+    });
 
     $("#DetailsTable").delegate('td.order3', 'click', function () {
         $("#AddressTextBox").val($(this).html());
@@ -6463,6 +6904,11 @@
         $("#CurrentWarehouseTextBox").removeAttr("warehouse_id");
         $("#DetailsDIV").hide();
         $("#DetailsTable").children().remove();
+
+        $("#AddressTextBox").css("position", "relative");
+        $("#AddressTextBox").css("z-index", "1");
+        $("#splash").hide();
+        $("#AddressTextBox").blur();
     });
 
     $("#CabinetTable").delegate('#DeliveryTypeSelect', 'change', function () {
@@ -6499,6 +6945,11 @@
 
         if ($("DeliveryTypeSelect").val() == "1")
             GetWarehouses(city_id);
+
+        $("#CurrentCityTextBox").css("position", "relative");
+        $("#CurrentCityTextBox").css("z-index", "1");
+        $("#splash").hide();
+        $("#CurrentCityTextBox").blur();
     });
 
     $("#DetailsTable").delegate('td.order2', 'click', function () {
@@ -6510,13 +6961,38 @@
         $("#HouseTextBox").val("");
         $("#DetailsDIV").hide();
         $("#DetailsTable").children().remove();
+        $("#CurrentWarehouseTextBox").css("position", "relative");
+        $("#CurrentWarehouseTextBox").css("z-index", "1");
+        $("#splash").hide();
+        $("#CurrentWarehouseTextBox").blur();
     });
 
     $("#CabinetTable").delegate('#CurrentWarehouseTextBox', 'click', function () {
-
+        
+        $("#CurrentWarehouseTextBox").val("");
+        $("#CurrentWarehouseTextBox").removeAttr("warehouse_id");
+       
         if (city_id != undefined) {
+
+            $("body").append('<div id="WHLoading" class="lds-ring" style="position: absolute; height: 10px; width: 10px"><div></div><div></div><div></div><div></div></div>');
+            $("#WHLoading").css("top", $("#CurrentWarehouseTextBox").offset().top + 6 + "px");
+            $("#WHLoading").css("left", $("#CurrentWarehouseTextBox").offset().left - 40 + "px");
+            $("#WHLoading").css("z-index", "10");
+
             $("#DetailsDIV").hide();
             $("#DetailsTable").children().remove();
+
+            GetWarehouses(city_id);
+        }
+    });
+
+    $("#CabinetTable").delegate('#CurrentWarehouseTextBox', 'keyup input', function () {
+        if ($(this).val().length > 1) {
+
+            $("body").append('<div id="WHLoading" class="lds-ring" style="position: absolute; height: 10px; width: 10px"><div></div><div></div><div></div><div></div></div>');
+            $("#WHLoading").css("top", $("#CurrentWarehouseTextBox").offset().top + 6 + "px");
+            $("#WHLoading").css("left", $("#CurrentWarehouseTextBox").offset().left - 40 + "px");
+            $("#WHLoading").css("z-index", "10");
 
             GetWarehouses(city_id);
         }
@@ -6528,16 +7004,17 @@
             type: "POST",
             crossDomain: true,
             url: "https://api.novaposhta.ua/v2.0/json/AddressGeneral/getWarehouses",
-            data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "AddressGeneral",\r\n\ "calledMethod": "getWarehouses",\r\n\ "methodProperties": {\r\n\ "SettlementRef": "' + city_id + '"\r\n\}\r\n\}',
+            data: '{\r\n\"apiKey": "046c315053c52ce46f14cd32d7be106e",\r\n\ "modelName": "AddressGeneral",\r\n\ "calledMethod": "getWarehouses",\r\n\ "methodProperties": {\r\n\ "SettlementRef": "' + city_id + '",\r\n\ "FindByString": "' + $("#CurrentWarehouseTextBox").val() + '"\r\n\}\r\n\}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: bindGetWarehouses
         });
     }
 
-    function bindGetWarehouses(data) {
+    function bindGetWarehouses(data) {     
+        $("#splash").show();
         //alert(data.data[0].Addresses[0].Present);
-        if (data.data.length > 0) {
+        if ((data.data[0] != undefined) && (data.data.length > 0)) {
             $("#DetailsTable").children().remove();
 
 
@@ -6555,6 +7032,9 @@
                 left_drop = 0;
             }
 
+            $("#CurrentWarehouseTextBox").css("position", "relative");
+            $("#CurrentWarehouseTextBox").css("z-index", "99999999999");
+         
             $("#DetailsDIV").css({ top: $("#CurrentWarehouseTextBox").offset().top + top_drop + $("#CurrentWarehouseTextBox").outerHeight() + 'px' });
 
             $("#DetailsDIV").css({ left: $("#CurrentWarehouseTextBox").offset().left + $("#CurrentWarehouseTextBox").outerWidth() - $("#DetailsDIV").outerWidth() + left_drop + 'px' });
@@ -6565,9 +7045,9 @@
                 $("#DetailsDIV").css("height", "200px");
 
             $("#DetailsDIV").show();
-            $("#splash").hide();
-            $("#splash2").hide();
         }
+
+        $('#WHLoading').remove();
     }
 
 
@@ -6751,16 +7231,16 @@
                 else
                     no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
 
-                var img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
+                var img_val = '<div class="splashdiv"><div class="lds-facebook"><div></div><div></div><div></div></div></div><img style="display: none" index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)" onload="onLoad(this)"></img>';
                 
 
                 var rate_info = '<span class="AddRateSpan2">' + ($("#MBM1").attr("v16") == "1" ? "Залишити відгук" : "Оставить отзыв") + '</span>';
 
                 if (addicted_dataRows[i][10] > 0) {
 
-                    if (addicted_dataRows[i][10] == 1)
+                    if (addicted_dataRows[i][10] == 1 || addicted_dataRows[i][10] % 21 == 0)
                         rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгук" : " отзыв") + "</span>";
-                    else if (addicted_dataRows[i][10] % 2 == 0 || addicted_dataRows[i][10] % 3 == 0 || addicted_dataRows[i][10] % 4 == 0) {
+                    else if (addicted_dataRows[i][10] % 22 == 0 || addicted_dataRows[i][10] % 23 == 0 || addicted_dataRows[i][10] % 24 == 0 || addicted_dataRows[i][10] == 2 || addicted_dataRows[i][10] == 3 || addicted_dataRows[i][10] == 4) {
                         rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгуки" : " отзыва") + "</span>";
                     }
                     else
@@ -6774,22 +7254,27 @@
                 rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
 
                 var sklep_info = "<div class='sklep'>" + sklep[dataRows[i].ShopID] + "</div>";
+
+                if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
+                    sklep_info = "<div class='freeDelivery'>Безкоштовна доставка</div>";
+                }
+
                 var deliver_ru = "отправка: ";
                 var deliver_uk = "відправка: ";
 
                 var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-                    deliver_ru = "доставка: ";
-                    deliver_uk = "доставка: ";
+                    deliver_ru = "Бесплатная доставка: ";
+                    deliver_uk = "Безкоштовна доставка: ";
 
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
-                    sklep_info = "";
+                   
                 }
 
                 var day_w = new Date().getDay();
 
-                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time[dataRows[i].ShopID][day_w];
+                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time2[dataRows[i].ShopID][day_w];
 
                 if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
 
@@ -6916,16 +7401,16 @@
                     no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
 
 
-                var img_val = '<img index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)"></img>';
+                var img_val = '<div class="splashdiv"><div class="lds-facebook"><div></div><div></div><div></div></div></div><img style="display: none" index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)" onload="onLoad(this)"></img>';
                 
 
                 var rate_info = '<span class="AddRateSpan2">' + ($("#MBM1").attr("v16") == "1" ? "Залишити відгук" : "Оставить отзыв") + '</span>';
 
                 if (addicted_dataRows[i][10] > 0) {
 
-                    if (addicted_dataRows[i][10] == 1)
+                    if (addicted_dataRows[i][10] == 1 || addicted_dataRows[i][10] % 21 == 0)
                         rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгук" : " отзыв") + "</span>";
-                    else if (addicted_dataRows[i][10] % 2 == 0 || addicted_dataRows[i][10] % 3 == 0 || addicted_dataRows[i][10] % 4 == 0) {
+                    else if (addicted_dataRows[i][10] % 22 == 0 || addicted_dataRows[i][10] % 23 == 0 || addicted_dataRows[i][10] % 24 == 0 || addicted_dataRows[i][10] == 2 || addicted_dataRows[i][10] == 3 || addicted_dataRows[i][10] == 4) {
                         rate_info = "<span class='AddRateSpan'>" + addicted_dataRows[i][10] + ($("#MBM1").attr("v16") == "1" ? " відгуки" : " отзыва") + "</span>";
                     }
                     else
@@ -6939,22 +7424,27 @@
                 rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
            
                 var sklep_info = "<div class='sklep'>" + sklep[dataRows[i].ShopID] + "</div>";
+
+                if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
+                    sklep_info = "";
+                }
+
                 var deliver_ru = "отправка: ";
                 var deliver_uk = "відправка: ";
 
                 var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-                    deliver_ru = "доставка: ";
-                    deliver_uk = "доставка: ";
+                    deliver_ru = "Бесплатная доставка: ";
+                    deliver_uk = "Безкоштовна доставка: ";
 
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
-                    sklep_info = "";
+                   
                 }
 
                 var day_w = new Date().getDay();
 
-                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time[dataRows[i].ShopID][day_w];
+                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time2[dataRows[i].ShopID][day_w];
 
                 if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
 
@@ -7100,14 +7590,23 @@
             $("#MenuDIV").animate({ scrollLeft: $('li span.new').position().left - window.innerWidth / 2 + 25 }, 500);
         }
         else if (currentEvent == "cart") {
-            if (senders.length > 1) {
+
+            var s_count = 0;
+            var cur_s = [];
+
+            for (var i = 0; i < senders.length; i++) {
+                if (cur_s.indexOf(delivery_time[senders[i]][7]) == -1)
+                    cur_s.push(delivery_time[senders[i]][7]);
+            }
+
+            if (cur_s.length > 1) {
                 $("#PayOrder").children().remove();
                 var drop = "відправлення";
 
                 if (senders.length > 4)
                     drop = "відправлень";
              
-                $("#PayOrder").append("<tr><td style='background-color: #FFF; text-align: center; font: 12px/30px Arial;'>За вашим замовленням буде створено " + senders.length + " " + drop + "</td></tr>");
+                $("#PayOrder").append("<tr><td style='background-color: #FFF; text-align: center; font: 12px/30px Arial;'>За вашим замовленням буде створено " + cur_s.length + " " + drop + "</td></tr>");
                 $("#PayOrder").show();
             }
             $("#MenuDIV").animate({ scrollLeft: $('.mcart').position().left - window.innerWidth / 2 + 25 }, 500);
@@ -7124,8 +7623,33 @@
     }
 
     function onErrorPhotoLoad(source) {
+        $(source).prev().remove();
+        $(source).show();
         $(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
         $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
+    }
+
+    function onLoad(source) {
+        $(source).prev().remove();
+        $(source).show();
+        if ($(source).attr('src') == "" || $(source).attr('src').indexOf("nophoto") != -1) {
+            $(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
+            $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
+        }
+    }
+
+    function onErrorFullPhotoLoad(source) {
+        $(".splashdiv2").hide();
+        $(source).show();
+        $(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto2.png');
+        $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
+    }
+
+    function onFullLoad(source) {
+        $(".splashdiv2").hide();
+        $(source).show();
+        //$(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
+        //$('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
     }
 
     function bindCreateNewOrder(data) {
@@ -7424,7 +7948,9 @@
 
     var cur_date;
 
-    $(".AlertSpan").click(function () {
+    $("#AlertSpan").click(function () {
+        $("#about").hide();
+
         cur_date = new Date();
 
         var month = cur_date.getMonth() + 1;
@@ -7444,27 +7970,27 @@
     });
 
     $("#SubmitAlert").click(function () {
-        if ($("#AlertFormClose").attr("class") == "alertformclose") {
-            $("#AlertFormClose").attr("class", "loadingalert");
+        loadingShow();
+        $("#AlertFormClose").hide();
 
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "https://xpool.pro/web/webform.aspx/SaveAlert",
-                data: "{ \"uid\":" +uid_v + ", \"sid\":" + sid_v + ", \"status\":'" + $("#AlertSelect option:selected").attr("ru") + "', \"comment\":'" + $("#AlertInfo").val() + "', \"alert_date\":'" + $("#DateCount").html() + "', \"client_key\":'" + $("#KeyCode").val() + "' }",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: bindGetSubmitAlert
-            });
-        }
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "https://xpool.pro/web/webform.aspx/SaveAlert",
+            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"status\":'" + $("#AlertSelect option:selected").attr("ru") + "', \"comment\":'" + $("#AlertInfo").val() + "', \"alert_date\":'" + $("#DateCount").html() + "', \"client_key\":'" + $("#KeyCode").val() + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: bindGetSubmitAlert
+        });
     });
 
     function bindGetSubmitAlert(data) {
         window.setTimeout(function () {
-            $("#AlertFormClose").attr("class", "alertformclose");
+            $("#AlertFormClose").show();
             $("#alertform").hide();
             $("#alertaccepted").center();
             $("#alertaccepted").show();
+            loadingHide();
         }, 1000);
     }
 
@@ -7893,7 +8419,9 @@
 
         $("#RatesDiv").children().remove();
 
-        $("#RatesDiv").append("<div id='HideRate' style='margin-top: 40px;'>" + ($("#MBM1").attr("v16") == "1" ? "Повернутися назад" : "Вернуться назад") + "</div>")
+        $("#RatesDiv").append("<div id='HideRate' style='z-index: 999999; margin-top: 0px; width: 100%; left: 0px; top: 0px;'><img src='https://static.liqpay.ua/buttons/logo-small.png' name='btn_text' style='margin-right: 7px !important; vertical-align: middle !important; -webkit-transform: scaleX(-1); transform: scaleX(-1);'/>" + ($("#MBM1").attr("v16") == "1" ? "Повернутися назад" : "Вернуться назад") + "</div>")
+
+
 
         $("#RatesDiv").append("<div class='DescContent'>" + data.d[1] + "</br/><br/>" + data.d[0] + "</div>");
 
@@ -7952,8 +8480,10 @@
 
         $("#RatesDiv").children().remove();
 
-        $("#RatesDiv").append("<div id='HideRate' style='margin-top: 40px;'>" + ($("#MBM1").attr("v16") == "1" ? "Повернутися назад" : "Вернуться назад") + "</div>")
-        $("#RatesDiv").append("<div id='AddRate'>" + ($("#MBM1").attr("v16") == "1" ? "Додати відгук" : "Добавить отзыв") + "</div>")
+        $("#RatesDiv").append("<div id='HideRate' style='z-index: 999999; width: 100%; left: 0px; top: 0px'><img src='https://static.liqpay.ua/buttons/logo-small.png' name='btn_text' style='margin-right: 7px !important; vertical-align: middle !important; -webkit-transform: scaleX(-1); transform: scaleX(-1);'/>" + ($("#MBM1").attr("v16") == "1" ? "Повернутися назад" : "Вернуться назад") + "</div>")
+        $("#RatesDiv").append("<div id='AddRate' style='z-index: 999999; width: 100%; left: 0px; top: 50px;'>" + ($("#MBM1").attr("v16") == "1" ? "Додати відгук" : "Добавить отзыв") + "</div>")
+
+        $("#RatesDiv").append("<div id='RatesContent' style='margin-top: 100px'></div>");
 
         for (var i = 0; i < data.d.length; i++) {
 
@@ -7965,7 +8495,7 @@
             if ((data.d[i].Rate1 + data.d[i].Rate2 + data.d[i].Rate3) / 3 >= 1)
                 rate = "<div id='rate" + data.d[i].ID + "' v='" + ((data.d[i].Rate1 + data.d[i].Rate2 + data.d[i].Rate3) / 3) + "'></div>";
 
-            $("#RatesDiv").append("<div><div class='RateTitle'>" + (data.d[i].Name == null ? "" : data.d[i].Name) + " " + formatDate(d) + " </div><div class='RateContent'>" + rate + (data.d[i].Comment == null ? "" : data.d[i].Comment) + "</div></div>");
+            $("#RatesContent").append("<div><div class='RateTitle'>" + (data.d[i].Name == null ? "" : data.d[i].Name) + " " + formatDate(d) + " </div><div class='RateContent'>" + rate + (data.d[i].Comment == null ? "" : data.d[i].Comment) + "</div></div>");
 
             if ((data.d[i].Rate1 + data.d[i].Rate2 + data.d[i].Rate3) / 3 >= 1) {
                 $('#rate' + data.d[i].ID).starRating({
@@ -7976,9 +8506,7 @@
                     starSize: 15,
                     readOnly: true,
                 });
-            }
-            var $target = $('html,body');
-            $target.animate({ scrollTop: 0 }, 500);
+            }          
         }
 
         //startRecord = startRecord + data.d.length;
@@ -7989,6 +8517,9 @@
         loadingHide();
 
         $("#splash").hide();
+
+        var $target = $('html,body');
+        $target.animate({ scrollTop: 0 }, 500);
 
         loading2Hide();
     }
