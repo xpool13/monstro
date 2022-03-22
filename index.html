@@ -318,7 +318,7 @@
         }
 
         .freeDelivery {
-            background-color: #333333;
+            background-color: #ff0000;
             color: white;
         }
 
@@ -653,10 +653,10 @@
             display: block;
             width: 180px;
             height: 50px;
-            background-color: #000000;
+            background-color: #fff;
             padding: 10px;
             opacity: 0.7;
-            color: #fff;
+            color: #666;
             margin-top: 15px;
             margin-left: 50%;
             transform: translateX(-50%);
@@ -677,12 +677,6 @@
             transform: translateX(-50%);
             font: normal 20px arial;
             z-index: 10;
-        }
-
-        .findPhoto:hover {
-            background-color: #000;
-            opacity: 1;
-            cursor: pointer;
         }
 
         .findPhoto2:hover {
@@ -1348,13 +1342,9 @@
         <span class="imgcount">1 / 1</span>
         <span id="ViewDesc" class="desc"></span>
         <table id="EditImage2" class="EditImageClass" style="z-index: 999999; width: 166px; background-color: #efefef; position: fixed; display: none; top: 20px; left: 100px; table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: black; background-color: white">
-            <tr>
+            <tr style="display: none;">
                 <td>
                     <div style="width: 164px; height: 120px; overflow-y: scroll;">
-                        <div>
-                            URL1:<br />
-                            <textarea class="UrlArea" ind="1" id="TargetURL1" style="width: 138px;"></textarea>
-                        </div>
                         <div>
                             URL2:<br />
                             <textarea class="UrlArea" ind="2" id="TargetURL2" style="width: 138px;"></textarea>
@@ -1402,12 +1392,12 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td style="text-align: center"><br /><span id="UploadToGoogleFeedSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Google Shopping">Google Shopping</span></td>
             </tr>
             <tr>
                 <td style="text-align: center"><span id="UploadToFeedRozetkaSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Rozetka.ua">Rozetka.ua</span></td>
-            </tr>
+            </tr>-->
             <tr>
                 <td style="text-align: center"><span id="EditDescSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Опис">Описание</span></td>
             </tr>
@@ -1502,6 +1492,16 @@
             </tr>
             <tr>
                 <td style="text-align: center"><span id="SaveSpan" style="background-color: lightgray; font: normal 18px arial; display: block; width: 100%; cursor: pointer" uk="Зберегти" runat="server">Сохранить</span></td>
+            </tr>
+        </table>
+        <table id="EditImage3" class="EditImageClass" style="display: none; z-index: 999999; width: 500px; background-color: #efefef; position: fixed; bottom: 20px; right: 50%; transform: translateX(250px); table-layout: fixed; margin: 0px; border-collapse: collapse; font-family: Arial; font-size: 11px; color: black; background-color: white">
+            <tr>
+                <td>
+                    <div>
+                        URL1:<br />
+                        <textarea class="UrlArea" ind="1" id="TargetURL1" style="width: 100%; height: 100px"></textarea>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>
@@ -2326,7 +2326,7 @@
         $("#PayOrder").hide();
 
         if (data.d[2] == "1") {
-            window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&amount=" + data.d[0] + "&order_id=" + data.d[1] + "&sid=" + sid_v + "&host=" + extractHostname(window.location.origin));
+            window.location.replace("https://xpool.pro/payment/redirect.aspx?uid=" + uid_v + "&id=" + data.d[1] + "&p=" + data.d[0] + "&host=" + extractHostname(window.location.origin));
         }
         else {
             $("#splash").hide();
@@ -3899,13 +3899,14 @@
 
     function bindInitEdit(data) {
 
-        
-        if ($("#fullimage").attr("src").indexOf("nophoto2.png") != -1 || $(".EditImageClass").css("display") != "none")
+
+        if (($("#fullimage").attr("src").indexOf("nophoto2.png") != -1 || $(".EditImageClass").css("display") != "none"))
             $('<span class="findPhoto2">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($("#fullimage"));
 
         if (data.d.edit > 0 && (selected.attr("shopid") == 638 || selected.attr("shopid") == 647 || selected.attr("shopid") == 3692 )) {
             $("#EditImage1").show();
             $("#EditImage2").show();
+            $("#EditImage3").show();
 
             if (data.d.edit == 2) {
                 $("#DownPrice").html(selected.attr("stp"));
@@ -3970,6 +3971,7 @@
         else {
             $("#EditImage1").hide();
             $("#EditImage2").hide();
+            $("#EditImage3").hide();
         }
     };
 
@@ -4337,41 +4339,13 @@
         //    alert($("#MBM1").attr("v16") == "1" ? "Ще не підтримується для виду типу список" : "Пока не поддерживается для вида типа список");
     })
 
-    $('#CategoriesSelect').change(function (evt) {
-        if ($(this).attr("dis") == "1") {
-            alert("Demo Version!")
-        }
-        else {
-            $("#splash").show();
-            loadingShow();
-
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "https://xpool.pro/web/webform.aspx/SaveImageURL",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + $(selected).attr("shopid") + ", \"id\":" + $(selected).attr("dataid") + ", \"url\":'" + $("#TargetURL1").val() + "||" + $("#TargetURL2").val() + "||" + $("#TargetURL3").val() + "||" + $("#TargetURL4").val() + "||" + $("#TargetURL5").val() + "', \"vfurl\":'', \"rating\":" + $("#RatingValue").html() + ", \"discount\":'" + $("#DiscountValue").val() + "', \"delivery\":'" + $("#DeliverySelect option:selected").attr("ru") + "', \"time\":" + $("#TimeSelect option:selected")[0].getAttribute("v") + ", \"catid\":" + $("#CategoriesSelect option:selected")[0].getAttribute("cat") + ", \"price2_inet\":'" + $("#Price2Value").val() + "', \"status\":'" + $("#StatusValue").html() + "' }",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: bindSaveCategory
-            });
-
-            evt.stopPropagation();
-            evt.preventDefault();
-        }
-    });
-
-    function bindSaveCategory(data) {
-
-        //alert(data.d);
-
-        $(selected).attr("catid", $("#CategoriesSelect option:selected")[0].getAttribute("cat"));
-        loadingHide();
-    }
-
     function bindSaveImageURL(data) {
+
+        $("#TargetURL1").val(data.d);
+
         var cur_photo = ($("#TargetURL1").val().indexOf("nophoto2.png") != -1) ? "https://xpool.pro/web/source/" + $("#TargetStyleSheet").attr("st") + "/img/nophoto.png" : $("#TargetURL1").val();
 
-        $(selected).find("img").first().attr("src", cur_photo);
+        $(selected).find("img").first().attr("src", data.d);
 
         if (cur_photo.indexOf("nophoto") == -1) {
             $(selected).find(".findPhoto").remove();
@@ -4431,14 +4405,6 @@
         $(selected).attr("delivery", delivery_status);
         $(selected).find(".pdelivery").first().remove();
         $(selected).find(".timeselect").first().remove();
-
-        var free_delivery = 0;
-
-        if ($("#MBM1").attr("v13") == "1") {
-            free_delivery = 1;
-        }
-
-        $(selected).find(".img").append(FreeDelivery(free_delivery, delivery_status));
 
         //if (parseFloat($(selected).attr("discount")) > 0) {
         $(selected).find(".price").first().parent().remove();
@@ -5130,7 +5096,7 @@
 
 
     var uid_v = 48;//edit
-    var sid_v = 638;//edit
+    var sid_v = 8547;//edit
 
     var init_status = 1;
 
@@ -5148,17 +5114,24 @@
             $("#TargetStyleSheet").attr("href", data.d.target_style_sheet_href);
             $("#TargetStyleSheet").attr("st", data.d.target_style_sheet_st);
         }
+      
 
         //if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
         //    uid_v = 48;
         //    sid_v = 8071;
         //}
 
-        //$("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
-        //$("#TargetStyleSheet").attr("st", "style_blot");
+        $("#TargetStyleSheet").attr("href", "https://xpool.pro/web/source/style_blot/css/main.css");
+        $("#TargetStyleSheet").attr("st", "style_blot");
 
-        $("#MBM1").attr("glue1", data.d.glue1);
-        $("#MBM1").attr("glue2", data.d.glue2);
+        if (getUrlParameter("dir") != "1") {
+            $("#MBM1").attr("glue1", data.d.glue1);
+            $("#MBM1").attr("glue2", data.d.glue2);
+        }
+        else {
+            $("#MBM1").attr("glue1", "");
+            $("#MBM1").attr("glue2", "");
+        }
 
         $("#SaveSpan").attr("dis", data.d.dis);
 
@@ -5812,7 +5785,10 @@
         var res;
 
         if (img != null && img != undefined && img != '' && img.split("||")[0].indexOf('/img/nophoto2.png') == -1) {
-            res = "https://xpool.pro/imagefeeder.ashx?s=" + source.split("||")[0] + "&c=1";
+            if (source.split("||")[0].indexOf("pool") == -1)
+                res = "https://xpool.pro/imagefeeder.ashx?s=" + source.split("||")[0] + "&c=1";
+            else
+                res = source.split("||")[0];
         }
         else {
             res = 'https://xpool.pro/web/source/' + $("#TargetStyleSheet").attr("st") + '/img/nophoto.png';
@@ -6154,22 +6130,6 @@
         }
     });
 
-    function FreeDelivery(free_delivery, custom_value) {
-
-        var res = '';
-
-        if (custom_value == null) {
-            if (free_delivery == 1) {
-                res = '<span class="pdelivery"></span>';
-            }
-        }
-        else if (custom_value == true) {
-            res = '<span class="pdelivery"></span>';
-        }
-
-        return res;
-    }
-
     function GetRate(rating) {
         var res = '';
 
@@ -6413,19 +6373,13 @@
                 $("#CabinetTable").children().remove();
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Вартість доставки: Безкоштовно</td><tr>');
                     $("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Телефон:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr10" class="ItemContainer"><td class="cheque"><input id="PhoneTextBox" type="tel" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
                     $("#CabinetTable").append('<tr id="d_tr13" class="ItemContainer"><td class="cheque" id="NameTD" uk="Ім\'я:">Имя:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr14" class="ItemContainer"><td class="cheque"><input id="NameTextBox" type="text" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
                 }
-                else {
-                    $("#CabinetTable").append('<tr class="ItemContainer"><td class="cheque" style="font-size: small">Вартість доставки: Безкоштовно</td><tr>');
-                    //$("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Замовлення буде опрацьоване автоматично<br>дата відправки: роророро</td></tr>');
-                   
-                    //$("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Подарункова упаковка<br/><span class="NoSelectYN" uk="Так">Да</span> <span class="NoSelectYN" uk="Ні">Нет</span></td></tr>');
-                    //$("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Фіскальний чек<br/><span class="NoSelectYN" uk="Так">Да</span> <span class="NoSelectYN" uk="Ні">Нет</span></td></tr>');
+                else {     
                     $("#CabinetTable").append('<tr id="d_tr9" class="ItemContainer"><td class="cheque" id="PhoneTD">Телефон:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr10" class="ItemContainer"><td class="cheque"><input id="PhoneTextBox" type="tel" style="font: 20px/20px Arial; text-align: center;" /></td></tr>');
 
@@ -6433,8 +6387,8 @@
 
                     $("#CabinetTable").append('<tr id="d_tr1" class="ItemContainer"><td class="cheque" uk="Місто:">Город:</td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr2" class="ItemContainer"><td class="cheque"><textarea id="CurrentCityTextBox" maxlength="500" rows="2" cols="30" style="width: 284px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
-                   /* $("#CabinetTable").append('<tr id="d_tr3" class="ItemContainer"><td class="cheque" uk="Доставка:">Доставка:</td></tr>');*/
-                    /*$("#CabinetTable").append('<tr id="d_tr4" class="ItemContainer"><td class="cheque"><select id="DeliveryTypeSelect" style="font: 20px/20px Arial; text-align: center; width: 284px"><option value="1" uk="До відділення">До отделения</option><option value="2" uk="Адресна">Адресная</option></select></td></tr>');*/
+                    $("#CabinetTable").append('<tr id="d_tr3" class="ItemContainer"><td class="cheque" uk="Доставка:">Доставка:</td></tr>');
+                    $("#CabinetTable").append('<tr id="d_tr4" class="ItemContainer"><td class="cheque"><select id="DeliveryTypeSelect" style="font: 20px/20px Arial; text-align: center; width: 284px"><option value="1" uk="До відділення">До отделения</option><option value="2" uk="Адресна">Адресная</option></select></td></tr>');
                     $("#CabinetTable").append('<tr id="d_tr5" class="ItemContainer" v="1"><td class="cheque" uk="Відділення:">Отделение:</td></tr>');
 
                     $("#CabinetTable").append('<tr id="d_tr6" class="ItemContainer" v="1"><td class="cheque" style="height: 74px;"><textarea id="CurrentWarehouseTextBox" maxlength="500" rows="2" cols="30" style="width: 284px; padding: 5px; font: normal 18px arial; display: block;"></textarea></td></tr>');
@@ -6542,27 +6496,76 @@
         if (client_id == undefined || client_id == '')
             client_id = 0;
 
-        if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: bindCreateNewOrder2
-            });
+        var mas = { 1: "", 2: "", 3: "", 4: "", 5: "" };
+
+        var cart_items = $.cookie("c_cart").split(":");
+
+        for (var i = 0; i < cart_items.length; i++) {
+
+            if (cart_items[i] != "") {
+                mas[delivery_time[cart_items[i].split("#")[2]][7]] += ":" + cart_items[i] + ":";
+            }
         }
-        else {
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: bindCreateNewOrder2
-            });
+
+        var arr = [];
+
+        $.each(mas, function (key, val) {
+            if (val != "") {
+                arr.push(val);
+            }
+        });
+
+        for (var i = 0; i < arr.length; i++) {
+            if (i == (arr.length - 1)) {
+                if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: bindCreateNewOrder2
+                    });
+                }
+                else {
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: bindCreateNewOrder2
+                    });
+                }
+            }
+            else {
+
+                if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json"
+                    });
+                }
+                else {
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json"
+                    });
+                }
+
+                setTimeout(function () {
+                }, 10000);
+            }
         }
     });
 
@@ -6576,15 +6579,48 @@
         if (client_id == undefined || client_id == '')
             client_id = 0;
 
-        $.ajax({
-            async: true,
-            type: "POST",
-            url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-            data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: bindCreateNewOrder3
+        var mas = { 1: "", 2: "", 3: "", 4: "", 5: "" };
+
+        var cart_items = $.cookie("c_cart").split(":");
+
+        for (var i = 0; i < cart_items.length; i++) {
+
+            if (cart_items[i] != "") {
+                mas[delivery_time[cart_items[i].split("#")[2]][7]] += ":" + cart_items[i] + ":";
+            }
+        }
+
+        var arr = [];
+
+        $.each(mas, function (key, val) {
+            if (val != "") {
+                arr.push(val);
+            }
         });
+
+        for (var i = 0; i < arr.length; i++) {
+            if (i == (arr.length - 1)) {
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                    data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                });
+            }
+            else {
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                    data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: bindCreateNewOrder3
+                });
+            }
+        }
 
     });
 
@@ -6668,54 +6704,99 @@
         if (client_id == undefined || client_id == '')
             client_id = 0;
 
-        if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'Тернівка', \"address\":'Клякса', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: bindCreateNewOrder
-            });
+        var mas = { 1: "", 2: "", 3: "", 4: "", 5: "" };
+
+        var cart_items = $.cookie("c_cart").split(":");
+
+        for (var i = 0; i < cart_items.length; i++) {
+
+            if (cart_items[i] != "") {
+                mas[delivery_time[cart_items[i].split("#")[2]][7]] += ":" + cart_items[i] + ":";
+            }
         }
-        else {
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
-                data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + $.cookie("c_cart") + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: bindCreateNewOrder
-            });
+
+        var arr = [];
+
+        $.each(mas, function (key, val) {
+            if (val != "") {
+                arr.push(val);
+            }
+        });
+
+        for (var i = 0; i < arr.length; i++) {
+            if (i == (arr.length - 1)) {
+                if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'Тернівка', \"address\":'Клякса', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json"
+                    });
+                }
+                else {
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json"
+                    });
+                }
+            }
+            else {
+                if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'', \"area\":'', \"city\":'Тернівка', \"address\":'Клякса', \"house\":'', \"flat\":'', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'', \"patronymic\":'', \"city_ref\":'', \"warehouse_ref\":'', \"address_ref\":'', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: bindCreateNewOrder
+                    });
+                }
+                else {
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: "https://xpool.pro/web/webform.aspx/CreateNewOrder",
+                        data: "{ \"uid\":" + uid_v + ", \"sid\":" + sid_v + ", \"client_id\":" + client_id + ", \"phone\":'" + ConvertPhone($("#PhoneTextBox").val()) + "', \"cartdata\":'" + arr[i] + "', \"delivery_type\":'" + $("#DeliveryTypeSelect").val() + "', \"warehouse\":'" + $("#CurrentWarehouseTextBox").val() + "', \"area\":'', \"city\":'" + $("#CurrentCityTextBox").val() + "', \"address\":'" + $("#AddressTextBox").val() + "', \"house\":'" + $("#HouseTextBox").val() + "', \"flat\":'" + $("#FlatTextBox").val() + "', \"name\":'" + $("#NameTextBox").val() + "', \"secondname\":'" + $("#SecondNameTextBox").val() + "', \"patronymic\":'" + $("#PatronymicTextBox").val() + "', \"city_ref\":'" + $("#CurrentCityTextBox").attr("city_id") + "', \"warehouse_ref\":'" + $("#CurrentWarehouseTextBox").attr("warehouse_id") + "', \"address_ref\":'" + $("#AddressTextBox").attr("address_id") + "', \"comments\":'" + $.cookie("c_comments") + "', \"ctime\":'" + (getUrlParameter("c_time") != undefined ? getUrlParameter("c_time") : '') + "', \"refer\":'" + (getUrlParameter("refer") != undefined ? getUrlParameter("refer") : '') + "', \"host\":'" + extractHostname(window.location.origin) + "' }",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: bindCreateNewOrder
+                    });
+                }
+            }
         }
     });
 
     function bindGetLastOrderInfo(data) {
-       
-        if (data.d.City != null) {
-            $('#CurrentCityTextBox').val(data.d.City);
-            $('#CurrentCityTextBox').attr(data.d.CityRef);
-        }
+        if (data != null && data.d != null) {
+            if (data.d.City != null) {
+                $('#CurrentCityTextBox').val(data.d.City);
+                $('#CurrentCityTextBox').attr(data.d.CityRef);
+            }
 
-        if (data.d.Address != null && data.d.Address != '') {
-            $("#DeliveryTypeSelect").val("2");
-            $("#CabinetTable").find('[v="1"]').hide();
-            $("#CabinetTable").find('[v="2"]').show();
-            
-            $('#AddressTextBox').val(data.d.Address);
-            $('#AddressTextBox').attr(data.d.AddressRef);
-        }
-        else
-        {
-            $('#CurrentWarehouseTextBox').val(data.d.Warehouse);
-            $('#CurrentWarehouseTextBox').attr(data.d.WarehouseRef);
-        }
+            if (data.d.Address != null && data.d.Address != '') {
+                $("#DeliveryTypeSelect").val("2");
+                $("#CabinetTable").find('[v="1"]').hide();
+                $("#CabinetTable").find('[v="2"]').show();
 
-        $('#SecondNameTextBox').val(data.d.SecondName);
-        $('#PatronymicTextBox').val(data.d.Patronymic);
-        $('#NameTextBox').val(data.d.Name);
+                $('#AddressTextBox').val(data.d.Address);
+                $('#AddressTextBox').attr(data.d.AddressRef);
+            }
+            else {
+                $('#CurrentWarehouseTextBox').val(data.d.Warehouse);
+                $('#CurrentWarehouseTextBox').attr(data.d.WarehouseRef);
+            }
+
+            $('#SecondNameTextBox').val(data.d.SecondName);
+            $('#PatronymicTextBox').val(data.d.Patronymic);
+            $('#NameTextBox').val(data.d.Name);
+        }
     }
 
     var satl_finding = 0;
@@ -6751,7 +6832,7 @@
             $("#DetailsTable").children().remove();
            
             for (var i = 0; i < data.data[0].Addresses.length; i++) {
-                $("#DetailsTable").append('<tr><td class="order" width="100%" colspan="2" city_id="' + data.data[0].Addresses[i].Ref + '">' + data.data[0].Addresses[i].MainDescription + " (" + data.data[0].Addresses[i].Area + ' обл.)</td></tr>');
+                $("#DetailsTable").append('<tr><td class="order" width="100%" colspan="2" city_id="' + data.data[0].Addresses[i].Ref + '">' + data.data[0].Addresses[i].MainDescription +  " <br/>"  + "(" + data.data[0].Addresses[i].Area + ' обл.)</td></tr>');
             }
 
             $("#CurrentCityTextBox").css("position", "relative");
@@ -6930,7 +7011,7 @@
     var city_id;
 
     $("#DetailsTable").delegate('td.order', 'click', function () {
-        $("#CurrentCityTextBox").val($(this).html());
+        $("#CurrentCityTextBox").val($(this).html().replace("<br>", "\n").replace("<br/>", "\n"));
         $("#CurrentCityTextBox").attr("city_id", $(this).attr("city_id"));
         $("#CurrentWarehouseTextBox").val("");
         $("#CurrentWarehouseTextBox").removeAttr("warehouse_id");
@@ -7145,12 +7226,6 @@
             }
         }
 
-        var free_delivery = 0;
-
-        if ($("#MBM1").attr("v13") == "1") {
-            free_delivery = 1;
-        }
-
         var disable_trade = 0;
 
         if ($("#MBM1").attr("v5") == "1")
@@ -7224,12 +7299,7 @@
 
                 var timesel = TimeSelectView(addicted_dataRows[i][6], dataRows[i].ShopID);
 
-                var no_photo_url;
-
-                if (addicted_dataRows[i][3] != null && addicted_dataRows[i][3] != undefined && addicted_dataRows[i][3] != '' && addicted_dataRows[i][3].split("||")[0].indexOf('/img/nophoto2.png') == -1)
-                    no_photo_url = '';
-                else
-                    no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
+               
 
                 var img_val = '<div class="splashdiv"><div class="lds-facebook"><div></div><div></div><div></div></div></div><img style="display: none" index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)" onload="onLoad(this)"></img>';
                 
@@ -7256,7 +7326,7 @@
                 var sklep_info = "<div class='sklep'>" + sklep[dataRows[i].ShopID] + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
-                    sklep_info = "<div class='freeDelivery'>Безкоштовна доставка</div>";
+                    sklep_info = "";
                 }
 
                 var deliver_ru = "отправка: ";
@@ -7265,8 +7335,8 @@
                 var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-                    deliver_ru = "Бесплатная доставка: ";
-                    deliver_uk = "Безкоштовна доставка: ";
+                    deliver_ru = "доставка: ";
+                    deliver_uk = "доставка: ";
 
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
                    
@@ -7274,7 +7344,9 @@
 
                 var day_w = new Date().getDay();
 
-                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time2[dataRows[i].ShopID][day_w];
+                var cur_time = "";
+                if (dataRows[i].UserID == 48)
+                    cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time2[dataRows[i].ShopID][day_w];
 
                 if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
 
@@ -7337,7 +7409,7 @@
                     }
                 }
 
-                col.append('<div class="product" ' + max_count + ' style="display: none; width: 100%; border: 2px solid #FFF;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + GetRate(addicted_dataRows[i][0]) + no_photo_url + img_val + delivery_status + sklep_info + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '<br/><span idv="' + dataRows[i].ID + '" class="ReadAll">Читати повністю</span></a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</td></tr>');
+                col.append('<div class="product" ' + max_count + ' style="display: none; width: 100%; border: 2px solid #FFF;" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '"  price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '"><table class="pt" style="background-color: white; width: 100%"><tr><td class="pt_img" style="width: 309px; vertical-align:top">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + '<div class="img" style="padding-top: 3px;">' + GetRate(addicted_dataRows[i][0]) + img_val + delivery_status + sklep_info + '</div>' + rate_info + '</td><td class="last_td" style="width: 100%; position: relative;"><a class="name" style="font: 16px/20px arial; text-align: left; display: inline-block; top: 2px; position: absolute; height: 100px;">' + dataRows[i].Name + '<br/><span idv="' + dataRows[i].ID + '" class="ReadAll">Читати повністю</span></a><div class="options" style="height: 40px; margin-top: 65px;"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + '</ul></div><div class="options"><ul>' + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</td></tr>');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -7393,12 +7465,7 @@
 
                 var timesel = TimeSelectView(addicted_dataRows[i][6], dataRows[i].ShopID);
 
-                var no_photo_url;
-
-                if (addicted_dataRows[i][3] != null && addicted_dataRows[i][3] != undefined && addicted_dataRows[i][3] != '' && addicted_dataRows[i][3].split("||")[0].indexOf('/img/nophoto2.png') == -1)
-                    no_photo_url = '';
-                else
-                    no_photo_url = '<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>';
+              
 
 
                 var img_val = '<div class="splashdiv"><div class="lds-facebook"><div></div><div></div><div></div></div></div><img style="display: none" index="' + index2.toString() + '" res="' + addicted_dataRows[i][3] + '" src="' + GetNormalImage(addicted_dataRows[i][3], addicted_dataRows[i][3]) + '" onerror="onErrorPhotoLoad(this)" onload="onLoad(this)"></img>';
@@ -7422,7 +7489,7 @@
 
 
                 rate_info = "<div class='RateDiv' style='padding: 5px; text-align: left' v='" + dataRows[i].ID + "'>" + rate_info + "</div>";
-           
+
                 var sklep_info = "<div class='sklep'>" + sklep[dataRows[i].ShopID] + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("monstro.com.ua") != -1) {
@@ -7435,8 +7502,8 @@
                 var delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "готовий до відправки" : "готов к отправке") + "</div>";
 
                 if (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) {
-                    deliver_ru = "Бесплатная доставка: ";
-                    deliver_uk = "Безкоштовна доставка: ";
+                    deliver_ru = "доставка: ";
+                    deliver_uk = "доставка: ";
 
                     delivery_status = "<div class='dready'>" + ($("#MBM1").attr("v16") == "1" ? "товар у магазині" : "товар в магазине") + "</div>";
                    
@@ -7444,7 +7511,9 @@
 
                 var day_w = new Date().getDay();
 
-                var cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time2[dataRows[i].ShopID][day_w];
+                var cur_time = "";
+                if (dataRows[i].UserID == 48)
+                    cur_time = (extractHostname(window.location.origin).indexOf("xn--80atad5a1f.in.ua") != -1) ? delivery_time2[dataRows[i].ShopID][day_w] : delivery_time2[dataRows[i].ShopID][day_w];
 
                 if ((disable_trade == "1" || (dataRows[i].ShopID == 3692 && dataRows[i].Price > 1200)) && dataRows[i].Count == 1 && dataRows[i].Status == 0) {
 
@@ -7506,7 +7575,7 @@
                     }
                 }
 
-                col.append('<div class="product" ' + max_count + ' style="display: none; border: 2px solid #FFF" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + FreeDelivery(free_delivery, addicted_dataRows[i][4]) + no_photo_url + img_val + delivery_status + sklep_info + '</div>' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div idv="' + dataRows[i].ID + '" class="ReadAll" style="text-align: center">Читати повністю</div><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
+                col.append('<div class="product" ' + max_count + ' style="display: none; border: 2px solid #FFF" status="new" shopid="' + dataRows[i].ShopID + '" dataid="' + dataRows[i].ID + '" price="' + dataRows[i].Price + '" stp="' + dataRows[i].StartPrice + '" status2="' + dataRows[i].Status + '" price2_inet="' + dataRows[i].Price2 + '" ct="' + dataRows[i].Count + '" rating="' + addicted_dataRows[i][0] + '" discount="' + addicted_dataRows[i][1] + '" delivery="' + addicted_dataRows[i][4] + '" time="' + addicted_dataRows[i][6] + '" catid="' + dataRows[i].CategoryID + '">' + GetDiscount(addicted_dataRows[i][1], dataRows[i].Price) + GetRate(addicted_dataRows[i][0]) + '<div class="img">' + img_val + delivery_status + sklep_info + '</div>' + rate_info + '<a class="name">' + dataRows[i].Name + '</a><div idv="' + dataRows[i].ID + '" class="ReadAll" style="text-align: center">Читати повністю</div><div class="options"><ul>' + GetPriceView(addicted_dataRows[i][1], dataRows[i].Price, dataRows[i].Count) + GetMoneybox(perc, dataRows[i].Price) + GetRateView(dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price) + '</ul></div>' + timesel + escount[0] + comment + GetCartView(disable_trade, dataRows[i].ID, addicted_dataRows[i][0], dataRows[i].Price, dataRows[i].ShopID, dataRows[i].Count, addicted_dataRows[i][9], dataRows[i].Status) + '</div > ');
 
                 if (timesel != '') {
                     SetTimeViewPrice($("#ProductsListView").find('[dataid="' + dataRows[i].ID + '"]').find(".timeselect"), dataRows[i].ID, 0, dataRows[i].Count);
@@ -7589,25 +7658,26 @@
         else if (currentEvent == "new") {      
             $("#MenuDIV").animate({ scrollLeft: $('li span.new').position().left - window.innerWidth / 2 + 25 }, 500);
         }
-        else if (currentEvent == "cart") {
+        else if (currentEvent == "cart") {    
+            if (uid_v == 48) {
+                var s_count = 0;
+                var cur_s = [];
 
-            var s_count = 0;
-            var cur_s = [];
+                for (var i = 0; i < senders.length; i++) {
+                    if (cur_s.indexOf(delivery_time[senders[i]][7]) == -1)
+                        cur_s.push(delivery_time[senders[i]][7]);
+                }
 
-            for (var i = 0; i < senders.length; i++) {
-                if (cur_s.indexOf(delivery_time[senders[i]][7]) == -1)
-                    cur_s.push(delivery_time[senders[i]][7]);
-            }
+                if (cur_s.length > 1) {
+                    $("#PayOrder").children().remove();
+                    var drop = "відправлення";
 
-            if (cur_s.length > 1) {
-                $("#PayOrder").children().remove();
-                var drop = "відправлення";
+                    if (senders.length > 4)
+                        drop = "відправлень";
 
-                if (senders.length > 4)
-                    drop = "відправлень";
-             
-                $("#PayOrder").append("<tr><td style='background-color: #FFF; text-align: center; font: 12px/30px Arial;'>За вашим замовленням буде створено " + cur_s.length + " " + drop + "</td></tr>");
-                $("#PayOrder").show();
+                    $("#PayOrder").append("<tr><td style='background-color: #FFF; text-align: center; font: 12px/30px Arial;'>За вашим замовленням буде створено " + cur_s.length + " " + drop + "</td></tr>");
+                    $("#PayOrder").show();
+                }
             }
             $("#MenuDIV").animate({ scrollLeft: $('.mcart').position().left - window.innerWidth / 2 + 25 }, 500);
             var n = $(document).height();
@@ -7626,15 +7696,13 @@
         $(source).prev().remove();
         $(source).show();
         $(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
-        $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
     }
 
     function onLoad(source) {
         $(source).prev().remove();
         $(source).show();
         if ($(source).attr('src') == "" || $(source).attr('src').indexOf("nophoto") != -1) {
-            $(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
-            $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
+         
         }
     }
 
@@ -7642,21 +7710,24 @@
         $(".splashdiv2").hide();
         $(source).show();
         $(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto2.png');
-        $('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
+     
     }
 
     function onFullLoad(source) {
         $(".splashdiv2").hide();
         $(source).show();
-        //$(source).attr('src', 'https://xpool.pro/web/source/' + $('#TargetStyleSheet').attr('st') + '/img/nophoto.png');
-        //$('<span class="findPhoto">' + ($("#MBM1").attr("v16") == "1" ? 'Подивитись фото товару в Google' : 'Поcмотреть фото товара в Google') + '</span>').insertBefore($(source));
     }
 
     function bindCreateNewOrder(data) {
+
+        console.log("test1");
+
         $("#PayOrder").children().remove();
         $("#PayOrder").hide();
 
         var client_id = $("#MainBalance").attr("client_id");
+
+        console.log("test2");
 
         var date = new Date();
         var minutes = 60;
@@ -7665,6 +7736,8 @@
         date.setTime(date.getTime() + (days * hours * minutes * 60 * 1000));
 
         if (client_id == undefined || client_id == '') {
+
+            console.log("test3");
             if (data.d[1] != null) {
 
                 if (data.d[1].paramPhone == null) {
@@ -7703,6 +7776,8 @@
                 }
             }
         }
+
+        console.log("test4");
 
         $.cookie("c_cart", "", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
         $.cookie("c_comments", "", { expires: date, path: '/', domain: '.' + extractHostname(window.location.origin) });
@@ -8227,51 +8302,12 @@
         $("#splash").hide();
     });
 
-    $("#ProductsListView").delegate("span.findPhoto", "click", function (e) {
-
-        if ($.cookie("c_view") == "table" || $.cookie("c_view") == undefined || $.cookie("c_view") == null || $.cookie("c_view") == '') {
-
-            var res = $(this).parent().parent().find(".name").text();
-
-            //res = jQuery.grep(res, function (n, i) {
-            //    return (i < 6);
-            //}).join(" ");
-
-            window.open('https://www.google.com.ua/search?q=' + res + '&sxsrf=ALeKk01DO43JLK2Yo6vRz9hiOpSpsaraCg:1584701911902&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjDmKLU8qjoAhXKlosKHZ6mAdAQ_AUoAXoECAwQAw&biw=1366&bih=657', '_blank');
-        }
-        else {
-            var res = $(this).parent().parent().parent().find(".name").text();
-
-            //res = jQuery.grep(res, function (n, i) {
-            //    return (i < 6);
-            //}).join(" ");
-
-            window.open('https://www.google.com.ua/search?q=' + res + '&sxsrf=ALeKk01DO43JLK2Yo6vRz9hiOpSpsaraCg:1584701911902&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjDmKLU8qjoAhXKlosKHZ6mAdAQ_AUoAXoECAwQAw&biw=1366&bih=657', '_blank');
-        }
-
-        if (win) {
-            win.focus();
-        }
-        e.stopPropagation();
-        e.preventDefault();
-    });
-
 
     $("#viewer").delegate("span.findPhoto2", "click", function (e) {
 
-        var res = selected.find(".name").first().html();
+        var res = selected.find(".name").first().html().replace("(арт ", "").replace(")", "").split("<")[0];
 
-        //res = jQuery.grep(res, function (n, i) {
-        //    return (i < 6);
-        //}).join(" ");
-
-        window.open('https://www.google.com.ua/search?q=' + res + '&sxsrf=ALeKk01DO43JLK2Yo6vRz9hiOpSpsaraCg:1584701911902&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjDmKLU8qjoAhXKlosKHZ6mAdAQ_AUoAXoECAwQAw&biw=1366&bih=657', '_blank');
-
-        if (win) {
-            win.focus();
-        }
-        e.stopPropagation();
-        e.preventDefault();
+        window.open('https://www.google.com.ua/search?q=' + res, '_blank');
     });
 
     function extractHostname(url) {
